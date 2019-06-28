@@ -19,4 +19,8 @@
     <ProjectReference Include="..\..\AoTracker.Infrastructure\AoTracker.Infrastructure.csproj" />
     <ProjectReference Include="..\..\AoTracker.Interfaces\AoTracker.Interfaces.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
 </Project>

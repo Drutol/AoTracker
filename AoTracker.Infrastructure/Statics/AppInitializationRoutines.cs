@@ -17,6 +17,8 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterResources();
 
             Container = builder.Build();
+
+            return type => Container.Resolve(type);
         }
     }
 }

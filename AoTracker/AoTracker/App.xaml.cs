@@ -3,7 +3,6 @@ using AoTracker.Infrastructure.Statics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AoTracker.Services;
-using AoTracker.Views;
 using Xamarin.Forms.Internals;
 
 namespace AoTracker
