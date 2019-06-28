@@ -1,22 +1,39 @@
 ﻿using System;
+using System.ComponentModel;
 using AoTracker.Infrastructure.Statics;
+using AoTracker.Infrastructure.ViewModels;
+using AoTracker.Interfaces;
+using AoTracker.Navigation;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using AoTracker.Services;
+using Autofac;
 using Xamarin.Forms.Internals;
 
 namespace AoTracker
 {
     public partial class App : Application
     {
+        public MainViewModel ViewModel { get; set; }
 
-        public App()
+        internal static App Instance { get; private set; }
+
+        public App(Action<ContainerBuilder> dependenciesRegistration)
         {
+            Instance = this;
             InitializeComponent();
 
-            var resolver = AppInitializationRoutines.InitializeDependencyInjection();
+            var resolver = AppInitializationRoutines.InitializeDependencyInjection(WrappedRegistrations);
             DependencyResolver.ResolveUsing(resolver);
-            MainPage = new AppShell();
+
+            ViewModel = DependencyService.Resolve<MainViewModel>();
+            ViewModel.Initialize();
+
+            void WrappedRegistrations(ContainerBuilder builder)
+            {
+                dependenciesRegistration(builder);
+
+                builder.RegisterType<OuterNavigationManager>().As<IOuterNavigationManager>().SingleInstance();
+            }
         }
 
         protected override void OnStart()

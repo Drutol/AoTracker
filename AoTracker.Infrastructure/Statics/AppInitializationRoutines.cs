@@ -9,16 +9,18 @@ namespace AoTracker.Infrastructure.Statics
     {
         private static IContainer Container { get; set; }
 
-        public static Func<Type, object> InitializeDependencyInjection()
+        public static Func<Type, object> InitializeDependencyInjection(
+            Action<ContainerBuilder> dependenciesRegistration)
         {
             var builder = new ContainerBuilder();
 
             builder.RegisterViewModels();
             builder.RegisterResources();
+            dependenciesRegistration(builder);
 
             Container = builder.Build();
 
-            return type => Container.Resolve(type);
+            return type => Container.ResolveOptional(type);
         }
     }
 }

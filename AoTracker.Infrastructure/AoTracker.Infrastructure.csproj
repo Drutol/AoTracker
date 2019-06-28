@@ -5,11 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AoLibs.Adapters.Core" Version="0.6.3" />
     <PackageReference Include="Autofac" Version="4.9.2" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.540366" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AoTracker.Crawlers\AoTracker.Crawlers.csproj" />
+    <ProjectReference Include="..\AoTracker.Domain\AoTracker.Domain.csproj" />
     <ProjectReference Include="..\AoTracker.Interfaces\AoTracker.Interfaces.csproj" />
   </ItemGroup>
 

@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace AoTracker.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CrawlerSetsPage
+    public partial class WelcomePage
     {
-        public CrawlerSetsPage()
+        public WelcomePage()
         {
             InitializeComponent();
         }

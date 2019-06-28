@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace AoTracker.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddSurugayaCrawlerPage : ContentPage
+    public partial class AddSurugayaCrawlerPage
     {
         public AddSurugayaCrawlerPage()
         {

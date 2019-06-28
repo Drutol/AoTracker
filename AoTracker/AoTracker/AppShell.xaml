@@ -4,11 +4,17 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:viewModels="clr-namespace:AoTracker.Infrastructure.ViewModels;assembly=AoTracker.Infrastructure"
+       xmlns:local="clr-namespace:AoTracker.Views"
        mc:Ignorable="d"
        Title="AoTracker"
-       FlyoutBehavior="Flyout"
+       FlyoutBehavior="{Binding FlyoutBehavior}"
        x:Class="AoTracker.AppShell">
 
+
+    <d:Shell.BindingContext>
+        <viewModels:MainViewModel/> 
+    </d:Shell.BindingContext>
     <!-- 
         Styles and Resources 
     -->
@@ -31,12 +37,10 @@
     </Shell.Resources>
 
     <!-- Your Pages -->
+
     <ShellItem>
         <Tab Title="Browse" Icon="tab_feed.png">
-
-        </Tab>
-        <Tab Title="About" Icon="tab_about.png">
-            
+            <ShellContent ContentTemplate="{DataTemplate local:FeedPage}"/>
         </Tab>
     </ShellItem>
 </Shell>

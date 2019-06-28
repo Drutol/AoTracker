@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace AoTracker.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CrawlerResultPage : ContentPage
+    public partial class CrawlerResultPage
     {
         public CrawlerResultPage()
         {

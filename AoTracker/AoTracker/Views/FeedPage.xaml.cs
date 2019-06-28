@@ -11,7 +11,7 @@ using Xamarin.Forms.Xaml;
 namespace AoTracker.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FeedPage : ViewModelContentPage<FeedViewModel>
+    public partial class FeedPage
     {
         public FeedPage()
         {

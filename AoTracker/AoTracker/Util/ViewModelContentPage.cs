@@ -13,6 +13,7 @@ namespace AoTracker.Util
         public ViewModelContentPage()
         {
             ViewModel = DependencyService.Resolve<T>();
+            BindingContext = ViewModel;
         }
     }
 }
