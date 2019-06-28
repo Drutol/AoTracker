@@ -6,11 +6,11 @@ using Xamarin.Forms;
 
 namespace AoTracker.Util
 {
-    public abstract class ContentPage<T> : ContentPage where T : ViewModelBase
+    public abstract class ViewModelContentPage<T> : ContentPage where T : ViewModelBase
     {
         protected T ViewModel { get; }
 
-        public ContentPage()
+        public ViewModelContentPage()
         {
             ViewModel = DependencyService.Resolve<T>();
         }
