@@ -20,5 +20,10 @@ namespace AoTracker
 
             InitializeComponent();
         }
+
+        protected override void OnNavigated(ShellNavigatedEventArgs args)
+        {
+            DependencyService.Resolve<FeedViewModel>().NavigatedTo();
+        }
     }
 }

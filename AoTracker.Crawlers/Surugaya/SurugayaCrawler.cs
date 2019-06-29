@@ -15,12 +15,20 @@ namespace AoTracker.Crawlers.Surugaya
             Domain = CrawlerDomain.Surugaya;
             Parser = new SurugayaParser();
             Source = new SurugayaSource(httpClientProvider);
+            Cache = new CrawlerCache<SurugayaItem>();
         }
 
         public override async Task<ICrawlerResult<SurugayaItem>> Crawl(ICrawlerSourceParameters parameters)
         {
+            if (Cache.IsCached(parameters))
+                return CrawlerResultBase<SurugayaItem>.FromCache(Cache.Get(parameters));
+
             var source = await Source.ObtainSource(parameters);
-            return await Parser.Parse(source);
+            var result = await Parser.Parse(source);
+
+            Cache.Set(result.Results, parameters);
+
+            return result;
         }
     }
 }

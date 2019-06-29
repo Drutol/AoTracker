@@ -20,9 +20,9 @@ namespace AoTracker.Crawlers.Surugaya
             _httpClientProvider = httpClientProvider;
         }
 
-        protected override Task<Stream> ObtainSource(SurugayaSourceParameters parameters)
+        protected override Task<string> ObtainSource(SurugayaSourceParameters parameters)
         {
-            return _httpClientProvider.HttpClient.GetStreamAsync(string.Format(FormatString,
+            return _httpClientProvider.HttpClient.GetStringAsync(string.Format(FormatString,
                 parameters.SearchQuery));
         }
     }

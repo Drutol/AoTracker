@@ -9,11 +9,19 @@
              x:Class="AoTracker.Views.FeedPage"
 
              x:TypeArguments="viewModels:FeedViewModel">
+    <d:ContentPage.BindingContext>
+        <x:Static Member="util:DesignTimeViewModelLocator.FeedViewModel"/>
+    </d:ContentPage.BindingContext>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView ItemsSource="{Binding Feed}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding Name}"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </util:ViewModelContentPage>

@@ -7,7 +7,7 @@ namespace AoTracker.Crawlers.Surugaya
 {
     public class SurugayaSourceParameters : ICrawlerSourceParameters
     {
-        public string SearchQuery { get; }
-        public int Page { get; }
+        public string SearchQuery { get; set; }
+        public int Page { get; set; }
     }
 }

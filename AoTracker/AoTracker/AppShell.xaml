@@ -6,6 +6,7 @@
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        xmlns:viewModels="clr-namespace:AoTracker.Infrastructure.ViewModels;assembly=AoTracker.Infrastructure"
        xmlns:local="clr-namespace:AoTracker.Views"
+       xmlns:util="clr-namespace:AoTracker.Util;assembly=AoTracker"
        mc:Ignorable="d"
        Title="AoTracker"
        FlyoutBehavior="{Binding FlyoutBehavior}"
@@ -13,7 +14,7 @@
 
 
     <d:Shell.BindingContext>
-        <viewModels:MainViewModel/> 
+        <x:Static Member="util:DesignTimeViewModelLocator.MainViewModel"/>
     </d:Shell.BindingContext>
     <!-- 
         Styles and Resources 

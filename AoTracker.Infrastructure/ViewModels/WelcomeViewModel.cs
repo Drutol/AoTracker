@@ -17,6 +17,11 @@ namespace AoTracker.Infrastructure.ViewModels
             _outerNavigationManager = outerNavigationManager;
         }
 
+        public void NavigatedTo()
+        {
+            
+        }
+
         public RelayCommand StartCommand => new RelayCommand(() =>
         {
             _outerNavigationManager.NavigateTo(OuterNavigationPage.Shell);

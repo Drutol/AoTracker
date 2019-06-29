@@ -28,5 +28,10 @@ namespace AoTracker.Crawlers.Infrastructure
         {
             return _crawlers[_typeMapping[typeof(T)]] as ICrawler<T>;
         }
+
+        public ICrawler GetCrawler(CrawlerDomain crawlerDomain)
+        {
+            return _crawlers[crawlerDomain];
+        }
     }
 }

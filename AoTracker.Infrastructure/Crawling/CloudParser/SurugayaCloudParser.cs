@@ -17,7 +17,7 @@ namespace AoTracker.Infrastructure.Crawling.CloudParser
             _httpClientProvider = httpClientProvider;
         }
 
-        public Task<ICrawlerResult<SurugayaItem>> Parse(Stream data)
+        public Task<ICrawlerResult<SurugayaItem>> Parse(string data)
         {
             throw new NotImplementedException();
         }

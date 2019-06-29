@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AoTracker.Domain.Models;
 
 namespace AoTracker.Interfaces
 {
-    interface IUserDataProvider
+    public interface IUserDataProvider
     {
+        List<CrawlingSet> CrawlingSets { get; }
     }
 }

@@ -14,10 +14,10 @@ namespace AoTracker.Crawlers.Surugaya
 {
     public class SurugayaParser : ICrawlerParser<SurugayaItem>
     {
-        public Task<ICrawlerResult<SurugayaItem>> Parse(Stream data)
+        public Task<ICrawlerResult<SurugayaItem>> Parse(string data)
         {
             var doc = new HtmlDocument();
-            doc.Load(data);
+            doc.LoadHtml(data);
 
             var items = doc.DocumentNode.WhereOfDescendantsWithClass("div", "item");
             var parsedItems = new List<SurugayaItem>();
@@ -30,7 +30,7 @@ namespace AoTracker.Crawlers.Surugaya
             {
                 var item = new SurugayaItem();
 
-                var link = itemNode.Descendants("a").First();
+                var link = itemNode.FirstOfDescendantsWithClass("p", "title").Descendants("a").First();
                 var priceBlock = itemNode.FirstOfDescendantsWithClass("p", "price_teika");
 
                 item.Id = link.Attributes["href"].Value.Split('/').Last();

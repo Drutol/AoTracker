@@ -9,9 +9,9 @@ namespace AoTracker.Crawlers.Abstract
 {
     public abstract class TypedSource<T> : ICrawlerSource where T : ICrawlerSourceParameters
     {
-        protected abstract Task<Stream> ObtainSource(T parameters);
+        protected abstract Task<string> ObtainSource(T parameters);
 
-        public Task<Stream> ObtainSource(ICrawlerSourceParameters parameters)
+        public Task<string> ObtainSource(ICrawlerSourceParameters parameters)
         {
             return ObtainSource((T)parameters);
         }

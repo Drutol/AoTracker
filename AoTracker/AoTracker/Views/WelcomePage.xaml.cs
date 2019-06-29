@@ -15,6 +15,12 @@ namespace AoTracker.Views
         public WelcomePage()
         {
             InitializeComponent();
+            
+        }
+
+        protected override void OnAppearing()
+        {
+            ViewModel.NavigatedTo();
         }
     }
 }

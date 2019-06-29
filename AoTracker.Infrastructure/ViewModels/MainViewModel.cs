@@ -30,6 +30,8 @@ namespace AoTracker.Infrastructure.ViewModels
         {
             if (!_settings.PassedWelcome)
                 _outerNavigationManager.NavigateTo(OuterNavigationPage.Welcome);
+
+            FlyoutBehavior = FlyoutBehavior.Flyout;
         }
     }
 }
