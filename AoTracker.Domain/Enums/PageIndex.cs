@@ -7,7 +7,8 @@ namespace AoTracker.Domain.Enums
     public enum PageIndex
     {
         Welcome,
-        FeedPage,
-        SetsPage
+        Feed,
+        CrawlerSets,
+        CrawlerSetDetails
     }
 }

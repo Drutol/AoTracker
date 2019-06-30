@@ -3,23 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AoTracker.Domain.Models;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace AoTracker.Views
+namespace AoTracker.Views.Cells
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CrawlerSetsPage
+    public partial class CrawlerSetCell : ViewCell
     {
-        public CrawlerSetsPage()
+        public CrawlerSetCell()
         {
             InitializeComponent();
-        }
-
-        protected override void OnAppearing()
-        {
-            ViewModel.NavigatedTo();
         }
     }
 }

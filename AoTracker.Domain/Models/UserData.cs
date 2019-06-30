@@ -9,6 +9,6 @@ namespace AoTracker.Domain.Models
     {
         public UserKind UserKind { get; set; }
 
-        public List<CrawlingSet> CrawlingSets { get; set; }
+        public List<CrawlerSet> CrawlingSets { get; set; }
     }
 }

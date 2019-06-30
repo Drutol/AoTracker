@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using AoTracker.Crawlers.Enums;
+using AoTracker.Crawlers.Infrastructure;
 
 namespace AoTracker.Crawlers.Interfaces
 {
@@ -11,7 +12,7 @@ namespace AoTracker.Crawlers.Interfaces
         CrawlerDomain Domain { get; }
         ICrawlerSource Source { get; }
 
-        Task<ICrawlerResult<ICrawlerResultItem>> Crawl(ICrawlerSourceParameters parameters);
+        Task<ICrawlerResult<ICrawlerResultItem>> Crawl(CrawlerParameters parameters);
     }
 
     public interface ICrawler<T> : ICrawler where T : ICrawlerResultItem
@@ -19,6 +20,6 @@ namespace AoTracker.Crawlers.Interfaces
         ICrawlerParser<T> Parser { get; set; }
         ICrawlerCache<T> Cache { get; set; }
 
-        new Task<ICrawlerResult<T>> Crawl(ICrawlerSourceParameters parameters);
+        new Task<ICrawlerResult<T>> Crawl(CrawlerParameters parameters);
     }
 }

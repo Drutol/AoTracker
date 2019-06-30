@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using AoTracker.Crawlers.Infrastructure;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Interfaces;
 
@@ -24,13 +25,22 @@ namespace AoTracker.Infrastructure.Infrastructure
 
         public async void StartAggregating(CancellationToken feedCtsToken)
         {
+            var volatileParameters = new VolatileParametersBase
+            {
+                Page = 1
+            };
+
             foreach (var crawlingSet in _userDataProvider.CrawlingSets)
             {
                 foreach (var descriptor in crawlingSet.Descriptors)
                 {
                     var crawler = _crawlerManager.GetCrawler(descriptor.CrawlerDomain);
 
-                    var result = await crawler.Crawl(descriptor.CrawlerSourceParameters);
+                    var result = await crawler.Crawl(new CrawlerParameters
+                    {
+                        Parameters = descriptor.CrawlerSourceParameters,
+                        VolatileParameters = volatileParameters
+                    });
 
                     NewCrawlerBatch?.Invoke(this, result.Results);
                 }

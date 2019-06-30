@@ -18,7 +18,7 @@ namespace AoTracker.Crawlers.Surugaya
             Cache = new CrawlerCache<SurugayaItem>();
         }
 
-        public override async Task<ICrawlerResult<SurugayaItem>> Crawl(ICrawlerSourceParameters parameters)
+        public override async Task<ICrawlerResult<SurugayaItem>> Crawl(CrawlerParameters parameters)
         {
             if (Cache.IsCached(parameters))
                 return CrawlerResultBase<SurugayaItem>.FromCache(Cache.Get(parameters));

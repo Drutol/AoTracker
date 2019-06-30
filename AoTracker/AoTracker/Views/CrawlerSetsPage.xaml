@@ -8,13 +8,23 @@
                            xmlns:util="clr-namespace:AoTracker.Util;assembly=AoTracker"
                            xmlns:viewModels="clr-namespace:AoTracker.Infrastructure.ViewModels;assembly=AoTracker.Infrastructure"
                            xmlns:controls="clr-namespace:AoTracker.Controls;assembly=AoTracker"
+                           xmlns:cells="clr-namespace:AoTracker.Views.Cells;assembly=AoTracker"
                            mc:Ignorable="d"
                            x:Class="AoTracker.Views.CrawlerSetsPage">
+
+    <d:ContentPage.BindingContext>
+        <x:Static Member="util:DesignTimeBindingContextProvider.CrawlerSetsViewModel"/>
+    </d:ContentPage.BindingContext>
+
     <ContentPage.Content>
         <Grid>
-            <Label Text="Welcome to Xamarin.Forms!"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding Sets}" SelectedItem="{Binding SelectedSet, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <cells:CrawlerSetCell BindingContext="{Binding}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <controls:FloatingActionButton NativeIcon="Add"
                                            VerticalOptions="End"
                                            HorizontalOptions="End" />

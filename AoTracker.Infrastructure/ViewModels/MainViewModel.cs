@@ -22,12 +22,12 @@ namespace AoTracker.Infrastructure.ViewModels
             new HamburgerMenuEntry
             {
                 Title = "Feed",
-                Page = PageIndex.FeedPage,
+                Page = PageIndex.Feed,
             },
             new HamburgerMenuEntry
             {
                 Title = "Sets",
-                Page = PageIndex.SetsPage,
+                Page = PageIndex.CrawlerSets,
             },
         };
 
@@ -40,7 +40,7 @@ namespace AoTracker.Infrastructure.ViewModels
         public HamburgerMenuEntry SelectedItem
         {
             get => _selectedItem;
-            set => Set(ref _selectedItem, value, nameof(SelectedItem), OnHamburgerSelectionChanged);
+            set => Set(ref _selectedItem, value, OnHamburgerSelectionChanged);
         }
 
         public MainViewModel(ISettings settings, INavigationManager outerNavigationManager)

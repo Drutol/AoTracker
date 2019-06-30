@@ -10,9 +10,9 @@ namespace AoTracker.Infrastructure.Infrastructure
 {
     public class UserDataProvider : IUserDataProvider
     {
-        public List<CrawlingSet> CrawlingSets { get; } = new List<CrawlingSet>()
+        public List<CrawlerSet> CrawlingSets { get; } = new List<CrawlerSet>()
         {
-            new CrawlingSet
+            new CrawlerSet
             {
                 Descriptors = new List<CrawlerDescriptor>
                 {

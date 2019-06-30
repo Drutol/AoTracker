@@ -10,7 +10,7 @@
 
              x:TypeArguments="viewModels:FeedViewModel">
     <d:ContentPage.BindingContext>
-        <x:Static Member="util:DesignTimeViewModelLocator.FeedViewModel"/>
+        <x:Static Member="util:DesignTimeBindingContextProvider.FeedViewModel"/>
     </d:ContentPage.BindingContext>
 
     <ContentPage.Content>

@@ -1,32 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-
-using Android.App;
 using Android.Content;
-using Android.Content.Res;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using AoTracker.Controls;
-using AoTracker.Domain.Enums;
 using AoTracker.Droid.Renderers;
-using FFImageLoading;
-using FFImageLoading.Svg.Forms;
+using AoTracker.Droid.Util;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using Color = Android.Graphics.Color;
+
 using FloatingActionButton = Android.Support.Design.Widget.FloatingActionButton;
 
 [assembly: ExportRenderer(typeof(AoTracker.Controls.FloatingActionButton), typeof(FloatingActionButtonRenderer))]
 namespace AoTracker.Droid.Renderers
 {
-
     public class FloatingActionButtonRenderer : ViewRenderer<Controls.FloatingActionButton, FrameLayout>
     {
+        private FloatingActionButton Fab => Control.GetChildAt(0) as FloatingActionButton;
 
         public FloatingActionButtonRenderer(Context context) : base(context)
         {
@@ -46,16 +35,17 @@ namespace AoTracker.Droid.Renderers
                 LayoutParameters = new FrameLayout.LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent)
                 {
                     Gravity = GravityFlags.Center
-                }
+                },
+                UseCompatPadding = true
             };
             container.AddView(fab);
 
-
-            // set the bg
-            fab.UseCompatPadding = true;
             UpdateBackground(fab);
             UpdateIcon(fab);
-            fab.Click += Fab_Click;
+
+
+            fab.Click += OnClick;
+
             SetNativeControl(container);
         }
 
@@ -65,8 +55,7 @@ namespace AoTracker.Droid.Renderers
             {
                 UpdateBackground(Fab);
             }
-
-            if (e.PropertyName == nameof(Element.NativeIcon))
+            else if (e.PropertyName == nameof(Element.NativeIcon))
             {
                 UpdateIcon(Fab);
             }
@@ -82,14 +71,8 @@ namespace AoTracker.Droid.Renderers
 
         private void UpdateIcon(FloatingActionButton fab)
         {
-            switch (Element.NativeIcon)
-            {
-                case NativeIcon.Add:
-                    fab.SetImageResource(Resource.Drawable.icon_add);
-                    break;
-            }
+            fab.SetImageResource(Element.NativeIcon.ToResource());
         }
-
 
         protected override void OnLayout(bool changed, int l, int t, int r, int b)
         {
@@ -97,11 +80,8 @@ namespace AoTracker.Droid.Renderers
             Control.BringToFront();
         }
 
-        private FloatingActionButton Fab => Control.GetChildAt(0) as FloatingActionButton;
-
-        private void Fab_Click(object sender, EventArgs e)
+        private void OnClick(object sender, EventArgs e)
         {
-            // proxy the click to the element
             ((IButtonController) Element).SendClicked();
         }
     }

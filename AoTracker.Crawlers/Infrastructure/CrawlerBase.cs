@@ -16,9 +16,9 @@ namespace AoTracker.Crawlers.Infrastructure
         public ICrawlerParser<T> Parser { get; set; }
         public ICrawlerCache<T> Cache { get; set; }
 
-        public abstract Task<ICrawlerResult<T>> Crawl(ICrawlerSourceParameters parameters);
+        public abstract Task<ICrawlerResult<T>> Crawl(CrawlerParameters parameters);
 
-         async Task<ICrawlerResult<ICrawlerResultItem>> ICrawler.Crawl(ICrawlerSourceParameters parameters)
+         async Task<ICrawlerResult<ICrawlerResultItem>> ICrawler.Crawl(CrawlerParameters parameters)
          {
              return (ICrawlerResult<ICrawlerResultItem>) await Crawl(parameters);
          }

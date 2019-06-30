@@ -10,16 +10,20 @@ using Xamarin.Forms.Xaml;
 namespace AoTracker.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CrawlerSetsPage
+    public partial class CrawlerSetDetailsPage 
     {
-        public CrawlerSetsPage()
+        public CrawlerSet CrawlerSet { get; }
+
+        public CrawlerSetDetailsPage(CrawlerSet crawlerSet)
         {
+            CrawlerSet = crawlerSet;
+
             InitializeComponent();
         }
 
         protected override void OnAppearing()
         {
-            ViewModel.NavigatedTo();
+            ViewModel.NavigatedTo(CrawlerSet);
         }
     }
 }

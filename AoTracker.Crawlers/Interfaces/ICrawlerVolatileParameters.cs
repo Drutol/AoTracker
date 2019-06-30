@@ -4,8 +4,8 @@ using System.Text;
 
 namespace AoTracker.Crawlers.Interfaces
 {
-    public interface ICrawlerSourceParameters
+    public interface ICrawlerVolatileParameters
     {
-        string SearchQuery { get; }
+        int Page { get; }
     }
 }

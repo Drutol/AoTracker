@@ -7,6 +7,6 @@ namespace AoTracker.Interfaces
 {
     public interface IUserDataProvider
     {
-        List<CrawlingSet> CrawlingSets { get; }
+        List<CrawlerSet> CrawlingSets { get; }
     }
 }

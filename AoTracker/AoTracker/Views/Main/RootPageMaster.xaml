@@ -9,7 +9,7 @@
              Title="Master">
 
     <d:ContentPage.BindingContext>
-        <x:Static Member="util:DesignTimeViewModelLocator.MainViewModel"/>
+        <x:Static Member="util:DesignTimeBindingContextProvider.MainViewModel"/>
     </d:ContentPage.BindingContext>
 
     <StackLayout>

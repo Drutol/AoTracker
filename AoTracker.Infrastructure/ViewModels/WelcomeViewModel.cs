@@ -25,7 +25,7 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public RelayCommand StartCommand => new RelayCommand(() =>
         {
-            _navigationManager.NavigateRoot(PageIndex.FeedPage);
+            _navigationManager.NavigateRoot(PageIndex.Feed);
         });
     }
 }

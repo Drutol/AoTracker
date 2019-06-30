@@ -16,6 +16,7 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterType<CrawlerResultViewModel>().SingleInstance();
             builder.RegisterType<FeedViewModel>().SingleInstance();
             builder.RegisterType<CrawlerSetsViewModel>().SingleInstance();
+            builder.RegisterType<CrawlerSetDetailsViewModel>().SingleInstance();
         }
     }
 }
