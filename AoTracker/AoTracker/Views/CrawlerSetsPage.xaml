@@ -7,13 +7,18 @@
                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                            xmlns:util="clr-namespace:AoTracker.Util;assembly=AoTracker"
                            xmlns:viewModels="clr-namespace:AoTracker.Infrastructure.ViewModels;assembly=AoTracker.Infrastructure"
+                           xmlns:controls="clr-namespace:AoTracker.Controls;assembly=AoTracker"
                            mc:Ignorable="d"
                            x:Class="AoTracker.Views.CrawlerSetsPage">
     <ContentPage.Content>
-        <StackLayout>
+        <Grid>
             <Label Text="Welcome to Xamarin.Forms!"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+            <controls:FloatingActionButton NativeIcon="Add"
+                                           VerticalOptions="End"
+                                           HorizontalOptions="End" />
+        </Grid>
+
     </ContentPage.Content>
 </util:ViewModelContentPage>

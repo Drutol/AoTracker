@@ -4,9 +4,10 @@ using System.Text;
 
 namespace AoTracker.Domain.Enums
 {
-    public enum OuterNavigationPage
+    public enum PageIndex
     {
         Welcome,
-        Shell
+        FeedPage,
+        SetsPage
     }
 }

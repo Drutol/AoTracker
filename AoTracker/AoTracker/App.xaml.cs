@@ -4,6 +4,8 @@ using AoTracker.Infrastructure.Statics;
 using AoTracker.Infrastructure.ViewModels;
 using AoTracker.Interfaces;
 using AoTracker.Navigation;
+using AoTracker.Views;
+using AoTracker.Views.Main;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Autofac;
@@ -13,6 +15,7 @@ namespace AoTracker
 {
     public partial class App : Application
     {
+        private RootPage _rootPage;
         public MainViewModel ViewModel { get; set; }
 
         internal static App Instance { get; private set; }
@@ -24,15 +27,16 @@ namespace AoTracker
 
             var resolver = AppInitializationRoutines.InitializeDependencyInjection(WrappedRegistrations);
             DependencyResolver.ResolveUsing(resolver);
-
-            ViewModel = DependencyService.Resolve<MainViewModel>();
-            ViewModel.Initialize();
+            
+            _rootPage = new RootPage();
+            MainPage = _rootPage;
 
             void WrappedRegistrations(ContainerBuilder builder)
             {
                 dependenciesRegistration(builder);
 
-                builder.RegisterType<OuterNavigationManager>().As<IOuterNavigationManager>().SingleInstance();
+                builder.RegisterType<NavigationManager>().As<INavigationManager>().SingleInstance();
+                builder.Register(context => _rootPage.Detail.Navigation).As<INavigation>();
             }
         }
 

@@ -9,6 +9,7 @@
     xmlns:util="clr-namespace:AoTracker.Util;assembly=AoTracker"
     xmlns:viewModels="clr-namespace:AoTracker.Infrastructure.ViewModels;assembly=AoTracker.Infrastructure"
     mc:Ignorable="d"
+    Title="{Binding Title}"
     x:Class="AoTracker.Views.WelcomePage">
 
     <d:ContentPage.BindingContext>

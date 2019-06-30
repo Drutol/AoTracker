@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using AoTracker.Domain;
 using AoTracker.Domain.Enums;
+using AoTracker.Infrastructure.Models;
 using AoTracker.Interfaces;
 using Xamarin.Forms;
 
@@ -11,27 +13,53 @@ namespace AoTracker.Infrastructure.ViewModels
     public class MainViewModel : ViewModelBase
     {
         private readonly ISettings _settings;
-        private readonly IOuterNavigationManager _outerNavigationManager;
-        private FlyoutBehavior _flyoutBehavior;
+        private readonly INavigationManager _outerNavigationManager;
+        private ObservableCollection<HamburgerMenuEntry> _hamburgerItems;
+        private HamburgerMenuEntry _selectedItem;
 
-        public FlyoutBehavior FlyoutBehavior
+        private List<HamburgerMenuEntry> _allEntries = new List<HamburgerMenuEntry>
         {
-            get => _flyoutBehavior;
-            set => Set(ref _flyoutBehavior, value);
+            new HamburgerMenuEntry
+            {
+                Title = "Feed",
+                Page = PageIndex.FeedPage,
+            },
+            new HamburgerMenuEntry
+            {
+                Title = "Sets",
+                Page = PageIndex.SetsPage,
+            },
+        };
+
+        public ObservableCollection<HamburgerMenuEntry> HamburgerItems
+        {
+            get => _hamburgerItems;
+            set => Set(ref _hamburgerItems, value);
         }
 
-        public MainViewModel(ISettings settings, IOuterNavigationManager outerNavigationManager)
+        public HamburgerMenuEntry SelectedItem
+        {
+            get => _selectedItem;
+            set => Set(ref _selectedItem, value, nameof(SelectedItem), OnHamburgerSelectionChanged);
+        }
+
+        public MainViewModel(ISettings settings, INavigationManager outerNavigationManager)
         {
             _settings = settings;
             _outerNavigationManager = outerNavigationManager;
+            HamburgerItems = new ObservableCollection<HamburgerMenuEntry>(_allEntries);
+
         }
 
         public void Initialize()
         {
             if (!_settings.PassedWelcome)
-                _outerNavigationManager.NavigateTo(OuterNavigationPage.Welcome);
+                _outerNavigationManager.NavigateRoot(PageIndex.Welcome);
+        }
 
-            FlyoutBehavior = FlyoutBehavior.Flyout;
+        private void OnHamburgerSelectionChanged()
+        {
+            _outerNavigationManager.NavigateRoot(SelectedItem.Page);
         }
     }
 }

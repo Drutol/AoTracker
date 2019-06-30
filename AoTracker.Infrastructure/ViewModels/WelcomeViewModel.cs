@@ -10,11 +10,12 @@ namespace AoTracker.Infrastructure.ViewModels
 {
     public class WelcomeViewModel : ViewModelBase
     {
-        private readonly IOuterNavigationManager _outerNavigationManager;
+        private readonly INavigationManager _navigationManager;
 
-        public WelcomeViewModel(IOuterNavigationManager outerNavigationManager)
+        public WelcomeViewModel(INavigationManager navigationManager)
         {
-            _outerNavigationManager = outerNavigationManager;
+            _navigationManager = navigationManager;
+            Title = "Welcome";
         }
 
         public void NavigatedTo()
@@ -24,7 +25,7 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public RelayCommand StartCommand => new RelayCommand(() =>
         {
-            _outerNavigationManager.NavigateTo(OuterNavigationPage.Shell);
+            _navigationManager.NavigateRoot(PageIndex.FeedPage);
         });
     }
 }

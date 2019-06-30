@@ -3,24 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AoTracker.Infrastructure.ViewModels;
-using AoTracker.Util;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace AoTracker.Views
+namespace AoTracker.Views.Main
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FeedPage
+    public partial class RootPage : MasterDetailPage
     {
-        public FeedPage()
+        public RootPage()
         {
             InitializeComponent();
-        }
-
-        protected override void OnAppearing()
-        {
-            ViewModel.NavigatedTo();
         }
     }
 }
