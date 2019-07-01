@@ -10,5 +10,6 @@ namespace AoTracker.Interfaces
         void NavigateRoot(PageIndex navigationPageIndex, object parameter = null);
 
         void PushPage(PageIndex navigationPageIndex, object parameter = null);
+        void GoBack();
     }
 }

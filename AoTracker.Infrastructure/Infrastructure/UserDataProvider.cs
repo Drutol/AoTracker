@@ -14,6 +14,7 @@ namespace AoTracker.Infrastructure.Infrastructure
         {
             new CrawlerSet
             {
+                Name = "Test",
                 Descriptors = new List<CrawlerDescriptor>
                 {
                     new CrawlerDescriptor

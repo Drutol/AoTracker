@@ -4,10 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:util="clr-namespace:AoTracker.Util;assembly=AoTracker"
+             xmlns:converters="clr-namespace:AoTracker.Util.View.Converters;assembly=AoTracker"
              mc:Ignorable="d"
              x:Class="AoTracker.App">
     <Application.Resources>
-
+        <converters:BoolInverterConverter x:Key="BoolInverter"/>
     </Application.Resources>
 
 </Application>

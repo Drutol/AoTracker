@@ -10,6 +10,7 @@ using AoLibs.Adapters.Android;
 using AoLibs.Adapters.Android.Interfaces;
 using AoLibs.Adapters.Core.Interfaces;
 using Autofac;
+using FFImageLoading.Forms.Platform;
 
 namespace AoTracker.Droid
 {
@@ -27,6 +28,7 @@ namespace AoTracker.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+            CachedImageRenderer.Init(true);
 
             base.OnCreate(savedInstanceState);
 

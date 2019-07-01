@@ -4,12 +4,11 @@ using System.Text;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Interfaces;
 
-namespace AoTracker.Domain.Models
+namespace AoTracker.Infrastructure.Models.NavArgs
 {
-    public class CrawlerDescriptor
+    public class ConfigureCrawlerPageNavArgs
     {
-        public CrawlerDomain CrawlerDomain { get; set; }
         public ICrawlerSourceParameters CrawlerSourceParameters { get; set; }
+        public CrawlerDomain Domain { get; set; }
     }
 }
-

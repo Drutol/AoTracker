@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace AoTracker.Views.Cells
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CrawlerEntryCell : ViewCell
+    public partial class CrawlerEntryCell 
     {
         public CrawlerEntryCell()
         {

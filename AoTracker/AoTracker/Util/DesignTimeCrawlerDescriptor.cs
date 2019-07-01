@@ -4,12 +4,11 @@ using System.Text;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Interfaces;
 
-namespace AoTracker.Domain.Models
+namespace AoTracker.Util
 {
-    public class CrawlerDescriptor
+    public class DesignTimeCrawlerDescriptor<T> where T : ICrawlerSourceParameters
     {
         public CrawlerDomain CrawlerDomain { get; set; }
-        public ICrawlerSourceParameters CrawlerSourceParameters { get; set; }
-    }
+        public T CrawlerSourceParameters { get; set; }
+    };
 }
-

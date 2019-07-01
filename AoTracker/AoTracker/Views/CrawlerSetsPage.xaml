@@ -26,6 +26,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <controls:FloatingActionButton NativeIcon="Add"
+                                           Command="{Binding AddNewSetCommand}"
                                            VerticalOptions="End"
                                            HorizontalOptions="End" />
         </Grid>

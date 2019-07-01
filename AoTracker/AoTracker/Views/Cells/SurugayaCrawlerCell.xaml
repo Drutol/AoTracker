@@ -1,13 +1,35 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="AoTracker.Views.Cells.SurugayaCrawlerCell">
-  <ViewCell.View>
-      <StackLayout>
-          <Label Text="Hello Xamarin.Forms!" />
-      </StackLayout>
-  </ViewCell.View>
+
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          xmlns:util="clr-namespace:AoTracker.Util;assembly=AoTracker"
+          xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+          mc:Ignorable="d"
+          x:Class="AoTracker.Views.Cells.SurugayaCrawlerCell">
+
+    <d:ViewCell.BindingContext>
+        <x:Static Member="util:DesignTimeBindingContextProvider.SurugayaCrawlerDescriptor" />
+    </d:ViewCell.BindingContext>
+
+    <ViewCell.View>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <forms:CachedImage Source="surugaya.png" />
+            <StackLayout Grid.Column="1">
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Search phrase:" />
+                            <Span Text="{Binding CrawlerSourceParameters.SearchQuery}" FontAttributes="Bold" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </Grid>
+    </ViewCell.View>
 </ViewCell>

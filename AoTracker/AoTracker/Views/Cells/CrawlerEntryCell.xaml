@@ -1,21 +1,37 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:util="clr-namespace:AoTracker.Util;assembly=AoTracker"
+             xmlns:xamEffects="clr-namespace:XamEffects;assembly=XamEffects"
              mc:Ignorable="d"
+             Padding="8"
              x:Class="AoTracker.Views.Cells.CrawlerEntryCell">
 
-    <d:ViewCell.BindingContext>
-        <x:Static Member="util:DesignTimeBindingContextProvider.CrawlerEntry"/>
-    </d:ViewCell.BindingContext>
+    <d:ContentView.BindingContext>
+        <x:Static Member="util:DesignTimeBindingContextProvider.CrawlerEntryViewModel" />
+    </d:ContentView.BindingContext>
 
-    <ViewCell.View>
-      <StackLayout>
-          <forms:CachedImage Source="{Binding ImageSource}"/>
-          <Label Text="{Binding Title}" />
-      </StackLayout>
-  </ViewCell.View>
-</ViewCell>
+
+    <Frame HasShadow="True"
+           Padding="0"
+           BackgroundColor="#fafafa"
+           HeightRequest="100">
+        <ContentView xamEffects:TouchEffect.Color="#f6f6f6" xamEffects:Commands.Tap="{Binding SelectCommand}"
+                     xamEffects:Commands.TapParameter="{Binding BackingModel}" Padding="8,16">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <forms:CachedImage Source="{Binding BackingModel.ImageSource}" />
+                <Label Grid.Row="1" Text="{Binding BackingModel.Title}" HorizontalOptions="Center" />
+            </Grid>
+        </ContentView>
+    </Frame>
+
+
+</ContentView>

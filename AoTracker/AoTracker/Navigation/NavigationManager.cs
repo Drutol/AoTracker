@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
+using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Interfaces;
 using AoTracker.Views;
 using Xamarin.Forms;
@@ -26,6 +27,7 @@ namespace AoTracker.Navigation
                 {PageIndex.Feed, o => new FeedPage()},
                 {PageIndex.CrawlerSets, o => new CrawlerSetsPage()},
                 {PageIndex.CrawlerSetDetails, o => new CrawlerSetDetailsPage((CrawlerSet) o)},
+                {PageIndex.ConfigureSurugaya, o => new ConfigureSurugayaCrawlerPage((ConfigureCrawlerPageNavArgs) o)},
             };
 
         public void NavigateRoot(PageIndex page, object parameter = null)
@@ -42,6 +44,11 @@ namespace AoTracker.Navigation
         public void PushPage(PageIndex page, object parameter = null)
         {
             _navigation.PushAsync(_pages[page](parameter));
+        }
+
+        public void GoBack()
+        {
+            _navigation.PopAsync();
         }
     }
 }
