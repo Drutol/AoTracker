@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.1.0.53" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.540366" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />  
@@ -21,6 +22,7 @@
     <ProjectReference Include="..\..\AoTracker.Domain\AoTracker.Domain.csproj" />
     <ProjectReference Include="..\..\AoTracker.Infrastructure\AoTracker.Infrastructure.csproj" />
     <ProjectReference Include="..\..\AoTracker.Interfaces\AoTracker.Interfaces.csproj" />
+    <ProjectReference Include="..\..\AoTracker.Resources\AoTracker.Resources.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -68,6 +70,12 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Views\WelcomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="XamlResources\ThemesDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="XamlResources\ColoursDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

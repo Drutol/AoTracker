@@ -8,20 +8,25 @@
                            xmlns:util="clr-namespace:AoTracker.Util;assembly=AoTracker"
                            xmlns:viewModels="clr-namespace:AoTracker.Infrastructure.ViewModels;assembly=AoTracker.Infrastructure"
                            xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                           xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
                            mc:Ignorable="d"
                            x:Class="AoTracker.Views.ConfigureSurugayaCrawlerPage">
 
     <d:ContentPage.BindingContext>
-        <x:Static Member="util:DesignTimeBindingContextProvider.ConfigureSurugayaCrawlerViewModel"/>
+        <x:Static Member="util:DesignTimeBindingContextProvider.ConfigureSurugayaCrawlerViewModel" />
     </d:ContentPage.BindingContext>
 
     <ContentPage.Content>
         <StackLayout>
-            <forms:CachedImage Source="surugaya.png"/>
+            <forms:CachedImage Source="surugaya.png" />
 
-            <Editor Placeholder="Search Query" Text="{Binding SearchQueryInput, Mode=TwoWay}"/>
+            <textInputLayout:SfTextInputLayout EnableFloating="True" FocusedColor="{DynamicResource AccentColour}"
+                                               Hint="{util:Translate Text=ConfigureCrawler_SearchQuery_Placeholder}"
+                                               HelperText="{util:Translate Text=ConfigureCrawler_SearchQuery_HelpText}">
+                <Editor Text="{Binding SearchQueryInput, Mode=TwoWay}" />
+            </textInputLayout:SfTextInputLayout>
 
-            <Button Text="Save" Command="{Binding SaveCommand}"/>
+            <Button Text="Save" Command="{Binding SaveCommand}" />
         </StackLayout>
     </ContentPage.Content>
 </util:ViewModelContentPage>

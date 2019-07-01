@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -8,7 +9,12 @@
              mc:Ignorable="d"
              x:Class="AoTracker.App">
     <Application.Resources>
-        <converters:BoolInverterConverter x:Key="BoolInverter"/>
+        <ResourceDictionary Source="XamlResources/ColoursDictionary.xaml" />
+        <ResourceDictionary Source="XamlResources/ThemesDictionary.xaml" />
+
+        <converters:BoolInverterConverter x:Key="BoolInverter" />
+
+
     </Application.Resources>
 
 </Application>

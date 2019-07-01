@@ -133,6 +133,10 @@
       <Project>{a5a4f28d-0673-4ebe-94c5-c0b4d95e19fb}</Project>
       <Name>AoTracker.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\AoTracker.Resources\AoTracker.Resources.csproj">
+      <Project>{606a5091-d32e-405f-b0e8-983399ca7265}</Project>
+      <Name>AoTracker.Resources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AoTracker\AoTracker.csproj">
       <Project>{4971CFE1-55E6-4ACB-AA84-3AB0B1CC7FF9}</Project>
       <Name>AoTracker</Name>

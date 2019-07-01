@@ -10,6 +10,7 @@
     <pages:RootPageMaster/>
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
-    <NavigationPage/>
+    <NavigationPage BarBackgroundColor="{DynamicResource ToolbarColour}" 
+                    BarTextColor="{DynamicResource ToolbarTextColour}"/>
   </MasterDetailPage.Detail>
 </MasterDetailPage>
