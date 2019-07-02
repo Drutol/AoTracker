@@ -42,7 +42,8 @@ namespace AoTracker.Infrastructure.Infrastructure
                         VolatileParameters = volatileParameters
                     });
 
-                    NewCrawlerBatch?.Invoke(this, result.Results);
+                    if(result.Success)
+                        NewCrawlerBatch?.Invoke(this, result.Results);
                 }
             }
         }

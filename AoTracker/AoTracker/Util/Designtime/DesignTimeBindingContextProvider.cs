@@ -23,6 +23,7 @@ namespace AoTracker.Util
 
         //items
         public static CrawlerEntryViewModel CrawlerEntryViewModel { get; set; }
+        public static CrawlerDescriptor BaseCrawlerDescriptor { get; set; }
         public static DesignTimeCrawlerDescriptor<SurugayaSourceParameters> SurugayaCrawlerDescriptor { get; set; }
     }
 }

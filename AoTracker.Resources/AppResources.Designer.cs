@@ -167,5 +167,14 @@ namespace AoTracker.Resources {
                 return ResourceManager.GetString("PageTitle_Sets", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removes content from 「 」.
+        /// </summary>
+        public static string SurugayaCrawlerCell_TrimsFromQuotationMarks {
+            get {
+                return ResourceManager.GetString("SurugayaCrawlerCell_TrimsFromQuotationMarks", resourceCulture);
+            }
+        }
     }
 }

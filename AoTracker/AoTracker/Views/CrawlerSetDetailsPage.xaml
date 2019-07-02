@@ -51,7 +51,7 @@
 
             <Label Grid.Row="1" Text="Crawlers in set:" />
             <ListView Grid.Row="2" ItemTemplate="{StaticResource CellDataTemplateSelector}"
-                      ItemsSource="{Binding CrawlerDescriptors}" />
+                      ItemsSource="{Binding CrawlerDescriptors}" HasUnevenRows="True"/>
             <Label Grid.Row="3" Text="Add new crawler:" />
             <CollectionView Grid.Row="4" SelectionMode="None" ItemsSource="{Binding CrawlerViewModelEntries}"
                             MinimumHeightRequest="100">

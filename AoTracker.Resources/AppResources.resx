@@ -153,4 +153,7 @@
   <data name="PageTitle_Sets" xml:space="preserve">
     <value>Sets</value>
   </data>
+  <data name="SurugayaCrawlerCell_TrimsFromQuotationMarks" xml:space="preserve">
+    <value>Removes content from 「 」</value>
+  </data>
 </root>

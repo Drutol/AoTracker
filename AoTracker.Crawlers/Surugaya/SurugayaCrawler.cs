@@ -23,12 +23,23 @@ namespace AoTracker.Crawlers.Surugaya
             if (Cache.IsCached(parameters))
                 return CrawlerResultBase<SurugayaItem>.FromCache(Cache.Get(parameters));
 
-            var source = await Source.ObtainSource(parameters);
-            var result = await Parser.Parse(source, parameters);
+            try
+            {
+                var source = await Source.ObtainSource(parameters);
+                var result = await Parser.Parse(source, parameters);
 
-            Cache.Set(result.Results, parameters);
+                Cache.Set(result.Results, parameters);
 
-            return result;
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new CrawlerResultBase<SurugayaItem>
+                {
+                    Success = false
+                };
+            }
+
         }
     }
 }

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                    xmlns:util="clr-namespace:AoTracker.Util;assembly=AoTracker"
+                    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:converters="clr-namespace:AoTracker.Util.View.Converters;assembly=AoTracker"
+                    mc:Ignorable="d">
+
+    <ControlTemplate x:Key="CrawlerCellControlTemplate">
+        <Grid Padding="8" BindingContext="{TemplateBinding BindingContext}">
+            <Grid.Resources>
+                <converters:CrawlerDomainToImageConverter x:Key="CrawlerDomainToImageConverter" />
+            </Grid.Resources>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <forms:CachedImage
+                Source="{Binding CrawlerDomain, Converter={StaticResource CrawlerDomainToImageConverter}}" />
+            <StackLayout Grid.Column="1">
+
+                <d:StackLayout.BindingContext>
+                    <x:Static Member="util:DesignTimeBindingContextProvider.BaseCrawlerDescriptor" />
+                </d:StackLayout.BindingContext>
+
+                <Label TextColor="{DynamicResource TextColour}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Search phrase:" />
+                            <Span Text="    " />
+                            <Span Text="{Binding CrawlerSourceParameters.SearchQuery}" FontAttributes="Bold" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label TextColor="{DynamicResource TextColour}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Price increases:" />
+                            <Span Text="    " />
+                            <Span Text="+" FontAttributes="Bold" />
+                            <Span Text="{Binding CrawlerSourceParameters.PercentageIncrease}" FontAttributes="Bold" />
+                            <Span Text="%" FontAttributes="Bold" />
+                            <Span Text=", " />
+                            <Span Text="+" FontAttributes="Bold" />
+                            <Span Text="{Binding CrawlerSourceParameters.OffsetIncrease}" FontAttributes="Bold" />
+                            <Span Text="¥" FontAttributes="Bold" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <ContentPresenter />
+            </StackLayout>
+        </Grid>
+    </ControlTemplate>
+
+</ResourceDictionary>
