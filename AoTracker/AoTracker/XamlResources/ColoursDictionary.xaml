@@ -17,8 +17,8 @@
     <Color x:Key="DarkBackgroundColour">#101010</Color>
     <Color x:Key="DarkToolbarColour">#333333</Color>
     <Color x:Key="DarkTextColour">#ffffff</Color>
-    <Color x:Key="DarkForegroundColour">#202020</Color>
-    <Color x:Key="DarkForegroundDeepColour">#191919</Color>
+    <Color x:Key="DarkForegroundColour">#2b2b2b</Color>
+    <Color x:Key="DarkForegroundDeepColour">#1d1d1d</Color>
     <Color x:Key="DarkRippleColour">#7ff6f6f6</Color>
 
     <Color x:Key="LightBackgroundColour">#fefefe</Color>

@@ -14,6 +14,7 @@
     <ProjectReference Include="..\AoTracker.Crawlers\AoTracker.Crawlers.csproj" />
     <ProjectReference Include="..\AoTracker.Domain\AoTracker.Domain.csproj" />
     <ProjectReference Include="..\AoTracker.Interfaces\AoTracker.Interfaces.csproj" />
+    <ProjectReference Include="..\AoTracker.Resources\AoTracker.Resources.csproj" />
   </ItemGroup>
 
 </Project>

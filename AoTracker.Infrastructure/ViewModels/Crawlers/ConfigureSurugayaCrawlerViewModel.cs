@@ -5,6 +5,7 @@ using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Surugaya;
 using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Interfaces;
+using AoTracker.Resources;
 using GalaSoft.MvvmLight.Command;
 
 namespace AoTracker.Infrastructure.ViewModels
@@ -14,6 +15,9 @@ namespace AoTracker.Infrastructure.ViewModels
         private readonly INavigationManager _navigationManager;
         private ConfigureCrawlerPageNavArgs _navArgs;
         private string _searchQueryInput;
+        private bool _trimJapaneseQuotationMarks;
+        private double _costPercentageIncrease;
+        private double _costOffsetIncrease;
 
         public ConfigureSurugayaCrawlerViewModel(INavigationManager navigationManager)
         {
@@ -23,6 +27,7 @@ namespace AoTracker.Infrastructure.ViewModels
         public void NavigatedTo(ConfigureCrawlerPageNavArgs navArgs)
         {
             _navArgs = navArgs;
+            Title = string.Format(AppResources.PageTitle_ConfigureCrawlers, "Suruga-ya");
         }
 
         public string SearchQueryInput
@@ -31,12 +36,33 @@ namespace AoTracker.Infrastructure.ViewModels
             set => Set(ref _searchQueryInput, value);
         }
 
+        public bool TrimJapaneseQuotationMarks
+        {
+            get => _trimJapaneseQuotationMarks;
+            set => Set(ref _trimJapaneseQuotationMarks, value);
+        }
+
+        public double CostPercentageIncrease
+        {
+            get => _costPercentageIncrease;
+            set => Set(ref _costPercentageIncrease, value);
+        }
+
+        public double CostOffsetIncrease
+        {
+            get => _costOffsetIncrease;
+            set => Set(ref _costOffsetIncrease, value);
+        }
+
         public RelayCommand SaveCommand => new RelayCommand(() =>
         {
             _navArgs.Domain = CrawlerDomain.Surugaya;
             _navArgs.CrawlerSourceParameters = new SurugayaSourceParameters
             {
-                SearchQuery = SearchQueryInput
+                SearchQuery = SearchQueryInput,
+                TrimJapaneseQuotationMarks = TrimJapaneseQuotationMarks,
+                OffsetIncrease = CostOffsetIncrease,
+                PercentageIncrease = CostPercentageIncrease
             };
 
             _navigationManager.GoBack();

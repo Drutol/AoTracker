@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:AoTracker.Infrastructure.ViewModels;assembly=AoTracker.Infrastructure"
              xmlns:util="clr-namespace:AoTracker.Util;assembly=AoTracker"
-             mc:Ignorable="d"
+             xmlns:resources="clr-namespace:AoTracker.Resources;assembly=AoTracker.Resources"
+             mc:Ignorable="d" Title="{x:Static resources:AppResources.PageTitle_Feed}"
              x:Class="AoTracker.Views.FeedPage"
 
              x:TypeArguments="viewModels:FeedViewModel">

@@ -54,7 +54,7 @@ namespace AoTracker.Infrastructure.ViewModels
         public void Initialize()
         {
             if (!_settings.PassedWelcome)
-                _outerNavigationManager.NavigateRoot(PageIndex.Welcome);
+                _outerNavigationManager.NavigateRoot(PageIndex.Feed);
         }
 
         private void OnHamburgerSelectionChanged()

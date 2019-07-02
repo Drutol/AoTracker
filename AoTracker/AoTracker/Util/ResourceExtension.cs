@@ -21,6 +21,7 @@ namespace AoTracker.XamlResources
         private const string ForegroundColour = "ForegroundColour";
         private const string ForegroundDeepColour = "ForegroundDeepColour";
         private const string RippleColour = "RippleColour";
+        private const string SelectedListViewItemColour = "SelectedListViewItemColour";
 
         private const string Dark = "Dark";
         private const string Light = "Light";
@@ -65,6 +66,7 @@ namespace AoTracker.XamlResources
                 dictionary[ForegroundColour] = dictionary.GetResourceValue(Light + ForegroundColour);
                 dictionary[ForegroundDeepColour] = dictionary.GetResourceValue(Light + ForegroundDeepColour);
                 dictionary[RippleColour] = dictionary.GetResourceValue(Light + RippleColour);
+                dictionary[SelectedListViewItemColour] = dictionary.GetResourceValue(Light + ForegroundColour);
             }
             else
             {
@@ -75,6 +77,7 @@ namespace AoTracker.XamlResources
                 dictionary[ForegroundColour] = dictionary.GetResourceValue(Dark + ForegroundColour);
                 dictionary[ForegroundDeepColour] = dictionary.GetResourceValue(Dark + ForegroundDeepColour);
                 dictionary[RippleColour] = dictionary.GetResourceValue(Dark + RippleColour);
+                dictionary[SelectedListViewItemColour] = dictionary.GetResourceValue(Dark + ForegroundColour);
             }
 
             dictionary[AccentColour] = accentColour;

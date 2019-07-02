@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using AoTracker.Crawlers.Infrastructure;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Surugaya;
 
@@ -17,7 +18,7 @@ namespace AoTracker.Infrastructure.Crawling.CloudParser
             _httpClientProvider = httpClientProvider;
         }
 
-        public Task<ICrawlerResult<SurugayaItem>> Parse(string data)
+        public Task<ICrawlerResult<SurugayaItem>> Parse(string data, CrawlerParameters parameters)
         {
             throw new NotImplementedException();
         }

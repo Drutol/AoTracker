@@ -9,7 +9,8 @@
                            xmlns:viewModels="clr-namespace:AoTracker.Infrastructure.ViewModels;assembly=AoTracker.Infrastructure"
                            xmlns:controls="clr-namespace:AoTracker.Controls;assembly=AoTracker"
                            xmlns:cells="clr-namespace:AoTracker.Views.Cells;assembly=AoTracker"
-                           mc:Ignorable="d"
+                           xmlns:resources="clr-namespace:AoTracker.Resources;assembly=AoTracker.Resources"
+                           mc:Ignorable="d" Title="{x:Static resources:AppResources.PageTitle_Sets}"
                            x:Class="AoTracker.Views.CrawlerSetsPage">
 
     <d:ContentPage.BindingContext>
@@ -25,8 +26,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <controls:FloatingActionButton NativeIcon="Add"
+            <controls:FloatingActionButton NativeIcon="Add" Margin="0,0,8,8"
                                            Command="{Binding AddNewSetCommand}"
+                                           ButtonColor="{DynamicResource AccentColour}"
                                            VerticalOptions="End"
                                            HorizontalOptions="End" />
         </Grid>

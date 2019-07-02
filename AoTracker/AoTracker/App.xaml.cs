@@ -32,7 +32,7 @@ namespace AoTracker
 
             Instance = this;
             InitializeComponent();
-            Resources.SetTheme(AppTheme.Dark | AppTheme.Orange);
+            Resources.SetTheme(AppTheme.Light | AppTheme.Orange);
 
             var resolver = AppInitializationRoutines.InitializeDependencyInjection(WrappedRegistrations);
             DependencyResolver.ResolveUsing(resolver);

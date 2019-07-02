@@ -30,10 +30,10 @@ namespace AoTracker.Navigation
                 {PageIndex.ConfigureSurugaya, o => new ConfigureSurugayaCrawlerPage((ConfigureCrawlerPageNavArgs) o)},
             };
 
-        public void NavigateRoot(PageIndex page, object parameter = null)
+        public async void NavigateRoot(PageIndex page, object parameter = null)
         {
             var newPage = _pages[page](parameter);
-            _navigation.PushAsync(newPage);
+            await _navigation.PushAsync(newPage);
             foreach (var p in _navigation.NavigationStack.ToList())
             {
                 if(newPage != p)

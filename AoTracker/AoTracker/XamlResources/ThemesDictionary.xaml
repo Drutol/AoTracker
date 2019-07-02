@@ -11,6 +11,9 @@
     <Color x:Key="ForegroundColour"/>
     <Color x:Key="ForegroundDeepColour"/>
     <Color x:Key="RippleColour"/>
+    <Color x:Key="SelectedListViewItemColour"/>
+
+    <Thickness x:Key="PagePadding" Left="16" Top="16" Right="16" Bottom="16"/>
 
     <Style TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource TextColour}" />

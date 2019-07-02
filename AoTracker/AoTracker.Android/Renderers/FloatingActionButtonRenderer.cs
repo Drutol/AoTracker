@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using Android.Content;
+using Android.Content.Res;
 using Android.Views;
 using Android.Widget;
 using AoTracker.Droid.Renderers;
@@ -43,7 +44,6 @@ namespace AoTracker.Droid.Renderers
             UpdateBackground(fab);
             UpdateIcon(fab);
 
-
             fab.Click += OnClick;
 
             SetNativeControl(container);
@@ -66,7 +66,7 @@ namespace AoTracker.Droid.Renderers
 
         private void UpdateBackground(FloatingActionButton fab)
         {
-            fab.SetBackgroundColor(Element.ButtonColor.ToAndroid());
+            fab.SupportBackgroundTintList = ColorStateList.ValueOf(Element.ButtonColor.ToAndroid());
         }
 
         private void UpdateIcon(FloatingActionButton fab)

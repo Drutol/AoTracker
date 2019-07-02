@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace AoTracker.Views.Cells
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SurugayaCrawlerCell : ViewCell
+    public partial class SurugayaCrawlerCell
     {
         public SurugayaCrawlerCell()
         {

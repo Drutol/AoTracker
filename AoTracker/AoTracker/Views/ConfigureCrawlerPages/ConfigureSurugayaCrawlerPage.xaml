@@ -9,7 +9,11 @@
                            xmlns:viewModels="clr-namespace:AoTracker.Infrastructure.ViewModels;assembly=AoTracker.Infrastructure"
                            xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                            xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-                           mc:Ignorable="d"
+                           xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+                           xmlns:resources="clr-namespace:AoTracker.Resources;assembly=AoTracker.Resources"
+                           xmlns:xForms="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
+                           mc:Ignorable="d" Title="{Binding Title}"
+                           Padding="{StaticResource PagePadding}"
                            x:Class="AoTracker.Views.ConfigureSurugayaCrawlerPage">
 
     <d:ContentPage.BindingContext>
@@ -17,16 +21,43 @@
     </d:ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <StackLayout>
-            <forms:CachedImage Source="surugaya.png" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackLayout>
+                <forms:CachedImage Source="surugaya.png" HorizontalOptions="Center" />
 
-            <textInputLayout:SfTextInputLayout EnableFloating="True" FocusedColor="{DynamicResource AccentColour}"
-                                               Hint="{util:Translate Text=ConfigureCrawler_SearchQuery_Placeholder}"
-                                               HelperText="{util:Translate Text=ConfigureCrawler_SearchQuery_HelpText}">
-                <Editor Text="{Binding SearchQueryInput, Mode=TwoWay}" />
-            </textInputLayout:SfTextInputLayout>
+                <textInputLayout:SfTextInputLayout EnableFloating="True"
+                                                   Hint="{util:Translate Text=ConfigureCrawler_SearchQuery_Placeholder}"
+                                                   HelperText="{util:Translate Text=ConfigureCrawler_SearchQuery_HelpText}">
+                    <Editor Text="{Binding SearchQueryInput, Mode=TwoWay}" />
+                </textInputLayout:SfTextInputLayout>
 
-            <Button Text="Save" Command="{Binding SaveCommand}" />
-        </StackLayout>
+                <buttons:SfCheckBox Margin="0,8" CheckedColor="{DynamicResource AccentColour}"
+                                    Text="{x:Static resources:AppResources.ConfigureCrawler_TrimJapaneseQuotationMarks}"
+                                    IsChecked="{Binding TrimJapaneseQuotationMarks}" />
+
+                <textInputLayout:SfTextInputLayout EnableFloating="True"
+                                                   FocusedColor="{DynamicResource AccentColour}"
+                                                   Hint="{x:Static resources:AppResources.ConfigureCrawler_Cost_OffsetIncrease}"
+                                                   HelperText="{x:Static resources:AppResources.ConfigureCrawler_Cost_OffsetIncrease_HelpText}">
+                    <xForms:SfNumericTextBox Value="{Binding CostOffsetIncrease, Mode=TwoWay}" Minimum="0"
+                                             Maximum="10000" />
+                </textInputLayout:SfTextInputLayout>
+
+                <textInputLayout:SfTextInputLayout EnableFloating="True"
+                                                   FocusedColor="{DynamicResource AccentColour}"
+                                                   Hint="{x:Static resources:AppResources.ConfigureCrawler_Cost_PercentageIncrease}"
+                                                   HelperText="{x:Static resources:AppResources.ConfigureCrawler_Cost_PercentageIncrease_HelpText}">
+                    <xForms:SfNumericTextBox Value="{Binding CostPercentageIncrease, Mode=TwoWay}" FormatString="p"
+                                             PercentDisplayMode="Value" Minimum="0" Maximum="100" />
+                </textInputLayout:SfTextInputLayout>
+
+            </StackLayout>
+
+            <Button Grid.Row="1" Text="Save" Command="{Binding SaveCommand}" />
+        </Grid>
     </ContentPage.Content>
 </util:ViewModelContentPage>

@@ -24,7 +24,7 @@ namespace AoTracker.Crawlers.Surugaya
                 return CrawlerResultBase<SurugayaItem>.FromCache(Cache.Get(parameters));
 
             var source = await Source.ObtainSource(parameters);
-            var result = await Parser.Parse(source);
+            var result = await Parser.Parse(source, parameters);
 
             Cache.Set(result.Results, parameters);
 

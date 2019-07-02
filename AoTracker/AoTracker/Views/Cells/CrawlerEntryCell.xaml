@@ -20,8 +20,10 @@
            Padding="0"
            BackgroundColor="{DynamicResource ForegroundColour}"
            HeightRequest="100">
-        <ContentView xamEffects:TouchEffect.Color="{DynamicResource RippleColour}" xamEffects:Commands.Tap="{Binding SelectCommand}"
-                     xamEffects:Commands.TapParameter="{Binding BackingModel}" Padding="8,16">
+        <ContentView xamEffects:TouchEffect.Color="{DynamicResource RippleColour}" 
+                     xamEffects:Commands.Tap="{Binding SelectCommand}"
+                     xamEffects:Commands.TapParameter="{Binding BackingModel}" 
+                     Padding="8,16">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />

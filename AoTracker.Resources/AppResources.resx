@@ -117,10 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConfigureCrawler_Cost_OffsetIncrease" xml:space="preserve">
+    <value>Increase price </value>
+  </data>
+  <data name="ConfigureCrawler_Cost_OffsetIncrease_HelpText" xml:space="preserve">
+    <value>This value will be added to the price after % increase</value>
+  </data>
+  <data name="ConfigureCrawler_Cost_PercentageIncrease" xml:space="preserve">
+    <value>Increase price by percentage</value>
+  </data>
+  <data name="ConfigureCrawler_Cost_PercentageIncrease_HelpText" xml:space="preserve">
+    <value>Increases the bases prices by given %</value>
+  </data>
   <data name="ConfigureCrawler_SearchQuery_HelpText" xml:space="preserve">
     <value>At least 3 characters</value>
   </data>
   <data name="ConfigureCrawler_SearchQuery_Placeholder" xml:space="preserve">
     <value>Search query...</value>
+  </data>
+  <data name="ConfigureCrawler_TrimJapaneseQuotationMarks" xml:space="preserve">
+    <value>Remove text content from between 「 」</value>
+  </data>
+  <data name="PageTitle_ConfigureCrawlers" xml:space="preserve">
+    <value>Configure {0} Crawler</value>
+  </data>
+  <data name="PageTitle_Feed" xml:space="preserve">
+    <value>Feed</value>
+  </data>
+  <data name="PageTitle_SetDetails" xml:space="preserve">
+    <value>Set "{0}" Details</value>
+  </data>
+  <data name="PageTitle_SetDetails_AddNew" xml:space="preserve">
+    <value>Add New Set</value>
+  </data>
+  <data name="PageTitle_Sets" xml:space="preserve">
+    <value>Sets</value>
   </data>
 </root>

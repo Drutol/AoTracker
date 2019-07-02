@@ -12,6 +12,7 @@
         <ResourceDictionary Source="XamlResources/ColoursDictionary.xaml" />
         <ResourceDictionary Source="XamlResources/ThemesDictionary.xaml" />
 
+
         <converters:BoolInverterConverter x:Key="BoolInverter" />
 
 

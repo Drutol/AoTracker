@@ -12,6 +12,7 @@ using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Infrastructure.Util;
 using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Interfaces;
+using AoTracker.Resources;
 using Autofac;
 using GalaSoft.MvvmLight.Command;
 using Xamarin.Forms;
@@ -28,8 +29,6 @@ namespace AoTracker.Infrastructure.ViewModels
         private string _setName;
         private ConfigureCrawlerPageNavArgs _configureCrawlerNavArgs;
         private ObservableCollection<CrawlerDescriptor> _crawlerDescriptors;
-
-
 
         private List<CrawlerEntry> _crawlerEntries = new List<CrawlerEntry>
         {
@@ -60,8 +59,11 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public void NavigatedTo(CrawlerSet crawlerSet)
         {
+
+
             if (crawlerSet == null)
             {
+                Title = AppResources.PageTitle_SetDetails_AddNew;
                 //navigating back from adding crawler
                 if (_configureCrawlerNavArgs != null)
                 {
@@ -79,6 +81,7 @@ namespace AoTracker.Infrastructure.ViewModels
             }
             else
             {
+                Title = string.Format(AppResources.PageTitle_SetDetails, crawlerSet.Name);
                 SetName = crawlerSet.Name;
                 CrawlerDescriptors = new ObservableCollection<CrawlerDescriptor>(crawlerSet.Descriptors);
                 IsAddingNew = false;

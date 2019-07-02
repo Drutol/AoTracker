@@ -61,6 +61,42 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Increase price .
+        /// </summary>
+        public static string ConfigureCrawler_Cost_OffsetIncrease {
+            get {
+                return ResourceManager.GetString("ConfigureCrawler_Cost_OffsetIncrease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This value will be added to the price after % increase.
+        /// </summary>
+        public static string ConfigureCrawler_Cost_OffsetIncrease_HelpText {
+            get {
+                return ResourceManager.GetString("ConfigureCrawler_Cost_OffsetIncrease_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Increase price by percentage.
+        /// </summary>
+        public static string ConfigureCrawler_Cost_PercentageIncrease {
+            get {
+                return ResourceManager.GetString("ConfigureCrawler_Cost_PercentageIncrease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Increases the bases prices by given %.
+        /// </summary>
+        public static string ConfigureCrawler_Cost_PercentageIncrease_HelpText {
+            get {
+                return ResourceManager.GetString("ConfigureCrawler_Cost_PercentageIncrease_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to At least 3 characters.
         /// </summary>
         public static string ConfigureCrawler_SearchQuery_HelpText {
@@ -75,6 +111,60 @@ namespace AoTracker.Resources {
         public static string ConfigureCrawler_SearchQuery_Placeholder {
             get {
                 return ResourceManager.GetString("ConfigureCrawler_SearchQuery_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove text content from between 「 」.
+        /// </summary>
+        public static string ConfigureCrawler_TrimJapaneseQuotationMarks {
+            get {
+                return ResourceManager.GetString("ConfigureCrawler_TrimJapaneseQuotationMarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configure {0} Crawler.
+        /// </summary>
+        public static string PageTitle_ConfigureCrawlers {
+            get {
+                return ResourceManager.GetString("PageTitle_ConfigureCrawlers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Feed.
+        /// </summary>
+        public static string PageTitle_Feed {
+            get {
+                return ResourceManager.GetString("PageTitle_Feed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set &quot;{0}&quot; Details.
+        /// </summary>
+        public static string PageTitle_SetDetails {
+            get {
+                return ResourceManager.GetString("PageTitle_SetDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add New Set.
+        /// </summary>
+        public static string PageTitle_SetDetails_AddNew {
+            get {
+                return ResourceManager.GetString("PageTitle_SetDetails_AddNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sets.
+        /// </summary>
+        public static string PageTitle_Sets {
+            get {
+                return ResourceManager.GetString("PageTitle_Sets", resourceCulture);
             }
         }
     }

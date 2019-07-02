@@ -1,13 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 
-<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
-          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-          xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-          xmlns:util="clr-namespace:AoTracker.Util;assembly=AoTracker"
-          xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-          mc:Ignorable="d"
-          x:Class="AoTracker.Views.Cells.SurugayaCrawlerCell">
+<controls:CustomViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                         xmlns:util="clr-namespace:AoTracker.Util;assembly=AoTracker"
+                         xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                         xmlns:controls="clr-namespace:AoTracker.Controls;assembly=AoTracker"
+                         mc:Ignorable="d" 
+                         SelectedBackgroundColor="{DynamicResource SelectedListViewItemColour}"
+                         x:Class="AoTracker.Views.Cells.SurugayaCrawlerCell">
 
     <d:ViewCell.BindingContext>
         <x:Static Member="util:DesignTimeBindingContextProvider.SurugayaCrawlerDescriptor" />
@@ -21,15 +23,15 @@
             </Grid.ColumnDefinitions>
             <forms:CachedImage Source="surugaya.png" />
             <StackLayout Grid.Column="1">
-                <Label>
+                <Label TextColor="{DynamicResource TextColour}">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="Search phrase:" />
-                            <Span Text="{Binding CrawlerSourceParameters.SearchQuery}" FontAttributes="Bold" TextColor="{StaticResource }" />
+                            <Span Text="{Binding CrawlerSourceParameters.SearchQuery}" FontAttributes="Bold" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
             </StackLayout>
         </Grid>
     </ViewCell.View>
-</ViewCell>
+</controls:CustomViewCell>

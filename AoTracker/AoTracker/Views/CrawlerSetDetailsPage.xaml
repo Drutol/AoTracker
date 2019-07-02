@@ -12,7 +12,7 @@
                            xmlns:converters="clr-namespace:AoTracker.Util.View.Converters;assembly=AoTracker"
                            xmlns:crawlerEnums="clr-namespace:AoTracker.Crawlers.Enums;assembly=AoTracker.Crawlers"
                            mc:Ignorable="d"
-                           Padding="8"
+                           Padding="8" Title="{Binding Title}"
                            x:Class="AoTracker.Views.CrawlerSetDetailsPage">
 
     <d:ContentPage.BindingContext>
