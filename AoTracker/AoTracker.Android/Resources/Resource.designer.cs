@@ -82,6 +82,26 @@ namespace AoTracker.Droid
 			global::Syncfusion.Buttons.XForms.Android.Resource.Styleable.SfSegmentedControl_segmentedWidth = global::AoTracker.Droid.Resource.Styleable.SfSegmentedControl_segmentedWidth;
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.inputlayout_togglecollapseicon = global::AoTracker.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.inputlayout_togglevisibleicon = global::AoTracker.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
+			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.layoutManager = global::AoTracker.Droid.Resource.Attribute.layoutManager;
+			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.reverseLayout = global::AoTracker.Droid.Resource.Attribute.reverseLayout;
+			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.spanCount = global::AoTracker.Droid.Resource.Attribute.spanCount;
+			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.stackFromEnd = global::AoTracker.Droid.Resource.Attribute.stackFromEnd;
+			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::AoTracker.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
+			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::AoTracker.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
+			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::AoTracker.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
+			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.inputlayout_togglecollapseicon = global::AoTracker.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
+			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.inputlayout_togglevisibleicon = global::AoTracker.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
+			global::Syncfusion.ListView.XForms.Android.Resource.Id.item_touch_helper_previous_elevation = global::AoTracker.Droid.Resource.Id.item_touch_helper_previous_elevation;
+			global::Syncfusion.ListView.XForms.Android.Resource.String.ApplicationName = global::AoTracker.Droid.Resource.String.ApplicationName;
+			global::Syncfusion.ListView.XForms.Android.Resource.String.Hello = global::AoTracker.Droid.Resource.String.Hello;
+			global::Syncfusion.ListView.XForms.Android.Resource.String.Load_More = global::AoTracker.Droid.Resource.String.Load_More;
+			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView = global::AoTracker.Droid.Resource.Styleable.RecyclerView;
+			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_android_descendantFocusability = global::AoTracker.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability;
+			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_android_orientation = global::AoTracker.Droid.Resource.Styleable.RecyclerView_android_orientation;
+			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_layoutManager = global::AoTracker.Droid.Resource.Styleable.RecyclerView_layoutManager;
+			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_reverseLayout = global::AoTracker.Droid.Resource.Styleable.RecyclerView_reverseLayout;
+			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_spanCount = global::AoTracker.Droid.Resource.Styleable.RecyclerView_spanCount;
+			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_stackFromEnd = global::AoTracker.Droid.Resource.Styleable.RecyclerView_stackFromEnd;
 			global::Com.Syncfusion.Numerictextbox.Resource.Attribute.allowNull = global::AoTracker.Droid.Resource.Attribute.allowNull;
 			global::Com.Syncfusion.Numerictextbox.Resource.Attribute.borderColor = global::AoTracker.Droid.Resource.Attribute.borderColor;
 			global::Com.Syncfusion.Numerictextbox.Resource.Attribute.culture = global::AoTracker.Droid.Resource.Attribute.culture;
@@ -10075,6 +10095,9 @@ namespace AoTracker.Droid
 			
 			// aapt resource value: 0x7f090000
 			public const int Hello = 2131296256;
+			
+			// aapt resource value: 0x7f090051
+			public const int Load_More = 2131296337;
 			
 			// aapt resource value: 0x7f09001a
 			public const int abc_action_bar_home_description = 2131296282;

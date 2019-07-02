@@ -13,6 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.1.0.53" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.1.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.1.0.53" />
     <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox" Version="17.1.0.53" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.540366" />  

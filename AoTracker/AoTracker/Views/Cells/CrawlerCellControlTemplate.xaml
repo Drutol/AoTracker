@@ -21,7 +21,7 @@
             </Grid.ColumnDefinitions>
             <forms:CachedImage
                 Source="{Binding CrawlerDomain, Converter={StaticResource CrawlerDomainToImageConverter}}" />
-            <StackLayout Grid.Column="1">
+            <StackLayout Grid.Column="1" Margin="8,0">
 
                 <d:StackLayout.BindingContext>
                     <x:Static Member="util:DesignTimeBindingContextProvider.BaseCrawlerDescriptor" />
@@ -55,5 +55,4 @@
             </StackLayout>
         </Grid>
     </ControlTemplate>
-
 </ResourceDictionary>

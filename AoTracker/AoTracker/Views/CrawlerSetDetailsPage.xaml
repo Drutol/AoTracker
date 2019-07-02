@@ -11,6 +11,7 @@
                            xmlns:dataTemplateSelectors="clr-namespace:AoTracker.Util.View.DataTemplateSelectors;assembly=AoTracker"
                            xmlns:converters="clr-namespace:AoTracker.Util.View.Converters;assembly=AoTracker"
                            xmlns:crawlerEnums="clr-namespace:AoTracker.Crawlers.Enums;assembly=AoTracker.Crawlers"
+                           xmlns:xForms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
                            mc:Ignorable="d"
                            Padding="8" Title="{Binding Title}"
                            x:Class="AoTracker.Views.CrawlerSetDetailsPage">
@@ -50,8 +51,8 @@
             </StackLayout>
 
             <Label Grid.Row="1" Text="Crawlers in set:" />
-            <ListView Grid.Row="2" ItemTemplate="{StaticResource CellDataTemplateSelector}"
-                      ItemsSource="{Binding CrawlerDescriptors}" HasUnevenRows="True"/>
+            <xForms:SfListView Grid.Row="2" ItemTemplate="{StaticResource CellDataTemplateSelector}"
+                      ItemsSource="{Binding CrawlerDescriptors}" AutoFitMode="DynamicHeight"/>
             <Label Grid.Row="3" Text="Add new crawler:" />
             <CollectionView Grid.Row="4" SelectionMode="None" ItemsSource="{Binding CrawlerViewModelEntries}"
                             MinimumHeightRequest="100">
