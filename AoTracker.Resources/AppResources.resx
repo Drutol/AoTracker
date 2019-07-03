@@ -138,6 +138,12 @@
   <data name="ConfigureCrawler_TrimJapaneseQuotationMarks" xml:space="preserve">
     <value>Remove text content from between 「 」</value>
   </data>
+  <data name="CrawlerSetDetails_Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="CrawlerSetDetails_Title_HelpText" xml:space="preserve">
+    <value>Crawler set title</value>
+  </data>
   <data name="PageTitle_ConfigureCrawlers" xml:space="preserve">
     <value>Configure {0} Crawler</value>
   </data>

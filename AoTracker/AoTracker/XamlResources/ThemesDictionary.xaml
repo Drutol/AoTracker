@@ -19,10 +19,38 @@
     <Style TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource TextColour}" />
     </Style>
+
     <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
         <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColour}" />
     </Style>
 
+
+
+    <OnPlatform x:Key="FontLight" x:TypeArguments="x:String">
+        <On Platform="Android">sans-serif-light</On>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontMedium" x:TypeArguments="x:String">
+        <On Platform="Android">sans-serif-medium</On>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontCondensed" x:TypeArguments="x:String">
+        <On Platform="Android">sans-serif-condensed</On>
+    </OnPlatform>
+
+    <OnPlatform x:Key="FontBlack" x:TypeArguments="x:String">
+        <On Platform="Android">sans-serif-black</On>
+    </OnPlatform>  
+    
+    <OnPlatform x:Key="FontThin" x:TypeArguments="x:String">
+        <On Platform="Android">sans-serif-thin</On>
+    </OnPlatform>
+
+    <Style x:Key="HeaderLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="28"/>
+        <Setter Property="FontFamily" Value="{StaticResource FontLight}"/>
+        <Setter Property="TextColor" Value="{DynamicResource AccentColour}"/>
+    </Style>
 
     <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
         <On Platform="iOS" Value="Material Design Icons" />

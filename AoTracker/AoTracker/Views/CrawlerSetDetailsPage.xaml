@@ -12,6 +12,9 @@
                            xmlns:converters="clr-namespace:AoTracker.Util.View.Converters;assembly=AoTracker"
                            xmlns:crawlerEnums="clr-namespace:AoTracker.Crawlers.Enums;assembly=AoTracker.Crawlers"
                            xmlns:xForms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+                           xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+                           xmlns:resources="clr-namespace:AoTracker.Resources;assembly=AoTracker.Resources"
+                           xmlns:xForms1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
                            mc:Ignorable="d"
                            Padding="8" Title="{Binding Title}"
                            x:Class="AoTracker.Views.CrawlerSetDetailsPage">
@@ -44,20 +47,23 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <StackLayout>
-                <Label Text="{Binding SetName}"
-                       IsVisible="{Binding IsAddingNew, Converter={StaticResource BoolInverter}}" />
-                <Editor Text="{Binding SetName, Mode=TwoWay}" IsVisible="{Binding IsAddingNew}" />
-            </StackLayout>
 
-            <Label Grid.Row="1" Text="Crawlers in set:" />
+            <textInputLayout:SfTextInputLayout EnableFloating="True"
+                                               FocusedColor="{DynamicResource AccentColour}"
+                                               Hint="{x:Static resources:AppResources.CrawlerSetDetails_Title}"
+                                               HelperText="{x:Static resources:AppResources.CrawlerSetDetails_Title_HelpText}">
+                <Editor Text="{Binding SetName, Mode=TwoWay}"/>
+            </textInputLayout:SfTextInputLayout>
+
+            <Label Grid.Row="1" Text="Crawlers in set:" Style="{StaticResource HeaderLabelStyle}"/>
+
             <xForms:SfListView Grid.Row="2"
                                ItemTemplate="{StaticResource CellDataTemplateSelector}"
                                ItemsSource="{Binding CrawlerDescriptors}"
                                TapCommand="{Binding SelectCrawlerDescriptorCommand}"
                                SelectionMode="None"
                                AutoFitMode="DynamicHeight" />
-            <Label Grid.Row="3" Text="Add new crawler:" />
+            <Label Grid.Row="3" Text="Add new crawler:" Style="{StaticResource HeaderLabelStyle}"/>
             <CollectionView Grid.Row="4" SelectionMode="None" ItemsSource="{Binding CrawlerEntries}"
                             MinimumHeightRequest="100">
                 <CollectionView.ItemsLayout>

@@ -15,7 +15,7 @@
 
     <ControlTemplate x:Key="CrawlerCellControlTemplate">
         <controls:FocusableFrame HasShadow="True"  Margin="8" BindingContext="{TemplateBinding BindingContext}"
-               BackgroundColor="{DynamicResource ForegroundColours}" Padding="0" 
+               BackgroundColor="{DynamicResource ForegroundColour}" Padding="0" 
                Command="{Binding TapCommand}" CommandParameter="{Binding BackingModel}">
             <Grid Padding="8">
                 <d:Grid.BindingContext>

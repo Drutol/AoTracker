@@ -7,6 +7,7 @@
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:util="clr-namespace:AoTracker.Util;assembly=AoTracker"
              xmlns:xamEffects="clr-namespace:XamEffects;assembly=XamEffects"
+             xmlns:controls="clr-namespace:AoTracker.Controls;assembly=AoTracker"
              mc:Ignorable="d"
              Padding="8"
              x:Class="AoTracker.Views.Cells.CrawlerEntryCell">
@@ -16,14 +17,11 @@
     </d:ContentView.BindingContext>
 
 
-    <Frame HasShadow="True"
+    <controls:FocusableFrame HasShadow="True"
            Padding="0"
            BackgroundColor="{DynamicResource ForegroundColour}"
-           HeightRequest="100">
-        <ContentView xamEffects:TouchEffect.Color="{DynamicResource RippleColour}" 
-                     xamEffects:Commands.Tap="{Binding SelectCommand}"
-                     xamEffects:Commands.TapParameter="{Binding BackingModel}" 
-                     Padding="8,16">
+           HeightRequest="100" Command="{Binding SelectCommand}" CommandParameter="{Binding BackingModel}">
+        <ContentView Padding="8,16">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -33,7 +31,7 @@
                 <Label Grid.Row="1" Text="{Binding BackingModel.Title}" HorizontalOptions="Center" />
             </Grid>
         </ContentView>
-    </Frame>
+    </controls:FocusableFrame>
 
 
 </ContentView>

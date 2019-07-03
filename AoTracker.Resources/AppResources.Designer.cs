@@ -124,6 +124,24 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string CrawlerSetDetails_Title {
+            get {
+                return ResourceManager.GetString("CrawlerSetDetails_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crawler set title.
+        /// </summary>
+        public static string CrawlerSetDetails_Title_HelpText {
+            get {
+                return ResourceManager.GetString("CrawlerSetDetails_Title_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configure {0} Crawler.
         /// </summary>
         public static string PageTitle_ConfigureCrawlers {
