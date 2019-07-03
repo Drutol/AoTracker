@@ -23,10 +23,10 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="SurugayaDataTemplate">
-                <cells:SurugayaCrawlerCell/>
+                <cells:SurugayaCrawlerCell />
             </DataTemplate>
             <DataTemplate x:Key="MandarakeDataTemplate">
-                <cells:MandarakeCrawlerCell/>
+                <cells:MandarakeCrawlerCell />
             </DataTemplate>
 
             <dataTemplateSelectors:CrawlerCellDataTemplateSelector x:Key="CellDataTemplateSelector"
@@ -51,10 +51,14 @@
             </StackLayout>
 
             <Label Grid.Row="1" Text="Crawlers in set:" />
-            <xForms:SfListView Grid.Row="2" ItemTemplate="{StaticResource CellDataTemplateSelector}"
-                      ItemsSource="{Binding CrawlerDescriptors}" AutoFitMode="DynamicHeight"/>
+            <xForms:SfListView Grid.Row="2"
+                               ItemTemplate="{StaticResource CellDataTemplateSelector}"
+                               ItemsSource="{Binding CrawlerDescriptors}"
+                               TapCommand="{Binding SelectCrawlerDescriptorCommand}"
+                               SelectionMode="None"
+                               AutoFitMode="DynamicHeight" />
             <Label Grid.Row="3" Text="Add new crawler:" />
-            <CollectionView Grid.Row="4" SelectionMode="None" ItemsSource="{Binding CrawlerViewModelEntries}"
+            <CollectionView Grid.Row="4" SelectionMode="None" ItemsSource="{Binding CrawlerEntries}"
                             MinimumHeightRequest="100">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" Span="3" />

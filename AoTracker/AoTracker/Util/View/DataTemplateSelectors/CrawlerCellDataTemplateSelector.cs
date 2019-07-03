@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Domain.Models;
+using AoTracker.Infrastructure.ViewModels.Item;
 using Xamarin.Forms;
 
 namespace AoTracker.Util.View.DataTemplateSelectors
@@ -14,8 +15,8 @@ namespace AoTracker.Util.View.DataTemplateSelectors
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            var descriptor = (CrawlerDescriptor) item;
-            switch (descriptor.CrawlerDomain)
+            var descriptor = (CrawlerDescriptorViewModel) item;
+            switch (descriptor.BackingModel.CrawlerDomain)
             {
                 case CrawlerDomain.Surugaya:
                     return SurugayaTemplate;

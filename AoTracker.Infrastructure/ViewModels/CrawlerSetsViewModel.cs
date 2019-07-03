@@ -52,6 +52,5 @@ namespace AoTracker.Infrastructure.ViewModels
         {
             _navigationManager.PushPage(PageIndex.CrawlerSetDetails);
         });
-
     }
 }

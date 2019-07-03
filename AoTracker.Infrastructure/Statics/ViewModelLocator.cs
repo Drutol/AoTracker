@@ -20,6 +20,7 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterType<CrawlerSetDetailsViewModel>().SingleInstance();
             
             builder.RegisterType<CrawlerEntryViewModel>();
+            builder.RegisterType<CrawlerDescriptorViewModel>();
         }
     }
 }

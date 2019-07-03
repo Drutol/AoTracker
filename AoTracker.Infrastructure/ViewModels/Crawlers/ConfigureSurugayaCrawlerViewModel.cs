@@ -28,6 +28,16 @@ namespace AoTracker.Infrastructure.ViewModels
         {
             _navArgs = navArgs;
             Title = string.Format(AppResources.PageTitle_ConfigureCrawlers, "Suruga-ya");
+
+            if (!navArgs.ConfigureNew)
+            {
+                var surugayaDescriptor = navArgs.DescriptorToEdit.CrawlerSourceParameters as SurugayaSourceParameters;
+
+                SearchQueryInput = surugayaDescriptor.SearchQuery;
+                TrimJapaneseQuotationMarks = surugayaDescriptor.TrimJapaneseQuotationMarks;
+                CostOffsetIncrease = surugayaDescriptor.OffsetIncrease;
+                CostPercentageIncrease = surugayaDescriptor.PercentageIncrease;
+            }
         }
 
         public string SearchQueryInput
@@ -64,6 +74,7 @@ namespace AoTracker.Infrastructure.ViewModels
                 OffsetIncrease = CostOffsetIncrease,
                 PercentageIncrease = CostPercentageIncrease
             };
+            _navArgs.Saved = true;
 
             _navigationManager.GoBack();
         });

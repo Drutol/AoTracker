@@ -16,19 +16,21 @@ using AoTracker.Resources;
 using Autofac;
 using GalaSoft.MvvmLight.Command;
 using Xamarin.Forms;
+using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
 namespace AoTracker.Infrastructure.ViewModels
 {
     public class CrawlerSetDetailsViewModel : ViewModelBase
     {
         private readonly IUserDataProvider _userDataProvider;
+        private readonly ILifetimeScope _lifetimeScope;
         private readonly INavigationManager _navigationManager;
 
-        private CrawlerSet _currentSet;
         private bool _isAddingNew;
         private string _setName;
+        private CrawlerSet _currentSet;
         private ConfigureCrawlerPageNavArgs _configureCrawlerNavArgs;
-        private ObservableCollection<CrawlerDescriptor> _crawlerDescriptors;
+        private ObservableCollection<CrawlerDescriptorViewModel> _crawlerDescriptors;
 
         private List<CrawlerEntry> _crawlerEntries = new List<CrawlerEntry>
         {
@@ -47,50 +49,77 @@ namespace AoTracker.Infrastructure.ViewModels
             },
         };
 
-        public CrawlerSetDetailsViewModel(IUserDataProvider userDataProvider,
-            ILifetimeScope lifetimeScope, INavigationManager navigationManager)
+
+
+        public CrawlerSetDetailsViewModel(
+            IUserDataProvider userDataProvider,
+            ILifetimeScope lifetimeScope, 
+            INavigationManager navigationManager)
         {
             _userDataProvider = userDataProvider;
+            _lifetimeScope = lifetimeScope;
             _navigationManager = navigationManager;
-            CrawlerViewModelEntries = _crawlerEntries
+            CrawlerEntries = _crawlerEntries
                 .Select(entry => lifetimeScope.TypedResolve<CrawlerEntryViewModel>(entry, this))
                 .ToList();
         }
 
         public void NavigatedTo(CrawlerSet crawlerSet)
         {
-
+            if (crawlerSet == _currentSet)
+                crawlerSet = null;
+            
 
             if (crawlerSet == null)
             {
-                Title = AppResources.PageTitle_SetDetails_AddNew;
+                Title = _currentSet == null
+                    ? AppResources.PageTitle_SetDetails_AddNew
+                    : string.Format(AppResources.PageTitle_SetDetails, _currentSet.Name);
+
                 //navigating back from adding crawler
                 if (_configureCrawlerNavArgs != null)
                 {
-                    CrawlerDescriptors.Add(new CrawlerDescriptor
+                    if (_configureCrawlerNavArgs.Saved)
                     {
-                        CrawlerDomain = _configureCrawlerNavArgs.Domain,
-                        CrawlerSourceParameters = _configureCrawlerNavArgs.CrawlerSourceParameters
-                    });
+                        if (_configureCrawlerNavArgs.ConfigureNew)
+                        {
+                            var vm = _lifetimeScope.TypedResolve<CrawlerDescriptorViewModel>(new CrawlerDescriptor
+                            {
+                                CrawlerDomain = _configureCrawlerNavArgs.Domain,
+                                CrawlerSourceParameters = _configureCrawlerNavArgs.CrawlerSourceParameters
+                            });
+                            CrawlerDescriptors.Add(vm);
+                        }
+                        else
+                        {
+                            CrawlerDescriptors
+                                .First(model => model.BackingModel == _configureCrawlerNavArgs.DescriptorToEdit)
+                                .CrawlerSourceParameters = _configureCrawlerNavArgs.CrawlerSourceParameters;
+                        }
+                    }
+
+                    _configureCrawlerNavArgs = null;
                 }
                 else
                 {
-                    CrawlerDescriptors = new ObservableCollection<CrawlerDescriptor>();
+                    CrawlerDescriptors = new ObservableCollection<CrawlerDescriptorViewModel>();
                     IsAddingNew = true;
                 }
             }
             else
             {
+                _currentSet = crawlerSet;
                 Title = string.Format(AppResources.PageTitle_SetDetails, crawlerSet.Name);
                 SetName = crawlerSet.Name;
-                CrawlerDescriptors = new ObservableCollection<CrawlerDescriptor>(crawlerSet.Descriptors);
+                CrawlerDescriptors = new ObservableCollection<CrawlerDescriptorViewModel>(crawlerSet.Descriptors.Select(
+                    descriptor => _lifetimeScope.TypedResolve<CrawlerDescriptorViewModel>(descriptor)));
                 IsAddingNew = false;
             }
         }
 
-        public List<CrawlerEntryViewModel> CrawlerViewModelEntries { get; }
+        public List<CrawlerEntryViewModel> CrawlerEntries { get; }
 
-        public ObservableCollection<CrawlerDescriptor> CrawlerDescriptors
+        public ObservableCollection<CrawlerDescriptorViewModel> CrawlerDescriptors
         {
             get => _crawlerDescriptors;
             set => Set(ref _crawlerDescriptors, value);
@@ -113,10 +142,36 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public bool CanSave => true;
 
+        public RelayCommand<CrawlerDescriptor> RemoveDescriptorCommand => new RelayCommand<CrawlerDescriptor>(
+            descriptor =>
+            {
+
+            });
+
         public RelayCommand<CrawlerEntry> AddCrawlerCommand => new RelayCommand<CrawlerEntry>(entry =>
         {
-            _configureCrawlerNavArgs = new ConfigureCrawlerPageNavArgs();
-            switch (entry.CrawlerDomain)
+            _configureCrawlerNavArgs = new ConfigureCrawlerPageNavArgs
+            {
+                ConfigureNew = true,
+                Domain = entry.CrawlerDomain
+            };
+            NavigateConfigureDescriptor();
+        });
+
+        public RelayCommand<CrawlerDescriptor> SelectCrawlerDescriptorCommand =>
+            new RelayCommand<CrawlerDescriptor>(descriptor =>
+            {
+                _configureCrawlerNavArgs = new ConfigureCrawlerPageNavArgs
+                {
+                    ConfigureNew = false,
+                    DescriptorToEdit = descriptor
+                };
+                NavigateConfigureDescriptor();
+            });
+
+        private void NavigateConfigureDescriptor()
+        {
+            switch (_configureCrawlerNavArgs.Domain)
             {
                 case CrawlerDomain.Surugaya:
                     _navigationManager.PushPage(PageIndex.ConfigureSurugaya, _configureCrawlerNavArgs);
@@ -126,7 +181,7 @@ namespace AoTracker.Infrastructure.ViewModels
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
 
-        });
     }
 }

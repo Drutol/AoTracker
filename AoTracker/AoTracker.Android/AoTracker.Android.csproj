@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\FocusableFrameRenderer.cs" />
     <Compile Include="Renderers\CustomViewCellRenderer.cs" />
     <Compile Include="Renderers\FloatingActionButtonRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />

@@ -10,7 +10,6 @@
                          xmlns:controls="clr-namespace:AoTracker.Controls;assembly=AoTracker"
                          xmlns:resources="clr-namespace:AoTracker.Resources;assembly=AoTracker.Resources"
                          xmlns:appIcon="clr-namespace:AoTracker.Domain.Enums;assembly=AoTracker.Domain"
-
                          SelectedBackgroundColor="{DynamicResource SelectedListViewItemColour}"
                          x:Class="AoTracker.Views.Cells.SurugayaCrawlerCell">
 
@@ -22,7 +21,7 @@
         <ContentView ControlTemplate="{StaticResource CrawlerCellControlTemplate}">
             <ContentView.Content>
                 <StackLayout>
-                    <Label>
+                    <Label IsVisible="{Binding BackingModel.CrawlerSourceParameters.TrimJapaneseQuotationMarks}">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{x:Static resources:AppResources.SurugayaCrawlerCell_TrimsFromQuotationMarks}"/>
