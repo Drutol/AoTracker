@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Surugaya;
+using AoTracker.Domain.Models;
+using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Interfaces;
 using AoTracker.Resources;
 using GalaSoft.MvvmLight.Command;
+using Xamarin.Forms;
 
 namespace AoTracker.Infrastructure.ViewModels
 {
@@ -66,15 +69,39 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public RelayCommand SaveCommand => new RelayCommand(() =>
         {
-            _navArgs.Domain = CrawlerDomain.Surugaya;
-            _navArgs.CrawlerSourceParameters = new SurugayaSourceParameters
+            var resultMessage = new ConfigureCrawlerResultMessage
+            {
+                Action = _navArgs.ConfigureNew
+                    ? ConfigureCrawlerResultMessage.ActionType.Add
+                    : ConfigureCrawlerResultMessage.ActionType.Edit
+            };
+
+            var parameters = new SurugayaSourceParameters
             {
                 SearchQuery = SearchQueryInput,
                 TrimJapaneseQuotationMarks = TrimJapaneseQuotationMarks,
                 OffsetIncrease = CostOffsetIncrease,
                 PercentageIncrease = CostPercentageIncrease
             };
-            _navArgs.Saved = true;
+
+            switch (resultMessage.Action)
+            {
+                case ConfigureCrawlerResultMessage.ActionType.Add:
+                    resultMessage.CrawlerDescriptor = new CrawlerDescriptor
+                    {
+                        CrawlerDomain = CrawlerDomain.Surugaya,
+                        CrawlerSourceParameters = parameters
+                    };
+                    break;
+                case ConfigureCrawlerResultMessage.ActionType.Edit:
+                    _navArgs.DescriptorToEdit.CrawlerSourceParameters = parameters;
+                    resultMessage.CrawlerDescriptor = _navArgs.DescriptorToEdit;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            MessagingCenter.Send(this, ConfigureCrawlerResultMessage.MessageKey, resultMessage);
 
             _navigationManager.GoBack();
         });

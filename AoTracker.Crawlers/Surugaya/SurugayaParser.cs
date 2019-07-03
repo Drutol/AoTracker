@@ -25,7 +25,8 @@ namespace AoTracker.Crawlers.Surugaya
             var parsedItems = new List<SurugayaItem>();
             var output = new CrawlerResultBase<SurugayaItem>
             {
-                Results = parsedItems
+                Results = parsedItems,
+                Success = true
             };
             try
             {

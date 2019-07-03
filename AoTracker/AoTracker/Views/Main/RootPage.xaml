@@ -6,7 +6,7 @@
              mc:Ignorable="d" BackgroundColor="{DynamicResource BackgroundColour}"
              x:Class="AoTracker.Views.Main.RootPage"
              xmlns:pages="clr-namespace:AoTracker.Views.Main">
-  <MasterDetailPage.Master>
+  <MasterDetailPage.Master> 
     <pages:RootPageMaster/>
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>

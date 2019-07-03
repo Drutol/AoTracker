@@ -11,16 +11,21 @@ namespace AoTracker.Infrastructure.Statics
     {
         public static void RegisterViewModels(this ContainerBuilder builder)
         {
+            // standard
             builder.RegisterType<MainViewModel>().SingleInstance();
             builder.RegisterType<WelcomeViewModel>().SingleInstance();
-            builder.RegisterType<ConfigureSurugayaCrawlerViewModel>().SingleInstance();
             builder.RegisterType<CrawlerResultViewModel>().SingleInstance();
             builder.RegisterType<FeedViewModel>().SingleInstance();
             builder.RegisterType<CrawlerSetsViewModel>().SingleInstance();
             builder.RegisterType<CrawlerSetDetailsViewModel>().SingleInstance();
-            
+
+            // one shots
+            builder.RegisterType<ConfigureSurugayaCrawlerViewModel>();
+
+            // items
             builder.RegisterType<CrawlerEntryViewModel>();
             builder.RegisterType<CrawlerDescriptorViewModel>();
+            builder.RegisterType<FeedItemViewModel>();
         }
     }
 }

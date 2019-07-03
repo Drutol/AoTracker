@@ -31,7 +31,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <forms:CachedImage Margin="8"
+                <forms:CachedImage Margin="8" HeightRequest="75"
                     Source="{Binding BackingModel.CrawlerDomain, Converter={StaticResource CrawlerDomainToImageConverter}}" />
                 <StackLayout Grid.Column="1" Margin="8,0">
                     <Label TextColor="{DynamicResource TextColour}">

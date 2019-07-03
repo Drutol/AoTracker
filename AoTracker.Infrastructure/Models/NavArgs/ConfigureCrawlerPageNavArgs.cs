@@ -10,7 +10,6 @@ namespace AoTracker.Infrastructure.Models.NavArgs
     public class ConfigureCrawlerPageNavArgs
     {
         public bool ConfigureNew { get; set; }
-        public bool Saved { get; set; }
 
         public CrawlerDescriptor DescriptorToEdit { get; set; }
 

@@ -11,7 +11,8 @@
     <Application.Resources>
         <ResourceDictionary Source="XamlResources/ColoursDictionary.xaml" />
         <ResourceDictionary Source="XamlResources/ThemesDictionary.xaml" />
-        <ResourceDictionary Source="Views/Cells/CrawlerCellControlTemplate.xaml" />
+        <ResourceDictionary Source="Views/Cells/Templates/CrawlerCellControlTemplate.xaml" />
+        <ResourceDictionary Source="Views/Cells/Templates/FeedCellControlTemplate.xaml" />
 
         <converters:BoolInverterConverter x:Key="BoolInverter" />
     </Application.Resources>

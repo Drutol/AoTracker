@@ -9,6 +9,9 @@ namespace AoTracker.Interfaces
     public interface IFeedProvider
     {
         event EventHandler<IEnumerable<ICrawlerResultItem>> NewCrawlerBatch;
+        event EventHandler Finished;
+
+        List<ICrawlerResultItem> CachedFeed { get; }
 
         void StartAggregating(CancellationToken feedCtsToken);
     }

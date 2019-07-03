@@ -6,23 +6,33 @@
              xmlns:viewModels="clr-namespace:AoTracker.Infrastructure.ViewModels;assembly=AoTracker.Infrastructure"
              xmlns:util="clr-namespace:AoTracker.Util;assembly=AoTracker"
              xmlns:resources="clr-namespace:AoTracker.Resources;assembly=AoTracker.Resources"
+             xmlns:xForms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:feed="clr-namespace:AoTracker.Views.Cells.Feed;assembly=AoTracker"
+             xmlns:dataTemplateSelectors="clr-namespace:AoTracker.Util.View.DataTemplateSelectors;assembly=AoTracker"
              mc:Ignorable="d" Title="{x:Static resources:AppResources.PageTitle_Feed}"
              x:Class="AoTracker.Views.FeedPage"
-
              x:TypeArguments="viewModels:FeedViewModel">
     <d:ContentPage.BindingContext>
         <x:Static Member="util:DesignTimeBindingContextProvider.FeedViewModel"/>
     </d:ContentPage.BindingContext>
 
+    <util:ViewModelContentPage.Resources>
+        <DataTemplate x:Key="SurugayaFeedCellDataTemplate">
+            <feed:SurugayaFeedCell/>
+        </DataTemplate>    
+        
+        <DataTemplate x:Key="MandarakeFeedCellDataTemplate">
+            <feed:MandarakeFeedCell/>
+        </DataTemplate>
+
+        <dataTemplateSelectors:FeedCellDataTemplateSelector x:Key="FeedCellDataTemplateSelector"
+                                                            SurugayaDataTemplate="{StaticResource SurugayaFeedCellDataTemplate}"
+                                                            MandarakeDataTemplate="{StaticResource MandarakeFeedCellDataTemplate}"/>
+    </util:ViewModelContentPage.Resources>
+
     <ContentPage.Content>
-        <ListView ItemsSource="{Binding Feed}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Label Text="{Binding Name}"/>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <xForms:SfListView ItemsSource="{Binding Feed}"
+                           AutoFitMode="DynamicHeight" 
+                           ItemTemplate="{StaticResource FeedCellDataTemplateSelector}"/>
     </ContentPage.Content>
 </util:ViewModelContentPage>

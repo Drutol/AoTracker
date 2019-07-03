@@ -47,7 +47,16 @@
     <EmbeddedResource Update="Controls\FloatingActionButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Cells\CrawlerCellControlTemplate.xaml">
+    <EmbeddedResource Update="Views\Cells\Feed\MandarakeFeedCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Cells\Feed\SurugayaFeedCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Cells\Templates\FeedCellControlTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Cells\Templates\CrawlerCellControlTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ConfigureCrawlerPages\ConfigureSurugayaCrawlerPage.xaml">
@@ -59,10 +68,10 @@
     <EmbeddedResource Update="Views\Cells\CrawlerSetCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Cells\MandarakeCrawlerCell.xaml">
+    <EmbeddedResource Update="Views\Cells\Crawlers\MandarakeCrawlerCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Cells\SurugayaCrawlerCell.xaml">
+    <EmbeddedResource Update="Views\Cells\Crawlers\SurugayaCrawlerCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CrawlerResultPage.xaml">
