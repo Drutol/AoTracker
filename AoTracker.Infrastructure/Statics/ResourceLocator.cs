@@ -10,6 +10,8 @@ namespace AoTracker.Infrastructure.Statics
 {
     public static class ResourceLocator
     {
+        private static ILifetimeScope _lifetime;
+
         public static void RegisterResources(this ContainerBuilder builder)
         {
             builder.RegisterType<Settings>().As<ISettings>().SingleInstance();
@@ -17,6 +19,16 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterType<FeedProvider>().As<IFeedProvider>().SingleInstance();
             builder.RegisterType<UserDataProvider>().As<IUserDataProvider>().SingleInstance();
 
+            builder.RegisterBuildCallback(BuildCallback);
+
         }
+
+        private static void BuildCallback(IContainer obj)
+        {
+            _lifetime = obj.BeginLifetimeScope();
+        }
+
+        public static ILifetimeScope ObtainScope() => _lifetime.BeginLifetimeScope();
+
     }
 }

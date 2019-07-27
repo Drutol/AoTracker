@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
@@ -25,7 +26,7 @@ namespace AoTracker.Infrastructure.ViewModels
     {
         private readonly IUserDataProvider _userDataProvider;
         private readonly ILifetimeScope _lifetimeScope;
-        private readonly INavigationManager _navigationManager;
+        private readonly INavigationManager<PageIndex> _navigationManager;
 
         private bool _isAddingNew;
         private string _setName;
@@ -53,8 +54,8 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public CrawlerSetDetailsViewModel(
             IUserDataProvider userDataProvider,
-            ILifetimeScope lifetimeScope, 
-            INavigationManager navigationManager)
+            ILifetimeScope lifetimeScope,
+            INavigationManager<PageIndex> navigationManager)
         {
             _userDataProvider = userDataProvider;
             _lifetimeScope = lifetimeScope;
@@ -174,7 +175,7 @@ namespace AoTracker.Infrastructure.ViewModels
             switch (navArgs.Domain)
             {
                 case CrawlerDomain.Surugaya:
-                    _navigationManager.PushPage(PageIndex.ConfigureSurugaya, navArgs);
+                    _navigationManager.Navigate(PageIndex.ConfigureSurugaya, navArgs);
                     break;
                 case CrawlerDomain.Mandarake:
                     break;

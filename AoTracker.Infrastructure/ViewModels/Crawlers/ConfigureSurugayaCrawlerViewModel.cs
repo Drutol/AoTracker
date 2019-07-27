@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Surugaya;
+using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Infrastructure.Models.NavArgs;
@@ -15,14 +17,14 @@ namespace AoTracker.Infrastructure.ViewModels
 {
     public class ConfigureSurugayaCrawlerViewModel : ViewModelBase
     {
-        private readonly INavigationManager _navigationManager;
+        private readonly INavigationManager<PageIndex> _navigationManager;
         private ConfigureCrawlerPageNavArgs _navArgs;
         private string _searchQueryInput;
         private bool _trimJapaneseQuotationMarks;
         private double _costPercentageIncrease;
         private double _costOffsetIncrease;
 
-        public ConfigureSurugayaCrawlerViewModel(INavigationManager navigationManager)
+        public ConfigureSurugayaCrawlerViewModel(INavigationManager<PageIndex> navigationManager)
         {
             _navigationManager = navigationManager;
         }

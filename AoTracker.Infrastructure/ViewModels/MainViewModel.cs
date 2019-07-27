@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using AoLibs.Navigation.Core;
+using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Domain;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Models;
@@ -13,7 +15,7 @@ namespace AoTracker.Infrastructure.ViewModels
     public class MainViewModel : ViewModelBase
     {
         private readonly ISettings _settings;
-        private readonly INavigationManager _outerNavigationManager;
+        private readonly INavigationManager<PageIndex> _outerNavigationManager;
         private ObservableCollection<HamburgerMenuEntry> _hamburgerItems;
         private HamburgerMenuEntry _selectedItem;
 
@@ -43,7 +45,7 @@ namespace AoTracker.Infrastructure.ViewModels
             set => Set(ref _selectedItem, value, OnHamburgerSelectionChanged);
         }
 
-        public MainViewModel(ISettings settings, INavigationManager outerNavigationManager)
+        public MainViewModel(ISettings settings, INavigationManager<PageIndex> outerNavigationManager)
         {
             _settings = settings;
             _outerNavigationManager = outerNavigationManager;
@@ -54,12 +56,12 @@ namespace AoTracker.Infrastructure.ViewModels
         public void Initialize()
         {
             if (!_settings.PassedWelcome)
-                _outerNavigationManager.NavigateRoot(PageIndex.Feed);
+                _outerNavigationManager.Navigate(PageIndex.Feed, NavigationBackstackOption.SetAsRootPage);
         }
 
         private void OnHamburgerSelectionChanged()
         {
-            _outerNavigationManager.NavigateRoot(SelectedItem.Page);
+            _outerNavigationManager.Navigate(SelectedItem.Page, NavigationBackstackOption.SetAsRootPage);
         }
     }
 }

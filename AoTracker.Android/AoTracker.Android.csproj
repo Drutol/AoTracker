@@ -60,7 +60,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainActivity.cs" />
+    <Compile Include="Activities\MainActivity.cs" />
+    <Compile Include="App.cs" />
+    <Compile Include="Fragments\FeedPageFragment.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -96,10 +98,56 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AoLibs.Adapters.Android">
+      <Version>0.6.3</Version>
+    </PackageReference>
+    <PackageReference Include="AoLibs.Adapters.Core">
+      <Version>0.6.3</Version>
+    </PackageReference>
+    <PackageReference Include="AoLibs.Navigation.Android">
+      <Version>0.6.3</Version>
+    </PackageReference>
+    <PackageReference Include="AoLibs.Navigation.Core">
+      <Version>0.6.3</Version>
+    </PackageReference>
+    <PackageReference Include="AoLibs.Utilities.Android">
+      <Version>0.6.3</Version>
+    </PackageReference>
+    <PackageReference Include="Autofac">
+      <Version>4.9.3</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.2</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.CustomTabs" Version="28.0.0.1" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AoTracker.Crawlers\AoTracker.Crawlers.csproj">
+      <Project>{c9238ef5-d991-4c5f-8744-1d08645a114d}</Project>
+      <Name>AoTracker.Crawlers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AoTracker.Domain\AoTracker.Domain.csproj">
+      <Project>{6fdbb323-8f33-445f-9053-6c3339d997a9}</Project>
+      <Name>AoTracker.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AoTracker.Infrastructure\AoTracker.Infrastructure.csproj">
+      <Project>{2b05b47a-9f24-404b-b419-99f6df4b2572}</Project>
+      <Name>AoTracker.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AoTracker.Interfaces\AoTracker.Interfaces.csproj">
+      <Project>{a5a4f28d-0673-4ebe-94c5-c0b4d95e19fb}</Project>
+      <Name>AoTracker.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AoTracker.Resources\AoTracker.Resources.csproj">
+      <Project>{606a5091-d32e-405f-b0e8-983399ca7265}</Project>
+      <Name>AoTracker.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\page_feed.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

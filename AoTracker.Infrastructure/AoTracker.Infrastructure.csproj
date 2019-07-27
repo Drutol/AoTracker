@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="AoLibs.Adapters.Core" Version="0.6.3" />
+    <PackageReference Include="AoLibs.Navigation.Core" Version="0.6.3" />
     <PackageReference Include="Autofac" Version="4.9.2" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.1.0.53" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />

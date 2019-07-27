@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
 using AoTracker.Interfaces;
@@ -13,14 +14,14 @@ namespace AoTracker.Infrastructure.ViewModels
     public class CrawlerSetsViewModel : ViewModelBase
     {
         private readonly IUserDataProvider _userDataProvider;
-        private readonly INavigationManager _navigationManager;
+        private readonly INavigationManager<PageIndex> _navigationManager;
 
         private ObservableCollection<CrawlerSet> _sets;
         private CrawlerSet _selectedSet;
 
         public CrawlerSetsViewModel(
             IUserDataProvider userDataProvider,
-            INavigationManager navigationManager)
+            INavigationManager<PageIndex> navigationManager)
         {
             _userDataProvider = userDataProvider;
             _navigationManager = navigationManager;
@@ -33,7 +34,7 @@ namespace AoTracker.Infrastructure.ViewModels
 
         private void OnSetSelected()
         {
-            _navigationManager.PushPage(PageIndex.CrawlerSetDetails, SelectedSet);
+            _navigationManager.Navigate(PageIndex.CrawlerSetDetails, SelectedSet);
         }
 
         public ObservableCollection<CrawlerSet> Sets
@@ -50,7 +51,7 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public RelayCommand AddNewSetCommand => new RelayCommand(() =>
         {
-            _navigationManager.PushPage(PageIndex.CrawlerSetDetails);
+            _navigationManager.Navigate(PageIndex.CrawlerSetDetails);
         });
     }
 }
