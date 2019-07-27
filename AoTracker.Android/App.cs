@@ -14,6 +14,7 @@ using AoLibs.Adapters.Android.Interfaces;
 using AoLibs.Adapters.Core.Interfaces;
 using AoLibs.Navigation.Android.Navigation;
 using AoLibs.Navigation.Core.Interfaces;
+using AoTracker.Android.Activities;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Statics;
 using Autofac;

@@ -1,71 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Runtime.CompilerServices;
+using System.Text;
+using AoTracker.Domain.Messaging;
 
 namespace AoTracker.Infrastructure.ViewModels
 {
-    public abstract class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModelBase : GalaSoft.MvvmLight.ViewModelBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private string _title = string.Empty;
+        private string _title;
 
         public string Title
         {
             get => _title;
-            set => Set(ref _title, value);
+            set => Set(ref _title, value, title => MessengerInstance.Send(new PageTitleMessage(title)));
         }
 
-        protected bool Set<T>(
-            ref T backingStore,
-            T value,
-            Action onChanged = null,
-            [CallerMemberName] string propertyName = "")
+        public void UpdatePageTitle()
         {
-            if (EqualityComparer<T>.Default.Equals(backingStore, value))
-                return false;
-
-            backingStore = value;
-            onChanged?.Invoke();
-            RaisePropertyChanged(propertyName);
-            return true;
+            MessengerInstance.Send(new PageTitleMessage(Title));
         }
 
-        protected void RaisePropertyChanged([CallerMemberName] string propertyName = "")
+        protected bool Set<T>(ref T backingStore, T value, Action<T> onChanged)
         {
-            var changed = PropertyChanged;
-
-            changed?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected void RaisePropertyChanged<T>(Expression<Func<T>> propertyExpression)
-        {
-            RaisePropertyChanged(GetPropertyName(propertyExpression));
-        }
-
-        private static string GetPropertyName<T>(Expression<Func<T>> propertyExpression)
-        {
-            if (propertyExpression == null)
-            {
-                return null;
-            }
-
-            if (!(propertyExpression.Body is MemberExpression body))
-            {
-                throw new ArgumentException("Invalid argument", "propertyExpression");
-            }
-
-            var property = body.Member as PropertyInfo;
-
-            if (property == null)
-            {
-                throw new ArgumentException("Argument is not a property", "propertyExpression");
-            }
-
-            return property.Name;
+            var result = Set(ref backingStore, value);
+            if(result)
+                onChanged?.Invoke(value);
+            return result;
         }
     }
 }

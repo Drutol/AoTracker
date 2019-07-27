@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using AoTracker.Crawlers.Interfaces;
-using FFImageLoading.Forms;
 using GalaSoft.MvvmLight.Command;
 
 namespace AoTracker.Infrastructure.ViewModels.Item

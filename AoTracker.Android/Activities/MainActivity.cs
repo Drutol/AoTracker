@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Android.Support.V7.App;
-using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V4.Widget;
+using Android.Support.V7.App;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
@@ -16,20 +16,23 @@ using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Statics;
 using AoTracker.Infrastructure.ViewModels;
 using Autofac;
+using GalaSoft.MvvmLight.Helpers;
 using Toolbar = global::Android.Support.V7.Widget.Toolbar;
 
-namespace AoTracker.Android
+namespace AoTracker.Android.Activities
 {
     [Activity(
         Label = "@string/app_name",
         Theme = "@style/AppTheme",
         MainLauncher = true, LaunchMode = LaunchMode.SingleInstance,
         ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize)]
-    public class MainActivity : AppCompatActivity
+    public partial class MainActivity : AppCompatActivity
     {
         private ActionBarDrawerToggle _hamburgerToggle;
 
         public static Activity Instance { get; set; }
+
+        public List<Binding> Bindings { get; } = new List<Binding>();
 
         public MainActivity()
         {
@@ -48,12 +51,7 @@ namespace AoTracker.Android
                 new ViewModelResolver());
             SetSupportActionBar(Toolbar);
 
-            _hamburgerToggle = new ActionBarDrawerToggle(this, DrawerLayout, Toolbar,
-                Resource.String.DrawerOpen, Resource.String.DrawerClose);
-            DrawerLayout.AddDrawerListener(_hamburgerToggle);
-            _hamburgerToggle.SyncState();
-
-            NavigationView.Menu.Add("Test");
+            InitDrawer();
 
             using (var scope = ResourceLocator.ObtainScope())
             {

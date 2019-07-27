@@ -6,7 +6,6 @@ using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Domain.Enums;
 using AoTracker.Interfaces;
 using GalaSoft.MvvmLight.Command;
-using Xamarin.Forms;
 
 namespace AoTracker.Infrastructure.ViewModels
 {
@@ -17,12 +16,12 @@ namespace AoTracker.Infrastructure.ViewModels
         public WelcomeViewModel(INavigationManager<PageIndex> navigationManager)
         {
             _navigationManager = navigationManager;
-            Title = "Welcome";
         }
 
         public void NavigatedTo()
         {
-            
+
+
         }
 
         public RelayCommand StartCommand => new RelayCommand(() =>

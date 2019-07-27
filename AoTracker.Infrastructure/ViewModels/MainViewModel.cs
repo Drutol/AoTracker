@@ -8,7 +8,6 @@ using AoTracker.Domain;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Models;
 using AoTracker.Interfaces;
-using Xamarin.Forms;
 
 namespace AoTracker.Infrastructure.ViewModels
 {
@@ -59,9 +58,9 @@ namespace AoTracker.Infrastructure.ViewModels
                 _outerNavigationManager.Navigate(PageIndex.Feed, NavigationBackstackOption.SetAsRootPage);
         }
 
-        private void OnHamburgerSelectionChanged()
+        private void OnHamburgerSelectionChanged(HamburgerMenuEntry entry)
         {
-            _outerNavigationManager.Navigate(SelectedItem.Page, NavigationBackstackOption.SetAsRootPage);
+            _outerNavigationManager.Navigate(entry.Page, NavigationBackstackOption.SetAsRootPage);
         }
     }
 }

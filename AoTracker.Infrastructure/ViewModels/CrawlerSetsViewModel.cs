@@ -29,12 +29,13 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public void NavigatedTo()
         {
+
             Sets = new ObservableCollection<CrawlerSet>(_userDataProvider.CrawlingSets);
         }
 
-        private void OnSetSelected()
+        private void OnSetSelected(CrawlerSet set)
         {
-            _navigationManager.Navigate(PageIndex.CrawlerSetDetails, SelectedSet);
+            _navigationManager.Navigate(PageIndex.CrawlerSetDetails, set);
         }
 
         public ObservableCollection<CrawlerSet> Sets

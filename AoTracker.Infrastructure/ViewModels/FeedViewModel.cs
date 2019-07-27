@@ -28,6 +28,8 @@ namespace AoTracker.Infrastructure.ViewModels
             _lifetimeScope = lifetimeScope;
             _feedProvider.NewCrawlerBatch += FeedProviderOnNewCrawlerBatch;
             _feedProvider.Finished += FeedProviderOnFinished;
+
+            Title = "Feed";
         }
 
         private void FeedProviderOnFinished(object sender, EventArgs e)

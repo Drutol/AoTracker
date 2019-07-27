@@ -11,7 +11,7 @@ using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Interfaces;
 using AoTracker.Resources;
 using GalaSoft.MvvmLight.Command;
-using Xamarin.Forms;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace AoTracker.Infrastructure.ViewModels
 {
@@ -103,7 +103,7 @@ namespace AoTracker.Infrastructure.ViewModels
                     throw new ArgumentOutOfRangeException();
             }
 
-            MessagingCenter.Send(this, ConfigureCrawlerResultMessage.MessageKey, resultMessage);
+            MessengerInstance.Send(this, resultMessage);
 
             _navigationManager.GoBack();
         });

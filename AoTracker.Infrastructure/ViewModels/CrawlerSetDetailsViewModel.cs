@@ -17,8 +17,6 @@ using AoTracker.Interfaces;
 using AoTracker.Resources;
 using Autofac;
 using GalaSoft.MvvmLight.Command;
-using Xamarin.Forms;
-using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
 namespace AoTracker.Infrastructure.ViewModels
 {
@@ -38,14 +36,12 @@ namespace AoTracker.Infrastructure.ViewModels
             new CrawlerEntry
             {
                 CrawlerDomain = CrawlerDomain.Surugaya,
-                ImageSource = ImageSource.FromFile("surugaya.png"),
                 Title = "Suruga-ya"
             },
             new CrawlerEntry
             {
 
                 CrawlerDomain = CrawlerDomain.Mandarake,
-                ImageSource = ImageSource.FromFile("mandarake.png"),
                 Title = "Mandarake"
             },
         };
@@ -64,13 +60,10 @@ namespace AoTracker.Infrastructure.ViewModels
                 .Select(entry => lifetimeScope.TypedResolve<CrawlerEntryViewModel>(entry, this))
                 .ToList();
 
-            MessagingCenter.Subscribe<ConfigureSurugayaCrawlerViewModel, ConfigureCrawlerResultMessage>(
-                this,
-                ConfigureCrawlerResultMessage.MessageKey,
-                OnConfigureCrawlerResult);
+            MessengerInstance.Register<ConfigureCrawlerResultMessage>(this, OnConfigureCrawlerResult);
         }
 
-        private void OnConfigureCrawlerResult(ConfigureSurugayaCrawlerViewModel sender, ConfigureCrawlerResultMessage message)
+        private void OnConfigureCrawlerResult(ConfigureCrawlerResultMessage message)
         {
             //navigating back from configure crawler page
             if (message != null)
@@ -129,10 +122,7 @@ namespace AoTracker.Infrastructure.ViewModels
         public string SetName
         {
             get => _setName;
-            set => Set(ref _setName, value, () =>
-            {
-                RaisePropertyChanged(() => CanSave);
-            });
+            set => Set(ref _setName, value, _ => { RaisePropertyChanged(() => CanSave); });
         }
 
         public bool IsAddingNew

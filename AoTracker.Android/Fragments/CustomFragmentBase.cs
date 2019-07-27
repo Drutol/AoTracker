@@ -10,25 +10,16 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AoLibs.Navigation.Android.Navigation;
-using AoLibs.Navigation.Android.Navigation.Attributes;
-using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.ViewModels;
 
 namespace AoTracker.Android.Fragments
 {
-    [NavigationPage(PageIndex.Feed)]
-    public class FeedPageFragment : CustomFragmentBase<FeedViewModel>
+    public abstract class CustomFragmentBase<T> : FragmentBase<T> where T : ViewModelBase
     {
-        public override int LayoutResourceId { get; } = Resource.Layout.page_feed;
-
-        protected override void InitBindings()
-        {
-
-        }
-
         public override void NavigatedTo()
         {
-            ViewModel.NavigatedTo();
+            base.NavigatedTo();
+            ViewModel.UpdatePageTitle();
         }
     }
 }
