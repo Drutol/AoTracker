@@ -31,8 +31,8 @@
     </util:ViewModelContentPage.Resources>
 
     <ContentPage.Content>
-        <xForms:SfListView ItemsSource="{Binding Feed}"
-                           AutoFitMode="DynamicHeight" 
+        <ListView ItemsSource="{Binding Feed}"
+                           HasUnevenRows="False"
                            ItemTemplate="{StaticResource FeedCellDataTemplateSelector}"/>
     </ContentPage.Content>
 </util:ViewModelContentPage>
