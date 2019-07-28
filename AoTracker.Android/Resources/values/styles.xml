@@ -2,13 +2,15 @@
 
     <style name="AoTracker.Dark" parent="Theme.AppCompat.NoActionBar">
         <item name="TextColour">@color/DarkTextColour</item>
+        <item name="TextInvertedColour">@color/LightTextColour</item>
         <item name="BackgroundColour">@color/DarkBackgroundColour</item>
         <item name="ForegroundColour">@color/DarkForegroundColour</item>
         <item name="ForegroundDeepColour">@color/DarkForegroundDeepColour</item>
     </style>
 
-    <style name="AoTracker.Light" parent="Theme.AppCompat.NoActionBar">
+    <style name="AoTracker.Light" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="TextColour">@color/LightTextColour</item>
+        <item name="TextInvertedColour">@color/DarkTextColour</item>
         <item name="BackgroundColour">@color/LightBackgroundColour</item>
         <item name="ForegroundColour">@color/LightForegroundColour</item>
         <item name="ForegroundDeepColour">@color/LightForegroundDeepColour</item>

@@ -15,8 +15,8 @@
             android:layout_height="wrap_content"
             android:background="?AccentColour"
             android:fitsSystemWindows="true"
-            android:minHeight="?attr/actionBarSize"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+            app:titleTextColor="?TextInvertedColour"
+            android:minHeight="?attr/actionBarSize" />
 
         <FrameLayout
             android:id="@+id/RootView"
@@ -29,6 +29,5 @@
         android:id="@+id/NavigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@android:color/white" />
+        android:layout_gravity="start" />
 </android.support.v4.widget.DrawerLayout>

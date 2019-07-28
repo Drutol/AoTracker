@@ -30,6 +30,7 @@ namespace AoTracker.Android.Activities
     public partial class MainActivity : AppCompatActivity
     {
         private ActionBarDrawerToggle _hamburgerToggle;
+        private MainViewModel ViewModel { get; set; }
 
         public static Activity Instance { get; set; }
 
@@ -53,12 +54,13 @@ namespace AoTracker.Android.Activities
                 new ViewModelResolver());
             SetSupportActionBar(Toolbar);
 
-            InitDrawer();
-
             using (var scope = ResourceLocator.ObtainScope())
             {
-                scope.Resolve<MainViewModel>().Initialize();
+                ViewModel = scope.Resolve<MainViewModel>();
             }
+            ViewModel.Initialize();
+
+            InitDrawer();
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -85,6 +87,7 @@ namespace AoTracker.Android.Activities
         private FrameLayout _rootView;
         private NavigationView _navigationView;
         private DrawerLayout _drawerLayout;
+
 
         public Toolbar Toolbar => _toolbar ?? (_toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar));
         public FrameLayout RootView => _rootView ?? (_rootView = FindViewById<FrameLayout>(Resource.Id.RootView));

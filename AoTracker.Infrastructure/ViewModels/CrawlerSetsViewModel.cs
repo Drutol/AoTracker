@@ -25,11 +25,12 @@ namespace AoTracker.Infrastructure.ViewModels
         {
             _userDataProvider = userDataProvider;
             _navigationManager = navigationManager;
+
+            Title = "Crawler Sets";
         }
 
         public void NavigatedTo()
         {
-
             Sets = new ObservableCollection<CrawlerSet>(_userDataProvider.CrawlingSets);
         }
 

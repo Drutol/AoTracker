@@ -8,6 +8,7 @@ using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V7.App;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 using AoTracker.Domain.Enums;
@@ -19,6 +20,9 @@ namespace AoTracker.Android.Themes
 {
     public static class ThemeManager
     {
+        public static int TextColour { get; private set; }
+        public static int TextInvertedColour { get; private set; }
+
         public static void ApplyTheme(this AppCompatActivity activity)
         {
             var settings = ResourceLocator.ObtainScope().Resolve<ISettings>();
@@ -41,6 +45,16 @@ namespace AoTracker.Android.Themes
             {
                 activity.Theme.ApplyStyle(Resource.Style.ColourSchemeLime, true);
             }
+
+            var typedValue = new TypedValue();
+
+            activity.Theme.ResolveAttribute(Resource.Attribute.TextColour, typedValue, true);
+            TextColour = typedValue.Data;
+
+            activity.Theme.ResolveAttribute(Resource.Attribute.TextInvertedColour, typedValue, true);
+            TextInvertedColour = typedValue.Data;
         }
+
+
     }
 }
