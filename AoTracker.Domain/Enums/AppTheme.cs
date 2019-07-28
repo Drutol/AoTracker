@@ -4,7 +4,6 @@ using System.Text;
 
 namespace AoTracker.Domain.Enums
 {
-
     [Flags]
     public enum AppTheme
     {

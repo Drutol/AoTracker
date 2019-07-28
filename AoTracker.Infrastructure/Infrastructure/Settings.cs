@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using AoLibs.Adapters.Core.Interfaces;
+using AoTracker.Domain.Enums;
 using AoTracker.Interfaces;
 
 namespace AoTracker.Infrastructure.Infrastructure
@@ -19,6 +20,12 @@ namespace AoTracker.Infrastructure.Infrastructure
         {
             get => _settingsProvider.GetBool(nameof(PassedWelcome)) ?? false;
             set => _settingsProvider.SetBool(nameof(PassedWelcome), value);
+        }
+
+        public AppTheme AppTheme
+        {
+            get => (AppTheme) (_settingsProvider.GetInt(nameof(AppTheme)) ?? (int?) (AppTheme.Light | AppTheme.Orange));
+            set => _settingsProvider.SetInt(nameof(AppTheme), (int) value);
         }
     }
 }

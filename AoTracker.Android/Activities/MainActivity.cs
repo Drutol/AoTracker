@@ -12,6 +12,7 @@ using Android.Views;
 using Android.Widget;
 using AoLibs.Navigation.Android.Navigation;
 using AoLibs.Navigation.Core.Interfaces;
+using AoTracker.Android.Themes;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Statics;
 using AoTracker.Infrastructure.ViewModels;
@@ -23,7 +24,7 @@ namespace AoTracker.Android.Activities
 {
     [Activity(
         Label = "@string/app_name",
-        Theme = "@style/AppTheme",
+        Theme = "@style/AoTracker.Dark",
         MainLauncher = true, LaunchMode = LaunchMode.SingleInstance,
         ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize)]
     public partial class MainActivity : AppCompatActivity
@@ -42,6 +43,7 @@ namespace AoTracker.Android.Activities
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            this.ApplyTheme();
 
             SetContentView(Resource.Layout.activity_main);
 

@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2c3e50</color>
-    <color name="colorPrimaryDark">#1B3147</color>
-    <color name="colorAccent">#3498db</color>
+    <color name="OrangeColour">#ff8c00</color>
+    <color name="OrangeDarkColour">#cc7000</color>
+
+    <color name="LimeColour">#98c926</color>
+    <color name="LimeDarkColour">#6e8e21</color>
+
+    <color name="SkyBlueColour">#00a1e9</color>
+    <color name="SkyBlueDarkColour">#0076ab</color>
+
+    <color name="PurpleColour">#881798</color>
+    <color name="PurpleDarkColour">#5a1663</color>
+
+    <color name="DarkBackgroundColour">#101010</color>
+    <color name="DarkToolbarColour">#333333</color>
+    <color name="DarkTextColour">#ffffff</color>
+    <color name="DarkForegroundColour">#2b2b2b</color>
+    <color name="DarkForegroundDeepColour">#1d1d1d</color>
+    <color name="DarkRippleColour">#7ff6f6f6</color>
+
+    <color name="LightBackgroundColour">#fefefe</color>
+    <color name="LightTextColour">#1d1d1d</color>
+    <color name="LightForegroundColour">#f6f6f6</color>
+    <color name="LightForegroundDeepColour">#eaeaea</color>
+    <color name="LightRippleColour">#f6f6f6</color>
 </resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AppTheme">
+        <attr name="AccentColour" format="reference"/>
+        <attr name="AccentDarkColour" format="reference"/>
+        <attr name="BackgroundColour" format="reference"/>
+        <attr name="TextColour" format="reference"/>
+        <attr name="ToolbarColour" format="reference"/>
+        <attr name="ToolbarTextColour" format="reference"/>
+        <attr name="ForegroundColour" format="reference"/>
+        <attr name="ForegroundDeepColour" format="reference"/>
+    </declare-styleable>
+</resources>

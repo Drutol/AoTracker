@@ -67,6 +67,7 @@
     <Compile Include="Fragments\FeedPageFragment.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Themes\ThemeManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -150,7 +151,9 @@
       <Name>AoTracker.Resources</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\attrs.xml" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\page_feed.xml" />
   </ItemGroup>
