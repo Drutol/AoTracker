@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?ForegroundColour">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?ForegroundShallowColour"
+            android:elevation="4dp"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/Image"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center"
+                android:adjustViewBounds="true"
+                tools:src="@drawable/surugaya" />
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?TextColour"
+                tools:text="Surugaya" />
+
+            <TextView
+                android:id="@+id/SearchPhrase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                tools:text="Search phrase: Test" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

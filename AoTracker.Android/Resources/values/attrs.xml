@@ -5,10 +5,12 @@
         <attr name="AccentDarkColour" format="reference"/>
         <attr name="BackgroundColour" format="reference"/>
         <attr name="TextColour" format="reference"/>
+        <attr name="TextColourAccentContrast" format="reference"/>
         <attr name="TextInvertedColour" format="reference"/>
         <attr name="ToolbarColour" format="reference"/>
         <attr name="ToolbarTextColour" format="reference"/>
         <attr name="ForegroundColour" format="reference"/>
         <attr name="ForegroundDeepColour" format="reference"/>
+        <attr name="ForegroundShallowColour" format="reference"/>
     </declare-styleable>
 </resources>

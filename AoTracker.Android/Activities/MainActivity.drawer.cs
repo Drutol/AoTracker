@@ -44,11 +44,19 @@ namespace AoTracker.Android.Activities
 
         private void SetUpHamburgerButton()
         {
-            _hamburgerToggle = new ActionBarDrawerToggle(this, DrawerLayout, Toolbar,
-                Resource.String.DrawerOpen, Resource.String.DrawerClose)
+            _hamburgerToggle = new ActionBarDrawerToggle(
+                this,
+                DrawerLayout,
+                Toolbar,
+                Resource.String.DrawerOpen,
+                Resource.String.DrawerClose)
             {
-                DrawerArrowDrawable = {Color = ThemeManager.TextInvertedColour}
+                DrawerArrowDrawable =
+                {
+                    Color = ThemeManager.TextInvertedColour
+                }
             };
+
             DrawerLayout.AddDrawerListener(_hamburgerToggle);
             _hamburgerToggle.SyncState();
         }

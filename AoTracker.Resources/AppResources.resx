@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConfigureCrawler_Cost_OffsetIncrease" xml:space="preserve">
-    <value>Increase price </value>
+    <value>Increase price by offset</value>
   </data>
   <data name="ConfigureCrawler_Cost_OffsetIncrease_HelpText" xml:space="preserve">
     <value>This value will be added to the price after % increase</value>
@@ -127,7 +127,10 @@
     <value>Increase price by percentage</value>
   </data>
   <data name="ConfigureCrawler_Cost_PercentageIncrease_HelpText" xml:space="preserve">
-    <value>Increases the bases prices by given %</value>
+    <value>Increases the base prices by given %</value>
+  </data>
+  <data name="ConfigureCrawler_Save" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="ConfigureCrawler_SearchQuery_HelpText" xml:space="preserve">
     <value>At least 3 characters</value>
@@ -143,6 +146,15 @@
   </data>
   <data name="CrawlerSetDetails_Title_HelpText" xml:space="preserve">
     <value>Crawler set title</value>
+  </data>
+  <data name="CrawlerSetsPage_AddCrawlersHeader" xml:space="preserve">
+    <value>Add crawlers</value>
+  </data>
+  <data name="Item_CrawlerDescriptor_SearchPhrase" xml:space="preserve">
+    <value>Search Phrase:</value>
+  </data>
+  <data name="Meta_TargetAndroidFile" xml:space="preserve">
+    <value>AoTracker.Android\Resources\values\app_resources.xml</value>
   </data>
   <data name="PageTitle_ConfigureCrawlers" xml:space="preserve">
     <value>Configure {0} Crawler</value>

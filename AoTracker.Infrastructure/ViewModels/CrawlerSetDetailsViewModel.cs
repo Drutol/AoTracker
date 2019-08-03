@@ -46,8 +46,6 @@ namespace AoTracker.Infrastructure.ViewModels
             },
         };
 
-
-
         public CrawlerSetDetailsViewModel(
             IUserDataProvider userDataProvider,
             ILifetimeScope lifetimeScope,

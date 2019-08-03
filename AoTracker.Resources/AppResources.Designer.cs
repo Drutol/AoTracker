@@ -61,7 +61,7 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Increase price .
+        ///   Looks up a localized string similar to Increase price by offset.
         /// </summary>
         public static string ConfigureCrawler_Cost_OffsetIncrease {
             get {
@@ -88,11 +88,20 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Increases the bases prices by given %.
+        ///   Looks up a localized string similar to Increases the base prices by given %.
         /// </summary>
         public static string ConfigureCrawler_Cost_PercentageIncrease_HelpText {
             get {
                 return ResourceManager.GetString("ConfigureCrawler_Cost_PercentageIncrease_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string ConfigureCrawler_Save {
+            get {
+                return ResourceManager.GetString("ConfigureCrawler_Save", resourceCulture);
             }
         }
         
@@ -138,6 +147,33 @@ namespace AoTracker.Resources {
         public static string CrawlerSetDetails_Title_HelpText {
             get {
                 return ResourceManager.GetString("CrawlerSetDetails_Title_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add crawlers.
+        /// </summary>
+        public static string CrawlerSetsPage_AddCrawlersHeader {
+            get {
+                return ResourceManager.GetString("CrawlerSetsPage_AddCrawlersHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search Phrase:.
+        /// </summary>
+        public static string Item_CrawlerDescriptor_SearchPhrase {
+            get {
+                return ResourceManager.GetString("Item_CrawlerDescriptor_SearchPhrase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AoTracker.Android\Resources\values\app_resources.xml.
+        /// </summary>
+        public static string Meta_TargetAndroidFile {
+            get {
+                return ResourceManager.GetString("Meta_TargetAndroidFile", resourceCulture);
             }
         }
         

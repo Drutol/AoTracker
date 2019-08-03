@@ -1,0 +1,20 @@
+<resources>
+<string name="ConfigureCrawler_Cost_OffsetIncrease">Increase price by offset</string>
+<string name="ConfigureCrawler_Cost_OffsetIncrease_HelpText">This value will be added to the price after % increase</string>
+<string name="ConfigureCrawler_Cost_PercentageIncrease">Increase price by percentage</string>
+<string name="ConfigureCrawler_Cost_PercentageIncrease_HelpText">Increases the base prices by given %</string>
+<string name="ConfigureCrawler_Save">Save</string>
+<string name="ConfigureCrawler_SearchQuery_HelpText">At least 3 characters</string>
+<string name="ConfigureCrawler_SearchQuery_Placeholder">Search query...</string>
+<string name="ConfigureCrawler_TrimJapaneseQuotationMarks">Remove text content from between 「 」</string>
+<string name="CrawlerSetDetails_Title">Title</string>
+<string name="CrawlerSetDetails_Title_HelpText">Crawler set title</string>
+<string name="CrawlerSetsPage_AddCrawlersHeader">Add crawlers</string>
+<string name="Meta_TargetAndroidFile">AoTracker.Android\Resources\values\app_resources.xml</string>
+<string name="PageTitle_ConfigureCrawlers">Configure {0} Crawler</string>
+<string name="PageTitle_Feed">Feed</string>
+<string name="PageTitle_SetDetails">Set "{0}" Details</string>
+<string name="PageTitle_SetDetails_AddNew">Add New Set</string>
+<string name="PageTitle_Sets">Sets</string>
+<string name="SurugayaCrawlerCell_TrimsFromQuotationMarks">Removes content from 「 」</string>
+</resources>

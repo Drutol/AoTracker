@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextViewHeader">
+        <item name="android:fontFamily">@string/font_family_medium</item>
+        <item name="android:textColor">?AccentColour</item>
+        <item name="android:textSize">@dimen/FontSizeMedium</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <style name="TextViewSubtitle">
+        <item name="android:fontFamily">@string/font_family_medium</item>
+        <item name="android:textColor">?TextColour</item>
+        <item name="android:textSize">@dimen/FontSizeMedium</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <style name="TextViewHelp">
+        <item name="android:fontFamily">@string/font_family_light</item>
+        <item name="android:textColor">?TextColour</item>
+        <item name="android:textSize">@dimen/FontSizeSemiNormal</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:drawableLeft">@drawable/icon_chevron_right_small</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawableTint">?AccentColour</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
+</resources>
