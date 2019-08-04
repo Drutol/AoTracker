@@ -12,7 +12,11 @@ namespace AoTracker.Infrastructure.ViewModels
         public string Title
         {
             get => _title;
-            set => Set(ref _title, value, title => MessengerInstance.Send(new PageTitleMessage(title)));
+            set
+            {
+                Set(ref _title, value);
+                MessengerInstance.Send(new PageTitleMessage(value));
+            }
         }
 
         public void UpdatePageTitle()

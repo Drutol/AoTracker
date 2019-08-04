@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="?ForegroundColour">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/ClickSurface"
@@ -38,35 +37,42 @@
             android:orientation="vertical"
             android:padding="8dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@string/font_family_medium"
-                android:text="Suruga-ya Crawler"
-                android:textColor="?TextColour" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:fontFamily="@string/font_family_medium"-->
+                <!--android:text="Suruga-ya Crawler"-->
+                <!--android:textColor="?TextColour" />-->
 
             <include layout="@layout/item_crawler_shared" />
 
             <LinearLayout
                 android:id="@+id/RemovesQuotationMarksIndicator"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <View style="@style/ViewDivider" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icon_tick_small"
-                    android:tint="?AccentColour" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="@string/Item_SurugayaCrawlerCell_TrimsFromQuotationMarks"
-                    android:textColor="?TextColour" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_tick_small"
+                        android:tint="?AccentColour" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="@string/Item_SurugayaCrawlerCell_TrimsFromQuotationMarks"
+                        android:textColor="?TextColour" />
+                </LinearLayout>
+
 
             </LinearLayout>
 

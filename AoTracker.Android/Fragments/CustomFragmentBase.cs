@@ -21,5 +21,11 @@ namespace AoTracker.Android.Fragments
             base.NavigatedTo();
             ViewModel.UpdatePageTitle();
         }
+
+        public override void NavigatedBack()
+        {
+            base.NavigatedBack();
+            ViewModel.UpdatePageTitle();
+        }
     }
 }

@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using AoLibs.Adapters.Android;
 using AoLibs.Adapters.Android.Interfaces;
+using AoLibs.Adapters.Core;
 using AoLibs.Adapters.Core.Interfaces;
 using AoLibs.Navigation.Android.Navigation;
 using AoLibs.Navigation.Core.Interfaces;

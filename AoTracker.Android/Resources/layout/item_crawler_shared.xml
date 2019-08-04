@@ -11,7 +11,7 @@
         android:layout_marginTop="4dp">
 
         <LinearLayout
-            android:layout_width="110dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:gravity="center_vertical">
 
@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:textColor="?TextColour"
+            android:textSize="@dimen/FontSizeMedium"
             tools:text="蒼の彼方のフォーリズム　タペストリ" />
     </LinearLayout>
 
@@ -46,7 +47,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="110dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:gravity="center_vertical">
 

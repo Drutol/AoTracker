@@ -15,6 +15,7 @@ using Android.Widget;
 using AoLibs.Adapters.Android.Recycler;
 using AoLibs.Navigation.Android.Navigation.Attributes;
 using AoLibs.Utilities.Android;
+using AoLibs.Utilities.Android.Listeners;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Surugaya;
 using AoTracker.Domain.Enums;
@@ -25,6 +26,7 @@ using AoTracker.Infrastructure.ViewModels;
 using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Resources;
 using GalaSoft.MvvmLight.Helpers;
+using PopupMenu = Android.Support.V7.Widget.PopupMenu;
 
 namespace AoTracker.Android.Fragments
 {
@@ -53,10 +55,8 @@ namespace AoTracker.Android.Fragments
                     Resource.Layout.item_add_crawler));
 
             Bindings.Add(
-                this.SetBinding(() => ViewModel.Title,
+                this.SetBinding(() => ViewModel.SetName,
                     () => TitleTextBox.Text, BindingMode.TwoWay));
-
-
 
             CrawlersRecyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
             AddCrawlersRecyclerView.SetLayoutManager(new GridLayoutManager(Activity, 3));
@@ -65,6 +65,19 @@ namespace AoTracker.Android.Fragments
         private void CrawlerDescriptorDataTemplate(CrawlerDescriptorViewModel item, SurugayaCrawlerHolder holder, int position)
         {
             holder.ClickSurface.SetOnClickCommand(ViewModel.SelectCrawlerDescriptorCommand, item);
+            holder.ClickSurface.SetOnLongClickListener(new OnLongClickListener(view =>
+            {
+                var menu = new PopupMenu(Activity, holder.ItemView);
+                menu.Menu.Add("Delete");
+                menu.MenuItemClick += (sender, args) =>
+                {
+                    if (args.Item.ItemId == 0)
+                    {
+                        ViewModel.RemoveDescriptorCommand.Execute(item);
+                    }
+                };
+                menu.Show();
+            }));
         }
 
         private void AddCrawlerDataTemplate(CrawlerEntryViewModel item, AddCrawlerHolder holder, int position)
@@ -85,7 +98,20 @@ namespace AoTracker.Android.Fragments
 
         public override void NavigatedTo()
         {
+            base.NavigatedTo();
             ViewModel.NavigatedTo(NavigationArguments as CrawlerSetDetailsPageNavArgs);
+        }
+
+        public override void NavigatedBack()
+        {
+            base.NavigatedBack();
+            ViewModel.NavigatedBack();
+        }
+
+        public override void NavigatedFrom()
+        {
+            base.NavigatedFrom();
+            ViewModel.NavigatedFrom();
         }
 
         #region Views

@@ -97,6 +97,15 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Configure.
+        /// </summary>
+        public static string ConfigureCrawler_Header {
+            get {
+                return ResourceManager.GetString("ConfigureCrawler_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string ConfigureCrawler_Save {
@@ -133,6 +142,15 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string CrawlerSetDetails_Save {
+            get {
+                return ResourceManager.GetString("CrawlerSetDetails_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Title.
         /// </summary>
         public static string CrawlerSetDetails_Title {
@@ -151,11 +169,20 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add crawlers.
+        ///   Looks up a localized string similar to Add crawler.
         /// </summary>
         public static string CrawlerSetsPage_AddCrawlersHeader {
             get {
                 return ResourceManager.GetString("CrawlerSetsPage_AddCrawlersHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current crawlers.
+        /// </summary>
+        public static string CrawlerSetsPage_CurrentCrawlersHeader {
+            get {
+                return ResourceManager.GetString("CrawlerSetsPage_CurrentCrawlersHeader", resourceCulture);
             }
         }
         

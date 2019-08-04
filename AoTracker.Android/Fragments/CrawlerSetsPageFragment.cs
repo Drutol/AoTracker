@@ -44,6 +44,12 @@ namespace AoTracker.Android.Fragments
 
         public override void NavigatedTo()
         {
+            base.NavigatedTo();
+            ViewModel.NavigatedTo();
+        }
+
+        public override void NavigatedBack()
+        {
             ViewModel.NavigatedTo();
         }
 

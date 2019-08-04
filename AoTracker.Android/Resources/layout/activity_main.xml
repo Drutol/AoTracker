@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:background="?AccentColour"
             android:fitsSystemWindows="true"
+            android:elevation="4dp"
             app:titleTextColor="?TextInvertedColour"
             android:minHeight="?attr/actionBarSize" />
 

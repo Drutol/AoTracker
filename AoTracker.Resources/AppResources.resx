@@ -129,6 +129,9 @@
   <data name="ConfigureCrawler_Cost_PercentageIncrease_HelpText" xml:space="preserve">
     <value>Increases the base prices by given %</value>
   </data>
+  <data name="ConfigureCrawler_Header" xml:space="preserve">
+    <value>Configure</value>
+  </data>
   <data name="ConfigureCrawler_Save" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -141,6 +144,9 @@
   <data name="ConfigureCrawler_TrimJapaneseQuotationMarks" xml:space="preserve">
     <value>Remove text content from between 「 」</value>
   </data>
+  <data name="CrawlerSetDetails_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="CrawlerSetDetails_Title" xml:space="preserve">
     <value>Title</value>
   </data>
@@ -148,7 +154,10 @@
     <value>Crawler set title</value>
   </data>
   <data name="CrawlerSetsPage_AddCrawlersHeader" xml:space="preserve">
-    <value>Add crawlers</value>
+    <value>Add crawler</value>
+  </data>
+  <data name="CrawlerSetsPage_CurrentCrawlersHeader" xml:space="preserve">
+    <value>Current crawlers</value>
   </data>
   <data name="Item_CrawlerCell_PriceIncrease" xml:space="preserve">
     <value>Price increase:</value>

@@ -3,13 +3,16 @@
 <string name="ConfigureCrawler_Cost_OffsetIncrease_HelpText">This value will be added to the price after % increase</string>
 <string name="ConfigureCrawler_Cost_PercentageIncrease">Increase price by percentage</string>
 <string name="ConfigureCrawler_Cost_PercentageIncrease_HelpText">Increases the base prices by given %</string>
+<string name="ConfigureCrawler_Header">Configure</string>
 <string name="ConfigureCrawler_Save">Save</string>
 <string name="ConfigureCrawler_SearchQuery_HelpText">At least 3 characters</string>
 <string name="ConfigureCrawler_SearchQuery_Placeholder">Search query...</string>
 <string name="ConfigureCrawler_TrimJapaneseQuotationMarks">Remove text content from between 「 」</string>
+<string name="CrawlerSetDetails_Save">Save</string>
 <string name="CrawlerSetDetails_Title">Title</string>
 <string name="CrawlerSetDetails_Title_HelpText">Crawler set title</string>
-<string name="CrawlerSetsPage_AddCrawlersHeader">Add crawlers</string>
+<string name="CrawlerSetsPage_AddCrawlersHeader">Add crawler</string>
+<string name="CrawlerSetsPage_CurrentCrawlersHeader">Current crawlers</string>
 <string name="Item_CrawlerCell_PriceIncrease">Price increase:</string>
 <string name="Item_CrawlerCell_SearchPhrase">Search phrase:</string>
 <string name="Item_CrawlerDescriptor_SearchPhrase">Search Phrase:</string>

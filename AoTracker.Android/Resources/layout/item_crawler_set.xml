@@ -15,14 +15,14 @@
 
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="?ForegroundShallowColour"
             android:elevation="4dp"
             android:padding="8dp">
 
             <ImageView
                 android:id="@+id/ImageLeft"
-                android:layout_width="25dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/surugaya" />
@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="?TextColour"
-                tools:text="Surugaya" />
+                tools:text="Some crawler set" />
 
         </LinearLayout>
 

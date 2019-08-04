@@ -11,7 +11,6 @@
     <style name="TextViewSubtitle">
         <item name="android:fontFamily">@string/font_family_medium</item>
         <item name="android:textColor">?TextColour</item>
-        <item name="android:textSize">@dimen/FontSizeMedium</item>
         <item name="android:layout_margin">8dp</item>
     </style>
 

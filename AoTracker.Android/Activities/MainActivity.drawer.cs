@@ -17,6 +17,7 @@ using AoTracker.Domain.Enums;
 using AoTracker.Domain.Messaging;
 using GalaSoft.MvvmLight.Helpers;
 using Messenger = GalaSoft.MvvmLight.Messaging.Messenger;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace AoTracker.Android.Activities
 {
@@ -25,9 +26,11 @@ namespace AoTracker.Android.Activities
         private void InitDrawer()
         {
             Messenger.Default.Register<PageTitleMessage>(this, OnNewPageTitle);
+            Messenger.Default.Register<ToolbarRequestMessage>(this, OnNewToolbarRequest);
 
             SetUpHamburgerButton();
             NavigationView.NavigationItemSelected += NavigationViewOnNavigationItemSelected;
+            Toolbar.MenuItemClick += ToolbarOnMenuItemClick;
 
             Bindings.Add(this.SetBinding(() => ViewModel.HamburgerItems).WhenSourceChanges(() =>
             {
@@ -36,11 +39,7 @@ namespace AoTracker.Android.Activities
             }));
         }
 
-        private void NavigationViewOnNavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
-        {
-            ViewModel.SelectedItem =
-                ViewModel.HamburgerItems.First(entry => entry.Page == (PageIndex) e.MenuItem.ItemId);
-        }
+        #region HamburgerItems
 
         private void SetUpHamburgerButton()
         {
@@ -76,9 +75,45 @@ namespace AoTracker.Android.Activities
             }
         }
 
+        private void NavigationViewOnNavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
+        {
+            ViewModel.SelectedItem =
+                ViewModel.HamburgerItems.First(entry => entry.Page == (PageIndex)e.MenuItem.ItemId);
+        }
+
+        #endregion
+
+        private void ToolbarOnMenuItemClick(object sender, Toolbar.MenuItemClickEventArgs e)
+        {
+            Messenger.Default.Send((ToolbarActionMessage)e.Item.ItemId);
+        }
+
+        #region MessengerSubscriptions
+
+        private void OnNewToolbarRequest(ToolbarRequestMessage request)
+        {
+            switch (request)
+            {
+                case ToolbarRequestMessage.ShowSaveButton:
+                    Toolbar.Menu.Add(0, (int)ToolbarActionMessage.ClickedSaveButton, 0, "Save")
+                        .SetIcon(Resource.Drawable.icon_tick)
+                        .SetShowAsAction(ShowAsAction.Always);
+                    break;
+                case ToolbarRequestMessage.ResetToolbar:
+                    Toolbar.Menu.Clear();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(request), request, null);
+            }
+
+        }
+
         private void OnNewPageTitle(PageTitleMessage message)
         {
             SupportActionBar.Title = message.NewTitle;
         }
+
+        #endregion
+
     }
 }

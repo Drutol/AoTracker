@@ -4,9 +4,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Domain.Enums;
+using AoTracker.Domain.Messaging;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Models;
 using AoTracker.Infrastructure.Models.Messages;
@@ -31,7 +33,7 @@ namespace AoTracker.Infrastructure.ViewModels
         private CrawlerSet _currentSet;
         private ObservableCollection<CrawlerDescriptorViewModel> _crawlerDescriptors;
 
-        private List<CrawlerEntry> _crawlerEntries = new List<CrawlerEntry>
+        private readonly List<CrawlerEntry> _crawlerEntries = new List<CrawlerEntry>
         {
             new CrawlerEntry
             {
@@ -59,6 +61,29 @@ namespace AoTracker.Infrastructure.ViewModels
                 .ToList();
 
             MessengerInstance.Register<ConfigureCrawlerResultMessage>(this, OnConfigureCrawlerResult);
+
+        }
+
+        private async void OnToolbarAction(ToolbarActionMessage action)
+        {
+            if (action == ToolbarActionMessage.ClickedSaveButton)
+            {
+                if (IsAddingNew)
+                {
+                    await _userDataProvider.AddNewSet(new CrawlerSet
+                    {
+                        CreatedAt = DateTime.UtcNow,
+                        Descriptors = CrawlerDescriptors.Select(model => model.BackingModel).ToList(),
+                        Name = SetName
+                    });
+                }
+                else
+                {
+                    await _userDataProvider.UpdateSet(_currentSet);
+                    
+                }
+                _navigationManager.GoBack();
+            }
         }
 
         private void OnConfigureCrawlerResult(ConfigureCrawlerResultMessage message)
@@ -84,13 +109,17 @@ namespace AoTracker.Infrastructure.ViewModels
             }
         }
 
+        #region Lifecycle
+
         public void NavigatedTo(CrawlerSetDetailsPageNavArgs navArgs)
         {
-            var crawlerSet = navArgs.CrawlerSet;
+            StartListeningForToolbarActions();
 
-            if (crawlerSet == _currentSet)
+            var crawlerSet = navArgs?.CrawlerSet;
+
+            if (crawlerSet == _currentSet && crawlerSet != null)
                 return;
-            
+
             if (crawlerSet == null)
             {
                 Title = _currentSet == null
@@ -109,6 +138,30 @@ namespace AoTracker.Infrastructure.ViewModels
                     descriptor => _lifetimeScope.TypedResolve<CrawlerDescriptorViewModel>(descriptor)));
                 IsAddingNew = false;
             }
+        }
+
+        public void NavigatedBack()
+        {
+            StartListeningForToolbarActions();
+        }
+
+        public void NavigatedFrom()
+        {
+            StopListeningForToolbarActions();
+        }
+
+        #endregion
+
+        private void StopListeningForToolbarActions()
+        {
+            MessengerInstance.Send(ToolbarRequestMessage.ResetToolbar);
+            MessengerInstance.Unregister<ToolbarActionMessage>(this, OnToolbarAction);
+        }
+
+        private void StartListeningForToolbarActions()
+        {
+            MessengerInstance.Send(ToolbarRequestMessage.ShowSaveButton);
+            MessengerInstance.Register<ToolbarActionMessage>(this, OnToolbarAction);
         }
 
         public List<CrawlerEntryViewModel> CrawlerEntries { get; }
@@ -133,11 +186,8 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public bool CanSave => true;
 
-        public RelayCommand<CrawlerDescriptor> RemoveDescriptorCommand => new RelayCommand<CrawlerDescriptor>(
-            descriptor =>
-            {
-
-            });
+        public RelayCommand<CrawlerDescriptorViewModel> RemoveDescriptorCommand => new RelayCommand<CrawlerDescriptorViewModel>(
+            descriptor => { _crawlerDescriptors.Remove(descriptor); });
 
         public RelayCommand<CrawlerEntryViewModel> AddCrawlerCommand => new RelayCommand<CrawlerEntryViewModel>(entry =>
         {

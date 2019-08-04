@@ -40,7 +40,7 @@ namespace AoTracker.Android.Fragments.CrawlerConfigure
 
             Bindings.Add(
                 this.SetBinding(() => ViewModel.TrimJapaneseQuotationMarks,
-                    () => RemoveFromQuotationMarksCheckbox.Checked, BindingMode.OneWay));
+                    () => RemoveFromQuotationMarksCheckbox.Checked, BindingMode.TwoWay));
 
             SaveButton.SetOnClickCommand(ViewModel.SaveCommand);
 

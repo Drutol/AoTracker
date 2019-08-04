@@ -15,6 +15,7 @@ namespace AoTracker.Infrastructure.ViewModels
     {
         private readonly ISettings _settings;
         private readonly INavigationManager<PageIndex> _outerNavigationManager;
+        private readonly IUserDataProvider _userDataProvider;
         private ObservableCollection<HamburgerMenuEntry> _hamburgerItems;
         private HamburgerMenuEntry _selectedItem;
 
@@ -44,18 +45,23 @@ namespace AoTracker.Infrastructure.ViewModels
             set => Set(ref _selectedItem, value, OnHamburgerSelectionChanged);
         }
 
-        public MainViewModel(ISettings settings, INavigationManager<PageIndex> outerNavigationManager)
+        public MainViewModel(ISettings settings,
+            INavigationManager<PageIndex> outerNavigationManager,
+            IUserDataProvider userDataProvider)
         {
             _settings = settings;
             _outerNavigationManager = outerNavigationManager;
+            _userDataProvider = userDataProvider;
             HamburgerItems = new ObservableCollection<HamburgerMenuEntry>(_allEntries);
 
         }
 
-        public void Initialize()
+        public async void Initialize()
         {
+            await _userDataProvider.Initialize();
+
             if (!_settings.PassedWelcome)
-                _outerNavigationManager.Navigate(PageIndex.Feed, NavigationBackstackOption.SetAsRootPage);
+                _outerNavigationManager.Navigate(PageIndex.CrawlerSets, NavigationBackstackOption.SetAsRootPage);
         }
 
         private void OnHamburgerSelectionChanged(HamburgerMenuEntry entry)

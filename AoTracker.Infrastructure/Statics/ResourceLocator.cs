@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AoLibs.Adapters.Core;
+using AoLibs.Adapters.Core.Interfaces;
 using AoTracker.Infrastructure.Crawling;
 using AoTracker.Infrastructure.Infrastructure;
 using AoTracker.Interfaces;
@@ -18,6 +20,8 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterType<CrawlerManagerProvider>().As<ICrawlerManagerProvider>().SingleInstance();
             builder.RegisterType<FeedProvider>().As<IFeedProvider>().SingleInstance();
             builder.RegisterType<UserDataProvider>().As<IUserDataProvider>().SingleInstance();
+            builder.RegisterType<DataCache>().As<IDataCache>().SingleInstance();
+            builder.RegisterType<AppVariables>().SingleInstance();
 
             builder.RegisterBuildCallback(BuildCallback);
 

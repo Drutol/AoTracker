@@ -28,31 +28,30 @@
             android:text="@string/CrawlerSetDetails_Title_HelpText" />
     </android.support.design.widget.TextInputLayout>
 
+    <TextView
+        style="@style/TextViewHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/CrawlerSetsPage_CurrentCrawlersHeader" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/CrawlersRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
         android:layout_weight="1" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        style="@style/TextViewHeader"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?ForegroundShallowColour">
-
-        <TextView
-            style="@style/TextViewHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/CrawlerSetsPage_AddCrawlersHeader" />
-
-    </LinearLayout>
-
+        android:text="@string/CrawlerSetsPage_AddCrawlersHeader" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/AddCrawlersRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp" />
 
 </LinearLayout>
