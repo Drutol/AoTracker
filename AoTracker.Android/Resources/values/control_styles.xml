@@ -26,4 +26,11 @@
         <item name="android:layout_marginBottom">4dp</item>
     </style>
 
+    <style name="ViewDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:background">?ForegroundDeepColour</item>
+    </style>
+
 </resources>

@@ -103,7 +103,7 @@ namespace AoTracker.Infrastructure.ViewModels
                     throw new ArgumentOutOfRangeException();
             }
 
-            MessengerInstance.Send(this, resultMessage);
+            MessengerInstance.Send(resultMessage);
 
             _navigationManager.GoBack();
         });

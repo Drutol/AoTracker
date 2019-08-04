@@ -18,6 +18,7 @@ using AoLibs.Utilities.Android.Listeners;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.ViewModels;
+using GalaSoft.MvvmLight.Helpers;
 
 namespace AoTracker.Android.Fragments
 {
@@ -28,9 +29,14 @@ namespace AoTracker.Android.Fragments
 
         protected override void InitBindings()
         {
-            SetsRecyclerView.SetAdapter(new ObservableRecyclerAdapter<CrawlerSet, CrawlerEntryHolder>(ViewModel.Sets,
-                DataTemplate, LayoutInflater,
-                Resource.Layout.item_crawler_set) {StretchContentHorizonatally = true});
+            Bindings.Add(this.SetBinding(() => ViewModel.Sets).WhenSourceChanges(() =>
+            {
+                SetsRecyclerView.SetAdapter(new ObservableRecyclerAdapter<CrawlerSet, CrawlerEntryHolder>(ViewModel.Sets,
+                        DataTemplate, LayoutInflater,
+                        Resource.Layout.item_crawler_set)
+                    { StretchContentHorizonatally = true });
+            }));
+
             SetsRecyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
 
             AddButton.SetOnClickCommand(ViewModel.AddNewSetCommand);
@@ -44,7 +50,7 @@ namespace AoTracker.Android.Fragments
         private void DataTemplate(CrawlerSet item, CrawlerEntryHolder holder, int position)
         {
             holder.Title.Text = item.Name;
-            holder.ClickSurface.SetOnClickListener(new OnClickListener(view => ViewModel.SelectedSet = item));
+            holder.ClickSurface.SetOnClickCommand(ViewModel.NavigateSetCommand, item);
         }
 
         #region Views

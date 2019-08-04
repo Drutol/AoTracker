@@ -84,8 +84,10 @@ namespace AoTracker.Infrastructure.ViewModels
             }
         }
 
-        public void NavigatedTo(CrawlerSet crawlerSet)
+        public void NavigatedTo(CrawlerSetDetailsPageNavArgs navArgs)
         {
+            var crawlerSet = navArgs.CrawlerSet;
+
             if (crawlerSet == _currentSet)
                 return;
             
@@ -137,23 +139,23 @@ namespace AoTracker.Infrastructure.ViewModels
 
             });
 
-        public RelayCommand<CrawlerEntry> AddCrawlerCommand => new RelayCommand<CrawlerEntry>(entry =>
+        public RelayCommand<CrawlerEntryViewModel> AddCrawlerCommand => new RelayCommand<CrawlerEntryViewModel>(entry =>
         {
             var navArgs = new ConfigureCrawlerPageNavArgs
             {
                 ConfigureNew = true,
-                Domain = entry.CrawlerDomain
+                Domain = entry.BackingModel.CrawlerDomain
             };
             NavigateConfigureDescriptor(navArgs);
         });
 
-        public RelayCommand<CrawlerDescriptor> SelectCrawlerDescriptorCommand =>
-            new RelayCommand<CrawlerDescriptor>(descriptor =>
+        public RelayCommand<CrawlerDescriptorViewModel> SelectCrawlerDescriptorCommand =>
+            new RelayCommand<CrawlerDescriptorViewModel>(descriptor =>
             {
                 var navArgs = new ConfigureCrawlerPageNavArgs
                 {
                     ConfigureNew = false,
-                    DescriptorToEdit = descriptor
+                    DescriptorToEdit = descriptor.BackingModel
                 };
                 NavigateConfigureDescriptor(navArgs);
             });

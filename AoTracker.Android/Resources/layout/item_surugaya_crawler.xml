@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?ForegroundColour">
 
     <LinearLayout
+        android:id="@+id/ClickSurface"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="?BackgroundColour"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackground">
 
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="?ForegroundShallowColour"
             android:elevation="4dp"
             android:padding="8dp">
@@ -22,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center"
                 android:adjustViewBounds="true"
-                tools:src="@drawable/surugaya" />
+                android:src="@drawable/surugaya" />
         </FrameLayout>
 
 
@@ -34,18 +39,36 @@
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="?TextColour"
-                tools:text="Surugaya" />
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@string/font_family_medium"
+                android:text="Suruga-ya Crawler"
+                android:textColor="?TextColour" />
 
-            <TextView
-                android:id="@+id/SearchPhrase"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                tools:text="Search phrase: Test" />
+            <include layout="@layout/item_crawler_shared" />
+
+            <LinearLayout
+                android:id="@+id/RemovesQuotationMarksIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View style="@style/ViewDivider" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_tick_small"
+                    android:tint="?AccentColour" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/Item_SurugayaCrawlerCell_TrimsFromQuotationMarks"
+                    android:textColor="?TextColour" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

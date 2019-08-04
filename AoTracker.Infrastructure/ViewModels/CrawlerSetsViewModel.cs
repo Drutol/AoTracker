@@ -6,6 +6,7 @@ using System.Text;
 using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
+using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Interfaces;
 using GalaSoft.MvvmLight.Command;
 
@@ -34,26 +35,20 @@ namespace AoTracker.Infrastructure.ViewModels
             Sets = new ObservableCollection<CrawlerSet>(_userDataProvider.CrawlingSets);
         }
 
-        private void OnSetSelected(CrawlerSet set)
-        {
-            _navigationManager.Navigate(PageIndex.CrawlerSetDetails, set);
-        }
-
         public ObservableCollection<CrawlerSet> Sets
         {
             get => _sets;
             set => Set(ref _sets, value);
         }
 
-        public CrawlerSet SelectedSet
-        {
-            get => _selectedSet;
-            set => Set(ref _selectedSet, value, OnSetSelected);
-        }
-
         public RelayCommand AddNewSetCommand => new RelayCommand(() =>
         {
             _navigationManager.Navigate(PageIndex.CrawlerSetDetails);
+        });
+
+        public RelayCommand<CrawlerSet> NavigateSetCommand => new RelayCommand<CrawlerSet>(set =>
+        {
+            _navigationManager.Navigate(PageIndex.CrawlerSetDetails, new CrawlerSetDetailsPageNavArgs(set));
         });
     }
 }

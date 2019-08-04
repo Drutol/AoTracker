@@ -15,6 +15,6 @@ namespace AoTracker.Infrastructure.ViewModels.Item
             _parent = parent;
         }
 
-        public RelayCommand<CrawlerEntry> SelectCommand => _parent.AddCrawlerCommand;
+        public RelayCommand<CrawlerEntryViewModel> SelectCommand => _parent.AddCrawlerCommand;
     }
 }

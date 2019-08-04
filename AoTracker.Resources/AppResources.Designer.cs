@@ -160,11 +160,38 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Price increase:.
+        /// </summary>
+        public static string Item_CrawlerCell_PriceIncrease {
+            get {
+                return ResourceManager.GetString("Item_CrawlerCell_PriceIncrease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search phrase:.
+        /// </summary>
+        public static string Item_CrawlerCell_SearchPhrase {
+            get {
+                return ResourceManager.GetString("Item_CrawlerCell_SearchPhrase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search Phrase:.
         /// </summary>
         public static string Item_CrawlerDescriptor_SearchPhrase {
             get {
                 return ResourceManager.GetString("Item_CrawlerDescriptor_SearchPhrase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removes content from 「 」.
+        /// </summary>
+        public static string Item_SurugayaCrawlerCell_TrimsFromQuotationMarks {
+            get {
+                return ResourceManager.GetString("Item_SurugayaCrawlerCell_TrimsFromQuotationMarks", resourceCulture);
             }
         }
         
@@ -219,15 +246,6 @@ namespace AoTracker.Resources {
         public static string PageTitle_Sets {
             get {
                 return ResourceManager.GetString("PageTitle_Sets", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removes content from 「 」.
-        /// </summary>
-        public static string SurugayaCrawlerCell_TrimsFromQuotationMarks {
-            get {
-                return ResourceManager.GetString("SurugayaCrawlerCell_TrimsFromQuotationMarks", resourceCulture);
             }
         }
     }

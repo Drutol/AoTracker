@@ -25,10 +25,5 @@ namespace AoTracker.Infrastructure.ViewModels.Item
                 RaisePropertyChanged();
             }
         }
-
-        public RelayCommand<CrawlerDescriptor> RemoveCommand => _parent.RemoveDescriptorCommand;
-
-        public RelayCommand<CrawlerDescriptor> TapCommand => _parent.SelectCrawlerDescriptorCommand;
-
     }
 }

@@ -20,7 +20,7 @@
     <color name="DarkForegroundShallowColour">#2f2f2f</color>
     <color name="DarkRippleColour">#7ff6f6f6</color>
 
-    <color name="LightBackgroundColour">#fefefe</color>
+    <color name="LightBackgroundColour">#fafafa</color>
     <color name="LightTextColour">#1d1d1d</color>
     <color name="LightForegroundColour">#f6f6f6</color>
     <color name="LightForegroundDeepColour">#eaeaea</color>
