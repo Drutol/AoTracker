@@ -15,5 +15,8 @@ namespace AoTracker.Infrastructure.Infrastructure
 
         [Variable]
         public Holder<List<CrawlerSet>> CrawlerSets { get; set; }
+
+        [Variable]
+        public Holder<List<HistoryFeedEntry>> FeedHistory { get; set; }
     }
 }

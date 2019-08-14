@@ -61,7 +61,6 @@ namespace AoTracker.Infrastructure.ViewModels
                 .ToList();
 
             MessengerInstance.Register<ConfigureCrawlerResultMessage>(this, OnConfigureCrawlerResult);
-
         }
 
         private async void OnToolbarAction(ToolbarActionMessage action)
@@ -79,6 +78,7 @@ namespace AoTracker.Infrastructure.ViewModels
                 }
                 else
                 {
+                    _currentSet.Name = SetName;
                     await _userDataProvider.UpdateSet(_currentSet);
                     
                 }
@@ -105,7 +105,6 @@ namespace AoTracker.Infrastructure.ViewModels
                     CrawlerDescriptors
                         .First(model => model.BackingModel == message.CrawlerDescriptor)
                         .CrawlerSourceParameters = message.CrawlerDescriptor.CrawlerSourceParameters;
-                    
                 }
                 if(_currentSet != null)
                     _currentSet.Descriptors = CrawlerDescriptors.Select(model => model.BackingModel).ToList();
@@ -178,13 +177,21 @@ namespace AoTracker.Infrastructure.ViewModels
         public string SetName
         {
             get => _setName;
-            set => Set(ref _setName, value, _ => { RaisePropertyChanged(() => CanSave); });
+            set
+            {
+                Set(ref _setName, value, _ => { RaisePropertyChanged(() => CanSave); });
+                RaisePropertyChanged();
+            }
         }
 
         public bool IsAddingNew
         {
             get => _isAddingNew;
-            set => Set(ref _isAddingNew, value);
+            set
+            {
+                _isAddingNew = value;
+                RaisePropertyChanged();
+            }
         }
 
         public bool CanSave => true;
@@ -226,6 +233,5 @@ namespace AoTracker.Infrastructure.ViewModels
                     throw new ArgumentOutOfRangeException();
             }
         }
-
     }
 }

@@ -42,6 +42,10 @@ namespace AoTracker.Crawlers.Surugaya
                     item.Price = float.Parse(priceBlock.Descendants("strong").First().InnerText.Replace("￥", "")
                         .Replace(",", ""));
                     item.ImageUrl = itemNode.Descendants("img").First().Attributes["src"].Value;
+                    item.InternalId = $"surugaya_{item.Id}";
+                    item.Category =
+                        WebUtility.HtmlDecode(itemNode.FirstOfDescendantsWithClass("p", "condition").InnerText);
+
 
                     if (parameters.TrimJapaneseQuotationMarks)
                     {

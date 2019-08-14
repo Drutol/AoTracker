@@ -14,14 +14,12 @@ namespace AoTracker.Infrastructure.Infrastructure
     public class UserDataProvider : IUserDataProvider
     {
         private readonly AppVariables _appVariables;
-        private readonly IDataCache _cache;
 
         private List<CrawlerSet> _sets;
 
-        public UserDataProvider(AppVariables appVariables, IDataCache cache)
+        public UserDataProvider(AppVariables appVariables)
         {
             _appVariables = appVariables;
-            _cache = cache;
         }
 
         public IReadOnlyList<CrawlerSet> CrawlingSets => _sets.AsReadOnly();
@@ -35,10 +33,6 @@ namespace AoTracker.Infrastructure.Infrastructure
         {
             _sets.Add(set);
             await _appVariables.CrawlerSets.SetAsync(_sets);
-
-            await _cache.SaveDataAsync("test", set);
-
-            var data = await _cache.RetrieveData<CrawlerSet>("test");
         }
 
         public async Task RemoveSet(CrawlerSet set)

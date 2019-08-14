@@ -14,6 +14,7 @@ using AoLibs.Adapters.Android.Recycler;
 using AoLibs.Navigation.Android.Navigation;
 using AoLibs.Navigation.Android.Navigation.Attributes;
 using AoTracker.Android.Utils;
+using AoTracker.Crawlers.Surugaya;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.ViewModels;
 using AoTracker.Infrastructure.ViewModels.Item;
@@ -51,7 +52,12 @@ namespace AoTracker.Android.Fragments
 
         private void FeedItemDataTemplate(FeedItemViewModel item, FeedItemHolder holder, int position)
         {
-            holder.Title.Text = item.Title;
+            if (item.BackingModel is SurugayaItem surugayaItem)
+            {
+                holder.Title.Text = surugayaItem.Category;
+                holder.Detail.Text = surugayaItem.Name;
+            }
+ 
             holder.Price.Text = item.BackingModel.Price.ToString();
             ImageService.Instance.LoadUrl(item.BackingModel.ImageUrl).Into(holder.ImageLeft);
         }
@@ -81,16 +87,22 @@ namespace AoTracker.Android.Fragments
                 _view = view;
             }
             private ImageView _imageLeft;
+            private FrameLayout _newAlertSection;
             private TextView _title;
+            private ImageView _storeIcon;
             private TextView _detail;
             private TextView _subtitle;
+            private ImageView _priceTrendIcon;
             private TextView _price;
             private LinearLayout _clickSurface;
 
             public ImageView ImageLeft => _imageLeft ?? (_imageLeft = _view.FindViewById<ImageView>(Resource.Id.ImageLeft));
+            public FrameLayout NewAlertSection => _newAlertSection ?? (_newAlertSection = _view.FindViewById<FrameLayout>(Resource.Id.NewAlertSection));
             public TextView Title => _title ?? (_title = _view.FindViewById<TextView>(Resource.Id.Title));
+            public ImageView StoreIcon => _storeIcon ?? (_storeIcon = _view.FindViewById<ImageView>(Resource.Id.StoreIcon));
             public TextView Detail => _detail ?? (_detail = _view.FindViewById<TextView>(Resource.Id.Detail));
             public TextView Subtitle => _subtitle ?? (_subtitle = _view.FindViewById<TextView>(Resource.Id.Subtitle));
+            public ImageView PriceTrendIcon => _priceTrendIcon ?? (_priceTrendIcon = _view.FindViewById<ImageView>(Resource.Id.PriceTrendIcon));
             public TextView Price => _price ?? (_price = _view.FindViewById<TextView>(Resource.Id.Price));
             public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
         }

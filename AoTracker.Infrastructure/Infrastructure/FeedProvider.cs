@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using AoLibs.Utilities.Shared;
 using AoTracker.Crawlers.Infrastructure;
 using AoTracker.Crawlers.Interfaces;
+using AoTracker.Domain.Models;
 using AoTracker.Interfaces;
 
 namespace AoTracker.Infrastructure.Infrastructure
@@ -12,6 +14,7 @@ namespace AoTracker.Infrastructure.Infrastructure
     public class FeedProvider : IFeedProvider
     {
         private readonly IUserDataProvider _userDataProvider;
+        private readonly AppVariables _appVariables;
         private readonly ICrawlerManager _crawlerManager;
         private bool _isAggregating;
 
@@ -22,9 +25,11 @@ namespace AoTracker.Infrastructure.Infrastructure
 
         public FeedProvider(
             ICrawlerManagerProvider crawlerManagerProvider,
-            IUserDataProvider userDataProvider)
+            IUserDataProvider userDataProvider,
+            AppVariables appVariables)
         {
             _userDataProvider = userDataProvider;
+            _appVariables = appVariables;
             _crawlerManager = crawlerManagerProvider.Manager;
         }
 
@@ -32,12 +37,16 @@ namespace AoTracker.Infrastructure.Infrastructure
         {
             if(_isAggregating)
                 return;
+
             _isAggregating = true;
+
+
             try
             {
                 if (CachedFeed.Any())
                 {
                     NewCrawlerBatch?.Invoke(this, CachedFeed);
+                    return;
                 }
 
                 var volatileParameters = new VolatileParametersBase

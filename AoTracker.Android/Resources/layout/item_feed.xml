@@ -9,10 +9,10 @@
         android:id="@+id/ClickSurface"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="100dp"
         android:clickable="true"
         android:focusable="true"
-        android:foreground="?selectableItemBackground">
+        android:foreground="?selectableItemBackground"
+        android:minHeight="100dp">
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -26,6 +26,23 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 tools:src="@drawable/test" />
+
+            <FrameLayout
+                android:id="@+id/NewAlertSection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|bottom"
+                android:background="@color/DarkOpaqueOverlayColour"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_new"
+                    android:tint="@color/DarkTextColour" />
+            </FrameLayout>
+
+
         </FrameLayout>
 
 
@@ -37,18 +54,26 @@
             android:orientation="vertical"
             android:padding="4dp">
 
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/Title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
                     android:fontFamily="@string/font_family_medium"
                     android:textColor="?TextColour"
                     tools:text="Some Item Header" />
-            </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/StoreIcon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    tools:src="@drawable/surugaya" />
+            </LinearLayout>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -63,9 +88,6 @@
                     android:textColor="?TextColour"
                     tools:text="Some item description\n\n\n\n" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:text="lol"/>
             </FrameLayout>
 
             <LinearLayout
@@ -89,16 +111,24 @@
 
                 </FrameLayout>
 
-                <FrameLayout
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|end"
                     android:layout_margin="4dp"
                     android:background="?ForegroundShallowColour"
                     android:elevation="4dp"
+                    android:gravity="center"
                     android:outlineAmbientShadowColor="?AccentColour"
                     android:outlineSpotShadowColor="?AccentColour"
                     android:padding="4dp">
+
+                    <ImageView
+                        android:id="@+id/PriceTrendIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_chevron_triple_up"
+                        android:tint="?AccentColour" />
 
                     <TextView
                         android:id="@+id/Price"
@@ -108,8 +138,9 @@
                         android:layout_marginEnd="4dp"
                         android:fontFamily="@string/font_family_medium"
                         android:textColor="?TextColour"
+                        android:textSize="@dimen/FontSizeMedium"
                         tools:text="1111¥" />
-                </FrameLayout>
+                </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>

@@ -12,6 +12,8 @@
     <color name="PurpleColour">#881798</color>
     <color name="PurpleDarkColour">#5a1663</color>
 
+    <color name="DarkOpaqueOverlayColour">#7f000000</color>
+
     <color name="DarkBackgroundColour">#101010</color>
     <color name="DarkToolbarBackgroundColour">#333333</color>
     <color name="DarkTextColour">#ffffff</color>
