@@ -7,6 +7,7 @@
         <item name="ForegroundColour">@color/DarkForegroundColour</item>
         <item name="ForegroundDeepColour">@color/DarkForegroundDeepColour</item>
         <item name="ForegroundShallowColour">@color/DarkForegroundShallowColour</item>
+        <item name="ToolbarTextColour">@color/DarkToolbarTextColour</item>
     </style>
 
     <style name="AoTracker.Light" parent="Theme.AppCompat.Light.NoActionBar">
@@ -16,6 +17,7 @@
         <item name="ForegroundColour">@color/LightForegroundColour</item>
         <item name="ForegroundDeepColour">@color/LightForegroundDeepColour</item>
         <item name="ForegroundShallowColour">@color/LightForegroundShallowColour</item>
+        <item name="ToolbarTextColour">@color/LightToolbarTextColour</item>
     </style>
 
     <style name="ColourSchemeOrange">
@@ -25,6 +27,8 @@
 
         <item name="AccentColour">@color/OrangeColour</item>
         <item name="AccentDarkColour">@color/OrangeDarkColour</item>
+
+        <item name="ToolbarBackgroundColour">@color/OrangeColour</item>
 
         <item name="TextColourAccentContrast">@color/DarkTextColour</item>
     </style>
@@ -37,7 +41,13 @@
         <item name="AccentColour">@color/LimeColour</item>
         <item name="AccentDarkColour">@color/LimeDarkColour</item>
 
+        <item name="ToolbarBackgroundColour">@color/LimeColour</item>
+
         <item name="TextColourAccentContrast">@color/DarkTextColour</item>
+    </style>
+
+    <style name="ColourSchemeToolbarDark">
+        <item name="ToolbarBackgroundColour">@color/DarkToolbarBackgroundColour</item>
     </style>
 
     <style name="AoTracker.Light.Lime" parent="AoTracker.Light">

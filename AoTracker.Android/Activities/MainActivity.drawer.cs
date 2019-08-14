@@ -52,7 +52,7 @@ namespace AoTracker.Android.Activities
             {
                 DrawerArrowDrawable =
                 {
-                    Color = ThemeManager.TextInvertedColour
+                    Color = ThemeManager.ToolbarTextColour
                 }
             };
 

@@ -13,12 +13,13 @@
     <color name="PurpleDarkColour">#5a1663</color>
 
     <color name="DarkBackgroundColour">#101010</color>
-    <color name="DarkToolbarColour">#333333</color>
+    <color name="DarkToolbarBackgroundColour">#333333</color>
     <color name="DarkTextColour">#ffffff</color>
     <color name="DarkForegroundColour">#2b2b2b</color>
     <color name="DarkForegroundDeepColour">#1d1d1d</color>
-    <color name="DarkForegroundShallowColour">#2f2f2f</color>
+    <color name="DarkForegroundShallowColour">#393939</color>
     <color name="DarkRippleColour">#7ff6f6f6</color>
+    <color name="DarkToolbarTextColour">#ffffff</color>
 
     <color name="LightBackgroundColour">#fafafa</color>
     <color name="LightTextColour">#1d1d1d</color>
@@ -26,4 +27,5 @@
     <color name="LightForegroundDeepColour">#eaeaea</color>
     <color name="LightForegroundShallowColour">#fff</color>
     <color name="LightRippleColour">#f6f6f6</color>
+    <color name="LightToolbarTextColour">#ffffff</color>
 </resources>

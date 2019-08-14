@@ -9,6 +9,7 @@
         <attr name="TextInvertedColour" format="reference"/>
         <attr name="ToolbarColour" format="reference"/>
         <attr name="ToolbarTextColour" format="reference"/>
+        <attr name="ToolbarBackgroundColour" format="reference"/>
         <attr name="ForegroundColour" format="reference"/>
         <attr name="ForegroundDeepColour" format="reference"/>
         <attr name="ForegroundShallowColour" format="reference"/>

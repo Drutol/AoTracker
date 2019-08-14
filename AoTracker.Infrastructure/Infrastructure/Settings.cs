@@ -24,7 +24,7 @@ namespace AoTracker.Infrastructure.Infrastructure
 
         public AppTheme AppTheme
         {
-            get => (AppTheme) (_settingsProvider.GetInt(nameof(AppTheme)) ?? (int?) (AppTheme.Light | AppTheme.Orange));
+            get => (AppTheme) (_settingsProvider.GetInt(nameof(AppTheme)) ?? (int?) (AppTheme.Dark | AppTheme.Orange));
             set => _settingsProvider.SetInt(nameof(AppTheme), (int) value);
         }
     }

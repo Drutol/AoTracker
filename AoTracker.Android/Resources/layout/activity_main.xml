@@ -13,10 +13,10 @@
             android:id="@+id/Toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?AccentColour"
+            android:background="?ToolbarBackgroundColour"
             android:fitsSystemWindows="true"
             android:elevation="4dp"
-            app:titleTextColor="?TextInvertedColour"
+            app:titleTextColor="?ToolbarTextColour"
             android:minHeight="?attr/actionBarSize" />
 
         <FrameLayout

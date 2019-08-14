@@ -19,7 +19,8 @@ namespace AoTracker.Infrastructure.ViewModels
         private CancellationTokenSource _feedCts;
         private bool _isLoading;
 
-        public ObservableCollection<FeedItemViewModel> Feed { get; set; } = new ObservableCollection<FeedItemViewModel>();
+        public ObservableCollection<IFeedItem> Feed { get; set; } =
+            new ObservableCollection<IFeedItem>();
 
 
         public FeedViewModel(IFeedProvider feedProvider, ILifetimeScope lifetimeScope)
@@ -34,7 +35,7 @@ namespace AoTracker.Infrastructure.ViewModels
 
         private void FeedProviderOnFinished(object sender, EventArgs e)
         {
-            
+
         }
 
         private void FeedProviderOnNewCrawlerBatch(object sender, IEnumerable<ICrawlerResultItem> e)
@@ -60,9 +61,7 @@ namespace AoTracker.Infrastructure.ViewModels
             set => Set(ref _isLoading, value);
         }
 
-        public RelayCommand<ICrawlerResultItem> SelectFeedItemCommand => new RelayCommand<ICrawlerResultItem>(item =>
-        {
-
-        });
+        public RelayCommand<ICrawlerResultItem> SelectFeedItemCommand =>
+            new RelayCommand<ICrawlerResultItem>(item => { });
     }
 }

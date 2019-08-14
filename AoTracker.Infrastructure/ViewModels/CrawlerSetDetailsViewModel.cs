@@ -105,7 +105,10 @@ namespace AoTracker.Infrastructure.ViewModels
                     CrawlerDescriptors
                         .First(model => model.BackingModel == message.CrawlerDescriptor)
                         .CrawlerSourceParameters = message.CrawlerDescriptor.CrawlerSourceParameters;
+                    
                 }
+                if(_currentSet != null)
+                    _currentSet.Descriptors = CrawlerDescriptors.Select(model => model.BackingModel).ToList();
             }
         }
 
