@@ -8,15 +8,15 @@ namespace AoTracker.Crawlers.Infrastructure
 {
     public class CrawlerCache<T> : ICrawlerCache<T> where T : ICrawlerResultItem
     {
-        private Dictionary<int,List<T>> _cache = new Dictionary<int, List<T>>();
-        private Dictionary<int, DateTime> _cacheTimes = new Dictionary<int, DateTime>();
+        private Dictionary<string,List<T>> _cache = new Dictionary<string, List<T>>();
+        private Dictionary<string, DateTime> _cacheTimes = new Dictionary<string, DateTime>();
 
         public CacheResult<T> Get(CrawlerParameters parameters)
         {
             return new CacheResult<T>()
             {
-                Cache = _cache[parameters.VolatileParameters.Page],
-                CacheTime = _cacheTimes[parameters.VolatileParameters.Page]
+                Cache = _cache[ToKey(parameters)],
+                CacheTime = _cacheTimes[ToKey(parameters)]
             };
         }
 
@@ -31,18 +31,23 @@ namespace AoTracker.Crawlers.Infrastructure
 
         public void Set(IEnumerable<T> items, CrawlerParameters parameters)
         {
-            _cache[parameters.VolatileParameters.Page] = new List<T>(items);
-            _cacheTimes[parameters.VolatileParameters.Page] = DateTime.UtcNow;
+            _cache[ToKey(parameters)] = new List<T>(items);
+            _cacheTimes[ToKey(parameters)] = DateTime.UtcNow;
         }
 
         public bool IsCached(CrawlerParameters parameters)
         {
-            return _cache.ContainsKey(parameters.VolatileParameters.Page);
+            return _cache.ContainsKey(ToKey(parameters));
         }
 
         public void Clear()
         {
             _cache.Clear();
+        }
+
+        private string ToKey(CrawlerParameters crawlerParameters)
+        {
+            return $"{crawlerParameters.Parameters.SearchQuery}_{crawlerParameters.VolatileParameters.Page}";
         }
     }
 }

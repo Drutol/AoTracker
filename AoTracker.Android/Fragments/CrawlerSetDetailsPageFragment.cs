@@ -16,7 +16,9 @@ using AoLibs.Adapters.Android.Recycler;
 using AoLibs.Navigation.Android.Navigation.Attributes;
 using AoLibs.Utilities.Android;
 using AoLibs.Utilities.Android.Listeners;
+using AoTracker.Android.Utils;
 using AoTracker.Crawlers.Enums;
+using AoTracker.Crawlers.Mandarake;
 using AoTracker.Crawlers.Surugaya;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
@@ -40,11 +42,21 @@ namespace AoTracker.Android.Fragments
             Bindings.Add(this.SetBinding(() => ViewModel.CrawlerDescriptors).WhenSourceChanges(() =>
             {
                 CrawlersRecyclerView.SetAdapter(
-                    new ObservableRecyclerAdapter<CrawlerDescriptorViewModel, SurugayaCrawlerHolder>(
-                        ViewModel.CrawlerDescriptors,
-                        CrawlerDescriptorDataTemplate,
-                        LayoutInflater,
-                        Resource.Layout.item_surugaya_crawler) {StretchContentHorizonatally = true});
+                    new RecyclerViewAdapterBuilder<CrawlerDescriptorViewModel, RecyclerView.ViewHolder>()
+                        .WithItems(ViewModel.CrawlerDescriptors)
+                        .WithContentStretching()
+                        .WithMultipleViews()
+                        .WithGroup<CrawlerDescriptorViewModel<SurugayaItem>, SurugayaCrawlerHolder>(builder =>
+                        {
+                            builder.WithResourceId(LayoutInflater, Resource.Layout.item_surugaya_crawler);
+                            builder.WithDataTemplate(SurugayaCrawlerDescriptorDataTemplate);
+                        })
+                        .WithGroup<CrawlerDescriptorViewModel<MandarakeItem>, MandarakeCrawlerHolder>(builder =>
+                        {
+                            builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
+                            builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
+                        })
+                        .Build());
             }));
 
             AddCrawlersRecyclerView.SetAdapter(
@@ -62,7 +74,17 @@ namespace AoTracker.Android.Fragments
             AddCrawlersRecyclerView.SetLayoutManager(new GridLayoutManager(Activity, 3));
         }
 
-        private void CrawlerDescriptorDataTemplate(CrawlerDescriptorViewModel item, SurugayaCrawlerHolder holder, int position)
+        private void SurugayaCrawlerDescriptorDataTemplate(CrawlerDescriptorViewModel<SurugayaItem> item, SurugayaCrawlerHolder holder, int position)
+        {
+            BaseCrawlerTemplate(item, holder);
+        }
+
+        private void MandarakeCrawlerDescriptorDataTemplate(CrawlerDescriptorViewModel<MandarakeItem> item, MandarakeCrawlerHolder holder, int position)
+        {
+            BaseCrawlerTemplate(item, holder);
+        }
+
+        private void BaseCrawlerTemplate(CrawlerDescriptorViewModel item, ICrawlerHolder holder)
         {
             holder.ClickSurface.SetOnClickCommand(ViewModel.SelectCrawlerDescriptorCommand, item);
             holder.ClickSurface.SetOnLongClickListener(new OnLongClickListener(view =>
@@ -143,8 +165,13 @@ namespace AoTracker.Android.Fragments
             public FrameLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<FrameLayout>(Resource.Id.ClickSurface));
         }
 
+        interface ICrawlerHolder
+        {
+            View ItemView { get; }
+            LinearLayout ClickSurface { get; }
+        }
 
-        class SurugayaCrawlerHolder : BindingViewHolderBase<CrawlerDescriptorViewModel>
+        class SurugayaCrawlerHolder : BindingViewHolderBase<CrawlerDescriptorViewModel<SurugayaItem>>, ICrawlerHolder
         {
             private readonly View _view;
 
@@ -179,6 +206,37 @@ namespace AoTracker.Android.Fragments
             public LinearLayout RemovesQuotationMarksIndicator => _removesQuotationMarksIndicator ?? (_removesQuotationMarksIndicator = _view.FindViewById<LinearLayout>(Resource.Id.RemovesQuotationMarksIndicator));
             public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
         }
+
+        class MandarakeCrawlerHolder : BindingViewHolderBase<CrawlerDescriptorViewModel<MandarakeItem>>, ICrawlerHolder
+        {
+            private readonly View _view;
+
+            public MandarakeCrawlerHolder(View view) : base(view)
+            {
+                _view = view;
+            }
+
+            protected override void SetBindings()
+            {
+                Bindings.Add(this.SetBinding(() => ViewModel.CrawlerSourceParameters).WhenSourceChanges(() =>
+                {
+                    var param = ViewModel.CrawlerSourceParameters as MandarakeSourceParameters;
+
+                    SearchPhrase.Text = param.SearchQuery;
+                    PriceIncrease.Text =
+                        $"+{param.OffsetIncrease}¥  +{param.PercentageIncrease}%";
+                }));
+            }
+
+            private TextView _searchPhrase;
+            private TextView _priceIncrease;
+            private LinearLayout _clickSurface;
+
+            public TextView SearchPhrase => _searchPhrase ?? (_searchPhrase = _view.FindViewById<TextView>(Resource.Id.SearchPhrase));
+            public TextView PriceIncrease => _priceIncrease ?? (_priceIncrease = _view.FindViewById<TextView>(Resource.Id.PriceIncrease));
+            public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
+        }
+
 
     }
 }

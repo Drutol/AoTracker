@@ -26,4 +26,11 @@ namespace AoTracker.Infrastructure.ViewModels.Item
             }
         }
     }
+
+    public class CrawlerDescriptorViewModel<T> : CrawlerDescriptorViewModel where T : ICrawlerResultItem
+    {
+        public CrawlerDescriptorViewModel(CrawlerDescriptor item, CrawlerSetDetailsViewModel parent) : base(item, parent)
+        {
+        }
+    }
 }

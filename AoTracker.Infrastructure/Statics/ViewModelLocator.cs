@@ -21,10 +21,11 @@ namespace AoTracker.Infrastructure.Statics
 
             // one shots
             builder.RegisterType<ConfigureSurugayaCrawlerViewModel>();
+            builder.RegisterType<ConfigureMandarakeCrawlerViewModel>();
 
             // items
             builder.RegisterType<CrawlerEntryViewModel>();
-            builder.RegisterType<CrawlerDescriptorViewModel>();
+            builder.RegisterGeneric(typeof(CrawlerDescriptorViewModel<>));
             builder.RegisterType<FeedItemViewModel>();
         }
     }

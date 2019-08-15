@@ -14,5 +14,7 @@ namespace AoTracker.Domain.Enums
         Lime = 1 << 4,
         SkyBlue = 1 << 5,
         Purple = 1 << 6,
+        Red = 1 << 7,
+        Cyan = 1 << 8,
     }
 }

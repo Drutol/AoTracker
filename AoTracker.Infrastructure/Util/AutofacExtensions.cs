@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Autofac;
 
 namespace AoTracker.Infrastructure.Util
@@ -13,6 +14,11 @@ namespace AoTracker.Infrastructure.Util
         public static TReturn TypedResolve<TReturn>(this ILifetimeScope scope, params object[] parameter)
         {
             return scope.Resolve<TReturn>(parameter.Select(o => new TypedParameter(o.GetType(), o)));
+        }
+
+        public static TReturn TypedResolve<TReturn>(this ILifetimeScope scope, Type type, params object[] parameter)
+        {
+            return (TReturn)scope.Resolve(type, parameter.Select(o => new TypedParameter(o.GetType(), o)));
         }
     }
 }

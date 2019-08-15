@@ -19,19 +19,22 @@ namespace AoTracker.Infrastructure.ViewModels.Item
             _parent = parent;
         }
 
+        public bool Highlighted { get; set; }
         public bool IsNew { get; set; }
         public PriceChange PriceChange { get; set; }
+        public DateTime LastChanged { get; set; }
 
         public void WithHistory(List<HistoryFeedEntry> feedHistory)
         {
-            if(feedHistory == null)
+            if (feedHistory == null)
                 return;
 
             var historyEntry = feedHistory.FirstOrDefault(entry => entry.InternalId == BackingModel.InternalId);
-
             if (historyEntry == null)
             {
                 IsNew = true;
+                LastChanged = DateTime.UtcNow;
+                Highlighted = true;
             }
             else
             {
@@ -47,7 +50,25 @@ namespace AoTracker.Infrastructure.ViewModels.Item
                 {
                     PriceChange = PriceChange.Stale;
                 }
+
+                if (PriceChange != PriceChange.Stale)
+                {
+                    LastChanged = DateTime.UtcNow;
+                    Highlighted = true;
+                }
+                else
+                    LastChanged = historyEntry.LastChanged;
             }
+        }
+
+        public HistoryFeedEntry BuildHistoryEntry()
+        {
+            return new HistoryFeedEntry
+            {
+                InternalId = BackingModel.InternalId,
+                LastChanged = LastChanged,
+                PreviousPrice = BackingModel.Price
+            };
         }
     }
 }

@@ -45,7 +45,7 @@ namespace AoTracker.Crawlers.Surugaya
                     item.InternalId = $"surugaya_{item.Id}";
                     item.Category =
                         WebUtility.HtmlDecode(itemNode.FirstOfDescendantsWithClass("p", "condition").InnerText);
-
+                    item.Brand = WebUtility.HtmlDecode(itemNode.FirstOfDescendantsWithClass("p", "brand").InnerText);
 
                     if (parameters.TrimJapaneseQuotationMarks)
                     {

@@ -69,6 +69,7 @@
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\MainActivity.drawer.cs" />
     <Compile Include="App.cs" />
+    <Compile Include="Fragments\CrawlerConfigure\ConfigureMandarakeCrawlerPageFragment.cs" />
     <Compile Include="Fragments\CrawlerConfigure\ConfigureSurugayaCrawlerPageFragment.cs" />
     <Compile Include="Fragments\CrawlerSetsPageFragment.cs" />
     <Compile Include="Fragments\CustomFragmentBase.cs" />
@@ -258,6 +259,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon_chevron_triple_up.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\page_configure_mandarake_crawler.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\item_mandarake_crawler.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

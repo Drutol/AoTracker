@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Interfaces;
+using AoTracker.Crawlers.Mandarake;
 using AoTracker.Crawlers.Surugaya;
 
 namespace AoTracker.Crawlers.Infrastructure
@@ -20,7 +21,8 @@ namespace AoTracker.Crawlers.Infrastructure
         {
             _crawlers = new Dictionary<CrawlerDomain, ICrawler>
             {
-                {CrawlerDomain.Surugaya, new SurugayaCrawler(httpClientProvider)}
+                {CrawlerDomain.Surugaya, new SurugayaCrawler(httpClientProvider)},
+                {CrawlerDomain.Mandarake, new MandarakeCrawler(httpClientProvider)},
             };
         }
 

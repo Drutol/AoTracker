@@ -9,8 +9,17 @@
     <color name="SkyBlueColour">#00a1e9</color>
     <color name="SkyBlueDarkColour">#0076ab</color>
 
+    <color name="RedColour">#de2909</color>
+    <color name="RedColourDark">#970000</color>
+
+    <color name="CyanColour">#2dc6c6</color>
+    <color name="CyanColourDark">#00a1a4</color>
+
+    <color name="PinkColour">#f754a2</color>
+    <color name="PinkColourDark">#a8346b</color>
+
     <color name="PurpleColour">#881798</color>
-    <color name="PurpleDarkColour">#5a1663</color>
+    <color name="PurpleColourDark">#5a1663</color>
 
     <color name="DarkOpaqueOverlayColour">#7f000000</color>
 

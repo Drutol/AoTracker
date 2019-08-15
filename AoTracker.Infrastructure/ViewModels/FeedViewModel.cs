@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using AoLibs.Utilities.Shared;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Infrastructure;
@@ -23,6 +24,7 @@ namespace AoTracker.Infrastructure.ViewModels
         private CancellationTokenSource _feedCts;
         private bool _isLoading;
         private List<HistoryFeedEntry> _feedHistory;
+        private List<FeedItemViewModel> _aggregatedFeed = new List<FeedItemViewModel>();
 
         public ObservableCollection<IFeedItem> Feed { get; set; } =
             new ObservableCollection<IFeedItem>();
@@ -46,23 +48,25 @@ namespace AoTracker.Infrastructure.ViewModels
         {
             IsLoading = false;
 
-            _feedHistory = Feed.OfType<FeedItemViewModel>().Select(model => new HistoryFeedEntry
-            {
-                InternalId = model.BackingModel.InternalId,
-                PreviousPrice = model.BackingModel.Price
-            }).ToList();
+            Feed = new ObservableCollection<IFeedItem>(
+                _aggregatedFeed.OrderByDescending(model => model.LastChanged));
+            _feedHistory = Feed.OfType<FeedItemViewModel>().Select(model => model.BuildHistoryEntry()).ToList();
             await _appVariables.FeedHistory.SetAsync(_feedHistory);
+            _aggregatedFeed.Clear();
         }
 
         private void FeedProviderOnNewCrawlerBatch(object sender, IEnumerable<ICrawlerResultItem> e)
         {
+            var viewModels = new List<FeedItemViewModel>();
             foreach (var crawlerResultItem in e)
             {
-                var vm = _lifetimeScope.Resolve<FeedItemViewModel>(new TypedParameter(typeof(ICrawlerResultItem),
-                    crawlerResultItem));
+                var vm = _lifetimeScope.Resolve<FeedItemViewModel>(
+                    new TypedParameter(typeof(ICrawlerResultItem), crawlerResultItem));
                 vm.WithHistory(_feedHistory);
-                Feed.Add(vm);
+                viewModels.Add(vm);
             }
+
+            _aggregatedFeed.AddRange(viewModels);
         }
 
         public async void NavigatedTo()

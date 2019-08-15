@@ -46,6 +46,58 @@
         <item name="TextColourAccentContrast">@color/DarkTextColour</item>
     </style>
 
+    <style name="ColourSchemeCyan">
+        <item name="colorPrimary">@color/CyanColour</item>
+        <item name="colorPrimaryDark">@color/CyanColourDark</item>
+        <item name="colorAccent">@color/CyanColour</item>
+
+        <item name="AccentColour">@color/CyanColour</item>
+        <item name="AccentDarkColour">@color/CyanColourDark</item>
+
+        <item name="ToolbarBackgroundColour">@color/CyanColour</item>
+
+        <item name="TextColourAccentContrast">@color/DarkTextColour</item>
+    </style>
+
+    <style name="ColourSchemePurple">
+        <item name="colorPrimary">@color/PurpleColour</item>
+        <item name="colorPrimaryDark">@color/PurpleColourDark</item>
+        <item name="colorAccent">@color/PurpleColour</item>
+
+        <item name="AccentColour">@color/PurpleColour</item>
+        <item name="AccentDarkColour">@color/PurpleColourDark</item>
+
+        <item name="ToolbarBackgroundColour">@color/PurpleColour</item>
+
+        <item name="TextColourAccentContrast">@color/DarkTextColour</item>
+    </style>
+
+    <style name="ColourSchemeSkyBlue">
+        <item name="colorPrimary">@color/SkyBlueColour</item>
+        <item name="colorPrimaryDark">@color/SkyBlueDarkColour</item>
+        <item name="colorAccent">@color/SkyBlueColour</item>
+
+        <item name="AccentColour">@color/SkyBlueColour</item>
+        <item name="AccentDarkColour">@color/SkyBlueDarkColour</item>
+
+        <item name="ToolbarBackgroundColour">@color/SkyBlueColour</item>
+
+        <item name="TextColourAccentContrast">@color/DarkTextColour</item>
+    </style>
+
+    <style name="ColourSchemeRed">
+        <item name="colorPrimary">@color/RedColour</item>
+        <item name="colorPrimaryDark">@color/RedColourDark</item>
+        <item name="colorAccent">@color/RedColour</item>
+
+        <item name="AccentColour">@color/RedColour</item>
+        <item name="AccentDarkColour">@color/RedColourDark</item>
+
+        <item name="ToolbarBackgroundColour">@color/RedColour</item>
+
+        <item name="TextColourAccentContrast">@color/DarkTextColour</item>
+    </style>
+
     <style name="ColourSchemeToolbarDark">
         <item name="ToolbarBackgroundColour">@color/DarkToolbarBackgroundColour</item>
     </style>

@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.Res;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V7.Widget;
@@ -13,7 +14,9 @@ using Android.Widget;
 using AoLibs.Adapters.Android.Recycler;
 using AoLibs.Navigation.Android.Navigation;
 using AoLibs.Navigation.Android.Navigation.Attributes;
+using AoTracker.Android.Themes;
 using AoTracker.Android.Utils;
+using AoTracker.Crawlers.Mandarake;
 using AoTracker.Crawlers.Surugaya;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.ViewModels;
@@ -56,9 +59,38 @@ namespace AoTracker.Android.Fragments
             {
                 holder.Title.Text = surugayaItem.Category;
                 holder.Detail.Text = surugayaItem.Name;
+                holder.Subtitle.Text = surugayaItem.Brand;
+                holder.StoreIcon.SetImageResource(Resource.Drawable.surugaya);
+            }
+
+            if (item.BackingModel is MandarakeItem mandarakeItem)
+            {
+                holder.Title.Text = string.Empty;
+                holder.Detail.Text = mandarakeItem.Name;
+                holder.Subtitle.Text = mandarakeItem.Shop;
+                holder.StoreIcon.SetImageResource(Resource.Drawable.mandarake);
             }
  
-            holder.Price.Text = item.BackingModel.Price.ToString();
+            holder.Price.Text = item.BackingModel.Price + "¥";
+            holder.NewAlertSection.Visibility = BindingConverters.BoolToVisibility(item.IsNew);
+
+            switch (item.PriceChange)
+            {
+                case PriceChange.Stale:
+                    holder.PriceTrendIcon.Visibility = ViewStates.Gone;
+                    break;
+                case PriceChange.Decrease:
+                    holder.PriceTrendIcon.Visibility = ViewStates.Visible;
+                    holder.PriceTrendIcon.SetImageResource(Resource.Drawable.icon_chevron_triple_down);
+                    holder.PriceTrendIcon.ImageTintList = ColorStateList.ValueOf(ThemeManager.LimeColour);
+                    break;
+                case PriceChange.Increase:
+                    holder.PriceTrendIcon.Visibility = ViewStates.Visible;
+                    holder.PriceTrendIcon.SetImageResource(Resource.Drawable.icon_chevron_triple_up);
+                    holder.PriceTrendIcon.ImageTintList = ColorStateList.ValueOf(ThemeManager.RedColour);
+                    break;
+            }
+
             ImageService.Instance.LoadUrl(item.BackingModel.ImageUrl).Into(holder.ImageLeft);
         }
 

@@ -10,6 +10,7 @@ namespace AoTracker.Domain.Enums
         Feed,
         CrawlerSets,
         CrawlerSetDetails,
-        ConfigureSurugaya
+        ConfigureSurugaya,
+        ConfigureMandarake
     }
 }

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Crawlers.Enums;
+using AoTracker.Crawlers.Mandarake;
+using AoTracker.Crawlers.Surugaya;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Messaging;
 using AoTracker.Domain.Models;
@@ -93,11 +95,15 @@ namespace AoTracker.Infrastructure.ViewModels
             {
                 if (message.Action == ConfigureCrawlerResultMessage.ActionType.Add)
                 {
-                    var vm = _lifetimeScope.TypedResolve<CrawlerDescriptorViewModel>(new CrawlerDescriptor
-                    {
-                        CrawlerDomain = message.CrawlerDescriptor.CrawlerDomain,
-                        CrawlerSourceParameters = message.CrawlerDescriptor.CrawlerSourceParameters
-                    });
+
+                    var vm = _lifetimeScope.TypedResolve<CrawlerDescriptorViewModel>(
+                        CrawlerDomainToCrawlerViewModelType(message.CrawlerDescriptor.CrawlerDomain),
+                        new CrawlerDescriptor
+                        {
+                            CrawlerDomain = message.CrawlerDescriptor.CrawlerDomain,
+                            CrawlerSourceParameters = message.CrawlerDescriptor.CrawlerSourceParameters
+                        });
+
                     CrawlerDescriptors.Add(vm);
                 }
                 else if(message.Action == ConfigureCrawlerResultMessage.ActionType.Edit)
@@ -137,7 +143,11 @@ namespace AoTracker.Infrastructure.ViewModels
                 Title = string.Format(AppResources.PageTitle_SetDetails, crawlerSet.Name);
                 SetName = crawlerSet.Name;
                 CrawlerDescriptors = new ObservableCollection<CrawlerDescriptorViewModel>(crawlerSet.Descriptors.Select(
-                    descriptor => _lifetimeScope.TypedResolve<CrawlerDescriptorViewModel>(descriptor)));
+                    descriptor =>
+                    {
+                        var type = CrawlerDomainToCrawlerViewModelType(descriptor.CrawlerDomain);
+                        return _lifetimeScope.TypedResolve<CrawlerDescriptorViewModel>(type, descriptor);
+                    }));
                 IsAddingNew = false;
             }
         }
@@ -153,6 +163,19 @@ namespace AoTracker.Infrastructure.ViewModels
         }
 
         #endregion
+
+        private Type CrawlerDomainToCrawlerViewModelType(CrawlerDomain crawlerDomain)
+        {
+            switch (crawlerDomain)
+            {
+                case CrawlerDomain.Surugaya:
+                    return typeof(CrawlerDescriptorViewModel<SurugayaItem>);
+                case CrawlerDomain.Mandarake:
+                    return typeof(CrawlerDescriptorViewModel<MandarakeItem>);
+            }
+
+            throw new ArgumentOutOfRangeException(nameof(crawlerDomain));
+        }
 
         private void StopListeningForToolbarActions()
         {
@@ -228,6 +251,7 @@ namespace AoTracker.Infrastructure.ViewModels
                     _navigationManager.Navigate(PageIndex.ConfigureSurugaya, navArgs);
                     break;
                 case CrawlerDomain.Mandarake:
+                    _navigationManager.Navigate(PageIndex.ConfigureMandarake, navArgs);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

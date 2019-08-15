@@ -4,18 +4,17 @@ using System.Text;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Interfaces;
 
-namespace AoTracker.Crawlers.Surugaya
+namespace AoTracker.Crawlers.Mandarake
 {
-    public class SurugayaItem : ICrawlerResultItem
+    public class MandarakeItem : ICrawlerResultItem
     {
-        public CrawlerDomain Domain { get; } = CrawlerDomain.Surugaya;
+        public CrawlerDomain Domain { get; set; }
         public string Id { get; set; }
         public string InternalId { get; set; }
         public string Name { get; set; }
         public string ImageUrl { get; set; }
         public float Price { get; set; }
 
-        public string Category { get; set; }
-        public string Brand { get; set; }
+        public string Shop { get; set; }
     }
 }

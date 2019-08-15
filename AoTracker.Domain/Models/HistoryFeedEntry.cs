@@ -8,5 +8,6 @@ namespace AoTracker.Domain.Models
     {
         public string InternalId { get; set; }
         public float PreviousPrice { get; set; }
+        public DateTime LastChanged { get; set; }
     }
 }
