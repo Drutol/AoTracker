@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using AoLibs.Utilities.Shared;
 using AoTracker.Crawlers.Infrastructure;
 using AoTracker.Crawlers.Interfaces;
@@ -21,7 +22,7 @@ namespace AoTracker.Infrastructure.Infrastructure
         public event EventHandler<IEnumerable<ICrawlerResultItem>> NewCrawlerBatch;
         public event EventHandler Finished;
 
-        public List<ICrawlerResultItem> CachedFeed { get; } = new List<ICrawlerResultItem>();
+
 
         public FeedProvider(
             ICrawlerManagerProvider crawlerManagerProvider,
@@ -33,52 +34,48 @@ namespace AoTracker.Infrastructure.Infrastructure
             _crawlerManager = crawlerManagerProvider.Manager;
         }
 
-        public async void StartAggregating(CancellationToken feedCtsToken, bool force)
+        public async void StartAggregating(List<CrawlerSet> sets, CancellationToken feedCtsToken, bool force)
         {
-            if(_isAggregating)
+            if (_isAggregating)
                 return;
-
-            _isAggregating = true;
-
             try
             {
-                if (!force && CachedFeed.Any())
-                {
-                    NewCrawlerBatch?.Invoke(this, CachedFeed);
-                    return;
-                }
-
                 var volatileParameters = new VolatileParametersBase
                 {
                     Page = 1,
                     UseCache = !force
                 };
 
-                foreach (var crawlingSet in _userDataProvider.CrawlingSets)
+                foreach (var crawlingSet in sets)
                 {
-                    foreach (var descriptor in crawlingSet.Descriptors)
-                    {
-                        var crawler = _crawlerManager.GetCrawler(descriptor.CrawlerDomain);
-
-                        var result = await crawler.Crawl(new CrawlerParameters
-                        {
-                            Parameters = descriptor.CrawlerSourceParameters,
-                            VolatileParameters = volatileParameters
-                        });
-
-                        if (result.Success)
-                        {
-                            NewCrawlerBatch?.Invoke(this, result.Results);
-                            CachedFeed.AddRange(result.Results);
-                        }
-                    }
+                    await CrawlDescriptor(crawlingSet, volatileParameters);
                 }
-
-                Finished?.Invoke(this, EventArgs.Empty);
             }
             finally
             {
                 _isAggregating = false;
+            }
+
+           
+            Finished?.Invoke(this, EventArgs.Empty);
+        }
+
+        private async Task CrawlDescriptor(CrawlerSet crawlingSet, VolatileParametersBase volatileParameters)
+        {
+            foreach (var descriptor in crawlingSet.Descriptors)
+            {
+                var crawler = _crawlerManager.GetCrawler(descriptor.CrawlerDomain);
+
+                var result = await crawler.Crawl(new CrawlerParameters
+                {
+                    Parameters = descriptor.CrawlerSourceParameters,
+                    VolatileParameters = volatileParameters
+                });
+
+                if (result.Success)
+                {
+                    NewCrawlerBatch?.Invoke(this, result.Results);
+                }
             }
         }
     }

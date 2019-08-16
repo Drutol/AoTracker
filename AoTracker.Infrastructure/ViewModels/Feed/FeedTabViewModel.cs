@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using AoLibs.Utilities.Shared;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Infrastructure;
 using AoTracker.Infrastructure.Models;
-using AoTracker.Infrastructure.Util;
+using AoTracker.Infrastructure.Statics;
 using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Interfaces;
 using Autofac;
 using GalaSoft.MvvmLight.Command;
 
-namespace AoTracker.Infrastructure.ViewModels
+namespace AoTracker.Infrastructure.ViewModels.Feed
 {
-    public class FeedViewModel : ViewModelBase
+    public class FeedTabViewModel : ViewModelBase
     {
         private readonly IFeedProvider _feedProvider;
         private readonly ILifetimeScope _lifetimeScope;
@@ -27,17 +25,18 @@ namespace AoTracker.Infrastructure.ViewModels
         private List<HistoryFeedEntry> _feedHistory;
         private List<FeedItemViewModel> _aggregatedFeed = new List<FeedItemViewModel>();
 
+        public FeedTabEntry TabEntry { get; set; }
+
         public SmartObservableCollection<IFeedItem> Feed { get; } =
             new SmartObservableCollection<IFeedItem>();
 
 
-        public FeedViewModel(
+        public FeedTabViewModel(
             IFeedProvider feedProvider,
-            ILifetimeScope lifetimeScope,
             AppVariables appVariables)
         {
             _feedProvider = feedProvider;
-            _lifetimeScope = lifetimeScope;
+            _lifetimeScope = ResourceLocator.ObtainScope();
             _appVariables = appVariables;
             _feedProvider.NewCrawlerBatch += FeedProviderOnNewCrawlerBatch;
             _feedProvider.Finished += FeedProviderOnFinished;
@@ -49,8 +48,9 @@ namespace AoTracker.Infrastructure.ViewModels
         {
             IsLoading = false;
             var items = new List<IFeedItem>();
-            var groups = _aggregatedFeed.OrderByDescending(model => model.LastChanged)
-                .GroupBy(model => model.LastChanged);
+            var groups = _aggregatedFeed
+                .GroupBy(model => model.LastChanged, new MinuteDateTimeEqualityComparer())
+                .OrderByDescending(g => g.Key);
             foreach (var group in groups)
             {
                 items.Add(new FeedChangeGroupItem(group.Key));
@@ -68,7 +68,8 @@ namespace AoTracker.Infrastructure.ViewModels
             foreach (var crawlerResultItem in e)
             {
                 var vm = _lifetimeScope.Resolve<FeedItemViewModel>(
-                    new TypedParameter(typeof(ICrawlerResultItem), crawlerResultItem));
+                    new TypedParameter(typeof(ICrawlerResultItem), crawlerResultItem),
+                    new TypedParameter(typeof(FeedTabViewModel), this));
                 vm.WithHistory(_feedHistory);
                 viewModels.Add(vm);
             }
@@ -79,14 +80,13 @@ namespace AoTracker.Infrastructure.ViewModels
         public async void RefreshFeed(bool force = false)
         {
             Feed.Clear();
-            _feedHistory = await _appVariables.FeedHistory.GetAsync();
+            IsLoading = true;
             _feedCts = new CancellationTokenSource();
-            _feedProvider.StartAggregating(_feedCts.Token, force);
+            _feedProvider.StartAggregating(TabEntry.CrawlerSets, _feedCts.Token, force);
         }
 
         public void NavigatedTo()
         {
-            IsLoading = true;
             if(!Feed.Any())
                 RefreshFeed();
         }
@@ -100,6 +100,23 @@ namespace AoTracker.Infrastructure.ViewModels
         public RelayCommand<ICrawlerResultItem> SelectFeedItemCommand =>
             new RelayCommand<ICrawlerResultItem>(item => { });
 
+        class MinuteDateTimeEqualityComparer : IEqualityComparer<DateTime>
+        {
+            public bool Equals(DateTime x, DateTime y)
+            {
+                return x.Day == y.Day && x.Hour == y.Hour && x.Minute == y.Minute;
+            }
 
+            public int GetHashCode(DateTime obj)
+            {
+                unchecked
+                {
+                    var hashCode = obj.Day;
+                    hashCode = (hashCode * 397) ^ obj.Minute;
+                    hashCode = (hashCode * 397) ^ obj.Hour;
+                    return hashCode;
+                }
+            }
+        }
     }
 }

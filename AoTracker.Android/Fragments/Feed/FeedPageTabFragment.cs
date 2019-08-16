@@ -12,29 +12,36 @@ using Android.Support.Design.Widget;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
-using AoLibs.Adapters.Android.Recycler;
 using AoLibs.Navigation.Android.Navigation;
-using AoLibs.Navigation.Android.Navigation.Attributes;
 using AoLibs.Utilities.Android.Views;
 using AoTracker.Android.Themes;
 using AoTracker.Android.Utils;
 using AoTracker.Crawlers.Mandarake;
 using AoTracker.Crawlers.Surugaya;
 using AoTracker.Domain.Enums;
+using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Models;
 using AoTracker.Infrastructure.ViewModels;
+using AoTracker.Infrastructure.ViewModels.Feed;
 using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Interfaces;
 using AoTracker.Resources;
 using FFImageLoading;
 using GalaSoft.MvvmLight.Helpers;
 
-namespace AoTracker.Android.Fragments
+namespace AoTracker.Android.Fragments.Feed
 {
-    [NavigationPage(PageIndex.Feed)]
-    public class FeedPageFragment : CustomFragmentBase<FeedViewModel>
+    public class FeedPageTabFragment : FragmentBase<FeedTabViewModel>
     {
-        public override int LayoutResourceId { get; } = Resource.Layout.page_feed;
+        private readonly FeedTabEntry _tabEntry;
+
+        public override int LayoutResourceId { get; } = Resource.Layout.page_feed_tab;
+
+        public FeedPageTabFragment(FeedTabEntry tabEntry)
+        {
+            _tabEntry = tabEntry;
+            ViewModel.TabEntry = tabEntry;
+        }
 
         protected override void InitBindings()
         {
@@ -51,7 +58,7 @@ namespace AoTracker.Android.Fragments
                 {
                     builder.WithResourceId(LayoutInflater, Resource.Layout.item_feed);
                     builder.WithDataTemplate(FeedItemDataTemplate);
-                })            
+                })
                 .WithGroup<FeedChangeGroupItem, FeedChangeGroupHolder>(builder =>
                 {
                     builder.WithResourceId(LayoutInflater, Resource.Layout.item_feed_change_time_group);
@@ -144,7 +151,6 @@ namespace AoTracker.Android.Fragments
 
         private RecyclerView _recyclerView;
         private ScrollableSwipeToRefreshLayout _swipeToRefreshLayout;
-
         public RecyclerView RecyclerView => _recyclerView ?? (_recyclerView = FindViewById<RecyclerView>(Resource.Id.RecyclerView));
         public ScrollableSwipeToRefreshLayout SwipeToRefreshLayout => _swipeToRefreshLayout ?? (_swipeToRefreshLayout = FindViewById<ScrollableSwipeToRefreshLayout>(Resource.Id.SwipeToRefreshLayout));
 
@@ -168,7 +174,6 @@ namespace AoTracker.Android.Fragments
             private ImageView _priceTrendIcon;
             private TextView _price;
             private LinearLayout _clickSurface;
-            private TextView _lastUpdatedLabel;
 
             public ImageView ImageLeft => _imageLeft ?? (_imageLeft = _view.FindViewById<ImageView>(Resource.Id.ImageLeft));
             public FloatingActionButton NewAlertSection => _newAlertSection ?? (_newAlertSection = _view.FindViewById<FloatingActionButton>(Resource.Id.NewAlertSection));
@@ -180,8 +185,8 @@ namespace AoTracker.Android.Fragments
             public ImageView PriceTrendIcon => _priceTrendIcon ?? (_priceTrendIcon = _view.FindViewById<ImageView>(Resource.Id.PriceTrendIcon));
             public TextView Price => _price ?? (_price = _view.FindViewById<TextView>(Resource.Id.Price));
             public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
-            public TextView LastUpdatedLabel => _lastUpdatedLabel ?? (_lastUpdatedLabel = _view.FindViewById<TextView>(Resource.Id.LastUpdatedLabel));
         }
+
 
 
         class FeedChangeGroupHolder : RecyclerView.ViewHolder

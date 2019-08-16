@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using AoTracker.Infrastructure.ViewModels;
+using AoTracker.Infrastructure.ViewModels.Feed;
 using AoTracker.Infrastructure.ViewModels.Item;
 using Autofac;
 
@@ -27,6 +28,7 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterType<CrawlerEntryViewModel>();
             builder.RegisterGeneric(typeof(CrawlerDescriptorViewModel<>));
             builder.RegisterType<FeedItemViewModel>();
+            builder.RegisterType<FeedTabViewModel>();
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
+using AoTracker.Infrastructure.ViewModels.Feed;
 using AoTracker.Interfaces;
 using GalaSoft.MvvmLight.Command;
 
@@ -12,9 +13,9 @@ namespace AoTracker.Infrastructure.ViewModels.Item
 {
     public class FeedItemViewModel : ItemViewModelBase<ICrawlerResultItem>, IFeedItem
     {
-        private readonly FeedViewModel _parent;
+        private readonly FeedTabViewModel _parent;
 
-        public FeedItemViewModel(ICrawlerResultItem item, FeedViewModel parent) : base(item)
+        public FeedItemViewModel(ICrawlerResultItem item, FeedTabViewModel parent) : base(item)
         {
             _parent = parent;
         }
@@ -27,7 +28,10 @@ namespace AoTracker.Infrastructure.ViewModels.Item
         public void WithHistory(List<HistoryFeedEntry> feedHistory)
         {
             if (feedHistory == null)
+            {
+                LastChanged = DateTime.UtcNow;
                 return;
+            }
 
             var historyEntry = feedHistory.FirstOrDefault(entry => entry.InternalId == BackingModel.InternalId);
             if (historyEntry == null)

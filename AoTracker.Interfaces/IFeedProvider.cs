@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using AoTracker.Crawlers.Interfaces;
+using AoTracker.Domain.Models;
 
 namespace AoTracker.Interfaces
 {
@@ -11,8 +12,6 @@ namespace AoTracker.Interfaces
         event EventHandler<IEnumerable<ICrawlerResultItem>> NewCrawlerBatch;
         event EventHandler Finished;
 
-        List<ICrawlerResultItem> CachedFeed { get; }
-
-        void StartAggregating(CancellationToken feedCtsToken, bool force);
+        void StartAggregating(List<CrawlerSet> set, CancellationToken feedCtsToken, bool force);
     }
 }

@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent" android:layout_height="wrap_content"
-             android:paddingBottom="4dp" android:clipToPadding="false" android:paddingTop="2dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp">
 
-    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                 android:background="?ForegroundShallowColour" android:elevation="4dp">
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/Label"
-                  style="@style/TextViewHeader"
-                  tools:text="Changed 24h ago"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?ForegroundShallowColour"
+        android:elevation="4dp">
+
+        <TextView
+            android:id="@+id/Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/icon_update"
+            android:drawablePadding="8dp"
+            android:drawableTint="?AccentColour"
+            android:textColor="?TextColour"
+            android:fontFamily="@string/font_family_light"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textSize="@dimen/FontSizeMedium"
+            tools:text="Changed 24h ago" />
     </FrameLayout>
-
-
 </FrameLayout>
