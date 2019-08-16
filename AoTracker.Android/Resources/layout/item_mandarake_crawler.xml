@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/ClickSurface"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="?BackgroundColour"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?selectableItemBackground">
+            android:id="@+id/ClickSurface"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="?BackgroundColour"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?selectableItemBackground">
 
         <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="?ForegroundShallowColour"
-            android:elevation="4dp"
-            android:padding="8dp">
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="?ForegroundShallowColour"
+                android:elevation="4dp"
+                android:padding="8dp">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|center"
-                android:adjustViewBounds="true"
-                android:src="@drawable/mandarake" />
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center"
+                    android:adjustViewBounds="true"
+                    android:background="?ForegroundShallowColour"
+                    android:src="@drawable/mandarake"/>
         </FrameLayout>
 
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:orientation="vertical"
-            android:padding="8dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:orientation="vertical"
+                android:padding="8dp">
 
-            <include layout="@layout/item_crawler_shared" />
+            <include layout="@layout/item_crawler_shared"/>
 
         </LinearLayout>
 

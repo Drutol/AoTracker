@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 using AoTracker.Domain.Messaging;
 
@@ -29,6 +30,13 @@ namespace AoTracker.Infrastructure.ViewModels
             var result = Set(ref backingStore, value);
             if(result)
                 onChanged?.Invoke(value);
+            return result;
+        }
+
+        protected new bool Set<T>(ref T backingStore, T value, [CallerMemberName] string propertyName = null)
+        {
+            var result = base.Set(ref backingStore, value);
+            RaisePropertyChanged(propertyName);
             return result;
         }
     }

@@ -7,5 +7,6 @@ namespace AoTracker.Crawlers.Interfaces
     public interface ICrawlerVolatileParameters
     {
         int Page { get; }
+        bool UseCache { get; }
     }
 }

@@ -1,47 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="?ForegroundColour"
-    android:orientation="vertical">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="?ForegroundColour"
+              android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/ClickSurface"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?selectableItemBackground"
-        android:minHeight="100dp">
+            android:id="@+id/ClickSurface"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?selectableItemBackground"
+            android:background="?ForegroundShallowColour">
+
 
         <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?ForegroundShallowColour"
-            android:elevation="4dp">
-
-            <ImageView
-                android:id="@+id/ImageLeft"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                tools:src="@drawable/test" />
-
-            <FrameLayout
-                android:id="@+id/NewAlertSection"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start|bottom"
-                android:background="?AccentDarkColour"
-                android:elevation="4dp"
-                android:padding="8dp">
-
+                android:layout_height="match_parent"
+                android:background="?ForegroundShallowColour"
+                android:elevation="4dp">
+            <FrameLayout android:layout_width="wrap_content"
+                         android:layout_height="wrap_content">
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icon_new"
-                    android:tint="@color/DarkTextColour" />
+                        android:id="@+id/ImageLeft"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        tools:src="@drawable/test"/>
+
+
+                <android.support.design.widget.FloatingActionButton
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/NewAlertSection"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:scaleX=".7" android:scaleY=".7"
+                        app:fabSize="mini" android:src="@drawable/icon_new"
+                        android:background="?AccentDarkColour"
+                        android:layout_height="wrap_content"/>
             </FrameLayout>
 
 
@@ -49,113 +47,118 @@
 
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:background="?ForegroundShallowColour"
-            android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="?ForegroundShallowColour"
+                android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?ForegroundShallowColour"
-                android:elevation="2dp"
-                android:gravity="center"
-                android:padding="4dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?ForegroundShallowColour"
+                    android:elevation="2dp"
+                    android:gravity="center"
+                    android:padding="4dp">
 
                 <TextView
-                    android:id="@+id/Title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@string/font_family_medium"
-                    android:textColor="?TextColour"
-                    android:textSize="@dimen/FontSizeMedium"
-                    tools:text="Some Item Header" />
+                        android:id="@+id/Title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@string/font_family_medium"
+                        android:textColor="?TextColour"
+                        android:textSize="@dimen/FontSizeMedium"
+                        tools:text="Some Item Header"/>
 
                 <ImageView
-                    android:id="@+id/StoreIcon"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    tools:src="@drawable/surugaya" />
+                        android:id="@+id/StoreIcon"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        tools:src="@drawable/surugaya"/>
             </LinearLayout>
 
             <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
-                android:layout_weight="1">
+                    android:layout_width="match_parent"
+                    android:id="@+id/DetailSection"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/Detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="4dp"
-                    android:textColor="?TextColour"
-                    tools:text="Some item description\n\n\n\n" />
+                        android:id="@+id/Detail"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="2dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:textColor="?TextColour"
+                        tools:text="Some item description\n\n\n"/>
 
             </FrameLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:baselineAligned="true">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:baselineAligned="true">
 
                 <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/Subtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:fontFamily="@string/font_family_light"
-                        android:textColor="?AccentColour"
-                        android:textSize="@dimen/FontSizeSemiNormal"
-                        tools:text="Bids: 12 Ends in: 6h 25m" />
-
+                            android:id="@+id/Subtitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@string/font_family_light"
+                            android:textColor="?AccentColour"
+                            android:textSize="@dimen/FontSizeSemiNormal"
+                            tools:text="Bids: 12 Ends in: 6h 25m"/>
                 </FrameLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_margin="4dp"
-                    android:background="?ForegroundShallowColour"
-                    android:elevation="4dp"
-                    android:gravity="center"
-                    android:outlineAmbientShadowColor="?AccentColour"
-                    android:outlineSpotShadowColor="?AccentColour"
-                    android:padding="4dp">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_margin="4dp"
+                        android:background="?ForegroundShallowColour"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:outlineAmbientShadowColor="?AccentColour"
+                        android:outlineSpotShadowColor="?AccentColour"
+                        android:padding="4dp">
 
                     <ImageView
-                        android:id="@+id/PriceTrendIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/icon_chevron_triple_up"
-                        android:tint="?AccentColour" />
+                            android:id="@+id/PriceTrendIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/icon_chevron_triple_up"
+                            android:tint="?AccentColour"/>
 
                     <TextView
-                        android:id="@+id/Price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="4dp"
-                        android:fontFamily="@string/font_family_medium"
-                        android:textColor="?TextColour"
-                        android:textSize="@dimen/FontSizeMedium"
-                        tools:text="1111¥" />
+                            android:id="@+id/Price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:fontFamily="@string/font_family_medium"
+                            android:textColor="?TextColour"
+                            android:textSize="@dimen/FontSizeMedium"
+                            tools:text="1111¥"/>
                 </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-    <View style="@style/ViewDivider" />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:id="@+id/LastUpdatedLabel" android:layout_marginStart="8dp"
+              tools:text="Last changed: {0} ago" android:textSize="@dimen/FontSizeSemiNormal"
+              android:fontFamily="@string/font_family_light" android:textStyle="italic"/>
+
+    <View style="@style/ViewDivider" android:layout_marginTop="16dp"/>
 
 </LinearLayout>

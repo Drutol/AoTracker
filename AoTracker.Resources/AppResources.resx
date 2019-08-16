@@ -168,6 +168,12 @@
   <data name="Item_CrawlerDescriptor_SearchPhrase" xml:space="preserve">
     <value>Search Phrase:</value>
   </data>
+  <data name="Item_FeedChangeGroup_Recently" xml:space="preserve">
+    <value>Recently</value>
+  </data>
+  <data name="Item_Feed_LastChanged" xml:space="preserve">
+    <value>Changed {0} ago</value>
+  </data>
   <data name="Item_SurugayaCrawlerCell_TrimsFromQuotationMarks" xml:space="preserve">
     <value>Removes content from 「 」</value>
   </data>

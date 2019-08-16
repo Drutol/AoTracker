@@ -32,4 +32,14 @@
         <item name="android:background">?ForegroundDeepColour</item>
     </style>
 
+    <style name="ViewDividerTall">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:background">?ForegroundDeepColour</item>
+    </style>
+
 </resources>

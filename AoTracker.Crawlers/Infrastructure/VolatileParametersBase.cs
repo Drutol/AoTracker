@@ -8,5 +8,6 @@ namespace AoTracker.Crawlers.Infrastructure
     public class VolatileParametersBase : ICrawlerVolatileParameters
     {
         public int Page { get; set; }
+        public bool UseCache { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using AoLibs.Utilities.Shared;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Infrastructure;
+using AoTracker.Infrastructure.Models;
 using AoTracker.Infrastructure.Util;
 using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Interfaces;
@@ -26,8 +27,8 @@ namespace AoTracker.Infrastructure.ViewModels
         private List<HistoryFeedEntry> _feedHistory;
         private List<FeedItemViewModel> _aggregatedFeed = new List<FeedItemViewModel>();
 
-        public ObservableCollection<IFeedItem> Feed { get; set; } =
-            new ObservableCollection<IFeedItem>();
+        public SmartObservableCollection<IFeedItem> Feed { get; } =
+            new SmartObservableCollection<IFeedItem>();
 
 
         public FeedViewModel(
@@ -47,9 +48,15 @@ namespace AoTracker.Infrastructure.ViewModels
         private async void FeedProviderOnFinished(object sender, EventArgs e)
         {
             IsLoading = false;
-
-            Feed = new ObservableCollection<IFeedItem>(
-                _aggregatedFeed.OrderByDescending(model => model.LastChanged));
+            var items = new List<IFeedItem>();
+            var groups = _aggregatedFeed.OrderByDescending(model => model.LastChanged)
+                .GroupBy(model => model.LastChanged);
+            foreach (var group in groups)
+            {
+                items.Add(new FeedChangeGroupItem(group.Key));
+                items.AddRange(group);
+            }
+            Feed.AddRange(items);
             _feedHistory = Feed.OfType<FeedItemViewModel>().Select(model => model.BuildHistoryEntry()).ToList();
             await _appVariables.FeedHistory.SetAsync(_feedHistory);
             _aggregatedFeed.Clear();
@@ -69,12 +76,19 @@ namespace AoTracker.Infrastructure.ViewModels
             _aggregatedFeed.AddRange(viewModels);
         }
 
-        public async void NavigatedTo()
+        public async void RefreshFeed(bool force = false)
         {
+            Feed.Clear();
             _feedHistory = await _appVariables.FeedHistory.GetAsync();
             _feedCts = new CancellationTokenSource();
+            _feedProvider.StartAggregating(_feedCts.Token, force);
+        }
+
+        public void NavigatedTo()
+        {
             IsLoading = true;
-            _feedProvider.StartAggregating(_feedCts.Token);
+            if(!Feed.Any())
+                RefreshFeed();
         }
 
         public bool IsLoading
@@ -85,5 +99,7 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public RelayCommand<ICrawlerResultItem> SelectFeedItemCommand =>
             new RelayCommand<ICrawlerResultItem>(item => { });
+
+
     }
 }

@@ -214,6 +214,24 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changed {0} ago.
+        /// </summary>
+        public static string Item_Feed_LastChanged {
+            get {
+                return ResourceManager.GetString("Item_Feed_LastChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recently.
+        /// </summary>
+        public static string Item_FeedChangeGroup_Recently {
+            get {
+                return ResourceManager.GetString("Item_FeedChangeGroup_Recently", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removes content from 「 」.
         /// </summary>
         public static string Item_SurugayaCrawlerCell_TrimsFromQuotationMarks {

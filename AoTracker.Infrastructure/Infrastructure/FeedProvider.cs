@@ -33,17 +33,16 @@ namespace AoTracker.Infrastructure.Infrastructure
             _crawlerManager = crawlerManagerProvider.Manager;
         }
 
-        public async void StartAggregating(CancellationToken feedCtsToken)
+        public async void StartAggregating(CancellationToken feedCtsToken, bool force)
         {
             if(_isAggregating)
                 return;
 
             _isAggregating = true;
 
-
             try
             {
-                if (CachedFeed.Any())
+                if (!force && CachedFeed.Any())
                 {
                     NewCrawlerBatch?.Invoke(this, CachedFeed);
                     return;
@@ -51,7 +50,8 @@ namespace AoTracker.Infrastructure.Infrastructure
 
                 var volatileParameters = new VolatileParametersBase
                 {
-                    Page = 1
+                    Page = 1,
+                    UseCache = !force
                 };
 
                 foreach (var crawlingSet in _userDataProvider.CrawlingSets)

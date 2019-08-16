@@ -20,7 +20,7 @@ namespace AoTracker.Crawlers.Mandarake
 
         public override async Task<ICrawlerResult<MandarakeItem>> Crawl(CrawlerParameters parameters)
         {
-            if (Cache.IsCached(parameters))
+            if (parameters.VolatileParameters.UseCache && Cache.IsCached(parameters))
                 return CrawlerResultBase<MandarakeItem>.FromCache(Cache.Get(parameters));
 
             try

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?BackgroundColour"
-    android:orientation="vertical">
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="?BackgroundColour"
+             android:orientation="vertical">
+
+    <AoLibs.Utilities.Android.Views.ScrollableSwipeToRefreshLayout android:layout_width="match_parent"
+                                                                   android:id="@+id/SwipeToRefreshLayout"
+                                                                   android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/RecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/RecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <ProgressBar
-        android:id="@+id/ProgressSpinner"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center" />
+    </AoLibs.Utilities.Android.Views.ScrollableSwipeToRefreshLayout>
 
 </FrameLayout>

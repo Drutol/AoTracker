@@ -13,6 +13,6 @@ namespace AoTracker.Interfaces
 
         List<ICrawlerResultItem> CachedFeed { get; }
 
-        void StartAggregating(CancellationToken feedCtsToken);
+        void StartAggregating(CancellationToken feedCtsToken, bool force);
     }
 }
