@@ -4,6 +4,9 @@ using System.Text;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Mandarake;
+using AoTracker.Crawlers.Sites.Lashinbang;
+using AoTracker.Crawlers.Sites.Mercari;
+using AoTracker.Crawlers.Sites.Yahoo;
 using AoTracker.Crawlers.Surugaya;
 
 namespace AoTracker.Crawlers.Infrastructure
@@ -23,6 +26,9 @@ namespace AoTracker.Crawlers.Infrastructure
             {
                 {CrawlerDomain.Surugaya, new SurugayaCrawler(httpClientProvider)},
                 {CrawlerDomain.Mandarake, new MandarakeCrawler(httpClientProvider)},
+                {CrawlerDomain.Mercari, new MercariCrawler(httpClientProvider)},
+                {CrawlerDomain.Yahoo, new YahooCrawler(httpClientProvider)},
+                {CrawlerDomain.Lashinbang, new LashinbangCrawler(httpClientProvider)},
             };
         }
 

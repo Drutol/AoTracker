@@ -37,7 +37,7 @@ namespace AoTracker.Crawlers.Mandarake
                     var id = itemNode.FirstOfDescendantsWithClass("p", "itemno").InnerText.Trim();
                     var startId = id.IndexOf('(');
 
-                    item.Id = id.Substring(startId).Trim(')');
+                    item.Id = id.Substring(startId + 1).Trim(')');
                     item.Name = WebUtility.HtmlDecode(itemNode.FirstOfDescendantsWithClass("div", "title").InnerText.Trim());
                     item.Price = float.Parse(itemNode.FirstOfDescendantsWithClass("div", "price").InnerText.Replace("円+税", "")
                         .Replace(",", ""));

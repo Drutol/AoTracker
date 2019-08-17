@@ -7,6 +7,9 @@ namespace AoTracker.Crawlers.Enums
     public enum CrawlerDomain
     {
         Surugaya,
-        Mandarake
+        Mandarake,
+        Yahoo,
+        Mercari,
+        Lashinbang
     }
 }
