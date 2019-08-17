@@ -18,12 +18,12 @@ namespace AoTracker.Infrastructure.Statics
         {
             builder.RegisterType<Settings>().As<ISettings>().SingleInstance();
             builder.RegisterType<CrawlerManagerProvider>().As<ICrawlerManagerProvider>().SingleInstance();
-            builder.RegisterType<FeedProvider>().As<IFeedProvider>().SingleInstance();
             builder.RegisterType<UserDataProvider>().As<IUserDataProvider>().SingleInstance();
             builder.RegisterType<DataCache>().As<IDataCache>().SingleInstance();
             builder.RegisterType<FeedHistoryProvider>().As<IFeedHistoryProvider>().SingleInstance();
             builder.RegisterType<AppVariables>().SingleInstance();
 
+            builder.RegisterType<FeedProvider>().As<IFeedProvider>();
 
             builder.RegisterBuildCallback(BuildCallback);
 

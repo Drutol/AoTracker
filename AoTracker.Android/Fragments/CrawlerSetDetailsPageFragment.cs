@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V7.Widget;
 using Android.Text;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 using AoLibs.Adapters.Android.Recycler;
@@ -27,6 +28,7 @@ using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Infrastructure.ViewModels;
 using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Resources;
+using Com.Google.Android.Flexbox;
 using GalaSoft.MvvmLight.Helpers;
 using PopupMenu = Android.Support.V7.Widget.PopupMenu;
 
@@ -64,14 +66,20 @@ namespace AoTracker.Android.Fragments
                     ViewModel.CrawlerEntries,
                     AddCrawlerDataTemplate,
                     LayoutInflater,
-                    Resource.Layout.item_add_crawler) {StretchContentHorizonatally = true});
+                    Resource.Layout.item_add_crawler));
 
             Bindings.Add(
                 this.SetBinding(() => ViewModel.SetName,
                     () => TitleTextBox.Text, BindingMode.TwoWay));
 
+
+
             CrawlersRecyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
-            AddCrawlersRecyclerView.SetLayoutManager(new GridLayoutManager(Activity, 3));
+            AddCrawlersRecyclerView.SetLayoutManager(new CustomFlexboxLayoutManager(Activity)
+            {
+                FlexDirection = FlexDirection.Row,
+                FlexWrap = FlexWrap.Wrap
+            });
         }
 
         private void SurugayaCrawlerDescriptorDataTemplate(CrawlerDescriptorViewModel<SurugayaItem> item, SurugayaCrawlerHolder holder, int position)
