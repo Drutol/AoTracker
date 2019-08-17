@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AoLibs.Utilities.Shared;
+using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Interfaces;
+using AoTracker.Crawlers.Sites.Yahoo;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Infrastructure;
 using AoTracker.Infrastructure.Models;
@@ -76,9 +78,15 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             var viewModels = new List<FeedItemViewModel>();
             foreach (var crawlerResultItem in e.CrawlerResult.Results)
             {
-                var vm = _lifetimeScope.Resolve<FeedItemViewModel>(
+                var vmType = crawlerResultItem.Domain == CrawlerDomain.Yahoo
+                    ? typeof(FeedItemViewModel<YahooItem>)
+                    : typeof(FeedItemViewModel);
+
+                var vm = (FeedItemViewModel) _lifetimeScope.Resolve(
+                    vmType,
                     new TypedParameter(typeof(ICrawlerResultItem), crawlerResultItem),
                     new TypedParameter(typeof(FeedTabViewModel), this));
+
                 vm.WithHistory(_feedHistory, e.SetOfOrigin);
                 viewModels.Add(vm);
             }

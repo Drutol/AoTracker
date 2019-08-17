@@ -8,6 +8,9 @@ using System.Windows.Input;
 using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Mandarake;
+using AoTracker.Crawlers.Sites.Lashinbang;
+using AoTracker.Crawlers.Sites.Mercari;
+using AoTracker.Crawlers.Sites.Yahoo;
 using AoTracker.Crawlers.Surugaya;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Messaging;
@@ -191,6 +194,14 @@ namespace AoTracker.Infrastructure.ViewModels
                     return typeof(CrawlerDescriptorViewModel<SurugayaItem>);
                 case CrawlerDomain.Mandarake:
                     return typeof(CrawlerDescriptorViewModel<MandarakeItem>);
+                case CrawlerDomain.Yahoo:
+                    return typeof(CrawlerDescriptorViewModel<YahooItem>);
+                case CrawlerDomain.Mercari:
+                    return typeof(CrawlerDescriptorViewModel<MercariItem>);
+                case CrawlerDomain.Lashinbang:
+                    return typeof(CrawlerDescriptorViewModel<LashinbangItem>);
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(crawlerDomain), crawlerDomain, null);
             }
 
             throw new ArgumentOutOfRangeException(nameof(crawlerDomain));

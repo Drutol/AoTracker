@@ -19,7 +19,11 @@ using AoLibs.Utilities.Android;
 using AoLibs.Utilities.Android.Listeners;
 using AoTracker.Android.Utils;
 using AoTracker.Crawlers.Enums;
+using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Mandarake;
+using AoTracker.Crawlers.Sites.Lashinbang;
+using AoTracker.Crawlers.Sites.Mercari;
+using AoTracker.Crawlers.Sites.Yahoo;
 using AoTracker.Crawlers.Surugaya;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
@@ -58,6 +62,21 @@ namespace AoTracker.Android.Fragments
                             builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
                             builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
                         })
+                        .WithGroup<CrawlerDescriptorViewModel<MercariItem>, MercariCrawlerHolder>(builder =>
+                        {
+                            builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
+                            builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
+                        })
+                        .WithGroup<CrawlerDescriptorViewModel<YahooItem>, YahooCrawlerHolder>(builder =>
+                        {
+                            builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
+                            builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
+                        })
+                        .WithGroup<CrawlerDescriptorViewModel<LashinbangItem>, LashinbangCrawlerHolder>(builder =>
+                        {
+                            builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
+                            builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
+                        })
                         .Build());
             }));
 
@@ -87,13 +106,14 @@ namespace AoTracker.Android.Fragments
             BaseCrawlerTemplate(item, holder);
         }
 
-        private void MandarakeCrawlerDescriptorDataTemplate(CrawlerDescriptorViewModel<MandarakeItem> item, MandarakeCrawlerHolder holder, int position)
+        private void MandarakeCrawlerDescriptorDataTemplate(CrawlerDescriptorViewModel item, ICrawlerHolder holder, int position)
         {
             BaseCrawlerTemplate(item, holder);
         }
 
         private void BaseCrawlerTemplate(CrawlerDescriptorViewModel item, ICrawlerHolder holder)
         {
+            holder.ViewModelProxy = item;
             holder.ClickSurface.SetOnClickCommand(ViewModel.SelectCrawlerDescriptorCommand, item);
             holder.ClickSurface.SetOnLongClickListener(new OnLongClickListener(view =>
             {
@@ -113,23 +133,8 @@ namespace AoTracker.Android.Fragments
         private void AddCrawlerDataTemplate(CrawlerEntryViewModel item, AddCrawlerHolder holder, int position)
         {
             holder.Subtitle.Text = item.BackingModel.Title;
-            holder.Image.SetImageResource(GetResource());
+            holder.Image.SetImageResource(GetDomainImageResource(item.BackingModel.CrawlerDomain));
             holder.ClickSurface.SetOnClickCommand(ViewModel.AddCrawlerCommand, item);
-
-            int GetResource()
-            {
-                if (item.BackingModel.CrawlerDomain == CrawlerDomain.Mandarake)
-                    return Resource.Drawable.mandarake;
-                if (item.BackingModel.CrawlerDomain == CrawlerDomain.Surugaya)
-                    return Resource.Drawable.surugaya;
-                if (item.BackingModel.CrawlerDomain == CrawlerDomain.Mercari)
-                    return Resource.Drawable.mercari;
-                if (item.BackingModel.CrawlerDomain == CrawlerDomain.Yahoo)
-                    return Resource.Drawable.yahoo;
-                if (item.BackingModel.CrawlerDomain == CrawlerDomain.Lashinbang)
-                    return Resource.Drawable.lashinbang;
-                return 0;
-            }
         }
 
         public override void NavigatedTo()
@@ -148,6 +153,21 @@ namespace AoTracker.Android.Fragments
         {
             base.NavigatedFrom();
             ViewModel.NavigatedFrom();
+        }
+
+        private static int GetDomainImageResource(CrawlerDomain domain)
+        {
+            if (domain == CrawlerDomain.Mandarake)
+                return Resource.Drawable.mandarake;
+            if (domain == CrawlerDomain.Surugaya)
+                return Resource.Drawable.surugaya;
+            if (domain == CrawlerDomain.Mercari)
+                return Resource.Drawable.mercari;
+            if (domain == CrawlerDomain.Yahoo)
+                return Resource.Drawable.yahoo;
+            if (domain == CrawlerDomain.Lashinbang)
+                return Resource.Drawable.lashinbang;
+            return 0;
         }
 
         #region Views
@@ -183,11 +203,14 @@ namespace AoTracker.Android.Fragments
         {
             View ItemView { get; }
             LinearLayout ClickSurface { get; }
+            object ViewModelProxy { get; set; }
         }
 
         class SurugayaCrawlerHolder : BindingViewHolderBase<CrawlerDescriptorViewModel<SurugayaItem>>, ICrawlerHolder
         {
             private readonly View _view;
+
+            public object ViewModelProxy { get; set; }
 
             public SurugayaCrawlerHolder(View view) : base(view)
             {
@@ -201,8 +224,15 @@ namespace AoTracker.Android.Fragments
                     var param = ViewModel.CrawlerSourceParameters as SurugayaSourceParameters;
 
                     SearchPhrase.Text = param.SearchQuery;
-                    PriceIncrease.Text =
-                        $"+{param.OffsetIncrease}¥  +{param.PercentageIncrease}%";
+                    if (param.PercentageIncrease == 0 && param.OffsetIncrease == 0)
+                    {
+                        PriceIncreaseSection.Visibility = PriceIncreaseSectionDivider.Visibility = ViewStates.Gone;
+                    }
+                    else
+                    {
+                        PriceIncreaseSection.Visibility = PriceIncreaseSectionDivider.Visibility = ViewStates.Visible;
+                        PriceIncrease.Text = $"+{param.OffsetIncrease}¥  +{param.PercentageIncrease}%";
+                    }
                     RemovesQuotationMarksIndicator.Visibility =
                         param.TrimJapaneseQuotationMarks ? ViewStates.Visible : ViewStates.Gone;
                 }));
@@ -210,47 +240,103 @@ namespace AoTracker.Android.Fragments
 
             private ImageView _image;
             private TextView _searchPhrase;
+            private View _priceIncreaseSectionDivider;
             private TextView _priceIncrease;
+            private LinearLayout _priceIncreaseSection;
             private LinearLayout _removesQuotationMarksIndicator;
             private LinearLayout _clickSurface;
 
             public ImageView Image => _image ?? (_image = _view.FindViewById<ImageView>(Resource.Id.Image));
             public TextView SearchPhrase => _searchPhrase ?? (_searchPhrase = _view.FindViewById<TextView>(Resource.Id.SearchPhrase));
+            public View PriceIncreaseSectionDivider => _priceIncreaseSectionDivider ?? (_priceIncreaseSectionDivider = _view.FindViewById<View>(Resource.Id.PriceIncreaseSectionDivider));
             public TextView PriceIncrease => _priceIncrease ?? (_priceIncrease = _view.FindViewById<TextView>(Resource.Id.PriceIncrease));
+            public LinearLayout PriceIncreaseSection => _priceIncreaseSection ?? (_priceIncreaseSection = _view.FindViewById<LinearLayout>(Resource.Id.PriceIncreaseSection));
             public LinearLayout RemovesQuotationMarksIndicator => _removesQuotationMarksIndicator ?? (_removesQuotationMarksIndicator = _view.FindViewById<LinearLayout>(Resource.Id.RemovesQuotationMarksIndicator));
             public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
         }
 
-        class MandarakeCrawlerHolder : BindingViewHolderBase<CrawlerDescriptorViewModel<MandarakeItem>>, ICrawlerHolder
-        {
-            private readonly View _view;
 
-            public MandarakeCrawlerHolder(View view) : base(view)
+        abstract class SharedCrawlerHolder<T> : BindingViewHolderBase<T> where T : CrawlerDescriptorViewModel
+        {
+            private View _view;
+
+            public object ViewModelProxy
+            {
+                get => ViewModel;
+                set => ViewModel = (T)value;
+            }
+
+            protected SharedCrawlerHolder(View view) : base(view)
             {
                 _view = view;
             }
 
             protected override void SetBindings()
             {
+                Image.SetImageResource(GetDomainImageResource(ViewModel.BackingModel.CrawlerDomain));
+
                 Bindings.Add(this.SetBinding(() => ViewModel.CrawlerSourceParameters).WhenSourceChanges(() =>
                 {
-                    var param = ViewModel.CrawlerSourceParameters as MandarakeSourceParameters;
+                    var param = ViewModel.CrawlerSourceParameters;
 
                     SearchPhrase.Text = param.SearchQuery;
-                    PriceIncrease.Text =
-                        $"+{param.OffsetIncrease}¥  +{param.PercentageIncrease}%";
+                    if (param.PercentageIncrease == 0 && param.OffsetIncrease == 0)
+                    {
+                        PriceIncreaseSection.Visibility = PriceIncreaseSectionDivider.Visibility = ViewStates.Gone;
+                    }
+                    else
+                    {
+                        PriceIncreaseSection.Visibility = PriceIncreaseSectionDivider.Visibility = ViewStates.Visible;
+                        PriceIncrease.Text = $"+{param.OffsetIncrease}¥  +{param.PercentageIncrease}%";
+                    }
                 }));
             }
-
+            private ImageView _image;
             private TextView _searchPhrase;
+            private View _priceIncreaseSectionDivider;
             private TextView _priceIncrease;
+            private LinearLayout _priceIncreaseSection;
             private LinearLayout _clickSurface;
 
+            public ImageView Image => _image ?? (_image = _view.FindViewById<ImageView>(Resource.Id.Image));
             public TextView SearchPhrase => _searchPhrase ?? (_searchPhrase = _view.FindViewById<TextView>(Resource.Id.SearchPhrase));
+            public View PriceIncreaseSectionDivider => _priceIncreaseSectionDivider ?? (_priceIncreaseSectionDivider = _view.FindViewById<View>(Resource.Id.PriceIncreaseSectionDivider));
             public TextView PriceIncrease => _priceIncrease ?? (_priceIncrease = _view.FindViewById<TextView>(Resource.Id.PriceIncrease));
+            public LinearLayout PriceIncreaseSection => _priceIncreaseSection ?? (_priceIncreaseSection = _view.FindViewById<LinearLayout>(Resource.Id.PriceIncreaseSection));
             public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
         }
 
 
+        class MandarakeCrawlerHolder : SharedCrawlerHolder<CrawlerDescriptorViewModel<MandarakeItem>>, ICrawlerHolder
+        {
+            public MandarakeCrawlerHolder(View view) : base(view)
+            {
+
+            }
+        }
+
+        class YahooCrawlerHolder : SharedCrawlerHolder<CrawlerDescriptorViewModel<YahooItem>>, ICrawlerHolder
+        {
+            public YahooCrawlerHolder(View view) : base(view)
+            {
+
+            }
+        }
+
+        class MercariCrawlerHolder : SharedCrawlerHolder<CrawlerDescriptorViewModel<MercariItem>>, ICrawlerHolder
+        {
+            public MercariCrawlerHolder(View view) : base(view)
+            {
+
+            }
+        }
+
+        class LashinbangCrawlerHolder : SharedCrawlerHolder<CrawlerDescriptorViewModel<LashinbangItem>>, ICrawlerHolder
+        {
+            public LashinbangCrawlerHolder(View view) : base(view)
+            {
+
+            }
+        }
     }
 }

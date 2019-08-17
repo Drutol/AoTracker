@@ -33,6 +33,7 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterType<FeedItemViewModel>();
             builder.RegisterType<FeedTabViewModel>();
             builder.RegisterGeneric(typeof(CrawlerDescriptorViewModel<>));
+            builder.RegisterGeneric(typeof(FeedItemViewModel<>));
         }
     }
 }

@@ -71,16 +71,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
+                    android:ellipsize="end"
                     android:fontFamily="@string/font_family_medium"
+                    android:maxLines="2"
                     android:textColor="?TextColour"
                     android:textSize="@dimen/FontSizeMedium"
                     tools:text="Some Item Header" />
 
                 <ImageView
                     android:id="@+id/StoreIcon"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    tools:src="@drawable/surugaya" />
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/yahoo" />
             </LinearLayout>
 
             <FrameLayout
@@ -88,45 +90,84 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginStart="4dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/Detail"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:paddingTop="4dp"
-                    android:textColor="?TextColour"
-                    tools:text="Some item description\n\n\n" />
-
-            </FrameLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:baselineAligned="true">
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/Subtitle"
+                        android:id="@+id/DetailBids"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:fontFamily="@string/font_family_light"
-                        android:textColor="?AccentColour"
-                        android:textSize="@dimen/FontSizeSemiNormal"
-                        tools:text="Bids: 12 Ends in: 6h 25m" />
-                </FrameLayout>
+                        android:layout_marginTop="2dp"
+                        android:drawableStart="@drawable/icon_bid"
+                        android:drawablePadding="8dp"
+                        android:drawableTint="?AccentDarkColour"
+                        android:gravity="center"
+                        android:paddingTop="4dp"
+                        android:textColor="?TextColour"
+                        tools:text="Bids: 24" />
+
+                    <TextView
+                        android:id="@+id/DetailEndsIn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:drawableStart="@drawable/icon_hourglass"
+                        android:drawablePadding="8dp"
+                        android:drawableTint="?AccentDarkColour"
+                        android:gravity="center"
+                        android:paddingTop="4dp"
+                        android:textColor="?TextColour"
+                        tools:text="Ends in: 6d 5h 22m" />
+
+                    <TextView
+                        android:id="@+id/DetailCondition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:drawableStart="@drawable/icon_diamond"
+                        android:drawablePadding="8dp"
+                        android:drawableTint="?AccentDarkColour"
+                        android:gravity="center"
+                        android:paddingTop="4dp"
+                        android:textColor="?TextColour"
+                        tools:text="Condition: New" />
+
+                    <TextView
+                        android:id="@+id/DetailShipping"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:drawableStart="@drawable/icon_truck_check"
+                        android:drawablePadding="8dp"
+                        android:drawableTint="?AccentDarkColour"
+                        android:gravity="center"
+                        android:paddingTop="4dp"
+                        android:textColor="?TextColour"
+                        tools:text="Free shipping" />
+
+                    <TextView
+                        android:id="@+id/DetailsTax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:drawableStart="@drawable/icon_money_multiple_medium"
+                        android:drawablePadding="8dp"
+                        android:drawableTint="?AccentDarkColour"
+                        android:gravity="center"
+                        android:paddingTop="4dp"
+                        android:textColor="?TextColour"
+                        tools:text="Tax: +8%" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|end"
+                    android:layout_gravity="bottom|end"
                     android:layout_margin="4dp"
                     android:background="?ForegroundShallowColour"
                     android:elevation="4dp"
@@ -171,8 +212,7 @@
                     </LinearLayout>
 
                 </LinearLayout>
-
-            </LinearLayout>
+            </FrameLayout>
         </LinearLayout>
     </LinearLayout>
 

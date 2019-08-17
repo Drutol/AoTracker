@@ -16,7 +16,7 @@ namespace AoTracker.Android.Utils
     {
         public static ViewStates BoolToVisibility(bool arg)
         {
-            return arg ? ViewStates.Visible : ViewStates.Invisible;
+            return arg ? ViewStates.Visible : ViewStates.Gone;
         }
     }
 }

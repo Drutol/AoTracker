@@ -24,7 +24,7 @@ namespace AoTracker.Crawlers.Sites.Yahoo
 
         public ItemCondition Condition { get; set; }
         public int BuyoutPrice { get; set; }
-        public DateTimeOffset EndTime { get; set; }
+        public DateTime EndTime { get; set; }
         public bool IsShippingFree { get; set; }
         public int Tax { get; set; }
         public int BidsCount { get; set; }

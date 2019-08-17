@@ -26,8 +26,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:fontFamily="@string/font_family_light"
-                android:textColor="?TextColour"
-                android:text="@string/Item_CrawlerCell_SearchPhrase" />
+                android:text="@string/Item_CrawlerCell_SearchPhrase"
+                android:textColor="?TextColour" />
         </LinearLayout>
 
         <TextView
@@ -40,9 +40,12 @@
             tools:text="蒼の彼方のフォーリズム　タペストリ" />
     </LinearLayout>
 
-    <View style="@style/ViewDivider" />
+    <View
+        android:id="@+id/PriceIncreaseSectionDivider"
+        style="@style/ViewDivider" />
 
     <LinearLayout
+        android:id="@+id/PriceIncreaseSection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -62,8 +65,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:fontFamily="@string/font_family_light"
-                android:textColor="?TextColour"
-                android:text="@string/Item_CrawlerCell_PriceIncrease" />
+                android:text="@string/Item_CrawlerCell_PriceIncrease"
+                android:textColor="?TextColour" />
         </LinearLayout>
 
 

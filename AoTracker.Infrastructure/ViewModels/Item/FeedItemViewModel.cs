@@ -20,8 +20,8 @@ namespace AoTracker.Infrastructure.ViewModels.Item
             _parent = parent;
         }
 
-        public bool Highlighted { get; set; }
         public bool IsNew { get; private set; }
+        public float PriceDifference { get; set; }
         public PriceChange PriceChange { get; private set; }
         public DateTime LastChanged { get; private set; }
         public CrawlerSet SetOfOrigin { get; private set; }
@@ -41,7 +41,6 @@ namespace AoTracker.Infrastructure.ViewModels.Item
             {
                 IsNew = true;
                 LastChanged = DateTime.UtcNow;
-                Highlighted = true;
             }
             else
             {
@@ -61,7 +60,7 @@ namespace AoTracker.Infrastructure.ViewModels.Item
                 if (PriceChange != PriceChange.Stale)
                 {
                     LastChanged = DateTime.UtcNow;
-                    Highlighted = true;
+                    PriceDifference = BackingModel.Price - historyEntry.PreviousPrice;
                 }
                 else
                     LastChanged = historyEntry.LastChanged;
@@ -76,6 +75,16 @@ namespace AoTracker.Infrastructure.ViewModels.Item
                 LastChanged = LastChanged,
                 PreviousPrice = BackingModel.Price
             };
+        }
+    }
+
+    public class FeedItemViewModel<T> : FeedItemViewModel where T : ICrawlerResultItem
+    {
+        public T Item { get; }
+
+        public FeedItemViewModel(ICrawlerResultItem item, FeedTabViewModel parent) : base(item, parent)
+        {
+            Item = (T) item;
         }
     }
 }

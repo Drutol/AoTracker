@@ -42,7 +42,7 @@ namespace AoTracker.Crawlers.Sites.Yahoo
                     Price = rootItem.Price,
                     BuyoutPrice = rootItem.BuyItNowPrice,
                     EndTime = new DateTimeOffset(DateTime.Parse(rootItem.EndTime), TimeSpan.FromHours(9))
-                        .ToUniversalTime(),
+                        .ToUniversalTime().UtcDateTime,
                     IsShippingFree = rootItem.Postage == 0,
                     Condition = condition,
                     Tax = rootItem.Tax,
