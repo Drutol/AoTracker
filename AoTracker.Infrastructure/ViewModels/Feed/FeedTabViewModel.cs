@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using AoLibs.Utilities.Shared;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Domain.Models;
@@ -18,6 +19,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
     public class FeedTabViewModel : ViewModelBase
     {
         private readonly IFeedProvider _feedProvider;
+        private readonly IFeedHistoryProvider _feedHistoryProvider;
         private readonly ILifetimeScope _lifetimeScope;
         private readonly AppVariables _appVariables;
         private CancellationTokenSource _feedCts;
@@ -33,9 +35,11 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
 
         public FeedTabViewModel(
             IFeedProvider feedProvider,
+            IFeedHistoryProvider feedHistoryProvider,
             AppVariables appVariables)
         {
             _feedProvider = feedProvider;
+            _feedHistoryProvider = feedHistoryProvider;
             _lifetimeScope = ResourceLocator.ObtainScope();
             _appVariables = appVariables;
             _feedProvider.NewCrawlerBatch += FeedProviderOnNewCrawlerBatch;
@@ -57,20 +61,25 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
                 items.AddRange(group);
             }
             Feed.AddRange(items);
-            _feedHistory = Feed.OfType<FeedItemViewModel>().Select(model => model.BuildHistoryEntry()).ToList();
-            await _appVariables.FeedHistory.SetAsync(_feedHistory);
+
+            foreach (var group in _aggregatedFeed.GroupBy(model => model.SetOfOrigin))
+            {
+                await _feedHistoryProvider.UpdateHistory(group.Key,
+                    group.Select(model => model.BuildHistoryEntry()).ToList());
+            }
+
             _aggregatedFeed.Clear();
         }
 
-        private void FeedProviderOnNewCrawlerBatch(object sender, IEnumerable<ICrawlerResultItem> e)
+        private void FeedProviderOnNewCrawlerBatch(object sender, FeedBatch e)
         {
             var viewModels = new List<FeedItemViewModel>();
-            foreach (var crawlerResultItem in e)
+            foreach (var crawlerResultItem in e.CrawlerResult.Results)
             {
                 var vm = _lifetimeScope.Resolve<FeedItemViewModel>(
                     new TypedParameter(typeof(ICrawlerResultItem), crawlerResultItem),
                     new TypedParameter(typeof(FeedTabViewModel), this));
-                vm.WithHistory(_feedHistory);
+                vm.WithHistory(_feedHistory, e.SetOfOrigin);
                 viewModels.Add(vm);
             }
 
@@ -81,6 +90,9 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         {
             Feed.Clear();
             IsLoading = true;
+            var historyTasks = TabEntry.CrawlerSets.Select(set => _feedHistoryProvider.GetHistory(set)).ToList();
+            await Task.WhenAll(historyTasks);
+            _feedHistory = historyTasks.SelectMany(task => task.Result ?? Enumerable.Empty<HistoryFeedEntry>()).ToList();
             _feedCts = new CancellationTokenSource();
             _feedProvider.StartAggregating(TabEntry.CrawlerSets, _feedCts.Token, force);
         }

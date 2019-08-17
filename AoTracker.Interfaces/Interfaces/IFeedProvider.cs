@@ -9,7 +9,7 @@ namespace AoTracker.Interfaces
 {
     public interface IFeedProvider
     {
-        event EventHandler<IEnumerable<ICrawlerResultItem>> NewCrawlerBatch;
+        event EventHandler<FeedBatch> NewCrawlerBatch;
         event EventHandler Finished;
 
         void StartAggregating(List<CrawlerSet> set, CancellationToken feedCtsToken, bool force);

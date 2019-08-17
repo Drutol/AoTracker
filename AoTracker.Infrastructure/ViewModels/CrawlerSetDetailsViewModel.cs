@@ -91,6 +91,7 @@ namespace AoTracker.Infrastructure.ViewModels
                 {
                     await _userDataProvider.AddNewSet(new CrawlerSet
                     {
+                        Guid = Guid.NewGuid(),
                         CreatedAt = DateTime.UtcNow,
                         Descriptors = CrawlerDescriptors.Select(model => model.BackingModel).ToList(),
                         Name = SetName

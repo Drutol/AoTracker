@@ -19,10 +19,8 @@ namespace AoTracker.Infrastructure.Infrastructure
         private readonly ICrawlerManager _crawlerManager;
         private bool _isAggregating;
 
-        public event EventHandler<IEnumerable<ICrawlerResultItem>> NewCrawlerBatch;
+        public event EventHandler<FeedBatch> NewCrawlerBatch;
         public event EventHandler Finished;
-
-
 
         public FeedProvider(
             ICrawlerManagerProvider crawlerManagerProvider,
@@ -56,7 +54,6 @@ namespace AoTracker.Infrastructure.Infrastructure
                 _isAggregating = false;
             }
 
-           
             Finished?.Invoke(this, EventArgs.Empty);
         }
 
@@ -74,7 +71,11 @@ namespace AoTracker.Infrastructure.Infrastructure
 
                 if (result.Success)
                 {
-                    NewCrawlerBatch?.Invoke(this, result.Results);
+                    NewCrawlerBatch?.Invoke(this, new FeedBatch
+                    {
+                        CrawlerResult = result,
+                        SetOfOrigin = crawlingSet
+                    });
                 }
             }
         }

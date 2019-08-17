@@ -21,7 +21,9 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterType<FeedProvider>().As<IFeedProvider>().SingleInstance();
             builder.RegisterType<UserDataProvider>().As<IUserDataProvider>().SingleInstance();
             builder.RegisterType<DataCache>().As<IDataCache>().SingleInstance();
+            builder.RegisterType<FeedHistoryProvider>().As<IFeedHistoryProvider>().SingleInstance();
             builder.RegisterType<AppVariables>().SingleInstance();
+
 
             builder.RegisterBuildCallback(BuildCallback);
 

@@ -21,12 +21,15 @@ namespace AoTracker.Infrastructure.ViewModels.Item
         }
 
         public bool Highlighted { get; set; }
-        public bool IsNew { get; set; }
-        public PriceChange PriceChange { get; set; }
-        public DateTime LastChanged { get; set; }
+        public bool IsNew { get; private set; }
+        public PriceChange PriceChange { get; private set; }
+        public DateTime LastChanged { get; private set; }
+        public CrawlerSet SetOfOrigin { get; private set; }
 
-        public void WithHistory(List<HistoryFeedEntry> feedHistory)
+        public void WithHistory(List<HistoryFeedEntry> feedHistory, CrawlerSet setOfOrigin)
         {
+            SetOfOrigin = setOfOrigin;
+
             if (feedHistory == null)
             {
                 LastChanged = DateTime.UtcNow;
