@@ -64,7 +64,7 @@ namespace AoTracker.Android.Fragments
                     ViewModel.CrawlerEntries,
                     AddCrawlerDataTemplate,
                     LayoutInflater,
-                    Resource.Layout.item_add_crawler));
+                    Resource.Layout.item_add_crawler) {StretchContentHorizonatally = true});
 
             Bindings.Add(
                 this.SetBinding(() => ViewModel.SetName,
@@ -114,6 +114,12 @@ namespace AoTracker.Android.Fragments
                     return Resource.Drawable.mandarake;
                 if (item.BackingModel.CrawlerDomain == CrawlerDomain.Surugaya)
                     return Resource.Drawable.surugaya;
+                if (item.BackingModel.CrawlerDomain == CrawlerDomain.Mercari)
+                    return Resource.Drawable.mercari;
+                if (item.BackingModel.CrawlerDomain == CrawlerDomain.Yahoo)
+                    return Resource.Drawable.yahoo;
+                if (item.BackingModel.CrawlerDomain == CrawlerDomain.Lashinbang)
+                    return Resource.Drawable.lashinbang;
                 return 0;
             }
         }

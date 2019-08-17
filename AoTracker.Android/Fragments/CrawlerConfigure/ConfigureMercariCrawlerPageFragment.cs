@@ -14,19 +14,19 @@ using AoLibs.Navigation.Android.Navigation.Attributes;
 using AoLibs.Utilities.Android;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Models.NavArgs;
-using AoTracker.Infrastructure.ViewModels;
+using AoTracker.Infrastructure.ViewModels.Crawlers;
 using GalaSoft.MvvmLight.Helpers;
 
 namespace AoTracker.Android.Fragments.CrawlerConfigure
 {
-    [NavigationPage(PageIndex.ConfigureMandarake, NavigationPageAttribute.PageProvider.Oneshot)]
-    class ConfigureMandarakeCrawlerPageFragment : CustomFragmentBase<ConfigureMandarakeCrawlerViewModel>
+    [NavigationPage(PageIndex.ConfigureMercari, NavigationPageAttribute.PageProvider.Oneshot)]
+    class ConfigureMercariCrawlerPageFragment : CustomFragmentBase<ConfigureMercariCrawlerViewModel>
     {
         public override int LayoutResourceId { get; } = Resource.Layout.page_configure_mandarake_crawler;
 
         protected override void InitBindings()
         {
-            DomainIcon.SetImageResource(Resource.Drawable.mandarake);
+            DomainIcon.SetImageResource(Resource.Drawable.mercari);
 
             Bindings.Add(
                 this.SetBinding(() => ViewModel.SearchQueryInput,

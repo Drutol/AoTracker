@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using AoTracker.Infrastructure.ViewModels;
+using AoTracker.Infrastructure.ViewModels.Crawlers;
 using AoTracker.Infrastructure.ViewModels.Feed;
 using AoTracker.Infrastructure.ViewModels.Item;
 using Autofac;
@@ -23,6 +24,9 @@ namespace AoTracker.Infrastructure.Statics
             // one shots
             builder.RegisterType<ConfigureSurugayaCrawlerViewModel>();
             builder.RegisterType<ConfigureMandarakeCrawlerViewModel>();
+            builder.RegisterType<ConfigureYahooCrawlerViewModel>();
+            builder.RegisterType<ConfigureMercariCrawlerViewModel>();
+            builder.RegisterType<ConfigureLashinbangCrawlerViewModel>();
 
             // items
             builder.RegisterType<CrawlerEntryViewModel>();

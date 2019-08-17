@@ -19,13 +19,15 @@ using GalaSoft.MvvmLight.Helpers;
 
 namespace AoTracker.Android.Fragments.CrawlerConfigure
 {
-    [NavigationPage(PageIndex.ConfigureSurugaya)]
+    [NavigationPage(PageIndex.ConfigureSurugaya, NavigationPageAttribute.PageProvider.Oneshot)]
     class ConfigureSurugayaCrawlerPageFragment : CustomFragmentBase<ConfigureSurugayaCrawlerViewModel>
     {
         public override int LayoutResourceId { get; } = Resource.Layout.page_configure_surugaya_crawler;
 
         protected override void InitBindings()
         {
+            DomainIcon.SetImageResource(Resource.Drawable.surugaya);
+
             Bindings.Add(
                 this.SetBinding(() => ViewModel.SearchQueryInput,
                     () => SearchQueryTextBox.Text, BindingMode.TwoWay));
@@ -53,12 +55,14 @@ namespace AoTracker.Android.Fragments.CrawlerConfigure
 
         #region Views
 
+        private ImageView _domainIcon;
         private TextInputEditText _searchQueryTextBox;
         private TextInputEditText _percentageIncreaseTextBox;
         private TextInputEditText _offsetIncreaseTextBox;
         private CheckBox _removeFromQuotationMarksCheckbox;
         private Button _saveButton;
 
+        public ImageView DomainIcon => _domainIcon ?? (_domainIcon = FindViewById<ImageView>(Resource.Id.DomainIcon));
         public TextInputEditText SearchQueryTextBox => _searchQueryTextBox ?? (_searchQueryTextBox = FindViewById<TextInputEditText>(Resource.Id.SearchQueryTextBox));
         public TextInputEditText PercentageIncreaseTextBox => _percentageIncreaseTextBox ?? (_percentageIncreaseTextBox = FindViewById<TextInputEditText>(Resource.Id.PercentageIncreaseTextBox));
         public TextInputEditText OffsetIncreaseTextBox => _offsetIncreaseTextBox ?? (_offsetIncreaseTextBox = FindViewById<TextInputEditText>(Resource.Id.OffsetIncreaseTextBox));

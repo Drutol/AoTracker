@@ -11,6 +11,9 @@ namespace AoTracker.Domain.Enums
         CrawlerSets,
         CrawlerSetDetails,
         ConfigureSurugaya,
-        ConfigureMandarake
+        ConfigureMandarake,
+        ConfigureYahoo,
+        ConfigureMercari,
+        ConfigureLashinbang,
     }
 }

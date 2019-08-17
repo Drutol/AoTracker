@@ -48,6 +48,24 @@ namespace AoTracker.Infrastructure.ViewModels
                 CrawlerDomain = CrawlerDomain.Mandarake,
                 Title = "Mandarake"
             },
+            new CrawlerEntry
+            {
+
+                CrawlerDomain = CrawlerDomain.Mercari,
+                Title = "Mercari"
+            },
+            new CrawlerEntry
+            {
+
+                CrawlerDomain = CrawlerDomain.Yahoo,
+                Title = "Yahoo"
+            },
+            new CrawlerEntry
+            {
+
+                CrawlerDomain = CrawlerDomain.Lashinbang,
+                Title = "Lashinbang"
+            },
         };
 
         public CrawlerSetDetailsViewModel(
@@ -238,7 +256,8 @@ namespace AoTracker.Infrastructure.ViewModels
                 var navArgs = new ConfigureCrawlerPageNavArgs
                 {
                     ConfigureNew = false,
-                    DescriptorToEdit = descriptor.BackingModel
+                    DescriptorToEdit = descriptor.BackingModel,
+                    Domain = descriptor.BackingModel.CrawlerDomain
                 };
                 NavigateConfigureDescriptor(navArgs);
             });
@@ -252,6 +271,15 @@ namespace AoTracker.Infrastructure.ViewModels
                     break;
                 case CrawlerDomain.Mandarake:
                     _navigationManager.Navigate(PageIndex.ConfigureMandarake, navArgs);
+                    break;
+                case CrawlerDomain.Yahoo:
+                    _navigationManager.Navigate(PageIndex.ConfigureYahoo, navArgs);
+                    break;
+                case CrawlerDomain.Mercari:
+                    _navigationManager.Navigate(PageIndex.ConfigureMercari, navArgs);
+                    break;
+                case CrawlerDomain.Lashinbang:
+                    _navigationManager.Navigate(PageIndex.ConfigureLashinbang, navArgs);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

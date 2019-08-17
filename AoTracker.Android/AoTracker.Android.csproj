@@ -69,8 +69,11 @@
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\MainActivity.drawer.cs" />
     <Compile Include="App.cs" />
+    <Compile Include="Fragments\CrawlerConfigure\ConfigureLashinbangCrawlerPageFragment.cs" />
     <Compile Include="Fragments\CrawlerConfigure\ConfigureMandarakeCrawlerPageFragment.cs" />
+    <Compile Include="Fragments\CrawlerConfigure\ConfigureMercariCrawlerPageFragment.cs" />
     <Compile Include="Fragments\CrawlerConfigure\ConfigureSurugayaCrawlerPageFragment.cs" />
+    <Compile Include="Fragments\CrawlerConfigure\ConfigureYahooCrawlerPageFragment.cs" />
     <Compile Include="Fragments\CrawlerSetsPageFragment.cs" />
     <Compile Include="Fragments\CustomFragmentBase.cs" />
     <Compile Include="Fragments\Feed\FeedPageFragment.cs" />
@@ -282,6 +285,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\page_feed_tab.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\yahoo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\lashinbang.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\mercari.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\page_configure_crawler_shared.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

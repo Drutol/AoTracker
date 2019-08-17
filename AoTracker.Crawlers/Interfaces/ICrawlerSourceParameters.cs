@@ -6,9 +6,9 @@ namespace AoTracker.Crawlers.Interfaces
 {
     public interface ICrawlerSourceParameters
     {
-        string SearchQuery { get; }
+        string SearchQuery { get; set; }
 
-        double PercentageIncrease { get; }
-        double OffsetIncrease { get; }
+        double PercentageIncrease { get; set; }
+        double OffsetIncrease { get; set; }
     }
 }
