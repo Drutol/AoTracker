@@ -12,7 +12,7 @@ namespace AoTracker.Crawlers.Surugaya
     public class SurugayaSource : TypedSource<SurugayaSourceParameters, VolatileParametersBase>
     {
         private const string FormatString
-            = "https://www.suruga-ya.jp/search?category=10&search_word={0}&adult_s=1&rankBy=modificationTime%3Adescending";
+            = "https://suruga-ya.jp/search?category=10&search_word={0}&adult_s=1&rankBy=modificationTime%3Adescending";
 
         private readonly IHttpClientProvider _httpClientProvider;
 

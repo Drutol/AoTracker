@@ -85,6 +85,8 @@
     <Compile Include="Themes\ThemeManager.cs" />
     <Compile Include="Utils\BindingConverters.cs" />
     <Compile Include="Utils\CustomFlexboxLayoutManager.cs" />
+    <Compile Include="Utils\HttpClientProvider.cs" />
+    <Compile Include="Utils\LinkerIncludes.cs" />
     <Compile Include="Utils\RecyclerViewAdapterBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -137,8 +139,8 @@
     <PackageReference Include="Autofac">
       <Version>4.9.3</Version>
     </PackageReference>
-    <PackageReference Include="Ideine.ModernHttpClient">
-      <Version>3.2.2</Version>
+    <PackageReference Include="modernhttpclient-updated">
+      <Version>3.3.4</Version>
     </PackageReference>
     <PackageReference Include="MvvmLightLibsStd10">
       <Version>5.4.1.1</Version>
@@ -322,6 +324,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\item_feed_yahoo.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\xml\debug_ca.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

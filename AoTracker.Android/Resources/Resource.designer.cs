@@ -26,6 +26,8 @@ namespace AoTracker.Android
 		
 		public static void UpdateIdValues()
 		{
+			global::ModernHttpClient.Resource.String.app_name = global::AoTracker.Android.Resource.String.app_name;
+			global::ModernHttpClient.Resource.String.hello = global::AoTracker.Android.Resource.String.hello;
 		}
 		
 		public partial class Animation
@@ -4652,7 +4654,10 @@ namespace AoTracker.Android
 			public const int font_family_thin = 2131558478;
 			
 			// aapt resource value: 0x7F0D004F
-			public const int hide_bottom_view_on_scroll_behavior = 2131558479;
+			public const int hello = 2131558479;
+			
+			// aapt resource value: 0x7F0D0050
+			public const int hide_bottom_view_on_scroll_behavior = 2131558480;
 			
 			// aapt resource value: 0x7F0D0010
 			public const int Item_CrawlerCell_PriceIncrease = 2131558416;
@@ -4669,8 +4674,8 @@ namespace AoTracker.Android
 			// aapt resource value: 0x7F0D0014
 			public const int Meta_TargetAndroidFile = 2131558420;
 			
-			// aapt resource value: 0x7F0D0050
-			public const int mtrl_chip_close_icon_content_description = 2131558480;
+			// aapt resource value: 0x7F0D0051
+			public const int mtrl_chip_close_icon_content_description = 2131558481;
 			
 			// aapt resource value: 0x7F0D0015
 			public const int PageTitle_ConfigureCrawlers = 2131558421;
@@ -4687,26 +4692,26 @@ namespace AoTracker.Android
 			// aapt resource value: 0x7F0D0019
 			public const int PageTitle_Sets = 2131558425;
 			
-			// aapt resource value: 0x7F0D0051
-			public const int password_toggle_content_description = 2131558481;
-			
 			// aapt resource value: 0x7F0D0052
-			public const int path_password_eye = 2131558482;
+			public const int password_toggle_content_description = 2131558482;
 			
 			// aapt resource value: 0x7F0D0053
-			public const int path_password_eye_mask_strike_through = 2131558483;
+			public const int path_password_eye = 2131558483;
 			
 			// aapt resource value: 0x7F0D0054
-			public const int path_password_eye_mask_visible = 2131558484;
+			public const int path_password_eye_mask_strike_through = 2131558484;
 			
 			// aapt resource value: 0x7F0D0055
-			public const int path_password_strike_through = 2131558485;
+			public const int path_password_eye_mask_visible = 2131558485;
 			
 			// aapt resource value: 0x7F0D0056
-			public const int search_menu_title = 2131558486;
+			public const int path_password_strike_through = 2131558486;
 			
 			// aapt resource value: 0x7F0D0057
-			public const int status_bar_notification_info_overflow = 2131558487;
+			public const int search_menu_title = 2131558487;
+			
+			// aapt resource value: 0x7F0D0058
+			public const int status_bar_notification_info_overflow = 2131558488;
 			
 			static String()
 			{
@@ -9358,6 +9363,22 @@ namespace AoTracker.Android
 			}
 			
 			private Styleable()
+			{
+			}
+		}
+		
+		public partial class Xml
+		{
+			
+			// aapt resource value: 0x7F100000
+			public const int debug_ca = 2131755008;
+			
+			static Xml()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Xml()
 			{
 			}
 		}
