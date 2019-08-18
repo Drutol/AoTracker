@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Content.Res;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
@@ -29,15 +31,20 @@ using AoTracker.Infrastructure.ViewModels.Feed;
 using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Interfaces;
 using AoTracker.Resources;
+
 using FFImageLoading;
 using GalaSoft.MvvmLight.Helpers;
 using Java.Lang;
+using OperationCanceledException = System.OperationCanceledException;
+using Orientation = Android.Content.Res.Orientation;
 
 namespace AoTracker.Android.Fragments.Feed
 {
-    public class FeedPageTabFragment : FragmentBase<FeedTabViewModel>
+    public partial class FeedPageTabFragment : FragmentBase<FeedTabViewModel>
     {
         private readonly FeedTabEntry _tabEntry;
+        private bool _pendingProgressBarAnimation;
+        private CancellationTokenSource _smoothProgressCts;
 
         public override int LayoutResourceId { get; } = Resource.Layout.page_feed_tab;
 
@@ -47,11 +54,33 @@ namespace AoTracker.Android.Fragments.Feed
             ViewModel.TabEntry = tabEntry;
         }
 
+        public override void NavigatedTo()
+        {
+            base.NavigatedTo();
+            ViewModel.NavigatedTo();
+        }
+
         protected override void InitBindings()
         {
-            Bindings.Add(this.SetBinding(() => ViewModel.IsLoading).WhenSourceChanges(() =>
+            Bindings.Add(this.SetBinding(() => ViewModel.IsLoading).WhenSourceChanges(async () =>
             {
                 SwipeToRefreshLayout.Refreshing = ViewModel.IsLoading;
+                if (ViewModel.IsLoading)
+                {
+                    //make sure it wasn't all cached after all
+                    await Task.Delay(200);
+                    if (ViewModel.IsLoading)
+                    {
+                        ProgressSpinner.Alpha = 1;
+                        ProgressSpinner.Visibility = ViewStates.Visible;
+                    }
+                }
+            }));
+
+            Bindings.Add(this.SetBinding(() => ViewModel.FeedGenerationProgress).WhenSourceChanges(() =>
+            {
+                SwipeToRefreshLayout.Refreshing = false;
+                SmoothSetProgress(ViewModel.FeedGenerationProgress);
             }));
 
             RecyclerView.SetAdapter(new RecyclerViewAdapterBuilder<IFeedItem, RecyclerView.ViewHolder>()
@@ -78,8 +107,61 @@ namespace AoTracker.Android.Fragments.Feed
             SwipeToRefreshLayout.ScrollingView = RecyclerView;
             SwipeToRefreshLayout.Refresh += SwipeToRefreshLayoutOnRefresh;
 
-
+            ProgressSpinner.ShowText = true;
             RecyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
+        }
+
+        private void SmoothSetProgress(int progress)
+        {
+            if (progress == 0)
+            {
+                ProgressSpinner.Progress = 0;
+                return;
+            }
+
+            _smoothProgressCts?.Cancel();
+            _smoothProgressCts = new CancellationTokenSource();
+            SmoothSetProgressLoop(progress, _smoothProgressCts.Token);
+        }
+
+        private async void SmoothSetProgressLoop(int progress, CancellationToken token)
+        {
+            if (progress != 100)
+            {
+                var diff = progress - ProgressSpinner.Progress;
+                var step = diff / 10;
+                var delay = TimeSpan.FromSeconds(1) / 10;
+                for (int i = 0; i < 10; i++)
+                {
+                    if (token.IsCancellationRequested)
+                        return;
+
+                    ProgressSpinner.Progress += (float)step;
+                    try
+                    {
+                        await Task.Delay(delay, token);
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                ProgressSpinner.Progress = 100;
+            }
+
+
+            if (!ViewModel.IsLoading || ViewModel.FeedGenerationProgress == 100)
+            {
+                ProgressSpinner
+                    .Animate()
+                    .Alpha(0)
+                    .SetDuration(250)
+                    .WithEndAction(new Runnable(() => ProgressSpinner.Visibility = ViewStates.Gone))
+                    .Start();
+            }
         }
 
         private void FeedChangeGroupDataTemplate(FeedChangeGroupItem item, FeedChangeGroupHolder holder, int position)
@@ -96,8 +178,6 @@ namespace AoTracker.Android.Fragments.Feed
                 holder.Label.Text = AppResources.Item_FeedChangeGroup_Recently;
             }
         }
-
-
 
         private void SwipeToRefreshLayoutOnRefresh(object sender, EventArgs e)
         {
@@ -154,12 +234,6 @@ namespace AoTracker.Android.Fragments.Feed
 
 
 
-        public override void NavigatedTo()
-        {
-            base.NavigatedTo();
-            ViewModel.NavigatedTo();
-        }
-
         private ICharSequence GetYahooItemLabel(string note, string value)
         {
             var spannable = new SpannableString($"{note} {value}");
@@ -174,7 +248,7 @@ namespace AoTracker.Android.Fragments.Feed
                 new TypefaceSpan(
                     Activity.Resources.GetString(Resource.String.font_family_medium)),
                 note.Length,
-                note.Length + value.Length,
+                note.Length + value.Length + 1,
                 SpanTypes.ExclusiveInclusive);
 
             return spannable;
@@ -218,109 +292,6 @@ namespace AoTracker.Android.Fragments.Feed
                     holder.PriceTrendIcon.ImageTintList = ColorStateList.ValueOf(ThemeManager.RedColour);
                     break;
             }
-        }
-
-        interface IFeedItemHolder
-        {
-            ImageView PriceTrendIcon { get; }
-            ImageView ImageLeft { get; }
-            FloatingActionButton NewAlertSection { get; }
-            TextView Price { get; }
-            TextView PriceSubtitle { get; }
-        }
-
-        #region Views
-
-        private RecyclerView _recyclerView;
-        private ScrollableSwipeToRefreshLayout _swipeToRefreshLayout;
-        public RecyclerView RecyclerView => _recyclerView ?? (_recyclerView = FindViewById<RecyclerView>(Resource.Id.RecyclerView));
-        public ScrollableSwipeToRefreshLayout SwipeToRefreshLayout => _swipeToRefreshLayout ?? (_swipeToRefreshLayout = FindViewById<ScrollableSwipeToRefreshLayout>(Resource.Id.SwipeToRefreshLayout));
-
-        #endregion
-
-        class FeedItemHolder : RecyclerView.ViewHolder, IFeedItemHolder
-        {
-            private readonly View _view;
-
-            public FeedItemHolder(View view) : base(view)
-            {
-                _view = view;
-            }
-            private ImageView _imageLeft;
-            private FloatingActionButton _newAlertSection;
-            private TextView _title;
-            private ImageView _storeIcon;
-            private TextView _detail;
-            private FrameLayout _detailSection;
-            private TextView _subtitle;
-            private ImageView _priceTrendIcon;
-            private TextView _price;
-            private TextView _priceSubtitle;
-            private LinearLayout _clickSurface;
-
-            public ImageView ImageLeft => _imageLeft ?? (_imageLeft = _view.FindViewById<ImageView>(Resource.Id.ImageLeft));
-            public FloatingActionButton NewAlertSection => _newAlertSection ?? (_newAlertSection = _view.FindViewById<FloatingActionButton>(Resource.Id.NewAlertSection));
-            public TextView Title => _title ?? (_title = _view.FindViewById<TextView>(Resource.Id.Title));
-            public ImageView StoreIcon => _storeIcon ?? (_storeIcon = _view.FindViewById<ImageView>(Resource.Id.StoreIcon));
-            public TextView Detail => _detail ?? (_detail = _view.FindViewById<TextView>(Resource.Id.Detail));
-            public FrameLayout DetailSection => _detailSection ?? (_detailSection = _view.FindViewById<FrameLayout>(Resource.Id.DetailSection));
-            public TextView Subtitle => _subtitle ?? (_subtitle = _view.FindViewById<TextView>(Resource.Id.Subtitle));
-            public ImageView PriceTrendIcon => _priceTrendIcon ?? (_priceTrendIcon = _view.FindViewById<ImageView>(Resource.Id.PriceTrendIcon));
-            public TextView Price => _price ?? (_price = _view.FindViewById<TextView>(Resource.Id.Price));
-            public TextView PriceSubtitle => _priceSubtitle ?? (_priceSubtitle = _view.FindViewById<TextView>(Resource.Id.PriceSubtitle));
-            public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
-        }
-
-        class FeedItemYahooHolder : RecyclerView.ViewHolder, IFeedItemHolder
-        {
-            private readonly View _view;
-
-            public FeedItemYahooHolder(View view) : base(view)
-            {
-                _view = view;
-            }
-            private ImageView _imageLeft;
-            private FloatingActionButton _newAlertSection;
-            private TextView _title;
-            private ImageView _storeIcon;
-            private TextView _detailBids;
-            private TextView _detailEndsIn;
-            private TextView _detailCondition;
-            private LinearLayout _detailSection;
-            private TextView _detailShipping;
-            private TextView _detailsTax;
-            private ImageView _priceTrendIcon;
-            private TextView _price;
-            private TextView _priceSubtitle;
-            private LinearLayout _clickSurface;
-
-            public ImageView ImageLeft => _imageLeft ?? (_imageLeft = _view.FindViewById<ImageView>(Resource.Id.ImageLeft));
-            public FloatingActionButton NewAlertSection => _newAlertSection ?? (_newAlertSection = _view.FindViewById<FloatingActionButton>(Resource.Id.NewAlertSection));
-            public TextView Title => _title ?? (_title = _view.FindViewById<TextView>(Resource.Id.Title));
-            public ImageView StoreIcon => _storeIcon ?? (_storeIcon = _view.FindViewById<ImageView>(Resource.Id.StoreIcon));
-            public TextView DetailBids => _detailBids ?? (_detailBids = _view.FindViewById<TextView>(Resource.Id.DetailBids));
-            public TextView DetailEndsIn => _detailEndsIn ?? (_detailEndsIn = _view.FindViewById<TextView>(Resource.Id.DetailEndsIn));
-            public TextView DetailCondition => _detailCondition ?? (_detailCondition = _view.FindViewById<TextView>(Resource.Id.DetailCondition));
-            public LinearLayout DetailSection => _detailSection ?? (_detailSection = _view.FindViewById<LinearLayout>(Resource.Id.DetailSection));
-            public TextView DetailShipping => _detailShipping ?? (_detailShipping = _view.FindViewById<TextView>(Resource.Id.DetailShipping));
-            public TextView DetailsTax => _detailsTax ?? (_detailsTax = _view.FindViewById<TextView>(Resource.Id.DetailsTax));
-            public ImageView PriceTrendIcon => _priceTrendIcon ?? (_priceTrendIcon = _view.FindViewById<ImageView>(Resource.Id.PriceTrendIcon));
-            public TextView Price => _price ?? (_price = _view.FindViewById<TextView>(Resource.Id.Price));
-            public TextView PriceSubtitle => _priceSubtitle ?? (_priceSubtitle = _view.FindViewById<TextView>(Resource.Id.PriceSubtitle));
-            public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
-        }
-
-        class FeedChangeGroupHolder : RecyclerView.ViewHolder
-        {
-            private readonly View _view;
-
-            public FeedChangeGroupHolder(View view) : base(view)
-            {
-                _view = view;
-            }
-            private TextView _label;
-
-            public TextView Label => _label ?? (_label = _view.FindViewById<TextView>(Resource.Id.Label));
         }
     }
 }

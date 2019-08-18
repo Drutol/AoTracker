@@ -28,6 +28,9 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         private bool _isLoading;
         private List<HistoryFeedEntry> _feedHistory;
         private List<FeedItemViewModel> _aggregatedFeed = new List<FeedItemViewModel>();
+        private int _expectedBatches;
+        private int _receivedBatches;
+        private int _feedGenerationProgress;
 
         public FeedTabEntry TabEntry { get; set; }
 
@@ -75,6 +78,8 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
 
         private void FeedProviderOnNewCrawlerBatch(object sender, FeedBatch e)
         {
+            _receivedBatches++;
+            FeedGenerationProgress = (int)((_receivedBatches * 100d) / _expectedBatches);
             var viewModels = new List<FeedItemViewModel>();
             foreach (var crawlerResultItem in e.CrawlerResult.Results)
             {
@@ -97,12 +102,20 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         public async void RefreshFeed(bool force = false)
         {
             Feed.Clear();
+            FeedGenerationProgress = 0;
+            _receivedBatches = 0;
             IsLoading = true;
             var historyTasks = TabEntry.CrawlerSets.Select(set => _feedHistoryProvider.GetHistory(set)).ToList();
             await Task.WhenAll(historyTasks);
             _feedHistory = historyTasks.SelectMany(task => task.Result ?? Enumerable.Empty<HistoryFeedEntry>()).ToList();
             _feedCts = new CancellationTokenSource();
-            _feedProvider.StartAggregating(TabEntry.CrawlerSets, _feedCts.Token, force);
+            _feedProvider.StartAggregating(TabEntry.CrawlerSets, _feedCts.Token, force, ref _expectedBatches);
+        }
+
+        public int FeedGenerationProgress
+        {
+            get => _feedGenerationProgress;
+            set => Set(ref _feedGenerationProgress, value);
         }
 
         public void NavigatedTo()

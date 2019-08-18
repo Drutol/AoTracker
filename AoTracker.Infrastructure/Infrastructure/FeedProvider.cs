@@ -18,6 +18,7 @@ namespace AoTracker.Infrastructure.Infrastructure
         private readonly AppVariables _appVariables;
         private readonly ICrawlerManager _crawlerManager;
         private bool _isAggregating;
+        private SemaphoreSlim _semaphore = new SemaphoreSlim(3);
 
         public event EventHandler<FeedBatch> NewCrawlerBatch;
         public event EventHandler Finished;
@@ -32,10 +33,16 @@ namespace AoTracker.Infrastructure.Infrastructure
             _crawlerManager = crawlerManagerProvider.Manager;
         }
 
-        public async void StartAggregating(List<CrawlerSet> sets, CancellationToken feedCtsToken, bool force)
+        public void StartAggregating(List<CrawlerSet> sets, CancellationToken feedCtsToken, bool force, ref int expectedBatches)
         {
-            if (_isAggregating)
-                return;
+            expectedBatches = sets.Sum(set => set.Descriptors.Count);
+
+            if (!_isAggregating)
+                AggregateFeed(sets, feedCtsToken, force);
+        }
+
+        private async void AggregateFeed(List<CrawlerSet> sets, CancellationToken feedCtsToken, bool force)
+        {
             try
             {
                 var volatileParameters = new VolatileParametersBase
@@ -44,10 +51,13 @@ namespace AoTracker.Infrastructure.Infrastructure
                     UseCache = !force
                 };
 
+                var tasks = new List<Task>();
                 foreach (var crawlingSet in sets)
                 {
-                    await CrawlDescriptor(crawlingSet, volatileParameters);
+                    tasks.Add(CrawlDescriptor(crawlingSet, volatileParameters));
                 }
+
+                await Task.WhenAll(tasks);
             }
             finally
             {
@@ -61,21 +71,30 @@ namespace AoTracker.Infrastructure.Infrastructure
         {
             foreach (var descriptor in crawlingSet.Descriptors)
             {
-                var crawler = _crawlerManager.GetCrawler(descriptor.CrawlerDomain);
-
-                var result = await crawler.Crawl(new CrawlerParameters
+                try
                 {
-                    Parameters = descriptor.CrawlerSourceParameters,
-                    VolatileParameters = volatileParameters
-                });
+                    await _semaphore.WaitAsync();
 
-                if (result.Success)
-                {
-                    NewCrawlerBatch?.Invoke(this, new FeedBatch
+                    var crawler = _crawlerManager.GetCrawler(descriptor.CrawlerDomain);
+
+                    var result = await crawler.Crawl(new CrawlerParameters
                     {
-                        CrawlerResult = result,
-                        SetOfOrigin = crawlingSet
+                        Parameters = descriptor.CrawlerSourceParameters,
+                        VolatileParameters = volatileParameters
                     });
+
+                    if (result.Success)
+                    {
+                        NewCrawlerBatch?.Invoke(this, new FeedBatch
+                        {
+                            CrawlerResult = result,
+                            SetOfOrigin = crawlingSet
+                        });
+                    }
+                }
+                finally
+                {
+                    _semaphore.Release();
                 }
             }
         }

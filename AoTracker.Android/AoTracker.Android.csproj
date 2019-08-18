@@ -79,6 +79,7 @@
     <Compile Include="Fragments\Feed\FeedPageFragment.cs" />
     <Compile Include="Fragments\CrawlerSetDetailsPageFragment.cs" />
     <Compile Include="Fragments\Feed\FeedPageTabFragment.cs" />
+    <Compile Include="Fragments\Feed\FeedPageTabFragment.ui.cs" />
     <Compile Include="PagerAdapters\FeedPagerAdapter.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -178,6 +179,10 @@
     <ProjectReference Include="..\AoTracker.Resources\AoTracker.Resources.csproj">
       <Project>{606a5091-d32e-405f-b0e8-983399ca7265}</Project>
       <Name>AoTracker.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Binding_CircleProgress\Binding_CircleProgress.csproj">
+      <Project>{b1cb8cdc-c90f-4313-aab7-a12870f33690}</Project>
+      <Name>Binding_CircleProgress</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

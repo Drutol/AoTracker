@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Android", "Android", "{C5DA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoTracker.Android", "AoTracker.Android\AoTracker.Android.csproj", "{1B8CFF28-B347-4FC4-8E87-4B46F2DB28D6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bindings", "Bindings", "{117BD204-824C-4E02-BAD4-FCF21D9966AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binding_CircleProgress", "Binding_CircleProgress\Binding_CircleProgress.csproj", "{B1CB8CDC-C90F-4313-AAB7-A12870F33690}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +111,18 @@ Global
 		{1B8CFF28-B347-4FC4-8E87-4B46F2DB28D6}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{1B8CFF28-B347-4FC4-8E87-4B46F2DB28D6}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{1B8CFF28-B347-4FC4-8E87-4B46F2DB28D6}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
+		{B1CB8CDC-C90F-4313-AAB7-A12870F33690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1CB8CDC-C90F-4313-AAB7-A12870F33690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1CB8CDC-C90F-4313-AAB7-A12870F33690}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{B1CB8CDC-C90F-4313-AAB7-A12870F33690}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{B1CB8CDC-C90F-4313-AAB7-A12870F33690}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{B1CB8CDC-C90F-4313-AAB7-A12870F33690}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{B1CB8CDC-C90F-4313-AAB7-A12870F33690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1CB8CDC-C90F-4313-AAB7-A12870F33690}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1CB8CDC-C90F-4313-AAB7-A12870F33690}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{B1CB8CDC-C90F-4313-AAB7-A12870F33690}.Release|iPhone.Build.0 = Release|Any CPU
+		{B1CB8CDC-C90F-4313-AAB7-A12870F33690}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{B1CB8CDC-C90F-4313-AAB7-A12870F33690}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,6 +134,8 @@ Global
 		{6FDBB323-8F33-445F-9053-6C3339D997A9} = {5CD71AF6-E4CD-4809-9D0C-0F1A8D4CA9CB}
 		{606A5091-D32E-405F-B0E8-983399CA7265} = {5CD71AF6-E4CD-4809-9D0C-0F1A8D4CA9CB}
 		{1B8CFF28-B347-4FC4-8E87-4B46F2DB28D6} = {C5DA9558-3CB2-4080-8A06-3DB5F925BA8B}
+		{117BD204-824C-4E02-BAD4-FCF21D9966AD} = {C5DA9558-3CB2-4080-8A06-3DB5F925BA8B}
+		{B1CB8CDC-C90F-4313-AAB7-A12870F33690} = {117BD204-824C-4E02-BAD4-FCF21D9966AD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8CF2187-513A-4199-817B-DB19CAB570D9}

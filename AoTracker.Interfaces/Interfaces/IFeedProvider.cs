@@ -12,6 +12,6 @@ namespace AoTracker.Interfaces
         event EventHandler<FeedBatch> NewCrawlerBatch;
         event EventHandler Finished;
 
-        void StartAggregating(List<CrawlerSet> set, CancellationToken feedCtsToken, bool force);
+        void StartAggregating(List<CrawlerSet> set, CancellationToken feedCtsToken, bool force, ref int expectedBatches);
     }
 }

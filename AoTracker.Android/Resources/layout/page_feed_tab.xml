@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?BackgroundColour"
@@ -12,11 +13,30 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/RecyclerView"
-            android:fadingEdge="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:fadingEdge="vertical" />
 
 
     </AoLibs.Utilities.Android.Views.ScrollableSwipeToRefreshLayout>
+
+    <com.app.adprogressbarlib.AdCircleProgress
+        android:id="@+id/ProgressSpinner"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_gravity="center"
+        android:backgroundTintMode="add"
+        android:visibility="gone"
+        app:adpgb_background_color="?ForegroundShallowColour"
+        app:adpgb_finished_color="?AccentColour"
+        app:adpgb_finished_stroke_width="3dp"
+        app:adpgb_gradient_color_one="?AccentDarkColour"
+        app:adpgb_gradient_color_two="?AccentColour"
+        app:adpgb_progress="0"
+        app:adpgb_show_text="true"
+        app:adpgb_text_color="?AccentColour"
+        app:adpgb_text_size="@dimen/FontSizeSemiNormal"
+        app:adpgb_unfinished_color="?AccentColour"
+        app:adpgb_unfinished_stroke_width="1dp" />
 
 </FrameLayout>
