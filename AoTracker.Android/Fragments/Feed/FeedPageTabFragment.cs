@@ -21,6 +21,8 @@ using AoLibs.Utilities.Android.Views;
 using AoTracker.Android.Themes;
 using AoTracker.Android.Utils;
 using AoTracker.Crawlers.Mandarake;
+using AoTracker.Crawlers.Sites.Lashinbang;
+using AoTracker.Crawlers.Sites.Mercari;
 using AoTracker.Crawlers.Sites.Yahoo;
 using AoTracker.Crawlers.Surugaya;
 using AoTracker.Domain.Enums;
@@ -196,13 +198,26 @@ namespace AoTracker.Android.Fragments.Feed
                 holder.Subtitle.Text = surugayaItem.Brand;
                 holder.StoreIcon.SetImageResource(Resource.Drawable.surugaya);
             }
-
-            if (item.BackingModel is MandarakeItem mandarakeItem)
+            else if (item.BackingModel is MandarakeItem mandarakeItem)
             {
                 holder.Title.Text = mandarakeItem.Name;
                 holder.Detail.Visibility = ViewStates.Gone;
                 holder.Subtitle.Text = mandarakeItem.Shop;
                 holder.StoreIcon.SetImageResource(Resource.Drawable.mandarake);
+            }
+            else if (item.BackingModel is MercariItem mercariItem)
+            {
+                holder.Title.Text = mercariItem.Name;
+                holder.Detail.Visibility = ViewStates.Gone;
+                holder.Subtitle.Text = string.Empty;
+                holder.StoreIcon.SetImageResource(Resource.Drawable.mercari);
+            }
+            else if (item.BackingModel is LashinbangItem lashinbangItem)
+            {
+                holder.Title.Text = lashinbangItem.Name;
+                holder.Detail.Visibility = ViewStates.Gone;
+                holder.Subtitle.Text = string.Empty;
+                holder.StoreIcon.SetImageResource(Resource.Drawable.lashinbang);
             }
         }
 
@@ -217,6 +232,11 @@ namespace AoTracker.Android.Fragments.Feed
                 TextView.BufferType.Spannable);
             holder.DetailCondition.SetText(GetYahooItemLabel("Condition:", item.Item.Condition.ToString()),
                 TextView.BufferType.Spannable);
+
+            //if (item.Item.BuyoutPrice != 0)
+            //{
+            //    holder.PriceSubtitle.Text = $"{item.Item.BuyoutPrice}¥";
+            //}
 
             if (item.Item.Tax == 0)
             {

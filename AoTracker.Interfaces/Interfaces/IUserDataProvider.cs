@@ -15,5 +15,7 @@ namespace AoTracker.Interfaces
         Task AddNewSet(CrawlerSet set);
         Task RemoveSet(CrawlerSet set);
         Task UpdateSet(CrawlerSet set);
+
+        Task MoveSet(int movedPosition, int targetPosition);
     }
 }

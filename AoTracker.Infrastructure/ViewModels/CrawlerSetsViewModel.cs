@@ -7,6 +7,7 @@ using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Models.NavArgs;
+using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Interfaces;
 using GalaSoft.MvvmLight.Command;
 
@@ -18,7 +19,6 @@ namespace AoTracker.Infrastructure.ViewModels
         private readonly INavigationManager<PageIndex> _navigationManager;
 
         private ObservableCollection<CrawlerSet> _sets;
-        private CrawlerSet _selectedSet;
 
         public CrawlerSetsViewModel(
             IUserDataProvider userDataProvider,
@@ -50,5 +50,11 @@ namespace AoTracker.Infrastructure.ViewModels
         {
             _navigationManager.Navigate(PageIndex.CrawlerSetDetails, new CrawlerSetDetailsPageNavArgs(set));
         });
+
+        public void MoveCrawlerSet(int movedPosition, int targetPosition)
+        {
+            Sets.Move(movedPosition, targetPosition);
+            _userDataProvider.MoveSet(movedPosition, targetPosition);
+        }
     }
 }

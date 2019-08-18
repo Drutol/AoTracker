@@ -104,7 +104,6 @@ namespace AoTracker.Infrastructure.ViewModels
                 {
                     _currentSet.Name = SetName;
                     await _userDataProvider.UpdateSet(_currentSet);
-                    
                 }
                 _navigationManager.GoBack();
             }
@@ -158,6 +157,9 @@ namespace AoTracker.Infrastructure.ViewModels
 
                 CrawlerDescriptors = new ObservableCollection<CrawlerDescriptorViewModel>();
                 IsAddingNew = true;
+
+                SetName = string.Empty;
+                CrawlerDescriptors = new ObservableCollection<CrawlerDescriptorViewModel>();
             }
             else
             {
@@ -250,7 +252,12 @@ namespace AoTracker.Infrastructure.ViewModels
         public bool CanSave => true;
 
         public RelayCommand<CrawlerDescriptorViewModel> RemoveDescriptorCommand => new RelayCommand<CrawlerDescriptorViewModel>(
-            descriptor => { _crawlerDescriptors.Remove(descriptor); });
+            descriptor =>
+            {
+                _crawlerDescriptors.Remove(descriptor);
+                if(_currentSet.Descriptors.Contains(descriptor.BackingModel))
+                    _currentSet.Descriptors.Remove(descriptor.BackingModel);
+            });
 
         public RelayCommand<CrawlerEntryViewModel> AddCrawlerCommand => new RelayCommand<CrawlerEntryViewModel>(entry =>
         {

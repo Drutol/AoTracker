@@ -3,48 +3,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?ForegroundColour">
+    android:background="?ForegroundColour"
+    android:clipToPadding="false"
+    android:paddingBottom="8dp">
 
     <LinearLayout
         android:id="@+id/ClickSurface"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?ForegroundShallowColour"
         android:clickable="true"
+        android:elevation="1dp"
         android:focusable="true"
-        android:foreground="?selectableItemBackground">
+        android:foreground="?selectableItemBackground"
+        android:orientation="vertical"
+        android:padding="8dp">
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?ForegroundShallowColour"
-            android:elevation="4dp"
-            android:padding="8dp">
-
-            <ImageView
-                android:id="@+id/ImageLeft"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@drawable/surugaya" />
-        </FrameLayout>
-
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="4dp"
-            android:orientation="vertical"
-            android:padding="8dp">
+            android:ellipsize="end"
+            android:fontFamily="@string/font_family_medium"
+            android:gravity="center"
+            android:maxLines="2"
+            android:textColor="?TextColour"
+            android:textSize="@dimen/FontSizeMedium"
+            tools:text="Some crawler set" />
 
-            <TextView
-                android:id="@+id/Title"
-                android:layout_width="wrap_content"
+        <View
+            style="@style/ViewDivider"
+            android:background="?AccentColour" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/icon_chevron_right"
+            android:drawableTint="?AccentDarkColour"
+            android:gravity="center_vertical"
+            android:text="Crawlers:"
+            android:textColor="?TextColour" />
+
+        <TextView
+            android:id="@+id/EmptyNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/icon_cloud_search"
+            android:drawablePadding="8dp"
+            android:drawableTint="?AccentColour"
+            android:fontFamily="@string/font_family_light"
+            android:gravity="center_vertical"
+            android:text="Empty"
+            android:textColor="?TextColour"
+            android:textStyle="italic" />
+
+        <AoTracker.Android.Views.ClickInterceptingContainer
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/CrawlerSummaryRecyclerView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="?TextColour"
-                tools:text="Some crawler set" />
+                android:layout_marginStart="24dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:orientation="vertical"
+                android:scrollIndicators="none"
+                android:scrollbars="none" />
+        </AoTracker.Android.Views.ClickInterceptingContainer>
 
-        </LinearLayout>
 
     </LinearLayout>
 

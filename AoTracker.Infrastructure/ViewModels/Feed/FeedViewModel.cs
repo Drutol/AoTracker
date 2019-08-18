@@ -26,13 +26,19 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
 
         public void NavigatedTo()
         {
-            var entries = new List<FeedTabEntry>
+            if (FeedTabEntries?.Any() ?? false)
+                return;
+
+
+            var entries = new List<FeedTabEntry>(0);
+            if (_userDataProvider.CrawlingSets.Count > 1)
             {
-                new FeedTabEntry(_userDataProvider.CrawlingSets.Where(set => set.Descriptors.Any()).ToList())
-                {
-                    Name = "All"
-                }
-            };
+                entries.Add(
+                    new FeedTabEntry(_userDataProvider.CrawlingSets.Where(set => set.Descriptors.Any()).ToList())
+                    {
+                        Name = "All"
+                    });
+            }
 
             foreach (var crawlerSet in _userDataProvider.CrawlingSets.Where(set => set.Descriptors.Any()).Take(5))
             {
@@ -41,6 +47,8 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
                     Name = crawlerSet.Name
                 });
             }
+
+
 
             FeedTabEntries = entries;
         }

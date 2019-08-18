@@ -74,6 +74,7 @@
     <Compile Include="Fragments\CrawlerConfigure\ConfigureMercariCrawlerPageFragment.cs" />
     <Compile Include="Fragments\CrawlerConfigure\ConfigureSurugayaCrawlerPageFragment.cs" />
     <Compile Include="Fragments\CrawlerConfigure\ConfigureYahooCrawlerPageFragment.cs" />
+    <Compile Include="Fragments\CrawlerSetDetailsPageFragment.ui.cs" />
     <Compile Include="Fragments\CrawlerSetsPageFragment.cs" />
     <Compile Include="Fragments\CustomFragmentBase.cs" />
     <Compile Include="Fragments\Feed\FeedPageFragment.cs" />
@@ -86,9 +87,11 @@
     <Compile Include="Themes\ThemeManager.cs" />
     <Compile Include="Utils\BindingConverters.cs" />
     <Compile Include="Utils\CustomFlexboxLayoutManager.cs" />
+    <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\HttpClientProvider.cs" />
     <Compile Include="Utils\LinkerIncludes.cs" />
     <Compile Include="Utils\RecyclerViewAdapterBuilder.cs" />
+    <Compile Include="Views\ClickInterceptingContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -332,6 +335,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\xml\debug_ca.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\item_crawler_set_summary.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AoLibs.Adapters.Core;
@@ -43,6 +44,14 @@ namespace AoTracker.Infrastructure.Infrastructure
 
         public async Task UpdateSet(CrawlerSet set)
         {
+            await _appVariables.CrawlerSets.SetAsync(_sets);
+        }
+
+        public async Task MoveSet(int movedPosition, int targetPosition)
+        {
+            var set = _sets.ElementAt(movedPosition);
+            _sets.Remove(set);
+            _sets.Insert(targetPosition, set);
             await _appVariables.CrawlerSets.SetAsync(_sets);
         }
     }

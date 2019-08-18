@@ -16,7 +16,7 @@ namespace AoTracker.Crawlers.Sites.Lashinbang
         protected override Task<ICrawlerResult<LashinbangItem>> Parse(string data,
             LashinbangSourceParameters parameters)
         {
-            var root = JsonConvert.DeserializeObject<RootObject>(data);
+            var root = JsonConvert.DeserializeObject<RootObject>(data.Substring(9).Trim(';',')'));
             var parsedItems = new List<LashinbangItem>();
             var output = new CrawlerResultBase<LashinbangItem>
             {

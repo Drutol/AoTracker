@@ -19,7 +19,7 @@ using FragmentManager = Android.Support.V4.App.FragmentManager;
 
 namespace AoTracker.Android.PagerAdapters
 {
-    public class FeedPagerAdapter : FragmentStatePagerAdapter
+    public class FeedPagerAdapter : FragmentPagerAdapter
     {
         private readonly List<FeedTabEntry> _tabEntries;
 
