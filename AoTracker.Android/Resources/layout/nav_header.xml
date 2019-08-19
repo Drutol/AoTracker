@@ -17,14 +17,13 @@
         android:layout_margin="8dp"
         android:text="蒼"
         android:textColor="@color/DarkTextColour"
-        android:textSize="32sp" />
+        android:textSize="36sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="8dp"
-        android:background="@drawable/border_accent_underline"
         android:backgroundTint="@color/DarkTextColour"
         android:fontFamily="@string/font_family_light"
         android:text="AoTracker"

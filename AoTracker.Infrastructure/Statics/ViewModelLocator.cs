@@ -20,6 +20,7 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterType<FeedViewModel>().SingleInstance();
             builder.RegisterType<CrawlerSetsViewModel>().SingleInstance();
             builder.RegisterType<CrawlerSetDetailsViewModel>().SingleInstance();
+            builder.RegisterType<SettingsViewModel>().SingleInstance();
 
             // one shots
             builder.RegisterType<ConfigureSurugayaCrawlerViewModel>();

@@ -20,7 +20,7 @@ namespace AoTracker.Infrastructure.ViewModels
             }
         }
 
-        public void UpdatePageTitle()
+        public virtual void UpdatePageTitle()
         {
             MessengerInstance.Send(new PageTitleMessage(Title));
         }

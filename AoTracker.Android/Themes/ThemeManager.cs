@@ -21,12 +21,14 @@ namespace AoTracker.Android.Themes
 {
     public static class ThemeManager
     {
-        public static int TextColour { get; private set; }
-        public static int TextInvertedColour { get; private set; }
-        public static int ToolbarTextColour { get; private set; }
+        public static Color TextColour { get; private set; }
+        public static Color TextInvertedColour { get; private set; }
+        public static Color ToolbarTextColour { get; private set; }
 
         public static Color LimeColour { get; private set; }
         public static Color RedColour { get; private set; }
+
+        public static Color AccentColour { get; set; }
 
         public static void ApplyTheme(this AppCompatActivity activity)
         {
@@ -79,18 +81,19 @@ namespace AoTracker.Android.Themes
             LimeColour = activity.Resources.GetColor(Resource.Color.LimeColour, activity.Theme);
 
             // Colour settings
-            var typedValue = new TypedValue();
 
-            activity.Theme.ResolveAttribute(Resource.Attribute.TextColour, typedValue, true);
-            TextColour = typedValue.Data;
-
-            activity.Theme.ResolveAttribute(Resource.Attribute.TextInvertedColour, typedValue, true);
-            TextInvertedColour = typedValue.Data;
-
-            activity.Theme.ResolveAttribute(Resource.Attribute.ToolbarTextColour, typedValue, true);
-            ToolbarTextColour = typedValue.Data;
+            AccentColour = ResolveColour(activity, Resource.Attribute.AccentColour);
+            TextColour = ResolveColour(activity, Resource.Attribute.TextColour);
+            TextInvertedColour = ResolveColour(activity, Resource.Attribute.TextInvertedColour);
+            ToolbarTextColour = ResolveColour(activity, Resource.Attribute.ToolbarTextColour);
         }
 
+        private static Color ResolveColour(Activity activity, int attr)
+        {
+            var typedValue = new TypedValue();
+            activity.Theme.ResolveAttribute(attr, typedValue, true);
+            return new Color(typedValue.Data);
+        }
 
     }
 }

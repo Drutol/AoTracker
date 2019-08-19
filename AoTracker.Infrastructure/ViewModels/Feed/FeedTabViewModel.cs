@@ -146,6 +146,11 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             set => Set(ref _isLoading, value);
         }
 
+        public override void UpdatePageTitle()
+        {
+            //don't update on inner fragments
+        }
+
         public RelayCommand<ICrawlerResultItem> SelectFeedItemCommand =>
             new RelayCommand<ICrawlerResultItem>(item => { });
 

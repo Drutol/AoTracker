@@ -88,12 +88,14 @@ namespace AoTracker.Android.Activities
         private Toolbar _toolbar;
         private FrameLayout _rootView;
         private RecyclerView _navigationRecyclerView;
+        private FrameLayout _settingsNavButton;
         private NavigationView _navigationView;
         private DrawerLayout _drawerLayout;
 
         public Toolbar Toolbar => _toolbar ?? (_toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar));
         public FrameLayout RootView => _rootView ?? (_rootView = FindViewById<FrameLayout>(Resource.Id.RootView));
         public RecyclerView NavigationRecyclerView => _navigationRecyclerView ?? (_navigationRecyclerView = FindViewById<RecyclerView>(Resource.Id.NavigationRecyclerView));
+        public FrameLayout SettingsNavButton => _settingsNavButton ?? (_settingsNavButton = FindViewById<FrameLayout>(Resource.Id.SettingsNavButton));
         public NavigationView NavigationView => _navigationView ?? (_navigationView = FindViewById<NavigationView>(Resource.Id.NavigationView));
         public DrawerLayout DrawerLayout => _drawerLayout ?? (_drawerLayout = FindViewById<DrawerLayout>(Resource.Id.DrawerLayout));
 

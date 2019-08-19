@@ -1,59 +1,73 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
+using System.Windows.Input;
 using AoLibs.Navigation.Core;
 using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Domain;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Models;
 using AoTracker.Interfaces;
+using AoTracker.Resources;
+using GalaSoft.MvvmLight.Command;
 
 namespace AoTracker.Infrastructure.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
         private readonly ISettings _settings;
-        private readonly INavigationManager<PageIndex> _outerNavigationManager;
+        private readonly INavigationManager<PageIndex> _navigationManager;
         private readonly IUserDataProvider _userDataProvider;
-        private ObservableCollection<HamburgerMenuEntry> _hamburgerItems;
-        private HamburgerMenuEntry _selectedItem;
+        private ObservableCollection<HamburgerMenuEntryViewModel> _hamburgerItems;
+        private HamburgerMenuEntryViewModel _selectedItem;
 
-        private List<HamburgerMenuEntry> _allEntries = new List<HamburgerMenuEntry>
+        public HamburgerMenuEntryViewModel SettingsButtonViewModel { get; } = new HamburgerMenuEntryViewModel
         {
-            new HamburgerMenuEntry
+            Label = AppResources.Hamburger_Item_Settings,
+            Page = PageIndex.Settings
+        };
+
+        private List<HamburgerMenuEntryViewModel> _allEntries = new List<HamburgerMenuEntryViewModel>
+        {
+            new HamburgerMenuEntryViewModel
             {
-                Title = "Feed",
+                Label = AppResources.Hamburger_Item_Feed,
                 Page = PageIndex.Feed,
             },
-            new HamburgerMenuEntry
+            new HamburgerMenuEntryViewModel
             {
-                Title = "Sets",
+                Label = AppResources.Hamburger_Item_CrawlerSets,
                 Page = PageIndex.CrawlerSets,
             },
         };
 
-        public ObservableCollection<HamburgerMenuEntry> HamburgerItems
+        public ObservableCollection<HamburgerMenuEntryViewModel> HamburgerItems
         {
             get => _hamburgerItems;
             set => Set(ref _hamburgerItems, value);
         }
 
-        public HamburgerMenuEntry SelectedItem
-        {
-            get => _selectedItem;
-            set => Set(ref _selectedItem, value, OnHamburgerSelectionChanged);
-        }
-
         public MainViewModel(ISettings settings,
-            INavigationManager<PageIndex> outerNavigationManager,
+            INavigationManager<PageIndex> navigationManager,
             IUserDataProvider userDataProvider)
         {
             _settings = settings;
-            _outerNavigationManager = outerNavigationManager;
+            _navigationManager = navigationManager;
             _userDataProvider = userDataProvider;
-            HamburgerItems = new ObservableCollection<HamburgerMenuEntry>(_allEntries);
+            HamburgerItems = new ObservableCollection<HamburgerMenuEntryViewModel>(_allEntries);
 
+
+            _navigationManager.Navigated += NavigationManagerOnNavigated;
+            _navigationManager.WentBack += NavigationManagerOnNavigated;
+        }
+
+        private void NavigationManagerOnNavigated(object sender, PageIndex e)
+        {
+            SetSelectedItem(HamburgerItems
+                .Concat(new[] {SettingsButtonViewModel})
+                .FirstOrDefault(model => model.Page == e));
         }
 
         public async void Initialize()
@@ -61,12 +75,24 @@ namespace AoTracker.Infrastructure.ViewModels
             await _userDataProvider.Initialize();
 
             if (!_settings.PassedWelcome)
-                _outerNavigationManager.Navigate(PageIndex.CrawlerSets, NavigationBackstackOption.SetAsRootPage);
+                _navigationManager.Navigate(PageIndex.CrawlerSets, NavigationBackstackOption.SetAsRootPage);
         }
 
-        private void OnHamburgerSelectionChanged(HamburgerMenuEntry entry)
+        public RelayCommand<HamburgerMenuEntryViewModel> SelectHamburgerItemCommand =>
+            new RelayCommand<HamburgerMenuEntryViewModel>(item =>
+            {
+                SetSelectedItem(item);
+                _navigationManager.Navigate(item.Page, NavigationBackstackOption.SetAsRootPage);
+            });
+
+        private void SetSelectedItem(HamburgerMenuEntryViewModel item)
         {
-            _outerNavigationManager.Navigate(entry.Page, NavigationBackstackOption.SetAsRootPage);
+            foreach (var hamburgerMenuEntry in HamburgerItems.Concat(new [] {SettingsButtonViewModel}))
+            {
+                hamburgerMenuEntry.IsSelected = false;
+            }
+            if(item != null)
+                item.IsSelected = true;
         }
     }
 }

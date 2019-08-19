@@ -162,6 +162,15 @@
   <data name="Generic_Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="Hamburger_Item_CrawlerSets" xml:space="preserve">
+    <value>Crawler Sets</value>
+  </data>
+  <data name="Hamburger_Item_Feed" xml:space="preserve">
+    <value>Feed</value>
+  </data>
+  <data name="Hamburger_Item_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="Item_CrawlerCell_PriceIncrease" xml:space="preserve">
     <value>Price increase:</value>
   </data>
@@ -197,5 +206,8 @@
   </data>
   <data name="PageTitle_Sets" xml:space="preserve">
     <value>Sets</value>
+  </data>
+  <data name="PageTitle_Settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
 </root>

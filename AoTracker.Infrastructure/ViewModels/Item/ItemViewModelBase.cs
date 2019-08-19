@@ -18,5 +18,10 @@ namespace AoTracker.Infrastructure.ViewModels.Item
         {
             BackingModel = item;
         }
+
+        public override void UpdatePageTitle()
+        {
+            //don't update on child view models
+        }
     }
 }

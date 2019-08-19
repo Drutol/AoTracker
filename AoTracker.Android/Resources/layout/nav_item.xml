@@ -11,6 +11,7 @@
     android:orientation="horizontal">
 
     <LinearLayout
+        android:id="@+id/Container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background_border_left_shallow"
@@ -30,7 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:fontFamily="@string/font_family_light"
             android:textColor="?TextColour"
             android:textSize="@dimen/FontSizeMedium"
             tools:text="Feed" />

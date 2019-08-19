@@ -196,6 +196,33 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Crawler Sets.
+        /// </summary>
+        public static string Hamburger_Item_CrawlerSets {
+            get {
+                return ResourceManager.GetString("Hamburger_Item_CrawlerSets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Feed.
+        /// </summary>
+        public static string Hamburger_Item_Feed {
+            get {
+                return ResourceManager.GetString("Hamburger_Item_Feed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Hamburger_Item_Settings {
+            get {
+                return ResourceManager.GetString("Hamburger_Item_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Price increase:.
         /// </summary>
         public static string Item_CrawlerCell_PriceIncrease {
@@ -300,6 +327,15 @@ namespace AoTracker.Resources {
         public static string PageTitle_Sets {
             get {
                 return ResourceManager.GetString("PageTitle_Sets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string PageTitle_Settings {
+            get {
+                return ResourceManager.GetString("PageTitle_Settings", resourceCulture);
             }
         }
     }
