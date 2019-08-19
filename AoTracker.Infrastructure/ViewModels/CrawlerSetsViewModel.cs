@@ -6,6 +6,7 @@ using System.Text;
 using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
+using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Interfaces;
@@ -55,6 +56,12 @@ namespace AoTracker.Infrastructure.ViewModels
         {
             Sets.Move(movedPosition, targetPosition);
             _userDataProvider.MoveSet(movedPosition, targetPosition);
+        }
+
+        public void RemoveSet(CrawlerSet set)
+        {
+            Sets.Remove(set);
+            _userDataProvider.RemoveSet(set);
         }
     }
 }

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Models;
+using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Interfaces;
 
 namespace AoTracker.Infrastructure.ViewModels.Feed
@@ -11,9 +14,9 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
     public class FeedViewModel : ViewModelBase
     {
         private readonly IUserDataProvider _userDataProvider;
-        private List<FeedTabEntry> _feedTabEntries;
+        private ObservableCollection<FeedTabEntry> _feedTabEntries;
 
-        public List<FeedTabEntry> FeedTabEntries
+        public ObservableCollection<FeedTabEntry> FeedTabEntries
         {
             get => _feedTabEntries;
             set => Set(ref _feedTabEntries, value);
@@ -22,13 +25,45 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         public FeedViewModel(IUserDataProvider userDataProvider)
         {
             _userDataProvider = userDataProvider;
+            _userDataProvider.CrawlingSets.CollectionChanged += CrawlingSetsOnCollectionChanged;
+            MessengerInstance.Register<CrawlerSetModifiedMessage>(this, OnCrawlerModified);
+        }
+
+        private void OnCrawlerModified(CrawlerSetModifiedMessage set)
+        {
+            var feedItem = GetRelevantFeedEntry(set.ModifiedCrawlerSet);
+            feedItem.CrawlerSets = new List<CrawlerSet> {set.ModifiedCrawlerSet};
+        }
+
+        private void CrawlingSetsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    var addedSet = e.NewItems.Cast<CrawlerSet>().ToList();
+                    _feedTabEntries.Add(new FeedTabEntry(addedSet)
+                    {
+                        Name = addedSet.First().Name
+                    });
+                    break;
+                case NotifyCollectionChangedAction.Move:
+                    var movedSet = e.NewItems.Cast<CrawlerSet>().First();
+                    var item = GetRelevantFeedEntry(movedSet);
+                    var itemIndex = _feedTabEntries.IndexOf(item);
+                    _feedTabEntries.Move(itemIndex, e.NewStartingIndex + 1);
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    var removedSet = e.NewItems.Cast<CrawlerSet>().First();
+                    var removedTab = GetRelevantFeedEntry(removedSet);
+                    _feedTabEntries.Remove(removedTab);
+                    break;
+            }
         }
 
         public void NavigatedTo()
         {
             if (FeedTabEntries?.Any() ?? false)
                 return;
-
 
             var entries = new List<FeedTabEntry>(0);
             if (_userDataProvider.CrawlingSets.Count > 1)
@@ -48,9 +83,12 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
                 });
             }
 
+            FeedTabEntries = new ObservableCollection<FeedTabEntry>(entries);
+        }
 
-
-            FeedTabEntries = entries;
+        private FeedTabEntry GetRelevantFeedEntry(CrawlerSet set)
+        {
+            return _feedTabEntries.First(entry => entry.CrawlerSets.Count == 1 && entry.CrawlerSets[0] == set);
         }
     }
 }

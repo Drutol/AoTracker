@@ -92,18 +92,20 @@ namespace AoTracker.Infrastructure.ViewModels
             {
                 if (IsAddingNew)
                 {
-                    await _userDataProvider.AddNewSet(new CrawlerSet
+                    var set = new CrawlerSet
                     {
                         Guid = Guid.NewGuid(),
                         CreatedAt = DateTime.UtcNow,
                         Descriptors = CrawlerDescriptors.Select(model => model.BackingModel).ToList(),
                         Name = SetName
-                    });
+                    };
+                    await _userDataProvider.AddNewSet(set);
                 }
                 else
                 {
                     _currentSet.Name = SetName;
                     await _userDataProvider.UpdateSet(_currentSet);
+                    MessengerInstance.Send(new CrawlerSetModifiedMessage(_currentSet));
                 }
                 _navigationManager.GoBack();
             }

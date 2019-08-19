@@ -118,7 +118,7 @@ namespace AoTracker.Android.Fragments
             holder.ClickSurface.SetOnLongClickListener(new OnLongClickListener(view =>
             {
                 var menu = new PopupMenu(Activity, holder.ItemView);
-                menu.Menu.Add("Delete");
+                menu.Menu.Add(AppResources.Generic_Delete);
                 menu.MenuItemClick += (sender, args) =>
                 {
                     if (args.Item.ItemId == 0)

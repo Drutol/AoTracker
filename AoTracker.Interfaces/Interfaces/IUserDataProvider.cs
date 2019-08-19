@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using AoTracker.Domain.Models;
@@ -8,7 +9,7 @@ namespace AoTracker.Interfaces
 {
     public interface IUserDataProvider
     {
-        IReadOnlyList<CrawlerSet> CrawlingSets { get; }
+        ObservableCollection<CrawlerSet> CrawlingSets { get; }
 
         Task Initialize();
 

@@ -76,6 +76,7 @@
     <Compile Include="Fragments\CrawlerConfigure\ConfigureYahooCrawlerPageFragment.cs" />
     <Compile Include="Fragments\CrawlerSetDetailsPageFragment.ui.cs" />
     <Compile Include="Fragments\CrawlerSetsPageFragment.cs" />
+    <Compile Include="Fragments\CrawlerSetsPageFragment.ui.cs" />
     <Compile Include="Fragments\CustomFragmentBase.cs" />
     <Compile Include="Fragments\Feed\FeedPageFragment.cs" />
     <Compile Include="Fragments\CrawlerSetDetailsPageFragment.cs" />
@@ -90,7 +91,9 @@
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\HttpClientProvider.cs" />
     <Compile Include="Utils\LinkerIncludes.cs" />
+    <Compile Include="Utils\MenuCallback.cs" />
     <Compile Include="Utils\RecyclerViewAdapterBuilder.cs" />
+    <Compile Include="Utils\Util.cs" />
     <Compile Include="Views\ClickInterceptingContainer.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +341,42 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\item_crawler_set_summary.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_two.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_three.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_six.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_seven.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_one.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_nine.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_four.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_five.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_eight.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_box_blank.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_delete.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_more_vertical.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

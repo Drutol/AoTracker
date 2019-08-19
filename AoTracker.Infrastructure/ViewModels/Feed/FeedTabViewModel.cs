@@ -31,8 +31,24 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         private int _expectedBatches;
         private int _receivedBatches;
         private int _feedGenerationProgress;
+        private FeedTabEntry _tabEntry;
 
-        public FeedTabEntry TabEntry { get; set; }
+        public FeedTabEntry TabEntry
+        {
+            get => _tabEntry;
+            set
+            {
+                if(_tabEntry != null)
+                    _tabEntry.CrawlerSetsChanged -= TabEntryOnCrawlerSetsChanged;
+                _tabEntry = value;
+                _tabEntry.CrawlerSetsChanged += TabEntryOnCrawlerSetsChanged;
+            }
+        }
+
+        private void TabEntryOnCrawlerSetsChanged(object sender, EventArgs e)
+        {
+            Feed.Clear();
+        }
 
         public SmartObservableCollection<IFeedItem> Feed { get; } =
             new SmartObservableCollection<IFeedItem>();

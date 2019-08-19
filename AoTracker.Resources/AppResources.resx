@@ -159,6 +159,9 @@
   <data name="CrawlerSetsPage_CurrentCrawlersHeader" xml:space="preserve">
     <value>Current crawlers</value>
   </data>
+  <data name="Generic_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="Item_CrawlerCell_PriceIncrease" xml:space="preserve">
     <value>Price increase:</value>
   </data>

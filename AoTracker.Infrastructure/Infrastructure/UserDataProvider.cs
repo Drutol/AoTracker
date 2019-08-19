@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,43 +17,41 @@ namespace AoTracker.Infrastructure.Infrastructure
     {
         private readonly AppVariables _appVariables;
 
-        private List<CrawlerSet> _sets;
+        private ObservableCollection<CrawlerSet> _sets;
 
         public UserDataProvider(AppVariables appVariables)
         {
             _appVariables = appVariables;
         }
 
-        public IReadOnlyList<CrawlerSet> CrawlingSets => _sets.AsReadOnly();
+        public ObservableCollection<CrawlerSet> CrawlingSets => _sets;
 
         public async Task Initialize()
         {
-            _sets = await _appVariables.CrawlerSets.GetAsync() ?? new List<CrawlerSet>();
+            _sets = new ObservableCollection<CrawlerSet>(await _appVariables.CrawlerSets.GetAsync() ?? new List<CrawlerSet>());
         }
 
         public async Task AddNewSet(CrawlerSet set)
         {
             _sets.Add(set);
-            await _appVariables.CrawlerSets.SetAsync(_sets);
+            await _appVariables.CrawlerSets.SetAsync(_sets.ToList());
         }
 
         public async Task RemoveSet(CrawlerSet set)
         {
             _sets.Remove(set);
-            await _appVariables.CrawlerSets.SetAsync(_sets);
+            await _appVariables.CrawlerSets.SetAsync(_sets.ToList());
         }
 
         public async Task UpdateSet(CrawlerSet set)
         {
-            await _appVariables.CrawlerSets.SetAsync(_sets);
+            await _appVariables.CrawlerSets.SetAsync(_sets.ToList());
         }
 
         public async Task MoveSet(int movedPosition, int targetPosition)
         {
-            var set = _sets.ElementAt(movedPosition);
-            _sets.Remove(set);
-            _sets.Insert(targetPosition, set);
-            await _appVariables.CrawlerSets.SetAsync(_sets);
+            _sets.Move(movedPosition, targetPosition);
+            await _appVariables.CrawlerSets.SetAsync(_sets.ToList());
         }
     }
 }

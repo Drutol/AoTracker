@@ -187,6 +187,15 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Generic_Delete {
+            get {
+                return ResourceManager.GetString("Generic_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Price increase:.
         /// </summary>
         public static string Item_CrawlerCell_PriceIncrease {

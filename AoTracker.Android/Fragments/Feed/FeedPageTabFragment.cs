@@ -44,16 +44,22 @@ namespace AoTracker.Android.Fragments.Feed
 {
     public partial class FeedPageTabFragment : FragmentBase<FeedTabViewModel>
     {
-        private readonly FeedTabEntry _tabEntry;
         private bool _pendingProgressBarAnimation;
         private CancellationTokenSource _smoothProgressCts;
 
         public override int LayoutResourceId { get; } = Resource.Layout.page_feed_tab;
 
+        public FeedTabEntry TabEntry { get; }
+
         public FeedPageTabFragment(FeedTabEntry tabEntry)
         {
-            _tabEntry = tabEntry;
+            TabEntry = tabEntry;
             ViewModel.TabEntry = tabEntry;
+        }
+
+        public override void OnPause()
+        {
+            base.OnPause();
         }
 
         public override void NavigatedTo()
