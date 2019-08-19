@@ -7,6 +7,7 @@ using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
+using Android.Support.V7.Widget;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
@@ -81,16 +82,18 @@ namespace AoTracker.Android.Activities
                 MoveTaskToBack(true);
             }
         }
+
         #region Views
 
         private Toolbar _toolbar;
         private FrameLayout _rootView;
+        private RecyclerView _navigationRecyclerView;
         private NavigationView _navigationView;
         private DrawerLayout _drawerLayout;
 
-
         public Toolbar Toolbar => _toolbar ?? (_toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar));
         public FrameLayout RootView => _rootView ?? (_rootView = FindViewById<FrameLayout>(Resource.Id.RootView));
+        public RecyclerView NavigationRecyclerView => _navigationRecyclerView ?? (_navigationRecyclerView = FindViewById<RecyclerView>(Resource.Id.NavigationRecyclerView));
         public NavigationView NavigationView => _navigationView ?? (_navigationView = FindViewById<NavigationView>(Resource.Id.NavigationView));
         public DrawerLayout DrawerLayout => _drawerLayout ?? (_drawerLayout = FindViewById<DrawerLayout>(Resource.Id.DrawerLayout));
 

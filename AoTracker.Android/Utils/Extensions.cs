@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AoTracker.Crawlers.Enums;
+using AoTracker.Domain.Enums;
 
 namespace AoTracker.Android.Utils
 {
@@ -27,6 +28,15 @@ namespace AoTracker.Android.Utils
                 return Resource.Drawable.yahoo;
             if (domain == CrawlerDomain.Lashinbang)
                 return Resource.Drawable.lashinbang;
+            return 0;
+        }
+
+        public static int ToIconResource(this PageIndex page)
+        {
+            if (page == PageIndex.Feed)
+                return Resource.Drawable.icon_feed;
+            if (page == PageIndex.CrawlerSets)
+                return Resource.Drawable.icon_sets;
             return 0;
         }
     }

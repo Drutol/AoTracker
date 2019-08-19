@@ -8,6 +8,8 @@
         <item name="ForegroundDeepColour">@color/DarkForegroundDeepColour</item>
         <item name="ForegroundShallowColour">@color/DarkForegroundShallowColour</item>
         <item name="ToolbarTextColour">@color/DarkToolbarTextColour</item>
+
+        <item name="DrawableNavigationHeader">@drawable/navbg_dark</item>
     </style>
 
     <style name="AoTracker.Light" parent="Theme.AppCompat.Light.NoActionBar">
@@ -18,6 +20,8 @@
         <item name="ForegroundDeepColour">@color/LightForegroundDeepColour</item>
         <item name="ForegroundShallowColour">@color/LightForegroundShallowColour</item>
         <item name="ToolbarTextColour">@color/LightToolbarTextColour</item>
+
+        <item name="DrawableNavigationHeader">@drawable/navbg</item>
     </style>
 
     <style name="ColourSchemeOrange">

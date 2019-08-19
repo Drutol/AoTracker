@@ -10,11 +10,14 @@ using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V7.App;
+using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using AoTracker.Android.Themes;
+using AoTracker.Android.Utils;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Messaging;
+using AoTracker.Infrastructure.Models;
 using GalaSoft.MvvmLight.Helpers;
 using Messenger = GalaSoft.MvvmLight.Messaging.Messenger;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
@@ -28,18 +31,30 @@ namespace AoTracker.Android.Activities
             Messenger.Default.Register<PageTitleMessage>(this, OnNewPageTitle);
             Messenger.Default.Register<ToolbarRequestMessage>(this, OnNewToolbarRequest);
 
-            SetUpHamburgerButton();
-            NavigationView.NavigationItemSelected += NavigationViewOnNavigationItemSelected;
-            Toolbar.MenuItemClick += ToolbarOnMenuItemClick;
+            NavigationRecyclerView.SetAdapter(
+                new RecyclerViewAdapterBuilder<HamburgerMenuEntry, HamburgerEntryHolder>()
+                .WithContentStretching()
+                .WithItems(ViewModel.HamburgerItems)
+                .WithResourceId(LayoutInflater, Resource.Layout.nav_item)
+                .WithDataTemplate(HamburgerItemDataTemplate)
+                .Build());
 
-            Bindings.Add(this.SetBinding(() => ViewModel.HamburgerItems).WhenSourceChanges(() =>
-            {
-                ViewModel.HamburgerItems.CollectionChanged += HamburgerItemsOnCollectionChanged;
-                UpdateHamburgerItems();
-            }));
+            var divider = new DividerItemDecoration(this, DividerItemDecoration.Vertical);
+            divider.SetDrawable(Resources.GetDrawable(Resource.Drawable.separator_transparent, Theme));
+            NavigationRecyclerView.AddItemDecoration(divider);
+            NavigationRecyclerView.SetLayoutManager(new LinearLayoutManager(this));
+
+            SetUpHamburgerButton();
+            Toolbar.MenuItemClick += ToolbarOnMenuItemClick;
         }
 
         #region HamburgerItems
+
+        private void HamburgerItemDataTemplate(HamburgerMenuEntry item, HamburgerEntryHolder holder, int position)
+        {
+            holder.Title.Text = item.Title;
+            holder.Icon.SetImageResource(item.Page.ToIconResource());
+        }
 
         private void SetUpHamburgerButton()
         {
@@ -58,27 +73,6 @@ namespace AoTracker.Android.Activities
 
             DrawerLayout.AddDrawerListener(_hamburgerToggle);
             _hamburgerToggle.SyncState();
-        }
-
-        private void HamburgerItemsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            UpdateHamburgerItems();
-        }
-
-        private void UpdateHamburgerItems()
-        {
-            NavigationView.Menu.Clear();
-
-            foreach (var viewModelHamburgerItem in ViewModel.HamburgerItems)
-            {
-                NavigationView.Menu.Add(0, (int)viewModelHamburgerItem.Page, 0, viewModelHamburgerItem.Title);
-            }
-        }
-
-        private void NavigationViewOnNavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
-        {
-            ViewModel.SelectedItem =
-                ViewModel.HamburgerItems.First(entry => entry.Page == (PageIndex)e.MenuItem.ItemId);
         }
 
         #endregion
@@ -114,6 +108,25 @@ namespace AoTracker.Android.Activities
         }
 
         #endregion
+
+
+        class HamburgerEntryHolder : RecyclerView.ViewHolder
+        {
+            private readonly View _view;
+
+            public HamburgerEntryHolder(View view) : base(view)
+            {
+                _view = view;
+            }
+            private ImageView _icon;
+            private TextView _title;
+            private FrameLayout _clickSurface;
+
+            public ImageView Icon => _icon ?? (_icon = _view.FindViewById<ImageView>(Resource.Id.Icon));
+            public TextView Title => _title ?? (_title = _view.FindViewById<TextView>(Resource.Id.Title));
+            public FrameLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<FrameLayout>(Resource.Id.ClickSurface));
+        }
+
 
     }
 }

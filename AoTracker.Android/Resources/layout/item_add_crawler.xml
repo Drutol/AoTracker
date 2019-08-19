@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="?ForegroundShallowColour"
         android:clickable="true"
-        android:elevation="4dp"
+        android:elevation="1dp"
         android:focusable="true"
         android:foreground="?selectableItemBackground">
 

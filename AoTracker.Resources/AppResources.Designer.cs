@@ -232,7 +232,7 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recently.
+        ///   Looks up a localized string similar to Recently updated.
         /// </summary>
         public static string Item_FeedChangeGroup_Recently {
             get {

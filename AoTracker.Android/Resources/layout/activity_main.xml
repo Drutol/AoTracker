@@ -14,10 +14,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?ToolbarBackgroundColour"
-            android:fitsSystemWindows="true"
             android:elevation="4dp"
-            app:titleTextColor="?ToolbarTextColour"
-            android:minHeight="?attr/actionBarSize" />
+            android:fitsSystemWindows="true"
+            android:minHeight="?attr/actionBarSize"
+            app:titleTextColor="?ToolbarTextColour" />
 
         <FrameLayout
             android:id="@+id/RootView"
@@ -30,5 +30,23 @@
         android:id="@+id/NavigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start" />
+        android:layout_gravity="start">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/nav_header" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/NavigationRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:paddingTop="8dp" />
+        </LinearLayout>
+
+    </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

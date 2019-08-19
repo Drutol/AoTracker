@@ -24,11 +24,11 @@
     <color name="DarkOpaqueOverlayColour">#7f000000</color>
 
     <color name="DarkBackgroundColour">#101010</color>
-    <color name="DarkToolbarBackgroundColour">#333333</color>
+    <color name="DarkToolbarBackgroundColour">#222222</color>
     <color name="DarkTextColour">#ffffff</color>
-    <color name="DarkForegroundColour">#2b2b2b</color>
-    <color name="DarkForegroundDeepColour">#1d1d1d</color>
-    <color name="DarkForegroundShallowColour">#393939</color>
+    <color name="DarkForegroundColour">#1b1b1b</color>
+    <color name="DarkForegroundDeepColour">#0d0d0d</color>
+    <color name="DarkForegroundShallowColour">#292929</color>
     <color name="DarkRippleColour">#7ff6f6f6</color>
     <color name="DarkToolbarTextColour">#ffffff</color>
 
