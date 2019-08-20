@@ -48,7 +48,8 @@ namespace AoTracker.Android.Activities
         {
             base.OnCreate(savedInstanceState);
             this.ApplyTheme();
-
+            if(ThemeManager.IsDarkTheme)
+                Window.SetStatusBarColor(ThemeManager.DarkBackgroundColour);
             SetContentView(Resource.Layout.activity_main);
 
             App.NavigationManager = new NavigationManager<PageIndex>(

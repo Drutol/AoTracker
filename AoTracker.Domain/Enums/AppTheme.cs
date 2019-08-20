@@ -8,7 +8,8 @@ namespace AoTracker.Domain.Enums
     public enum AppTheme
     {
         Dark = 1,
-        Light = 2,
+        Light = 1 << 1,
+        Black = 1 << 2,
 
         Orange = 1 << 3,
         Lime = 1 << 4,
@@ -16,5 +17,6 @@ namespace AoTracker.Domain.Enums
         Purple = 1 << 6,
         Red = 1 << 7,
         Cyan = 1 << 8,
+        Pink = 1 << 9,
     }
 }

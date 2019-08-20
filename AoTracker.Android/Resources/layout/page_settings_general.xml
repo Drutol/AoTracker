@@ -19,7 +19,7 @@
             android:textSize="@dimen/FontSizeMedium" />
 
         <RadioGroup
-            android:id="@+id/SettingsPageGeneralThemeRadioGroup"
+            android:id="@+id/ThemeRadioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -62,14 +62,14 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/ColorOraAccentButton"
+                    android:id="@+id/ColorOrangeAccentButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@color/OrangeColour"
                     android:src="@drawable/icon_tick" />
 
                 <ImageButton
-                    android:id="@+id/ColorPurAccentButton"
+                    android:id="@+id/ColorPurpleAccentButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="10dp"
@@ -78,7 +78,7 @@
                     android:tint="#fff" />
 
                 <ImageButton
-                    android:id="@+id/ColorBluAccentButton"
+                    android:id="@+id/ColorBlueAccentButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="10dp"
@@ -87,7 +87,7 @@
                     android:tint="#fff" />
 
                 <ImageButton
-                    android:id="@+id/ColorLimAccentButton"
+                    android:id="@+id/ColorLimeAccentButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="10dp"
@@ -103,7 +103,7 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/ColorPinAccentButton"
+                    android:id="@+id/ColorPinkAccentButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@color/PinkColour"
@@ -111,7 +111,7 @@
                     android:tint="#fff" />
 
                 <ImageButton
-                    android:id="@+id/ColorCyaAccentButton"
+                    android:id="@+id/ColorCyanAccentButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="10dp"

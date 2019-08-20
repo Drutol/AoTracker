@@ -29,16 +29,21 @@ namespace AoTracker.Android.Themes
         public static Color RedColour { get; private set; }
 
         public static Color AccentColour { get; set; }
+        public static Color DarkBackgroundColour { get; set; }
+
+        public static AppTheme CurrentTheme { get; set; }
+        public static bool IsDarkTheme { get; private set; }
 
         public static void ApplyTheme(this AppCompatActivity activity)
         {
             var settings = ResourceLocator.ObtainScope().Resolve<ISettings>();
             var theme = settings.AppTheme;
-
+            CurrentTheme = theme;
             // Base
-            if ((theme & AppTheme.Dark) == AppTheme.Dark)
+            if ((theme & AppTheme.Dark) == AppTheme.Dark || (theme & AppTheme.Black) == AppTheme.Black)
             {
                 activity.SetTheme(Resource.Style.AoTracker_Dark);
+                IsDarkTheme = true;
             }
             else
             {
@@ -70,11 +75,19 @@ namespace AoTracker.Android.Themes
             {
                 activity.Theme.ApplyStyle(Resource.Style.ColourSchemeRed, true);
             }
+            else if ((theme & AppTheme.Pink) == AppTheme.Pink)
+            {
+                activity.Theme.ApplyStyle(Resource.Style.ColourSchemePink, true);
+            }
 
             // Toolbar overrides
             if ((theme & AppTheme.Dark) == AppTheme.Dark)
             {
                 activity.Theme.ApplyStyle(Resource.Style.ColourSchemeToolbarDark, true);
+            }
+            else if ((theme & AppTheme.Black) == AppTheme.Black)
+            {
+                activity.Theme.ApplyStyle(Resource.Style.AoTracker_Dark_Black, true);
             }
 
             RedColour = activity.Resources.GetColor(Resource.Color.RedColour, activity.Theme);

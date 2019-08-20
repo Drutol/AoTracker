@@ -12,6 +12,11 @@
         <item name="DrawableNavigationHeader">@drawable/navbg_dark</item>
     </style>
 
+    <style name="AoTracker.Dark.Black">
+        <item name="BackgroundColour">@android:color/black</item>
+        <item name="ToolbarBackgroundColour">@android:color/black</item>
+    </style>
+
     <style name="AoTracker.Light" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="TextColour">@color/LightTextColour</item>
         <item name="TextInvertedColour">@color/DarkTextColour</item>
@@ -98,6 +103,19 @@
         <item name="AccentDarkColour">@color/RedColourDark</item>
 
         <item name="ToolbarBackgroundColour">@color/RedColour</item>
+
+        <item name="TextColourAccentContrast">@color/DarkTextColour</item>
+    </style>
+
+    <style name="ColourSchemePink">
+        <item name="colorPrimary">@color/PinkColour</item>
+        <item name="colorPrimaryDark">@color/PinkColourDark</item>
+        <item name="colorAccent">@color/PinkColour</item>
+
+        <item name="AccentColour">@color/PinkColour</item>
+        <item name="AccentDarkColour">@color/PinkColourDark</item>
+
+        <item name="ToolbarBackgroundColour">@color/PinkColour</item>
 
         <item name="TextColourAccentContrast">@color/DarkTextColour</item>
     </style>
