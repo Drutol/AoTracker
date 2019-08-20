@@ -35,7 +35,7 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
         public void NavigatedTo(ConfigureCrawlerPageNavArgs navArgs)
         {
             _navArgs = navArgs;
-            Title = string.Format(AppResources.PageTitle_ConfigureCrawlers, Domain.ToString());
+            PageTitle = string.Format(AppResources.PageTitle_ConfigureCrawlers, Domain.ToString());
 
             if (!navArgs.ConfigureNew)
             {

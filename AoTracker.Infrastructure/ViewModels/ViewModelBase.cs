@@ -8,21 +8,21 @@ namespace AoTracker.Infrastructure.ViewModels
 {
     public abstract class ViewModelBase : GalaSoft.MvvmLight.ViewModelBase
     {
-        private string _title;
+        private string _pageTitle;
 
-        public string Title
+        public string PageTitle
         {
-            get => _title;
+            get => _pageTitle;
             set
             {
-                Set(ref _title, value);
+                Set(ref _pageTitle, value);
                 MessengerInstance.Send(new PageTitleMessage(value));
             }
         }
 
         public virtual void UpdatePageTitle()
         {
-            MessengerInstance.Send(new PageTitleMessage(Title));
+            MessengerInstance.Send(new PageTitleMessage(PageTitle));
         }
 
         protected bool Set<T>(ref T backingStore, T value, Action<T> onChanged)

@@ -65,7 +65,6 @@ namespace AoTracker.Android.PagerAdapters
             }
 
             NotifyDataSetChanged();
-            _parent.UpdateTabIcons();
         }
 
         public override int Count => _tabEntries.Count;

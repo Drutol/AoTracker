@@ -66,7 +66,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             _feedProvider.NewCrawlerBatch += FeedProviderOnNewCrawlerBatch;
             _feedProvider.Finished += FeedProviderOnFinished;
 
-            Title = "Feed";
+            PageTitle = "Feed";
         }
 
         private async void FeedProviderOnFinished(object sender, EventArgs e)

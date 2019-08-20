@@ -10,7 +10,7 @@ namespace AoTracker.Infrastructure.Models
     {
         private bool _isSelected;
 
-        public string Label { get; set; }
+        public string Title { get; set; }
         public PageIndex Page { get; set; }
 
         public bool IsSelected

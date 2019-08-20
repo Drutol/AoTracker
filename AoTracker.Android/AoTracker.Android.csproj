@@ -82,7 +82,9 @@
     <Compile Include="Fragments\CrawlerSetDetailsPageFragment.cs" />
     <Compile Include="Fragments\Feed\FeedPageTabFragment.cs" />
     <Compile Include="Fragments\Feed\FeedPageTabFragment.ui.cs" />
-    <Compile Include="Fragments\SettingsPageFragment.cs" />
+    <Compile Include="Fragments\Settings\SettingsAboutPageFragment.cs" />
+    <Compile Include="Fragments\Settings\SettingsGeneralPageFragment.cs" />
+    <Compile Include="Fragments\Settings\SettingsIndexPageFragment.cs" />
     <Compile Include="PagerAdapters\FeedPagerAdapter.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -431,7 +433,22 @@
     <AndroidResource Include="Resources\drawable\icon_setting.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\page_settings.xml" />
+    <AndroidResource Include="Resources\layout\page_settings_index.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\item_settings_entry.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\page_settings_guide.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\page_settings_general.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\page_settings_about.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_info.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

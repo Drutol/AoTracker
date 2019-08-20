@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="?BackgroundColour"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/Settings_General_ColourThemeHeader"
+            android:textColor="?TextColour"
+            android:textSize="@dimen/FontSizeMedium" />
+
+        <RadioGroup
+            android:id="@+id/SettingsPageGeneralThemeRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <RadioButton
+                android:id="@+id/LightThemeRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Settings_General_LightTheme" />
+
+            <RadioButton
+                android:id="@+id/DarkThemeRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Settings_General_DarkTheme" />
+
+            <RadioButton
+                android:id="@+id/BlackThemeRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Settings_General_BlackTheme" />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/ColorOraAccentButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@color/OrangeColour"
+                    android:src="@drawable/icon_tick" />
+
+                <ImageButton
+                    android:id="@+id/ColorPurAccentButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/PurpleColour"
+                    android:src="@drawable/icon_tick"
+                    android:tint="#fff" />
+
+                <ImageButton
+                    android:id="@+id/ColorBluAccentButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/SkyBlueColour"
+                    android:src="@drawable/icon_tick"
+                    android:tint="#fff" />
+
+                <ImageButton
+                    android:id="@+id/ColorLimAccentButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/LimeColour"
+                    android:src="@drawable/icon_tick"
+                    android:tint="#fff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/ColorPinAccentButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@color/PinkColour"
+                    android:src="@drawable/icon_tick"
+                    android:tint="#fff" />
+
+                <ImageButton
+                    android:id="@+id/ColorCyaAccentButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/CyanColour"
+                    android:src="@drawable/icon_tick"
+                    android:tint="#fff" />
+
+                <ImageButton
+                    android:id="@+id/ColorRedAccentButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/RedColour"
+                    android:src="@drawable/icon_tick"
+                    android:tint="#fff" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/ApplyThemeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="?AccentColour"
+            android:text="@string/Settings_General_Apply"
+            android:textColor="#fff"
+            android:visibility="visible" />
+    </LinearLayout>
+</LinearLayout>

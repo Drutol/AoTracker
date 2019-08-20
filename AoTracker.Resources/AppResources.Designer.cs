@@ -214,7 +214,7 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings.
+        ///   Looks up a localized string similar to Settings &amp; More.
         /// </summary>
         public static string Hamburger_Item_Settings {
             get {
@@ -331,11 +331,110 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings.
+        ///   Looks up a localized string similar to Settings: About.
         /// </summary>
-        public static string PageTitle_Settings {
+        public static string PageTitle_SettingsAbout {
             get {
-                return ResourceManager.GetString("PageTitle_Settings", resourceCulture);
+                return ResourceManager.GetString("PageTitle_SettingsAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings: General.
+        /// </summary>
+        public static string PageTitle_SettingsGeneral {
+            get {
+                return ResourceManager.GetString("PageTitle_SettingsGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings Index.
+        /// </summary>
+        public static string PageTitle_SettingsIndex {
+            get {
+                return ResourceManager.GetString("PageTitle_SettingsIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apply!.
+        /// </summary>
+        public static string Settings_General_Apply {
+            get {
+                return ResourceManager.GetString("Settings_General_Apply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Black theme.
+        /// </summary>
+        public static string Settings_General_BlackTheme {
+            get {
+                return ResourceManager.GetString("Settings_General_BlackTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applitcation Theme.
+        /// </summary>
+        public static string Settings_General_ColourThemeHeader {
+            get {
+                return ResourceManager.GetString("Settings_General_ColourThemeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark theme.
+        /// </summary>
+        public static string Settings_General_DarkTheme {
+            get {
+                return ResourceManager.GetString("Settings_General_DarkTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light theme.
+        /// </summary>
+        public static string Settings_General_LightTheme {
+            get {
+                return ResourceManager.GetString("Settings_General_LightTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AoTracker app information.
+        /// </summary>
+        public static string SettingsIndex_Entry_About_Subtitle {
+            get {
+                return ResourceManager.GetString("SettingsIndex_Entry_About_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string SettingsIndex_Entry_About_Title {
+            get {
+                return ResourceManager.GetString("SettingsIndex_Entry_About_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application theme, and other settings.
+        /// </summary>
+        public static string SettingsIndex_Entry_General_Subtitle {
+            get {
+                return ResourceManager.GetString("SettingsIndex_Entry_General_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        public static string SettingsIndex_Entry_General_Title {
+            get {
+                return ResourceManager.GetString("SettingsIndex_Entry_General_Title", resourceCulture);
             }
         }
     }

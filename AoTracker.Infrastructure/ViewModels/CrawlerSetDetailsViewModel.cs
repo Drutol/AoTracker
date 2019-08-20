@@ -153,7 +153,7 @@ namespace AoTracker.Infrastructure.ViewModels
 
             if (crawlerSet == null)
             {
-                Title = _currentSet == null
+                PageTitle = _currentSet == null
                     ? AppResources.PageTitle_SetDetails_AddNew
                     : string.Format(AppResources.PageTitle_SetDetails, _currentSet.Name);
 
@@ -166,7 +166,7 @@ namespace AoTracker.Infrastructure.ViewModels
             else
             {
                 _currentSet = crawlerSet;
-                Title = string.Format(AppResources.PageTitle_SetDetails, crawlerSet.Name);
+                PageTitle = string.Format(AppResources.PageTitle_SetDetails, crawlerSet.Name);
                 SetName = crawlerSet.Name;
                 CrawlerDescriptors = new ObservableCollection<CrawlerDescriptorViewModel>(crawlerSet.Descriptors.Select(
                     descriptor =>

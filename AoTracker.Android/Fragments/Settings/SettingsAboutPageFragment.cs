@@ -11,19 +11,18 @@ using Android.Views;
 using Android.Widget;
 using AoLibs.Navigation.Android.Navigation.Attributes;
 using AoTracker.Domain.Enums;
-using AoTracker.Infrastructure.ViewModels;
+using AoTracker.Infrastructure.ViewModels.Settings;
 
-namespace AoTracker.Android.Fragments
+namespace AoTracker.Android.Fragments.Settings
 {
-    [NavigationPage(PageIndex.Settings)]
-    public class SettingsPageFragment : CustomFragmentBase<SettingsViewModel>
+    [NavigationPage(PageIndex.SettingsAbout)]
+    public class SettingsAboutPageFragment : CustomFragmentBase<SettingsAboutViewModel>
     {
-        public override int LayoutResourceId { get; } = Resource.Layout.page_settings;
+        public override int LayoutResourceId { get; } = Resource.Layout.page_settings_about;
 
         protected override void InitBindings()
         {
 
         }
-
     }
 }

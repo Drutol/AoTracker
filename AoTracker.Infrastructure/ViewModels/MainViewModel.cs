@@ -25,20 +25,20 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public HamburgerMenuEntryViewModel SettingsButtonViewModel { get; } = new HamburgerMenuEntryViewModel
         {
-            Label = AppResources.Hamburger_Item_Settings,
-            Page = PageIndex.Settings
+            Title = AppResources.Hamburger_Item_Settings,
+            Page = PageIndex.SettingsIndex
         };
 
         private List<HamburgerMenuEntryViewModel> _allEntries = new List<HamburgerMenuEntryViewModel>
         {
             new HamburgerMenuEntryViewModel
             {
-                Label = AppResources.Hamburger_Item_Feed,
+                Title = AppResources.Hamburger_Item_Feed,
                 Page = PageIndex.Feed,
             },
             new HamburgerMenuEntryViewModel
             {
-                Label = AppResources.Hamburger_Item_CrawlerSets,
+                Title = AppResources.Hamburger_Item_CrawlerSets,
                 Page = PageIndex.CrawlerSets,
             },
         };

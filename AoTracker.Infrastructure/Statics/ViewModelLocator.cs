@@ -5,6 +5,7 @@ using AoTracker.Infrastructure.ViewModels;
 using AoTracker.Infrastructure.ViewModels.Crawlers;
 using AoTracker.Infrastructure.ViewModels.Feed;
 using AoTracker.Infrastructure.ViewModels.Item;
+using AoTracker.Infrastructure.ViewModels.Settings;
 using Autofac;
 
 namespace AoTracker.Infrastructure.Statics
@@ -14,13 +15,16 @@ namespace AoTracker.Infrastructure.Statics
         public static void RegisterViewModels(this ContainerBuilder builder)
         {
             // standard
-            builder.RegisterType<MainViewModel>().SingleInstance();
-            builder.RegisterType<WelcomeViewModel>().SingleInstance();
-            builder.RegisterType<CrawlerResultViewModel>().SingleInstance();
-            builder.RegisterType<FeedViewModel>().SingleInstance();
-            builder.RegisterType<CrawlerSetsViewModel>().SingleInstance();
-            builder.RegisterType<CrawlerSetDetailsViewModel>().SingleInstance();
-            builder.RegisterType<SettingsViewModel>().SingleInstance();
+            builder.RegisterType<MainViewModel>().InstancePerLifetimeScope();
+            builder.RegisterType<WelcomeViewModel>().InstancePerLifetimeScope();
+            builder.RegisterType<CrawlerResultViewModel>().InstancePerLifetimeScope();
+            builder.RegisterType<FeedViewModel>().InstancePerLifetimeScope();
+            builder.RegisterType<CrawlerSetsViewModel>().InstancePerLifetimeScope();
+            builder.RegisterType<CrawlerSetDetailsViewModel>().InstancePerLifetimeScope();
+            builder.RegisterType<SettingsIndexViewModel>().InstancePerLifetimeScope();
+            builder.RegisterType<SettingsIndexViewModel>().InstancePerLifetimeScope();
+            builder.RegisterType<SettingsAboutViewModel>().InstancePerLifetimeScope();
+            builder.RegisterType<SettingsGeneralViewModel>().InstancePerLifetimeScope();
 
             // one shots
             builder.RegisterType<ConfigureSurugayaCrawlerViewModel>();

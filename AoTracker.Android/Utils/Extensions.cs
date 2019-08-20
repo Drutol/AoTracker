@@ -37,8 +37,12 @@ namespace AoTracker.Android.Utils
                 return Resource.Drawable.icon_feed;
             if (page == PageIndex.CrawlerSets)
                 return Resource.Drawable.icon_sets;
-            if (page == PageIndex.Settings)
+            if (page == PageIndex.SettingsIndex)
                 return Resource.Drawable.icon_setting;
+            if (page == PageIndex.SettingsGeneral)
+                return Resource.Drawable.icon_setting;
+            if (page == PageIndex.SettingsAbout)
+                return Resource.Drawable.icon_info;
             return 0;
         }
     }

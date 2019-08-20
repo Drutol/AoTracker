@@ -15,6 +15,8 @@ namespace AoTracker.Domain.Enums
         ConfigureYahoo,
         ConfigureMercari,
         ConfigureLashinbang,
-        Settings
+        SettingsIndex,
+        SettingsGeneral,
+        SettingsAbout,
     }
 }

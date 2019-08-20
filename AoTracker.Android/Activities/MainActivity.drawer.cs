@@ -132,7 +132,7 @@ namespace AoTracker.Android.Activities
 
             protected override void SetBindings()
             {
-                Title.Text = ViewModel.Label;
+                Title.Text = ViewModel.Title;
                 Icon.SetImageResource(ViewModel.Page.ToIconResource());
 
                 Bindings.Add(this.SetBinding(() => ViewModel.IsSelected).WhenSourceChanges(() =>

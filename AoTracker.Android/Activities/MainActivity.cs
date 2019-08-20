@@ -15,10 +15,12 @@ using AoLibs.Navigation.Android.Navigation;
 using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Android.Themes;
 using AoTracker.Domain.Enums;
+using AoTracker.Domain.Messaging;
 using AoTracker.Infrastructure.Statics;
 using AoTracker.Infrastructure.ViewModels;
 using Autofac;
 using GalaSoft.MvvmLight.Helpers;
+using Messenger = GalaSoft.MvvmLight.Messaging.Messenger;
 using Toolbar = global::Android.Support.V7.Widget.Toolbar;
 
 namespace AoTracker.Android.Activities
@@ -59,6 +61,7 @@ namespace AoTracker.Android.Activities
             {
                 ViewModel = scope.Resolve<MainViewModel>();
             }
+
             ViewModel.Initialize();
 
             InitDrawer();
@@ -94,10 +97,22 @@ namespace AoTracker.Android.Activities
 
         public Toolbar Toolbar => _toolbar ?? (_toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar));
         public FrameLayout RootView => _rootView ?? (_rootView = FindViewById<FrameLayout>(Resource.Id.RootView));
-        public RecyclerView NavigationRecyclerView => _navigationRecyclerView ?? (_navigationRecyclerView = FindViewById<RecyclerView>(Resource.Id.NavigationRecyclerView));
-        public FrameLayout SettingsNavButton => _settingsNavButton ?? (_settingsNavButton = FindViewById<FrameLayout>(Resource.Id.SettingsNavButton));
-        public NavigationView NavigationView => _navigationView ?? (_navigationView = FindViewById<NavigationView>(Resource.Id.NavigationView));
-        public DrawerLayout DrawerLayout => _drawerLayout ?? (_drawerLayout = FindViewById<DrawerLayout>(Resource.Id.DrawerLayout));
+
+        public RecyclerView NavigationRecyclerView => _navigationRecyclerView ??
+                                                      (_navigationRecyclerView =
+                                                          FindViewById<RecyclerView>(Resource.Id.NavigationRecyclerView)
+                                                      );
+
+        public FrameLayout SettingsNavButton => _settingsNavButton ??
+                                                (_settingsNavButton =
+                                                    FindViewById<FrameLayout>(Resource.Id.SettingsNavButton));
+
+        public NavigationView NavigationView => _navigationView ??
+                                                (_navigationView =
+                                                    FindViewById<NavigationView>(Resource.Id.NavigationView));
+
+        public DrawerLayout DrawerLayout =>
+            _drawerLayout ?? (_drawerLayout = FindViewById<DrawerLayout>(Resource.Id.DrawerLayout));
 
         #endregion
 
@@ -108,10 +123,7 @@ namespace AoTracker.Android.Activities
                 Log.Debug(nameof(App), $"Resolving ViewModel: {typeof(TViewModel).Name}");
                 try
                 {
-                    using (var scope = ResourceLocator.ObtainScope())
-                    {
-                        return scope.Resolve<TViewModel>();
-                    }
+                    return ResourceLocator.CurrentScope.Resolve<TViewModel>();
                 }
                 catch (Exception e)
                 {
@@ -120,7 +132,5 @@ namespace AoTracker.Android.Activities
                 }
             }
         }
-
-
     }
 }

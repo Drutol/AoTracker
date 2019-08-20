@@ -29,12 +29,20 @@ namespace AoTracker.Infrastructure.Statics
 
         }
 
-        private static void BuildCallback(IContainer obj)
+        public static void BeginNewLifetimeScope()
         {
-            _lifetime = obj.BeginLifetimeScope();
+            CurrentScope.Dispose();
+            CurrentScope = _lifetime.BeginLifetimeScope();
         }
 
         public static ILifetimeScope ObtainScope() => _lifetime.BeginLifetimeScope();
 
+        public static ILifetimeScope CurrentScope { get; private set; }
+
+        private static void BuildCallback(IContainer obj)
+        {
+            _lifetime = obj.BeginLifetimeScope();
+            CurrentScope = _lifetime.BeginLifetimeScope();
+        }
     }
 }

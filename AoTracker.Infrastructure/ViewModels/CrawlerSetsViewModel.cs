@@ -28,7 +28,7 @@ namespace AoTracker.Infrastructure.ViewModels
             _userDataProvider = userDataProvider;
             _navigationManager = navigationManager;
 
-            Title = "Crawler Sets";
+            PageTitle = "Crawler Sets";
         }
 
         public void NavigatedTo()

@@ -105,7 +105,6 @@ namespace AoTracker.Android.Fragments
             private LinearLayout _priceIncreaseSection;
             private LinearLayout _removesQuotationMarksIndicator;
             private LinearLayout _clickSurface;
-            private object _viewModelProxy;
 
             public ImageView Image => _image ?? (_image = _view.FindViewById<ImageView>(Resource.Id.Image));
             public TextView SearchPhrase => _searchPhrase ?? (_searchPhrase = _view.FindViewById<TextView>(Resource.Id.SearchPhrase));
