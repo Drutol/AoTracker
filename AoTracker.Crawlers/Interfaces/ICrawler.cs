@@ -13,6 +13,7 @@ namespace AoTracker.Crawlers.Interfaces
         ICrawlerSource Source { get; }
 
         Task<ICrawlerResult<ICrawlerResultItem>> Crawl(CrawlerParameters parameters);
+        bool IsCached(CrawlerParameters parameters);
     }
 
     public interface ICrawler<T> : ICrawler where T : ICrawlerResultItem

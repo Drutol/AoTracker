@@ -57,11 +57,6 @@ namespace AoTracker.Android.Fragments.Feed
             ViewModel.TabEntry = tabEntry;
         }
 
-        public override void OnPause()
-        {
-            base.OnPause();
-        }
-
         public override void NavigatedTo()
         {
             base.NavigatedTo();
@@ -70,24 +65,21 @@ namespace AoTracker.Android.Fragments.Feed
 
         protected override void InitBindings()
         {
-            Bindings.Add(this.SetBinding(() => ViewModel.IsLoading).WhenSourceChanges(async () =>
-            {
-                SwipeToRefreshLayout.Refreshing = ViewModel.IsLoading;
-                if (ViewModel.IsLoading)
-                {
-                    //make sure it wasn't all cached after all
-                    await Task.Delay(200);
-                    if (ViewModel.IsLoading)
-                    {
-                        ProgressSpinner.Alpha = 1;
-                        ProgressSpinner.Visibility = ViewStates.Visible;
-                    }
-                }
-            }));
+            Bindings.Add(
+                this.SetBinding(() => ViewModel.IsLoading,
+                    () => LoadingLayout.Visibility).ConvertSourceToTarget(BindingConverters.BoolToVisibility));
+
+            Bindings.Add(
+                this.SetBinding(() => ViewModel.ProgressLabel,
+                    () => ProgressLabel.Text));
+
+            Bindings.Add(
+                this.SetBinding(() => ViewModel.IsPreparing,
+                    () => ProgressSpinner.Visibility).ConvertSourceToTarget(BindingConverters.BoolToVisibility));
+
 
             Bindings.Add(this.SetBinding(() => ViewModel.FeedGenerationProgress).WhenSourceChanges(() =>
             {
-                SwipeToRefreshLayout.Refreshing = false;
                 SmoothSetProgress(ViewModel.FeedGenerationProgress);
             }));
 
@@ -114,8 +106,6 @@ namespace AoTracker.Android.Fragments.Feed
 
             SwipeToRefreshLayout.ScrollingView = RecyclerView;
             SwipeToRefreshLayout.Refresh += SwipeToRefreshLayoutOnRefresh;
-
-            ProgressSpinner.ShowText = true;
             RecyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
         }
 
@@ -123,7 +113,7 @@ namespace AoTracker.Android.Fragments.Feed
         {
             if (progress == 0)
             {
-                ProgressSpinner.Progress = 0;
+                ProgressBar.Progress = 0;
                 return;
             }
 
@@ -134,41 +124,24 @@ namespace AoTracker.Android.Fragments.Feed
 
         private async void SmoothSetProgressLoop(int progress, CancellationToken token)
         {
-            if (progress != 100)
+            const int steps = 20;
+            var diff = progress - ProgressBar.Progress;
+            var step = diff / steps;
+            var delay = TimeSpan.FromSeconds(1) / steps;
+            for (int i = 0; i < steps; i++)
             {
-                var diff = progress - ProgressSpinner.Progress;
-                var step = diff / 10;
-                var delay = TimeSpan.FromSeconds(1) / 10;
-                for (int i = 0; i < 10; i++)
+                if (token.IsCancellationRequested)
+                    return;
+
+                ProgressBar.Progress += (float)step;
+                try
                 {
-                    if (token.IsCancellationRequested)
-                        return;
-
-                    ProgressSpinner.Progress += (float)step;
-                    try
-                    {
-                        await Task.Delay(delay, token);
-                    }
-                    catch (OperationCanceledException)
-                    {
-                        return;
-                    }
+                    await Task.Delay(delay, token);
                 }
-            }
-            else
-            {
-                ProgressSpinner.Progress = 100;
-            }
-
-
-            if (!ViewModel.IsLoading || ViewModel.FeedGenerationProgress == 100)
-            {
-                ProgressSpinner
-                    .Animate()
-                    .Alpha(0)
-                    .SetDuration(250)
-                    .WithEndAction(new Runnable(() => ProgressSpinner.Visibility = ViewStates.Gone))
-                    .Start();
+                catch (OperationCanceledException)
+                {
+                    return;
+                }
             }
         }
 
@@ -189,6 +162,7 @@ namespace AoTracker.Android.Fragments.Feed
 
         private void SwipeToRefreshLayoutOnRefresh(object sender, EventArgs e)
         {
+            SwipeToRefreshLayout.Refreshing = false;
             ViewModel.RefreshFeed(true);
         }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?BackgroundColour"
@@ -20,23 +21,43 @@
 
     </AoLibs.Utilities.Android.Views.ScrollableSwipeToRefreshLayout>
 
-    <com.app.adprogressbarlib.AdCircleProgress
-        android:id="@+id/ProgressSpinner"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_gravity="center"
-        android:backgroundTintMode="add"
-        android:visibility="gone"
-        app:adpgb_background_color="?ForegroundShallowColour"
-        app:adpgb_finished_color="?AccentColour"
-        app:adpgb_finished_stroke_width="3dp"
-        app:adpgb_gradient_color_one="?AccentDarkColour"
-        app:adpgb_gradient_color_two="?AccentColour"
-        app:adpgb_progress="0"
-        app:adpgb_show_text="true"
-        app:adpgb_text_color="?AccentColour"
-        app:adpgb_text_size="@dimen/FontSizeSemiNormal"
-        app:adpgb_unfinished_color="?AccentColour"
-        app:adpgb_unfinished_stroke_width="1dp" />
+    <FrameLayout
+        android:id="@+id/LoadingLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <com.app.adprogressbarlib.AdCircleProgress
+            android:id="@+id/ProgressBar"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:backgroundTintMode="add"
+            app:adpgb_background_color="?ForegroundShallowColour"
+            app:adpgb_finished_color="?AccentColour"
+            app:adpgb_finished_stroke_width="3dp"
+            app:adpgb_gradient_color_one="?AccentDarkColour"
+            app:adpgb_gradient_color_two="?AccentColour"
+            app:adpgb_progress="0"
+            app:adpgb_show_text="false"
+            app:adpgb_unfinished_color="?AccentColour"
+            app:adpgb_unfinished_stroke_width="1dp" />
+
+        <ProgressBar
+            android:id="@+id/ProgressSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/ProgressLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@string/font_family_light"
+            android:textColor="?AccentColour"
+            android:textSize="@dimen/FontSizeBig"
+            tools:text="3/7" />
+    </FrameLayout>
+
 
 </FrameLayout>

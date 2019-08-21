@@ -18,10 +18,16 @@ namespace AoTracker.Infrastructure.Infrastructure
         private readonly AppVariables _appVariables;
         private readonly ICrawlerManager _crawlerManager;
         private bool _isAggregating;
-        private SemaphoreSlim _semaphore = new SemaphoreSlim(3);
+        private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(3);
 
         public event EventHandler<FeedBatch> NewCrawlerBatch;
         public event EventHandler Finished;
+
+        private static VolatileParametersBase _cacheCheckingVolatileParameters = new VolatileParametersBase
+        {
+            Page = 1,
+            UseCache = true
+        };
 
         public FeedProvider(
             ICrawlerManagerProvider crawlerManagerProvider,
@@ -35,10 +41,28 @@ namespace AoTracker.Infrastructure.Infrastructure
 
         public void StartAggregating(List<CrawlerSet> sets, CancellationToken feedCtsToken, bool force, ref int expectedBatches)
         {
-            expectedBatches = sets.Sum(set => set.Descriptors.Count);
+            if (force)
+            {
+                // we have to check every descriptor
+                expectedBatches = sets.Sum(set => set.Descriptors.Count);
+            }
+            else
+            {
+                // we have to check only these descriptors that don't have cache
+                expectedBatches = sets.Sum(set => set.Descriptors.Count(descriptor =>
+                    !_crawlerManager.GetCrawler(descriptor.CrawlerDomain).IsCached(
+                        new CrawlerParameters(descriptor.CrawlerSourceParameters, _cacheCheckingVolatileParameters))));
+            }
 
             if (!_isAggregating)
                 AggregateFeed(sets, feedCtsToken, force);
+        }
+
+        public bool CheckCache(List<CrawlerSet> sets)
+        {
+            return sets.All(set => set.Descriptors.All(descriptor =>
+                _crawlerManager.GetCrawler(descriptor.CrawlerDomain)
+                    .IsCached(new CrawlerParameters(descriptor.CrawlerSourceParameters, _cacheCheckingVolatileParameters))));
         }
 
         private async void AggregateFeed(List<CrawlerSet> sets, CancellationToken feedCtsToken, bool force)
@@ -77,11 +101,11 @@ namespace AoTracker.Infrastructure.Infrastructure
 
                     var crawler = _crawlerManager.GetCrawler(descriptor.CrawlerDomain);
 
-                    var result = await crawler.Crawl(new CrawlerParameters
-                    {
-                        Parameters = descriptor.CrawlerSourceParameters,
-                        VolatileParameters = volatileParameters
-                    });
+                    var result =
+                        await crawler.Crawl(
+                            new CrawlerParameters(
+                                descriptor.CrawlerSourceParameters,
+                                volatileParameters));
 
                     if (result.Success)
                     {

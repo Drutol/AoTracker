@@ -32,6 +32,8 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         private int _receivedBatches;
         private int _feedGenerationProgress;
         private FeedTabEntry _tabEntry;
+        private bool _isPreparing;
+        private string _progressLabel;
 
         public FeedTabEntry TabEntry
         {
@@ -65,8 +67,6 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             _appVariables = appVariables;
             _feedProvider.NewCrawlerBatch += FeedProviderOnNewCrawlerBatch;
             _feedProvider.Finished += FeedProviderOnFinished;
-
-            PageTitle = "Feed";
         }
 
         private async void FeedProviderOnFinished(object sender, EventArgs e)
@@ -94,8 +94,11 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
 
         private void FeedProviderOnNewCrawlerBatch(object sender, FeedBatch e)
         {
+            IsPreparing = false;
             _receivedBatches++;
             FeedGenerationProgress = (int)((_receivedBatches * 100d) / _expectedBatches);
+            ProgressLabel = $"{_receivedBatches}/{_expectedBatches}";
+
             var viewModels = new List<FeedItemViewModel>();
             foreach (var crawlerResultItem in e.CrawlerResult.Results)
             {
@@ -118,12 +121,27 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         public async void RefreshFeed(bool force = false)
         {
             Feed.Clear();
-            FeedGenerationProgress = 0;
-            _receivedBatches = 0;
-            IsLoading = true;
-            var historyTasks = TabEntry.CrawlerSets.Select(set => _feedHistoryProvider.GetHistory(set)).ToList();
+            var historyTasks = TabEntry.CrawlerSets
+                .Select(set => _feedHistoryProvider.GetHistory(set))
+                .ToList();
             await Task.WhenAll(historyTasks);
-            _feedHistory = historyTasks.SelectMany(task => task.Result ?? Enumerable.Empty<HistoryFeedEntry>()).ToList();
+            if (!force && _feedProvider.CheckCache(TabEntry.CrawlerSets))
+            {
+                IsLoading = false;
+                IsPreparing = false;
+            }
+            else
+            {
+                IsLoading = true;
+                IsPreparing = true;
+                FeedGenerationProgress = 0;
+                _receivedBatches = 0;
+                _expectedBatches = 0;
+            }
+
+            _feedHistory = historyTasks
+                .SelectMany(task => task.Result ?? Enumerable.Empty<HistoryFeedEntry>())
+                .ToList();
             _feedCts = new CancellationTokenSource();
             _feedProvider.StartAggregating(TabEntry.CrawlerSets, _feedCts.Token, force, ref _expectedBatches);
         }
@@ -144,6 +162,18 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         {
             get => _isLoading;
             set => Set(ref _isLoading, value);
+        }
+
+        public bool IsPreparing
+        {
+            get => _isPreparing;
+            set => Set(ref _isPreparing, value);
+        }
+
+        public string ProgressLabel
+        {
+            get => _progressLabel;
+            set => Set(ref _progressLabel, value);
         }
 
         public override void UpdatePageTitle()

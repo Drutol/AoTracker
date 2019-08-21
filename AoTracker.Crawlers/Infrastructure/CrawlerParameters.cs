@@ -7,6 +7,12 @@ namespace AoTracker.Crawlers.Infrastructure
 {
     public class CrawlerParameters
     {
+        public CrawlerParameters(ICrawlerSourceParameters parameters, ICrawlerVolatileParameters volatileParameters)
+        {
+            Parameters = parameters;
+            VolatileParameters = volatileParameters;
+        }
+
         public ICrawlerSourceParameters Parameters { get; set; }
         public ICrawlerVolatileParameters VolatileParameters { get; set; }
     }

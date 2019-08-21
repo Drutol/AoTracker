@@ -31,11 +31,17 @@ namespace AoTracker.Android.Fragments.Feed
 
         private RecyclerView _recyclerView;
         private ScrollableSwipeToRefreshLayout _swipeToRefreshLayout;
-        private AdCircleProgress _progressSpinner;
+        private AdCircleProgress _progressBar;
+        private ProgressBar _progressSpinner;
+        private TextView _progressLabel;
+        private FrameLayout _loadingLayout;
 
         public RecyclerView RecyclerView => _recyclerView ?? (_recyclerView = FindViewById<RecyclerView>(Resource.Id.RecyclerView));
         public ScrollableSwipeToRefreshLayout SwipeToRefreshLayout => _swipeToRefreshLayout ?? (_swipeToRefreshLayout = FindViewById<ScrollableSwipeToRefreshLayout>(Resource.Id.SwipeToRefreshLayout));
-        public AdCircleProgress ProgressSpinner => _progressSpinner ?? (_progressSpinner = FindViewById<AdCircleProgress>(Resource.Id.ProgressSpinner));
+        public AdCircleProgress ProgressBar => _progressBar ?? (_progressBar = FindViewById<AdCircleProgress>(Resource.Id.ProgressBar));
+        public ProgressBar ProgressSpinner => _progressSpinner ?? (_progressSpinner = FindViewById<ProgressBar>(Resource.Id.ProgressSpinner));
+        public TextView ProgressLabel => _progressLabel ?? (_progressLabel = FindViewById<TextView>(Resource.Id.ProgressLabel));
+        public FrameLayout LoadingLayout => _loadingLayout ?? (_loadingLayout = FindViewById<FrameLayout>(Resource.Id.LoadingLayout));
 
         #endregion
 

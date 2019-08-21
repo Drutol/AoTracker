@@ -16,6 +16,7 @@ using Android.Views;
 using Android.Widget;
 using AoLibs.Adapters.Android.Recycler;
 using AoLibs.Utilities.Android;
+using AoLibs.Utilities.Android.Listeners;
 using AoTracker.Android.Themes;
 using AoTracker.Android.Utils;
 using AoTracker.Domain.Enums;
@@ -151,7 +152,11 @@ namespace AoTracker.Android.Activities
                     }
                 }));
 
-                ClickSurface.SetOnClickCommand(_parent.ViewModel.SelectHamburgerItemCommand, ViewModel);
+                ClickSurface.SetOnClickListener(new OnClickListener(view =>
+                {
+                    _parent.ViewModel.SelectHamburgerItemCommand.Execute(ViewModel);
+                    _parent.DrawerLayout.CloseDrawers();
+                }));
             }
 
             private ImageView _icon;

@@ -39,7 +39,12 @@ namespace AoTracker.Crawlers.Infrastructure
             }
         }
 
-         async Task<ICrawlerResult<ICrawlerResultItem>> ICrawler.Crawl(CrawlerParameters parameters)
+        public bool IsCached(CrawlerParameters parameters)
+        {
+            return Cache.IsCached(parameters);
+        }
+
+        async Task<ICrawlerResult<ICrawlerResultItem>> ICrawler.Crawl(CrawlerParameters parameters)
          {
              return (ICrawlerResult<ICrawlerResultItem>) await Crawl(parameters);
          }

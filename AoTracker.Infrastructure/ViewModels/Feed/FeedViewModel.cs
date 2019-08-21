@@ -8,6 +8,7 @@ using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Models;
 using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Interfaces;
+using AoTracker.Resources;
 
 namespace AoTracker.Infrastructure.ViewModels.Feed
 {
@@ -27,6 +28,8 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             _userDataProvider = userDataProvider;
             _userDataProvider.CrawlingSets.CollectionChanged += CrawlingSetsOnCollectionChanged;
             MessengerInstance.Register<CrawlerSetModifiedMessage>(this, OnCrawlerModified);
+
+            PageTitle = AppResources.PageTitle_Feed;
         }
 
         private void OnCrawlerModified(CrawlerSetModifiedMessage set)
