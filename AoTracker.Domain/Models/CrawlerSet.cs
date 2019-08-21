@@ -11,6 +11,7 @@ namespace AoTracker.Domain.Models
         public Guid Guid { get; set; }
         public string Name { get; set; }
         public DateTime CreatedAt { get; set; }
+        public bool IsFavourite { get; set; }
 
         public List<CrawlerDescriptor> Descriptors { get; set; } = new List<CrawlerDescriptor>();
     }

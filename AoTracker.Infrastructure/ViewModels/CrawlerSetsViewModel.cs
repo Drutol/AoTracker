@@ -8,8 +8,10 @@ using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Infrastructure.Models.NavArgs;
+using AoTracker.Infrastructure.Util;
 using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Interfaces;
+using Autofac;
 using GalaSoft.MvvmLight.Command;
 
 namespace AoTracker.Infrastructure.ViewModels
@@ -17,15 +19,18 @@ namespace AoTracker.Infrastructure.ViewModels
     public class CrawlerSetsViewModel : ViewModelBase
     {
         private readonly IUserDataProvider _userDataProvider;
+        private readonly ILifetimeScope _lifetimeScope;
         private readonly INavigationManager<PageIndex> _navigationManager;
 
-        private ObservableCollection<CrawlerSet> _sets;
+        private ObservableCollection<CrawlerSetViewModel> _sets;
 
         public CrawlerSetsViewModel(
             IUserDataProvider userDataProvider,
+            ILifetimeScope lifetimeScope,
             INavigationManager<PageIndex> navigationManager)
         {
             _userDataProvider = userDataProvider;
+            _lifetimeScope = lifetimeScope;
             _navigationManager = navigationManager;
 
             PageTitle = "Crawler Sets";
@@ -33,10 +38,11 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public void NavigatedTo()
         {
-            Sets = new ObservableCollection<CrawlerSet>(_userDataProvider.CrawlingSets);
+            Sets = new ObservableCollection<CrawlerSetViewModel>(
+                _userDataProvider.CrawlingSets.Select(set => _lifetimeScope.TypedResolve<CrawlerSetViewModel>(set)));
         }
 
-        public ObservableCollection<CrawlerSet> Sets
+        public ObservableCollection<CrawlerSetViewModel> Sets
         {
             get => _sets;
             set => Set(ref _sets, value);
@@ -47,9 +53,10 @@ namespace AoTracker.Infrastructure.ViewModels
             _navigationManager.Navigate(PageIndex.CrawlerSetDetails);
         });
 
-        public RelayCommand<CrawlerSet> NavigateSetCommand => new RelayCommand<CrawlerSet>(set =>
+        public RelayCommand<CrawlerSetViewModel> NavigateSetCommand => new RelayCommand<CrawlerSetViewModel>(set =>
         {
-            _navigationManager.Navigate(PageIndex.CrawlerSetDetails, new CrawlerSetDetailsPageNavArgs(set));
+            _navigationManager.Navigate(PageIndex.CrawlerSetDetails,
+                new CrawlerSetDetailsPageNavArgs(set.BackingModel));
         });
 
         public void MoveCrawlerSet(int movedPosition, int targetPosition)
@@ -58,10 +65,10 @@ namespace AoTracker.Infrastructure.ViewModels
             _userDataProvider.MoveSet(movedPosition, targetPosition);
         }
 
-        public void RemoveSet(CrawlerSet set)
+        public void RemoveSet(CrawlerSetViewModel set)
         {
             Sets.Remove(set);
-            _userDataProvider.RemoveSet(set);
+            _userDataProvider.RemoveSet(set.BackingModel);
         }
     }
 }

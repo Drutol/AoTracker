@@ -30,9 +30,10 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:id="@+id/IndexIcon" android:layout_marginStart="8dp"
+                    android:id="@+id/IndexIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     tools:src="@drawable/icon_one" />
 
                 <TextView
@@ -70,14 +71,30 @@
                 style="@style/ViewDivider"
                 android:background="?AccentColour" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/icon_chevron_right"
-                android:drawableTint="?AccentDarkColour"
-                android:gravity="center_vertical"
-                android:text="Crawlers:"
-                android:textColor="?TextColour" />
+                android:paddingEnd="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icon_chevron_right"
+                    android:drawableTint="?AccentDarkColour"
+                    android:gravity="center_vertical"
+                    android:text="@string/Item_CrawlerSet_Crawlers"
+                    android:textColor="?TextColour" />
+
+                <ImageView
+                    android:id="@+id/FavouriteIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:src="@drawable/icon_star"
+                    android:tint="@color/GoldColour" />
+
+            </FrameLayout>
+
 
             <TextView
                 android:id="@+id/EmptyNotice"
@@ -85,12 +102,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
-                android:drawableLeft="@drawable/icon_cloud_search"
+                android:drawableStart="@drawable/icon_cloud_search"
                 android:drawablePadding="8dp"
                 android:drawableTint="?AccentColour"
                 android:fontFamily="@string/font_family_light"
                 android:gravity="center_vertical"
-                android:text="Empty"
+                android:text="@string/Item_CrawlerSet_Empty"
                 android:textColor="?TextColour"
                 android:textStyle="italic" />
 

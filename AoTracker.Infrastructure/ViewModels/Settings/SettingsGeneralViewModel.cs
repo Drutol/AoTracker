@@ -35,6 +35,26 @@ namespace AoTracker.Infrastructure.ViewModels.Settings
             }
         }
 
+        public bool AutoLoadFeedTab
+        {
+            get => _settings.AutoLoadFeedTab;
+            set
+            {
+                _settings.AutoLoadFeedTab = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public bool GenerateFeedAggregate
+        {
+            get => _settings.GenerateFeedAggregate;
+            set
+            {
+                _settings.GenerateFeedAggregate = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public bool HasThemeChanged => _settings.AppTheme != AppTheme;
 
         public RelayCommand ApplyThemeCommand => new RelayCommand(() =>

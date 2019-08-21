@@ -22,6 +22,7 @@
     <color name="PurpleColourDark">#5a1663</color>
 
     <color name="DarkOpaqueOverlayColour">#7f000000</color>
+    <color name="GoldColour">#FFD700</color>
 
     <color name="DarkBackgroundColour">#101010</color>
     <color name="DarkToolbarBackgroundColour">#222222</color>

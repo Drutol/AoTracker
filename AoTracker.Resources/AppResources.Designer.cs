@@ -250,6 +250,42 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Crawlers:.
+        /// </summary>
+        public static string Item_CrawlerSet_Crawlers {
+            get {
+                return ResourceManager.GetString("Item_CrawlerSet_Crawlers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty.
+        /// </summary>
+        public static string Item_CrawlerSet_Empty {
+            get {
+                return ResourceManager.GetString("Item_CrawlerSet_Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Favourite.
+        /// </summary>
+        public static string Item_CrawlerSet_Favourite {
+            get {
+                return ResourceManager.GetString("Item_CrawlerSet_Favourite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unfavourite.
+        /// </summary>
+        public static string Item_CrawlerSet_Unfavourite {
+            get {
+                return ResourceManager.GetString("Item_CrawlerSet_Unfavourite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Changed {0} ago.
         /// </summary>
         public static string Item_Feed_LastChanged {
@@ -367,6 +403,24 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Automatically load feed tab on scroll..
+        /// </summary>
+        public static string Settings_General_AutoLoadFeedTab {
+            get {
+                return ResourceManager.GetString("Settings_General_AutoLoadFeedTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When you swipe on feed page the tab will load as soon as it becomes active, when disabled, manual load button will appear..
+        /// </summary>
+        public static string Settings_General_AutoLoadFeedTab_HelpText {
+            get {
+                return ResourceManager.GetString("Settings_General_AutoLoadFeedTab_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Black theme.
         /// </summary>
         public static string Settings_General_BlackTheme {
@@ -390,6 +444,24 @@ namespace AoTracker.Resources {
         public static string Settings_General_DarkTheme {
             get {
                 return ResourceManager.GetString("Settings_General_DarkTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate feed entry aggregating multiple sets..
+        /// </summary>
+        public static string Settings_General_GenerateFeedAggregate {
+            get {
+                return ResourceManager.GetString("Settings_General_GenerateFeedAggregate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First feed position will be one aggregating all favourited crawler sets..
+        /// </summary>
+        public static string Settings_General_GenerateFeedAggregate_HelpText {
+            get {
+                return ResourceManager.GetString("Settings_General_GenerateFeedAggregate_HelpText", resourceCulture);
             }
         }
         

@@ -42,4 +42,13 @@
         <item name="android:background">?ForegroundDeepColour</item>
     </style>
 
+    <style name="SettingsAccentBoxStyle">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:tint">#fff</item>
+        <item name="android:src">@drawable/icon_tick</item>
+    </style>
+
 </resources>

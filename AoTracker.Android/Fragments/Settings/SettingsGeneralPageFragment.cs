@@ -78,85 +78,20 @@ namespace AoTracker.Android.Fragments.Settings
                 accentButton.SetOnClickListener(new OnClickListener(OnAccentSelected));
             }
 
-            Bindings.Add(this.SetBinding(() => ViewModel.AppTheme).WhenSourceChanges(() =>
-            {
-                if(ViewModel.AppTheme == 0)
-                    return;
-
-                if (_updatingAccent || !_initialized)
-                {
-                    foreach (var accentButton in _accentButtons)
-                    {
-                        accentButton.SetImageResource(0);
-                    }
-
-                    if ((ViewModel.AppTheme & AppTheme.Orange) == AppTheme.Orange)
-                    {
-                        ColorOrangeAccentButton.SetImageResource(Resource.Drawable.icon_tick);
-                        _selectedAccent = AppTheme.Orange;
-                    }
-                    else if ((ViewModel.AppTheme & AppTheme.Lime) == AppTheme.Lime)
-                    {
-                        ColorLimeAccentButton.SetImageResource(Resource.Drawable.icon_tick);
-                        _selectedAccent = AppTheme.Lime;
-                    }
-                    else if ((ViewModel.AppTheme & AppTheme.Cyan) == AppTheme.Cyan)
-                    {
-                        ColorCyanAccentButton.SetImageResource(Resource.Drawable.icon_tick);
-                        _selectedAccent = AppTheme.Cyan;
-                    }
-                    else if ((ViewModel.AppTheme & AppTheme.Purple) == AppTheme.Purple)
-                    {
-                        ColorPurpleAccentButton.SetImageResource(Resource.Drawable.icon_tick);
-                        _selectedAccent = AppTheme.Purple;
-                    }
-                    else if ((ViewModel.AppTheme & AppTheme.SkyBlue) == AppTheme.SkyBlue)
-                    {
-                        ColorBlueAccentButton.SetImageResource(Resource.Drawable.icon_tick);
-                        _selectedAccent = AppTheme.SkyBlue;
-                    }
-                    else if ((ViewModel.AppTheme & AppTheme.Red) == AppTheme.Red)
-                    {
-                        ColorRedAccentButton.SetImageResource(Resource.Drawable.icon_tick);
-                        _selectedAccent = AppTheme.Red;
-                    }
-                    else if ((ViewModel.AppTheme & AppTheme.Pink) == AppTheme.Pink)
-                    {
-                        ColorPinkAccentButton.SetImageResource(Resource.Drawable.icon_tick);
-                        _selectedAccent = AppTheme.Pink;
-                    }
-                }
-
-                if (_updatingTheme || !_initialized)
-                {
-                    foreach (var radioButton in _radioButtons)
-                    {
-                        radioButton.Checked = false;
-                    }
-
-                    if ((ViewModel.AppTheme & AppTheme.Dark) == AppTheme.Dark)
-                    {
-                        DarkThemeRadioButton.Checked = true;
-                        _selectedTheme = AppTheme.Dark;
-                    }
-                    else if ((ViewModel.AppTheme & AppTheme.Black) == AppTheme.Black)
-                    {
-                        BlackThemeRadioButton.Checked = true;
-                        _selectedTheme = AppTheme.Black;
-                    }
-                    else if ((ViewModel.AppTheme & AppTheme.Light) == AppTheme.Light)
-                    {
-                        LightThemeRadioButton.Checked = true;
-                        _selectedTheme = AppTheme.Light;
-                    }
-                }
-
-                _initialized = true;
-            }));
+            Bindings.Add(this.SetBinding(() => ViewModel.AppTheme).WhenSourceChanges(ProcessAppThemeUpdate));
 
             Bindings.Add(
                 this.SetBinding(() => ViewModel.HasThemeChanged,
                     () => ApplyThemeButton.Visibility).ConvertSourceToTarget(BindingConverters.BoolToVisibility));
+
+            Bindings.Add(
+                this.SetBinding(() => ViewModel.AutoLoadFeedTab,
+                    () => AutomaticallyLoadFeedTab.Checked, BindingMode.TwoWay));
+
+            Bindings.Add(
+                this.SetBinding(() => ViewModel.GenerateFeedAggregate,
+                    () => GenerateFeedAggregate.Checked, BindingMode.TwoWay));
+
 
             ThemeRadioGroup.CheckedChange += ThemeRadioGroupOnCheckedChange;
             ApplyThemeButton.SetOnClickListener(new OnClickListener(view =>
@@ -164,6 +99,82 @@ namespace AoTracker.Android.Fragments.Settings
                 ViewModel.ApplyThemeCommand.Execute(null);
                 MainActivity.Instance.Recreate();
             }));
+        }
+
+        private void ProcessAppThemeUpdate()
+        {
+            if (ViewModel.AppTheme == 0)
+                return;
+
+            if (_updatingAccent || !_initialized)
+            {
+                foreach (var accentButton in _accentButtons)
+                {
+                    accentButton.SetImageResource(0);
+                }
+
+                if ((ViewModel.AppTheme & AppTheme.Orange) == AppTheme.Orange)
+                {
+                    ColorOrangeAccentButton.SetImageResource(Resource.Drawable.icon_tick);
+                    _selectedAccent = AppTheme.Orange;
+                }
+                else if ((ViewModel.AppTheme & AppTheme.Lime) == AppTheme.Lime)
+                {
+                    ColorLimeAccentButton.SetImageResource(Resource.Drawable.icon_tick);
+                    _selectedAccent = AppTheme.Lime;
+                }
+                else if ((ViewModel.AppTheme & AppTheme.Cyan) == AppTheme.Cyan)
+                {
+                    ColorCyanAccentButton.SetImageResource(Resource.Drawable.icon_tick);
+                    _selectedAccent = AppTheme.Cyan;
+                }
+                else if ((ViewModel.AppTheme & AppTheme.Purple) == AppTheme.Purple)
+                {
+                    ColorPurpleAccentButton.SetImageResource(Resource.Drawable.icon_tick);
+                    _selectedAccent = AppTheme.Purple;
+                }
+                else if ((ViewModel.AppTheme & AppTheme.SkyBlue) == AppTheme.SkyBlue)
+                {
+                    ColorBlueAccentButton.SetImageResource(Resource.Drawable.icon_tick);
+                    _selectedAccent = AppTheme.SkyBlue;
+                }
+                else if ((ViewModel.AppTheme & AppTheme.Red) == AppTheme.Red)
+                {
+                    ColorRedAccentButton.SetImageResource(Resource.Drawable.icon_tick);
+                    _selectedAccent = AppTheme.Red;
+                }
+                else if ((ViewModel.AppTheme & AppTheme.Pink) == AppTheme.Pink)
+                {
+                    ColorPinkAccentButton.SetImageResource(Resource.Drawable.icon_tick);
+                    _selectedAccent = AppTheme.Pink;
+                }
+            }
+
+            if (_updatingTheme || !_initialized)
+            {
+                foreach (var radioButton in _radioButtons)
+                {
+                    radioButton.Checked = false;
+                }
+
+                if ((ViewModel.AppTheme & AppTheme.Dark) == AppTheme.Dark)
+                {
+                    DarkThemeRadioButton.Checked = true;
+                    _selectedTheme = AppTheme.Dark;
+                }
+                else if ((ViewModel.AppTheme & AppTheme.Black) == AppTheme.Black)
+                {
+                    BlackThemeRadioButton.Checked = true;
+                    _selectedTheme = AppTheme.Black;
+                }
+                else if ((ViewModel.AppTheme & AppTheme.Light) == AppTheme.Light)
+                {
+                    LightThemeRadioButton.Checked = true;
+                    _selectedTheme = AppTheme.Light;
+                }
+            }
+
+            _initialized = true;
         }
 
         private void OnAccentSelected(View view)
@@ -206,7 +217,8 @@ namespace AoTracker.Android.Fragments.Settings
         private ImageButton _colorCyanAccentButton;
         private ImageButton _colorRedAccentButton;
         private Button _applyThemeButton;
-
+        private CheckBox _generateFeedAggregate;
+        private CheckBox _automaticallyLoadFeedTab;
 
         public RadioButton LightThemeRadioButton => _lightThemeRadioButton ?? (_lightThemeRadioButton = FindViewById<RadioButton>(Resource.Id.LightThemeRadioButton));
         public RadioButton DarkThemeRadioButton => _darkThemeRadioButton ?? (_darkThemeRadioButton = FindViewById<RadioButton>(Resource.Id.DarkThemeRadioButton));
@@ -220,6 +232,8 @@ namespace AoTracker.Android.Fragments.Settings
         public ImageButton ColorCyanAccentButton => _colorCyanAccentButton ?? (_colorCyanAccentButton = FindViewById<ImageButton>(Resource.Id.ColorCyanAccentButton));
         public ImageButton ColorRedAccentButton => _colorRedAccentButton ?? (_colorRedAccentButton = FindViewById<ImageButton>(Resource.Id.ColorRedAccentButton));
         public Button ApplyThemeButton => _applyThemeButton ?? (_applyThemeButton = FindViewById<Button>(Resource.Id.ApplyThemeButton));
+        public CheckBox GenerateFeedAggregate => _generateFeedAggregate ?? (_generateFeedAggregate = FindViewById<CheckBox>(Resource.Id.GenerateFeedAggregate));
+        public CheckBox AutomaticallyLoadFeedTab => _automaticallyLoadFeedTab ?? (_automaticallyLoadFeedTab = FindViewById<CheckBox>(Resource.Id.AutomaticallyLoadFeedTab));
 
         #endregion
     }

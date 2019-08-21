@@ -9,5 +9,7 @@ namespace AoTracker.Interfaces
     {
         bool PassedWelcome { get; set; }
         AppTheme AppTheme { get; set; }
+        bool AutoLoadFeedTab { get; set; }
+        bool GenerateFeedAggregate { get; set; }
     }
 }

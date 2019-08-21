@@ -180,6 +180,18 @@
   <data name="Item_CrawlerDescriptor_SearchPhrase" xml:space="preserve">
     <value>Search Phrase:</value>
   </data>
+  <data name="Item_CrawlerSet_Crawlers" xml:space="preserve">
+    <value>Crawlers:</value>
+  </data>
+  <data name="Item_CrawlerSet_Empty" xml:space="preserve">
+    <value>Empty</value>
+  </data>
+  <data name="Item_CrawlerSet_Favourite" xml:space="preserve">
+    <value>Favourite</value>
+  </data>
+  <data name="Item_CrawlerSet_Unfavourite" xml:space="preserve">
+    <value>Unfavourite</value>
+  </data>
   <data name="Item_FeedChangeGroup_Recently" xml:space="preserve">
     <value>Recently updated</value>
   </data>
@@ -231,6 +243,12 @@
   <data name="Settings_General_Apply" xml:space="preserve">
     <value>Apply!</value>
   </data>
+  <data name="Settings_General_AutoLoadFeedTab" xml:space="preserve">
+    <value>Automatically load feed tab on scroll.</value>
+  </data>
+  <data name="Settings_General_AutoLoadFeedTab_HelpText" xml:space="preserve">
+    <value>When you swipe on feed page the tab will load as soon as it becomes active, when disabled, manual load button will appear.</value>
+  </data>
   <data name="Settings_General_BlackTheme" xml:space="preserve">
     <value>Black theme</value>
   </data>
@@ -239,6 +257,12 @@
   </data>
   <data name="Settings_General_DarkTheme" xml:space="preserve">
     <value>Dark theme</value>
+  </data>
+  <data name="Settings_General_GenerateFeedAggregate" xml:space="preserve">
+    <value>Generate feed entry aggregating multiple sets.</value>
+  </data>
+  <data name="Settings_General_GenerateFeedAggregate_HelpText" xml:space="preserve">
+    <value>First feed position will be one aggregating all favourited crawler sets.</value>
   </data>
   <data name="Settings_General_LightTheme" xml:space="preserve">
     <value>Light theme</value>

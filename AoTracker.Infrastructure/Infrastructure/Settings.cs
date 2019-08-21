@@ -22,6 +22,18 @@ namespace AoTracker.Infrastructure.Infrastructure
             set => _settingsProvider.SetBool(nameof(PassedWelcome), value);
         }
 
+        public bool GenerateFeedAggregate
+        {
+            get => _settingsProvider.GetBool(nameof(GenerateFeedAggregate)) ?? true;
+            set => _settingsProvider.SetBool(nameof(GenerateFeedAggregate), value);
+        }
+
+        public bool AutoLoadFeedTab
+        {
+            get => _settingsProvider.GetBool(nameof(AutoLoadFeedTab)) ?? true;
+            set => _settingsProvider.SetBool(nameof(AutoLoadFeedTab), value);
+        }
+
         public AppTheme AppTheme
         {
             get => (AppTheme) (_settingsProvider.GetInt(nameof(AppTheme)) ?? (int?) (AppTheme.Dark | AppTheme.Lime));

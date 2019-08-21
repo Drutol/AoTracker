@@ -16,7 +16,7 @@ using Com.App.Adprogressbarlib;
 
 namespace AoTracker.Android.Fragments.Feed
 {
-    public  partial class FeedPageTabFragment
+    public partial class FeedPageTabFragment
     {
         interface IFeedItemHolder
         {

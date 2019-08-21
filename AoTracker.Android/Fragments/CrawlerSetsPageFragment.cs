@@ -21,6 +21,7 @@ using AoTracker.Android.Utils;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.ViewModels;
+using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Resources;
 using GalaSoft.MvvmLight.Helpers;
 using PopupMenu = Android.Widget.PopupMenu;
@@ -36,7 +37,7 @@ namespace AoTracker.Android.Fragments
         {
             Bindings.Add(this.SetBinding(() => ViewModel.Sets).WhenSourceChanges(() =>
             {
-                SetsRecyclerView.SetAdapter(new ObservableRecyclerAdapter<CrawlerSet, CrawlerSetHolder>(ViewModel.Sets,
+                SetsRecyclerView.SetAdapter(new ObservableRecyclerAdapter<CrawlerSetViewModel, CrawlerSetHolder>(ViewModel.Sets,
                         DataTemplate, LayoutInflater,
                         Resource.Layout.item_crawler_set)
                     { StretchContentHorizonatally = true });
@@ -61,17 +62,18 @@ namespace AoTracker.Android.Fragments
             ViewModel.NavigatedTo();
         }
 
-        private void DataTemplate(CrawlerSet item, CrawlerSetHolder holder, int position)
+        private void DataTemplate(CrawlerSetViewModel item, CrawlerSetHolder holder, int position)
         {
-            holder.Title.Text = item.Name;
+            holder.Title.Text = item.BackingModel.Name;
             holder.IndexIcon.SetImageResource(Util.IndexToIconResource(position + 1));
-            if (item.Descriptors?.Any() ?? false)
+            holder.FavouriteIndicator.Visibility = BindingConverters.BoolToVisibility(item.IsFavourite);
+            if (item.BackingModel.Descriptors?.Any() ?? false)
             {
                 holder.EmptyNotice.Visibility = ViewStates.Gone;
                 holder.CrawlerSummaryRecyclerView.Visibility = ViewStates.Visible;
                 holder.CrawlerSummaryRecyclerView.SetAdapter(
                     new ObservableRecyclerAdapter<CrawlerDescriptor, CrawlerSetSummaryEntryHolder>(
-                        item.Descriptors,
+                        item.BackingModel.Descriptors,
                         CrawlerSummaryEntryDataTemplate,
                         LayoutInflater,
                         Resource.Layout.item_crawler_set_summary){StretchContentHorizonatally = true});
@@ -83,23 +85,41 @@ namespace AoTracker.Android.Fragments
             }
 
             holder.ClickSurface.SetOnClickCommand(ViewModel.NavigateSetCommand, item);
+            holder.MoreButton.SetOnClickListener(new OnClickListener(view => { HandleSetPopupMenu(item, holder); }));
+        }
 
-            holder.MoreButton.SetOnClickListener(new OnClickListener(view =>
+        private void HandleSetPopupMenu(CrawlerSetViewModel item, CrawlerSetHolder holder)
+        {
+            var menuBuilder = new MenuBuilder(Activity);
+            menuBuilder.Add(0, 0, 0, AppResources.Generic_Delete).SetIcon(Resource.Drawable.icon_delete);
+            if (item.IsFavourite)
             {
-                var menuBuilder = new MenuBuilder(Activity);
-                menuBuilder.Add(0, 0, 0, AppResources.Generic_Delete).SetIcon(Resource.Drawable.icon_delete);
-                menuBuilder.SetCallback(new MenuCallback((sender, menuItem) =>
+                menuBuilder.Add(0, 1, 0, AppResources.Item_CrawlerSet_Unfavourite).SetIcon(Resource.Drawable.icon_star_off);
+            }
+            else
+            {
+                menuBuilder.Add(0, 2, 0, AppResources.Item_CrawlerSet_Favourite).SetIcon(Resource.Drawable.icon_star);
+            }
+
+            menuBuilder.SetCallback(new MenuCallback((sender, menuItem) =>
+            {
+                if (menuItem.ItemId == 0)
                 {
-                    if (menuItem.ItemId == 0)
-                    {
-                        ViewModel.RemoveSet(item);
-                    }
-                }));
-                var menuPopupHelper = new MenuPopupHelper(Context, menuBuilder);
-                menuPopupHelper.SetAnchorView(holder.MoreButton);
-                menuPopupHelper.SetForceShowIcon(true);
-                menuPopupHelper.Show();
+                    ViewModel.RemoveSet(item);
+                }
+                else if (menuItem.ItemId == 1)
+                {
+                    item.IsFavourite = false;
+                }
+                else if (menuItem.ItemId == 2)
+                {
+                    item.IsFavourite = true;
+                }
             }));
+            var menuPopupHelper = new MenuPopupHelper(Context, menuBuilder);
+            menuPopupHelper.SetAnchorView(holder.MoreButton);
+            menuPopupHelper.SetForceShowIcon(true);
+            menuPopupHelper.Show();
         }
 
         private void CrawlerSummaryEntryDataTemplate(CrawlerDescriptor item, CrawlerSetSummaryEntryHolder holder, int position)

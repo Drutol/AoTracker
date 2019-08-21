@@ -12,6 +12,10 @@ using Android.Support.V7.Widget;
 using Android.Support.V7.Widget.Helper;
 using Android.Views;
 using Android.Widget;
+using AoLibs.Adapters.Android.Recycler;
+using AoTracker.Android.Utils;
+using AoTracker.Infrastructure.ViewModels.Item;
+using GalaSoft.MvvmLight.Helpers;
 
 namespace AoTracker.Android.Fragments
 {
@@ -27,7 +31,7 @@ namespace AoTracker.Android.Fragments
 
         #endregion
 
-        class CrawlerSetHolder : RecyclerView.ViewHolder
+        class CrawlerSetHolder : BindingViewHolderBase<CrawlerSetViewModel>
         {
             private readonly View _view;
 
@@ -35,26 +39,38 @@ namespace AoTracker.Android.Fragments
             {
                 _view = view;
 
-
                 CrawlerSummaryRecyclerView.AddItemDecoration(new DividerItemDecoration(view.Context,
                     DividerItemDecoration.Vertical));
                 CrawlerSummaryRecyclerView.SetLayoutManager(new LinearLayoutManager(view.Context));
             }
 
+            protected override void SetBindings()
+            {
+                Bindings.Add(
+                    this.SetBinding(() => ViewModel.IsFavourite,
+                            () => FavouriteIndicator.Visibility)
+                        .ConvertSourceToTarget(BindingConverters.BoolToVisibility));
+
+            }
+
             private ImageView _indexIcon;
             private TextView _title;
+            private ImageButton _moreButton;
+            private ImageView _favouriteIndicator;
             private TextView _emptyNotice;
             private RecyclerView _crawlerSummaryRecyclerView;
-            private ImageButton _moreButton;
             private LinearLayout _clickSurface;
 
             public ImageView IndexIcon => _indexIcon ?? (_indexIcon = _view.FindViewById<ImageView>(Resource.Id.IndexIcon));
             public TextView Title => _title ?? (_title = _view.FindViewById<TextView>(Resource.Id.Title));
+            public ImageButton MoreButton => _moreButton ?? (_moreButton = _view.FindViewById<ImageButton>(Resource.Id.MoreButton));
+            public ImageView FavouriteIndicator => _favouriteIndicator ?? (_favouriteIndicator = _view.FindViewById<ImageView>(Resource.Id.FavouriteIndicator));
             public TextView EmptyNotice => _emptyNotice ?? (_emptyNotice = _view.FindViewById<TextView>(Resource.Id.EmptyNotice));
             public RecyclerView CrawlerSummaryRecyclerView => _crawlerSummaryRecyclerView ?? (_crawlerSummaryRecyclerView = _view.FindViewById<RecyclerView>(Resource.Id.CrawlerSummaryRecyclerView));
-            public ImageButton MoreButton => _moreButton ?? (_moreButton = _view.FindViewById<ImageButton>(Resource.Id.MoreButton));
             public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
+
         }
+
 
 
         class CrawlerSetSummaryEntryHolder : RecyclerView.ViewHolder

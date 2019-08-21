@@ -16,10 +16,14 @@
 <string name="Generic_Delete">Delete</string>
 <string name="Hamburger_Item_CrawlerSets">Crawler Sets</string>
 <string name="Hamburger_Item_Feed">Feed</string>
-<string name="Hamburger_Item_Settings">Settings</string>
+<string name="Hamburger_Item_Settings">Settings &amp; More</string>
 <string name="Item_CrawlerCell_PriceIncrease">Price increase:</string>
 <string name="Item_CrawlerCell_SearchPhrase">Search phrase:</string>
 <string name="Item_CrawlerDescriptor_SearchPhrase">Search Phrase:</string>
+<string name="Item_CrawlerSet_Crawlers">Crawlers:</string>
+<string name="Item_CrawlerSet_Empty">Empty</string>
+<string name="Item_CrawlerSet_Favourite">Favourite</string>
+<string name="Item_CrawlerSet_Unfavourite">Unfavourite</string>
 <string name="Item_FeedChangeGroup_Recently">Recently updated</string>
 <string name="Item_Feed_LastChanged">Changed {0} ago</string>
 <string name="Item_SurugayaCrawlerCell_TrimsFromQuotationMarks">Removes content from 「 」</string>
@@ -29,10 +33,20 @@
 <string name="PageTitle_SetDetails">Set "{0}" Details</string>
 <string name="PageTitle_SetDetails_AddNew">Add New Set</string>
 <string name="PageTitle_Sets">Sets</string>
-<string name="PageTitle_Settings">Settings &amp; More</string>
+<string name="PageTitle_SettingsAbout">Settings: About</string>
+<string name="PageTitle_SettingsGeneral">Settings: General</string>
+<string name="PageTitle_SettingsIndex">Settings Index</string>
+<string name="SettingsIndex_Entry_About_Subtitle">AoTracker app information</string>
+<string name="SettingsIndex_Entry_About_Title">About</string>
+<string name="SettingsIndex_Entry_General_Subtitle">Application theme, and other settings</string>
+<string name="SettingsIndex_Entry_General_Title">General</string>
 <string name="Settings_General_Apply">Apply!</string>
+<string name="Settings_General_AutoLoadFeedTab">Automatically load feed tab on scroll.</string>
+<string name="Settings_General_AutoLoadFeedTab_HelpText">When you swipe on feed page the tab will load as soon as it becomes active, when disabled, manual load button will appear.</string>
 <string name="Settings_General_BlackTheme">Black theme</string>
 <string name="Settings_General_ColourThemeHeader">Applitcation Theme</string>
 <string name="Settings_General_DarkTheme">Dark theme</string>
+<string name="Settings_General_GenerateFeedAggregate">Generate feed entry aggregating multiple sets.</string>
+<string name="Settings_General_GenerateFeedAggregate_HelpText">First feed position will be one aggregating all favourited crawler sets.</string>
 <string name="Settings_General_LightTheme">Light theme</string>
 </resources>

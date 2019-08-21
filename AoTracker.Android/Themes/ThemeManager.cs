@@ -48,6 +48,7 @@ namespace AoTracker.Android.Themes
             else
             {
                 activity.SetTheme(Resource.Style.AoTracker_Light);
+                IsDarkTheme = false;
             }
 
             // Colour scheme
