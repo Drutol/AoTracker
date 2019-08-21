@@ -253,7 +253,7 @@
     <value>Black theme</value>
   </data>
   <data name="Settings_General_ColourThemeHeader" xml:space="preserve">
-    <value>Applitcation Theme</value>
+    <value>Application Theme</value>
   </data>
   <data name="Settings_General_DarkTheme" xml:space="preserve">
     <value>Dark theme</value>

@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using AoLibs.Utilities.Shared;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Models;
 using AoTracker.Infrastructure.Models.Messages;
@@ -14,8 +16,76 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
 {
     public class FeedViewModel : ViewModelBase
     {
+        public enum Message
+        {
+            ShowJumpToActionButton,
+            HideJumpToActionButton
+        }
+
         private readonly IUserDataProvider _userDataProvider;
+        private readonly ISettings _settings;
         private ObservableCollection<FeedTabEntry> _feedTabEntries;
+        private bool _jumpToButtonVisibility = true;
+        private bool? _lastAggregateSetting;
+
+        public bool ContainsAggregate { get; set; }
+
+        public FeedViewModel(
+            IUserDataProvider userDataProvider, 
+            ISettings settings)
+        {
+            _userDataProvider = userDataProvider;
+            _settings = settings;
+            _userDataProvider.CrawlingSets.CollectionChanged += CrawlingSetsOnCollectionChanged;
+            MessengerInstance.Register<CrawlerSetModifiedMessage>(this, OnCrawlerModified);
+
+            PageTitle = AppResources.PageTitle_Feed;
+
+            MessengerInstance.Register<Message>(this, OnMessage);
+        }
+
+        private void OnCrawlerModified(CrawlerSetModifiedMessage message)
+        {
+            if (!message.FavouriteChanged)
+            {
+                var feedItem = GetRelevantFeedEntry(message.ModifiedCrawlerSet);
+                feedItem.CrawlerSets = new List<CrawlerSet> { message.ModifiedCrawlerSet };
+            }
+            else if(message.FavouriteChanged)
+            {
+                if(!_settings.GenerateFeedAggregate)
+                    return;
+
+                var favourites = _userDataProvider.CrawlingSets.Where(set => set.IsFavourite).ToList();
+                if (ContainsAggregate)
+                {
+                    if (!favourites.Any())
+                    {
+                        ContainsAggregate = false;
+                        FeedTabEntries.RemoveAt(0);
+                    }
+                    else
+                    {
+                        var diff = favourites.Diff(_feedTabEntries[0].CrawlerSets,
+                            (set, crawlerSet) => set.Guid == crawlerSet.Guid);
+                        if (diff.Added.Any() || diff.Removed.Any())
+                        {
+                            _feedTabEntries[0].CrawlerSets = favourites;
+                        }
+                    }
+
+                }
+                else if (favourites.Any())
+                {
+                    var tab = BuildAggregateTab();
+                    if (tab.CrawlerSets?.Any() ?? false)
+                    {
+                        ContainsAggregate = true;
+                        FeedTabEntries.Insert(0, tab);
+                    }
+                }
+            }
+        }
 
         public ObservableCollection<FeedTabEntry> FeedTabEntries
         {
@@ -23,19 +93,10 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             set => Set(ref _feedTabEntries, value);
         }
 
-        public FeedViewModel(IUserDataProvider userDataProvider)
+        public bool JumpToButtonVisibility
         {
-            _userDataProvider = userDataProvider;
-            _userDataProvider.CrawlingSets.CollectionChanged += CrawlingSetsOnCollectionChanged;
-            MessengerInstance.Register<CrawlerSetModifiedMessage>(this, OnCrawlerModified);
-
-            PageTitle = AppResources.PageTitle_Feed;
-        }
-
-        private void OnCrawlerModified(CrawlerSetModifiedMessage set)
-        {
-            var feedItem = GetRelevantFeedEntry(set.ModifiedCrawlerSet);
-            feedItem.CrawlerSets = new List<CrawlerSet> {set.ModifiedCrawlerSet};
+            get => _jumpToButtonVisibility;
+            set => Set(ref _jumpToButtonVisibility, value);
         }
 
         private void CrawlingSetsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -56,26 +117,52 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
                     _feedTabEntries.Move(itemIndex, e.NewStartingIndex + 1);
                     break;
                 case NotifyCollectionChangedAction.Remove:
-                    var removedSet = e.NewItems.Cast<CrawlerSet>().First();
+                    var removedSet = e.OldItems.Cast<CrawlerSet>().First();
                     var removedTab = GetRelevantFeedEntry(removedSet);
                     _feedTabEntries.Remove(removedTab);
                     break;
             }
         }
 
-        public void NavigatedTo()
+        public async void NavigatedTo()
         {
             if (FeedTabEntries?.Any() ?? false)
+            {
+                // we have pages generated so now let's just check for changes
+
+                // first whether we still generate aggregate
+                if (_lastAggregateSetting != _settings.GenerateFeedAggregate)
+                {
+                    if (_settings.GenerateFeedAggregate && !ContainsAggregate)
+                    {
+                        var aggregateTab = BuildAggregateTab();
+                        if (aggregateTab.CrawlerSets?.Any() ?? false)
+                        {
+                            ContainsAggregate = true;
+                            FeedTabEntries.Insert(0, aggregateTab);
+                        }
+                    }
+                    else if (!_settings.GenerateFeedAggregate && ContainsAggregate)
+                    {
+                        ContainsAggregate = false;
+                        FeedTabEntries.RemoveAt(0);
+                    }
+                }
+                _lastAggregateSetting = _settings.GenerateFeedAggregate;
+
                 return;
+            }
 
             var entries = new List<FeedTabEntry>(0);
-            if (_userDataProvider.CrawlingSets.Count > 1)
+            if (_userDataProvider.CrawlingSets.Count > 1 && _settings.GenerateFeedAggregate)
             {
-                entries.Add(
-                    new FeedTabEntry(_userDataProvider.CrawlingSets.Where(set => set.Descriptors.Any()).ToList())
-                    {
-                        Name = "All"
-                    });
+                var aggregateTab = BuildAggregateTab();
+
+                if (aggregateTab.CrawlerSets?.Any() ?? false)
+                {
+                    entries.Add(aggregateTab);
+                    ContainsAggregate = true;
+                }
             }
 
             foreach (var crawlerSet in _userDataProvider.CrawlingSets.Where(set => set.Descriptors.Any()).Take(5))
@@ -87,7 +174,33 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             }
 
             FeedTabEntries = new ObservableCollection<FeedTabEntry>(entries);
+
+            if (FeedTabEntries.Count <= 2)
+                JumpToButtonVisibility = false;
+
+
         }
+
+        private FeedTabEntry BuildAggregateTab()
+        {
+            return new FeedTabEntry(_userDataProvider.CrawlingSets
+                .Where(set => set.Descriptors.Any() && set.IsFavourite).ToList())
+            {
+                Name = "All"
+            };
+        }
+
+        private void OnMessage(Message message)
+        {
+            if(FeedTabEntries.Count <= 2)
+                return;
+
+            if (message == Message.ShowJumpToActionButton)
+                JumpToButtonVisibility = true;
+            else if (message == Message.HideJumpToActionButton)
+                JumpToButtonVisibility = false;
+        }
+
 
         private FeedTabEntry GetRelevantFeedEntry(CrawlerSet set)
         {

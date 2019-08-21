@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using AoTracker.Domain.Models;
+using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Interfaces;
 
 namespace AoTracker.Infrastructure.ViewModels.Item
@@ -22,6 +23,7 @@ namespace AoTracker.Infrastructure.ViewModels.Item
             {
                 BackingModel.IsFavourite = value;
                 _userDataProvider.UpdateSet(BackingModel);
+                MessengerInstance.Send(new CrawlerSetModifiedMessage(true));
                 RaisePropertyChanged();
             }
         }

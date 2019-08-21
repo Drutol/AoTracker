@@ -1,11 +1,16 @@
 ﻿using Android.Support.Design.Widget;
 using Android.Support.V4.App;
 using Android.Support.V4.View;
+using Android.Support.V7.View.Menu;
+using Android.Util;
+using Android.Views;
 using AoLibs.Navigation.Android.Navigation.Attributes;
+using AoLibs.Utilities.Android.Listeners;
 using AoTracker.Android.PagerAdapters;
 using AoTracker.Android.Utils;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.ViewModels.Feed;
+using AoTracker.Resources;
 using GalaSoft.MvvmLight.Helpers;
 
 namespace AoTracker.Android.Fragments.Feed
@@ -30,16 +35,60 @@ namespace AoTracker.Android.Fragments.Feed
                 UpdateTabIcons();
             }));
 
-            TabStrip.SetupWithViewPager(ViewPager);
+            Bindings.Add(this.SetBinding(() => ViewModel.JumpToButtonVisibility).WhenSourceChanges(() =>
+            {
+                if (ViewModel.JumpToButtonVisibility)
+                {
+                    JumpToButton.Show();
+                }
+                else
+                {
+                    JumpToButton.Hide();
+                }
+            }));
 
+            JumpToButton.SetOnClickListener(new OnClickListener(HandleJumpToPopup));
+            TabStrip.SetupWithViewPager(ViewPager);
             ViewPager.PageSelected += ViewPagerOnPageSelected;
+        }
+
+        private void HandleJumpToPopup(View obj)
+        {
+            var menuBuilder = new MenuBuilder(Activity);
+
+            int i = 0;
+            int j = ViewModel.ContainsAggregate ? 0 : 1;
+            foreach (var tabEntry in ViewModel.FeedTabEntries)
+            {
+                menuBuilder.Add(0, i++, 0, tabEntry.Name).SetIcon(Util.IndexToIconResource(j++));
+            }
+
+            menuBuilder.SetCallback(new MenuCallback((sender, menuItem) =>
+            {
+                ViewPager.SetCurrentItem(menuItem.ItemId, true);
+            }));
+
+            var menuPopupHelper = new MenuPopupHelper(Context, menuBuilder);
+            menuPopupHelper.SetAnchorView(JumpToButton);
+            menuPopupHelper.SetForceShowIcon(true);
+            menuPopupHelper.Show();
         }
 
         public void UpdateTabIcons()
         {
-            for (int i = 0; i < TabStrip.TabCount; i++)
+            if (ViewModel.ContainsAggregate)
             {
-                TabStrip.GetTabAt(i).SetIcon(Util.IndexToIconResource(i));
+                for (int i = 0; i < TabStrip.TabCount; i++)
+                {
+                    TabStrip.GetTabAt(i).SetIcon(Util.IndexToIconResource(i));
+                }
+            }
+            else
+            {
+                for (int i = 1; i < TabStrip.TabCount + 1; i++)
+                {
+                    TabStrip.GetTabAt(i - 1).SetIcon(Util.IndexToIconResource(i));
+                }
             }
         }
 
@@ -74,10 +123,11 @@ namespace AoTracker.Android.Fragments.Feed
 
         private TabLayout _tabStrip;
         private ViewPager _viewPager;
-
+        private FloatingActionButton _jumpToButton;
 
         public TabLayout TabStrip => _tabStrip ?? (_tabStrip = FindViewById<TabLayout>(Resource.Id.TabStrip));
         public ViewPager ViewPager => _viewPager ?? (_viewPager = FindViewById<ViewPager>(Resource.Id.ViewPager));
+        public FloatingActionButton JumpToButton => _jumpToButton ?? (_jumpToButton = FindViewById<FloatingActionButton>(Resource.Id.JumpToButton));
 
         #endregion
     }

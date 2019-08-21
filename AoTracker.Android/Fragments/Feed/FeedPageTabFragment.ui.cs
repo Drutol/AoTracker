@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V7.Widget;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 using AoLibs.Utilities.Android.Views;
@@ -35,6 +36,8 @@ namespace AoTracker.Android.Fragments.Feed
         private ProgressBar _progressSpinner;
         private TextView _progressLabel;
         private FrameLayout _loadingLayout;
+        private FloatingActionButton _manualLoadButton;
+        private FrameLayout _manualLoadLayout;
 
         public RecyclerView RecyclerView => _recyclerView ?? (_recyclerView = FindViewById<RecyclerView>(Resource.Id.RecyclerView));
         public ScrollableSwipeToRefreshLayout SwipeToRefreshLayout => _swipeToRefreshLayout ?? (_swipeToRefreshLayout = FindViewById<ScrollableSwipeToRefreshLayout>(Resource.Id.SwipeToRefreshLayout));
@@ -42,6 +45,8 @@ namespace AoTracker.Android.Fragments.Feed
         public ProgressBar ProgressSpinner => _progressSpinner ?? (_progressSpinner = FindViewById<ProgressBar>(Resource.Id.ProgressSpinner));
         public TextView ProgressLabel => _progressLabel ?? (_progressLabel = FindViewById<TextView>(Resource.Id.ProgressLabel));
         public FrameLayout LoadingLayout => _loadingLayout ?? (_loadingLayout = FindViewById<FrameLayout>(Resource.Id.LoadingLayout));
+        public FloatingActionButton ManualLoadButton => _manualLoadButton ?? (_manualLoadButton = FindViewById<FloatingActionButton>(Resource.Id.ManualLoadButton));
+        public FrameLayout ManualLoadLayout => _manualLoadLayout ?? (_manualLoadLayout = FindViewById<FrameLayout>(Resource.Id.ManualLoadLayout));
 
         #endregion
 
@@ -128,6 +133,36 @@ namespace AoTracker.Android.Fragments.Feed
             private TextView _label;
 
             public TextView Label => _label ?? (_label = _view.FindViewById<TextView>(Resource.Id.Label));
+        }
+
+        class ScrollListener : RecyclerView.OnScrollListener
+        {
+            private readonly FeedPageTabFragment _parent;
+
+            private bool? _lastRequest;
+
+            public ScrollListener(FeedPageTabFragment parent)
+            {
+                _parent = parent;
+            }
+
+            public override void OnScrollStateChanged(RecyclerView recyclerView, int newState)
+            {
+                base.OnScrollStateChanged(recyclerView, newState);
+            }
+
+            public override void OnScrolled(RecyclerView recyclerView, int dx, int dy)
+            {
+                bool request = !(dy > 0);
+
+                if (_lastRequest != request)
+                {
+                    _parent.ViewModel.RequestJumpToFabVisibilityChangeCommand.Execute(request);
+                    _lastRequest = request;
+                }
+
+                base.OnScrolled(recyclerView, dx, dy);
+            }
         }
     }
 }

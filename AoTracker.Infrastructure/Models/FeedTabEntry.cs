@@ -28,5 +28,10 @@ namespace AoTracker.Infrastructure.Models
         {
             CrawlerSets = crawlerSets;
         }
+
+        public void ResetEventSubscriptions()
+        {
+            CrawlerSetsChanged = null;
+        }
     }
 }

@@ -37,8 +37,21 @@ namespace AoTracker.Android.PagerAdapters
 
             foreach (var entry in tabEntries)
             {
+                entry.ResetEventSubscriptions();
                 Fragments.Add(new FeedPageTabFragment(entry));
             }
+
+            Fragments.FirstOrDefault()?.NavigatedTo();
+        }
+
+        public FeedPagerAdapter(FragmentManager fm, ObservableCollection<FeedTabEntry> tabEntries, List<FeedPageTabFragment> fragments, FeedPageFragment parent) : base(fm)
+        {
+            _tabEntries = tabEntries;
+            _parent = parent;
+            _tabEntries.CollectionChanged += TabEntriesOnCollectionChanged;
+
+            Fragments = fragments;
+            Fragments.FirstOrDefault()?.NavigatedTo();
         }
 
         private void TabEntriesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -47,12 +60,18 @@ namespace AoTracker.Android.PagerAdapters
             {
                 case NotifyCollectionChangedAction.Add:
                     var newEntry = e.NewItems[0] as FeedTabEntry;
-                    Fragments.Add(new FeedPageTabFragment(newEntry));
+                    Fragments.Insert(e.NewStartingIndex, new FeedPageTabFragment(newEntry));
+                    if(e.NewStartingIndex == _parent.ViewPager.CurrentItem)
+                        Fragments.First().NavigatedTo();
                     break;
                 case NotifyCollectionChangedAction.Remove:
-                    var removedEntry = e.NewItems[0] as FeedTabEntry;
-                    var index = _tabEntries.IndexOf(removedEntry);
-                    Fragments.Remove(Fragments[index]);
+                    var removedEntry = e.OldItems[0] as FeedTabEntry;
+                    var matchingFragment = Fragments.FirstOrDefault(fragment => fragment.TabEntry == removedEntry);
+                    if (matchingFragment != null)
+                    {
+                        var index = Fragments.IndexOf(matchingFragment);
+                        Fragments.Remove(Fragments[index]);
+                    }
                     break;
                 case NotifyCollectionChangedAction.Move:
                     var movedEntry = e.NewItems[0] as FeedTabEntry;
@@ -65,6 +84,7 @@ namespace AoTracker.Android.PagerAdapters
             }
 
             NotifyDataSetChanged();
+            _parent.UpdateTabIcons();
         }
 
         public override int Count => _tabEntries.Count;
@@ -81,10 +101,8 @@ namespace AoTracker.Android.PagerAdapters
 
         public FeedPagerAdapter Duplicate(FragmentManager childFragmentManager)
         {
-            return new FeedPagerAdapter(childFragmentManager, _tabEntries, _parent)
-            {
-                Fragments = Fragments
-            };
+            _tabEntries.CollectionChanged -= TabEntriesOnCollectionChanged;
+            return new FeedPagerAdapter(childFragmentManager, _tabEntries, Fragments, _parent);
         }
     }
 }

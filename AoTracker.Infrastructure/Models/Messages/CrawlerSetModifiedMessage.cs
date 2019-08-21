@@ -7,11 +7,17 @@ namespace AoTracker.Infrastructure.Models.Messages
 {
     public class CrawlerSetModifiedMessage
     {
+        public bool FavouriteChanged { get; }
+        public CrawlerSet ModifiedCrawlerSet { get; }
+
         public CrawlerSetModifiedMessage(CrawlerSet set)
         {
             ModifiedCrawlerSet = set;
         }
 
-        public CrawlerSet ModifiedCrawlerSet { get; set; }
+        public CrawlerSetModifiedMessage(bool favouriteChanged)
+        {
+            FavouriteChanged = favouriteChanged;
+        }
     }
 }

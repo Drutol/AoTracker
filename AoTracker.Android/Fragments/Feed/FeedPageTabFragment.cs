@@ -17,6 +17,7 @@ using Android.Text.Style;
 using Android.Views;
 using Android.Widget;
 using AoLibs.Navigation.Android.Navigation;
+using AoLibs.Utilities.Android;
 using AoLibs.Utilities.Android.Views;
 using AoTracker.Android.Themes;
 using AoTracker.Android.Utils;
@@ -44,7 +45,6 @@ namespace AoTracker.Android.Fragments.Feed
 {
     public partial class FeedPageTabFragment : FragmentBase<FeedTabViewModel>
     {
-        private bool _pendingProgressBarAnimation;
         private CancellationTokenSource _smoothProgressCts;
 
         public override int LayoutResourceId { get; } = Resource.Layout.page_feed_tab;
@@ -77,7 +77,18 @@ namespace AoTracker.Android.Fragments.Feed
                 this.SetBinding(() => ViewModel.IsPreparing,
                     () => ProgressSpinner.Visibility).ConvertSourceToTarget(BindingConverters.BoolToVisibility));
 
-
+            Bindings.Add(this.SetBinding(() => ViewModel.AwaitingManualLoad).WhenSourceChanges(() =>
+            {
+                if (ViewModel.AwaitingManualLoad)
+                {
+                    ManualLoadButton.Show();
+                }
+                else
+                {
+                    ManualLoadButton.Hide();
+                }
+            }));
+            
             Bindings.Add(this.SetBinding(() => ViewModel.FeedGenerationProgress).WhenSourceChanges(() =>
             {
                 SmoothSetProgress(ViewModel.FeedGenerationProgress);
@@ -104,9 +115,11 @@ namespace AoTracker.Android.Fragments.Feed
                 })
                 .Build());
 
+            RecyclerView.AddOnScrollListener(new ScrollListener(this));
             SwipeToRefreshLayout.ScrollingView = RecyclerView;
             SwipeToRefreshLayout.Refresh += SwipeToRefreshLayoutOnRefresh;
             RecyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
+            ManualLoadButton.SetOnClickCommand(ViewModel.RequestManualLoadCommand);
         }
 
         private void SmoothSetProgress(int progress)
@@ -231,8 +244,6 @@ namespace AoTracker.Android.Fragments.Feed
 
             holder.DetailShipping.Visibility = BindingConverters.BoolToVisibility(item.Item.IsShippingFree);
         }
-
-
 
         private ICharSequence GetYahooItemLabel(string note, string value)
         {

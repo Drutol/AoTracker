@@ -430,7 +430,7 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Applitcation Theme.
+        ///   Looks up a localized string similar to Application Theme.
         /// </summary>
         public static string Settings_General_ColourThemeHeader {
             get {

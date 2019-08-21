@@ -59,5 +59,22 @@
             tools:text="3/7" />
     </FrameLayout>
 
+    <FrameLayout
+        android:id="@+id/ManualLoadLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:padding="8dp">
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/ManualLoadButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_progress_download"
+            android:tint="?TextColourAccentContrast"
+            app:fabSize="normal" />
+
+    </FrameLayout>
 </FrameLayout>

@@ -22,6 +22,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
     {
         private readonly IFeedProvider _feedProvider;
         private readonly IFeedHistoryProvider _feedHistoryProvider;
+        private readonly ISettings _settings;
         private readonly ILifetimeScope _lifetimeScope;
         private readonly AppVariables _appVariables;
         private CancellationTokenSource _feedCts;
@@ -34,6 +35,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         private FeedTabEntry _tabEntry;
         private bool _isPreparing;
         private string _progressLabel;
+        private bool _awaitingManualLoad;
 
         public FeedTabEntry TabEntry
         {
@@ -50,6 +52,8 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         private void TabEntryOnCrawlerSetsChanged(object sender, EventArgs e)
         {
             Feed.Clear();
+            if (!_settings.AutoLoadFeedTab)
+                AwaitingManualLoad = true;
         }
 
         public SmartObservableCollection<IFeedItem> Feed { get; } =
@@ -59,10 +63,12 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         public FeedTabViewModel(
             IFeedProvider feedProvider,
             IFeedHistoryProvider feedHistoryProvider,
+            ISettings settings,
             AppVariables appVariables)
         {
             _feedProvider = feedProvider;
             _feedHistoryProvider = feedHistoryProvider;
+            _settings = settings;
             _lifetimeScope = ResourceLocator.ObtainScope();
             _appVariables = appVariables;
             _feedProvider.NewCrawlerBatch += FeedProviderOnNewCrawlerBatch;
@@ -95,9 +101,13 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         private void FeedProviderOnNewCrawlerBatch(object sender, FeedBatch e)
         {
             IsPreparing = false;
-            _receivedBatches++;
-            FeedGenerationProgress = (int)((_receivedBatches * 100d) / _expectedBatches);
-            ProgressLabel = $"{_receivedBatches}/{_expectedBatches}";
+
+            if (!e.CrawlerResult.IsCached)
+            {
+                _receivedBatches++;
+                FeedGenerationProgress = (int)((_receivedBatches * 100d) / _expectedBatches);
+                ProgressLabel = $"{_receivedBatches}/{_expectedBatches}";
+            }
 
             var viewModels = new List<FeedItemViewModel>();
             foreach (var crawlerResultItem in e.CrawlerResult.Results)
@@ -120,6 +130,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
 
         public async void RefreshFeed(bool force = false)
         {
+            AwaitingManualLoad = false;
             Feed.Clear();
             var historyTasks = TabEntry.CrawlerSets
                 .Select(set => _feedHistoryProvider.GetHistory(set))
@@ -137,6 +148,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
                 FeedGenerationProgress = 0;
                 _receivedBatches = 0;
                 _expectedBatches = 0;
+                ProgressLabel = string.Empty;
             }
 
             _feedHistory = historyTasks
@@ -154,8 +166,22 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
 
         public void NavigatedTo()
         {
-            if(!Feed.Any())
-                RefreshFeed();
+            MessengerInstance.Send(FeedViewModel.Message.ShowJumpToActionButton);
+
+            if(IsLoading)
+                return;
+
+            if (!Feed.Any())
+            {
+                if (_settings.AutoLoadFeedTab)
+                {
+                    RefreshFeed();
+                }
+                else
+                {
+                    AwaitingManualLoad = true;
+                }
+            }
         }
 
         public bool IsLoading
@@ -176,13 +202,32 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             set => Set(ref _progressLabel, value);
         }
 
+        public bool AwaitingManualLoad
+        {
+            get => _awaitingManualLoad;
+            set => Set(ref _awaitingManualLoad, value);
+        }
+
+        public RelayCommand RequestManualLoadCommand => new RelayCommand(() =>
+        {
+            RefreshFeed();
+        });
+
+        public RelayCommand<ICrawlerResultItem> SelectFeedItemCommand =>
+            new RelayCommand<ICrawlerResultItem>(item => { });
+
+        public RelayCommand<bool> RequestJumpToFabVisibilityChangeCommand => new RelayCommand<bool>(visibility =>
+        {
+            if(visibility)
+                MessengerInstance.Send(FeedViewModel.Message.ShowJumpToActionButton);
+            else
+                MessengerInstance.Send(FeedViewModel.Message.HideJumpToActionButton);
+        });
+
         public override void UpdatePageTitle()
         {
             //don't update on inner fragments
         }
-
-        public RelayCommand<ICrawlerResultItem> SelectFeedItemCommand =>
-            new RelayCommand<ICrawlerResultItem>(item => { });
 
         class MinuteDateTimeEqualityComparer : IEqualityComparer<DateTime>
         {
