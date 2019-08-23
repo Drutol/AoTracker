@@ -16,16 +16,19 @@ namespace AoTracker.Infrastructure.ViewModels.Item
     {
         private readonly IDomainLinkHandlerManager _domainLinkHandlerManager;
         private readonly IUriLauncherAdapter _launcherAdapter;
+        private readonly IIgnoredItemsManager _ignoredItemsManager;
         private readonly FeedTabViewModel _parent;
 
         public FeedItemViewModel(
             IDomainLinkHandlerManager domainLinkHandlerManager,
             IUriLauncherAdapter launcherAdapter,
+            IIgnoredItemsManager ignoredItemsManager,
             ICrawlerResultItem item,
             FeedTabViewModel parent) : base(item)
         {
             _domainLinkHandlerManager = domainLinkHandlerManager;
             _launcherAdapter = launcherAdapter;
+            _ignoredItemsManager = ignoredItemsManager;
             _parent = parent;
         }
 
@@ -38,6 +41,12 @@ namespace AoTracker.Infrastructure.ViewModels.Item
         public RelayCommand NavigateItemWebsiteCommand => new RelayCommand(() =>
         {
             _launcherAdapter.LaunchUri(new Uri(_domainLinkHandlerManager.GenerateWebsiteLink(BackingModel)));
+        });
+
+        public RelayCommand IgnoreItemCommand => new RelayCommand(() =>
+        {
+            _ignoredItemsManager.AddIgnoredItem(BackingModel);
+            _parent.RemoveItem(this);
         });
 
         public void WithHistory(List<HistoryFeedEntry> feedHistory, CrawlerSet setOfOrigin)
@@ -97,14 +106,9 @@ namespace AoTracker.Infrastructure.ViewModels.Item
         public T Item { get; }
 
 
-        public FeedItemViewModel(
-            IDomainLinkHandlerManager domainLinkHandlerManager,
-            IUriLauncherAdapter launcherAdapter,
-            ICrawlerResultItem item,
-            FeedTabViewModel parent)
-            : base(domainLinkHandlerManager, launcherAdapter, item, parent)
+        public FeedItemViewModel(IDomainLinkHandlerManager domainLinkHandlerManager, IUriLauncherAdapter launcherAdapter, IIgnoredItemsManager ignoredItemsManager, ICrawlerResultItem item, FeedTabViewModel parent) : base(domainLinkHandlerManager, launcherAdapter, ignoredItemsManager, item, parent)
         {
-            Item = (T) item;
+            Item = (T)item;
         }
     }
 }

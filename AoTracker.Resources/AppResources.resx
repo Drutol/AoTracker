@@ -195,8 +195,17 @@
   <data name="Item_FeedChangeGroup_Recently" xml:space="preserve">
     <value>Recently updated</value>
   </data>
+  <data name="Item_Feed_AddIgnore" xml:space="preserve">
+    <value>Add to ignored</value>
+  </data>
+  <data name="Item_Feed_AddWatched" xml:space="preserve">
+    <value>Add to watched</value>
+  </data>
   <data name="Item_Feed_LastChanged" xml:space="preserve">
     <value>Changed {0} ago</value>
+  </data>
+  <data name="Item_Feed_RemoveWatched" xml:space="preserve">
+    <value>Remove from watched</value>
   </data>
   <data name="Item_SurugayaCrawlerCell_TrimsFromQuotationMarks" xml:space="preserve">
     <value>Removes content from 「 」</value>

@@ -84,7 +84,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
                 .OrderByDescending(g => g.Key);
             foreach (var group in groups)
             {
-                items.Add(new FeedChangeGroupItem(group.Key));
+                items.Add(new FeedChangeGroupItem(group.Key, group));
                 items.AddRange(group);
             }
             Feed.AddRange(items);
@@ -246,6 +246,16 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
                     return hashCode;
                 }
             }
+        }
+
+        public void RemoveItem(FeedItemViewModel feedItemViewModel)
+        {
+            Feed.Remove(feedItemViewModel);
+            var affectedGroupHeader = Feed.OfType<FeedChangeGroupItem>().First(item =>
+                item.GroupedItems.Contains(feedItemViewModel.BackingModel.InternalId));
+            affectedGroupHeader.GroupedItems.Remove(feedItemViewModel.BackingModel.InternalId);
+            if (!affectedGroupHeader.GroupedItems.Any())
+                Feed.Remove(affectedGroupHeader);
         }
     }
 }

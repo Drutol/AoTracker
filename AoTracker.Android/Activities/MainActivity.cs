@@ -51,7 +51,7 @@ namespace AoTracker.Android.Activities
             if(ThemeManager.IsDarkTheme)
                 Window.SetStatusBarColor(ThemeManager.DarkBackgroundColour);
             SetContentView(Resource.Layout.activity_main);
-
+            AppInitializationRoutines.InitializeDependencies();
             App.NavigationManager = new NavigationManager<PageIndex>(
                 SupportFragmentManager,
                 RootView,

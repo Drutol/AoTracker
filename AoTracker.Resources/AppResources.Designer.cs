@@ -286,11 +286,38 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add to ignored.
+        /// </summary>
+        public static string Item_Feed_AddIgnore {
+            get {
+                return ResourceManager.GetString("Item_Feed_AddIgnore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add to watched.
+        /// </summary>
+        public static string Item_Feed_AddWatched {
+            get {
+                return ResourceManager.GetString("Item_Feed_AddWatched", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Changed {0} ago.
         /// </summary>
         public static string Item_Feed_LastChanged {
             get {
                 return ResourceManager.GetString("Item_Feed_LastChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove from watched.
+        /// </summary>
+        public static string Item_Feed_RemoveWatched {
+            get {
+                return ResourceManager.GetString("Item_Feed_RemoveWatched", resourceCulture);
             }
         }
         

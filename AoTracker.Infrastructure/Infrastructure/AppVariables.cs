@@ -4,6 +4,7 @@ using System.Text;
 using AoLibs.Adapters.Core;
 using AoLibs.Adapters.Core.Interfaces;
 using AoTracker.Domain.Models;
+using AoTracker.Infrastructure.Models;
 
 namespace AoTracker.Infrastructure.Infrastructure
 {
@@ -18,5 +19,8 @@ namespace AoTracker.Infrastructure.Infrastructure
 
         [Variable]
         public Holder<List<HistoryFeedEntry>> FeedHistory { get; set; }
+
+        [Variable]
+        public Holder<List<IgnoredItemEntry>> IgnoredItems { get; set; }
     }
 }

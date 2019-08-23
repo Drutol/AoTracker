@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using AoTracker.Interfaces;
 using Autofac;
 
 namespace AoTracker.Infrastructure.Statics
@@ -9,7 +12,7 @@ namespace AoTracker.Infrastructure.Statics
     {
         private static IContainer Container { get; set; }
 
-        public static Func<Type, object> InitializeDependencyInjection(
+        public static void InitializeDependencyInjection(
             Action<ContainerBuilder> dependenciesRegistration)
         {
             var builder = new ContainerBuilder();
@@ -19,8 +22,13 @@ namespace AoTracker.Infrastructure.Statics
             dependenciesRegistration(builder);
 
             Container = builder.Build();
+        }
 
-            return type => Container.ResolveOptional(type);
+        public static async void InitializeDependencies()
+        {
+            var initializables = Container.Resolve<IEnumerable<IInitializable>>()
+                .Select(initializable => initializable.Initialize()).ToList();
+            await Task.WhenAll(initializables);
         }
     }
 }

@@ -17,19 +17,41 @@ namespace AoTracker.Infrastructure.Statics
 
         public static void RegisterResources(this ContainerBuilder builder)
         {
-            builder.RegisterType<Settings>().As<ISettings>().SingleInstance();
-            builder.RegisterType<CrawlerManagerProvider>().As<ICrawlerManagerProvider>().SingleInstance();
-            builder.RegisterType<UserDataProvider>().As<IUserDataProvider>().SingleInstance();
-            builder.RegisterType<DataCache>().As<IDataCache>().SingleInstance();
-            builder.RegisterType<FeedHistoryProvider>().As<IFeedHistoryProvider>().SingleInstance();
+            builder.RegisterType<Settings>()
+                .As<ISettings>()
+                .SingleInstance();
+            builder.RegisterType<CrawlerManagerProvider>()
+                .As<ICrawlerManagerProvider>()
+                .SingleInstance();
+            builder.RegisterType<UserDataProvider>()
+                .As<IUserDataProvider>()
+                .SingleInstance();
+            builder.RegisterType<DataCache>()
+                .As<IDataCache>()
+                .SingleInstance();
+            builder.RegisterType<FeedHistoryProvider>()
+                .As<IFeedHistoryProvider>()
+                .SingleInstance();
+            builder.RegisterType<IgnoredItemsManager>()
+                .As<IIgnoredItemsManager>()
+                .As<IInitializable>()
+                .SingleInstance();
 
-            builder.RegisterType<DomainLinkHandlerManager>().As<IDomainLinkHandlerManager>().SingleInstance();
-            builder.RegisterType<DefaultDomainLinkHandler>().As<IDomainLinkHandler>().SingleInstance();
-            builder.RegisterType<ZenMarketLinkHandler>().As<IDomainLinkHandler>().SingleInstance();
+            builder.RegisterType<DomainLinkHandlerManager>()
+                .As<IDomainLinkHandlerManager>()
+                .SingleInstance();
+            builder.RegisterType<DefaultDomainLinkHandler>()
+                .As<IDomainLinkHandler>()
+                .SingleInstance();
+            builder.RegisterType<ZenMarketLinkHandler>()
+                .As<IDomainLinkHandler>()
+                .SingleInstance();
 
-            builder.RegisterType<AppVariables>().SingleInstance();
+            builder.RegisterType<AppVariables>()
+                .SingleInstance();
 
-            builder.RegisterType<FeedProvider>().As<IFeedProvider>();
+            builder.RegisterType<FeedProvider>()
+                .As<IFeedProvider>();
 
             builder.RegisterBuildCallback(BuildCallback);
 

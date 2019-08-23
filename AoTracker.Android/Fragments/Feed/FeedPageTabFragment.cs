@@ -11,6 +11,7 @@ using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
+using Android.Support.V7.View.Menu;
 using Android.Support.V7.Widget;
 using Android.Text;
 using Android.Text.Style;
@@ -18,6 +19,7 @@ using Android.Views;
 using Android.Widget;
 using AoLibs.Navigation.Android.Navigation;
 using AoLibs.Utilities.Android;
+using AoLibs.Utilities.Android.Listeners;
 using AoLibs.Utilities.Android.Views;
 using AoTracker.Android.Themes;
 using AoTracker.Android.Utils;
@@ -276,9 +278,10 @@ namespace AoTracker.Android.Fragments.Feed
             return changedDiff;
         }
 
-        private static void CommonFeedItemTemplate(FeedItemViewModel item, IFeedItemHolder holder)
+        private void CommonFeedItemTemplate(FeedItemViewModel item, IFeedItemHolder holder)
         {
             holder.ClickSurface.SetOnClickCommand(item.NavigateItemWebsiteCommand);
+            holder.ClickSurface.SetOnLongClickListener(new OnLongClickListener(view => HandlePopupMenu(view, item)));
             holder.Price.Text = item.BackingModel.Price + "¥";
             holder.NewAlertSection.Visibility = BindingConverters.BoolToVisibility(item.IsNew);
             ImageService.Instance.LoadUrl(item.BackingModel.ImageUrl).Retry(2, 1000).Into(holder.ImageLeft);
@@ -304,6 +307,24 @@ namespace AoTracker.Android.Fragments.Feed
                     holder.PriceTrendIcon.ImageTintList = ColorStateList.ValueOf(ThemeManager.RedColour);
                     break;
             }
+        }
+
+        private void HandlePopupMenu(View view, FeedItemViewModel viewModel)
+        {
+            var menuBuilder = new MenuBuilder(Activity);
+            menuBuilder.Add(0, 0, 0, AppResources.Item_Feed_AddIgnore).SetIcon(Resource.Drawable.icon_stop);
+            
+            menuBuilder.SetCallback(new MenuCallback((sender, menuItem) =>
+            {
+                if (menuItem.ItemId == 0)
+                {
+                    viewModel.IgnoreItemCommand.Execute(null);
+                }
+            }));
+            var menuPopupHelper = new MenuPopupHelper(Context, menuBuilder);
+            menuPopupHelper.SetAnchorView(view);
+            menuPopupHelper.SetForceShowIcon(true);
+            menuPopupHelper.Show();
         }
     }
 }
