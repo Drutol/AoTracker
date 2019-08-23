@@ -152,5 +152,42 @@
                 android:gravity="start"
                 android:text="@string/Settings_General_AutoLoadFeedTab_HelpText" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="?ForegroundColour"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Default proxy:"
+                    android:textColor="?TextColour"
+                    android:textSize="16sp" />
+
+                <TextView
+                    style="@style/TextViewHelp" android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:text="Default proxy that will be used when handling for example item clicks." />
+
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/ProxyDomainSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -44,7 +44,7 @@ namespace AoTracker.Crawlers.Sites.Mercari
 
                     var idTemp = link.Attributes["href"].Value;
                     var pos = idTemp.IndexOf('?');
-                    idTemp = idTemp.Substring(0, pos);
+                    idTemp = idTemp.Substring(0, pos).Trim('/');
                     pos = idTemp.LastIndexOf('/');
 
                     item.Id = idTemp.Substring(pos + 1);
@@ -52,7 +52,7 @@ namespace AoTracker.Crawlers.Sites.Mercari
                     item.Name = WebUtility.HtmlDecode(image.Attributes["alt"].Value.Trim());
                     item.Price = float.Parse(itemNode.FirstOfDescendantsWithClass("div", "items-box-price font-5")
                         .InnerText.Replace("¥", "").Replace(",", "").Trim());
-                    item.ImageUrl = image.Attributes["src"].Value;
+                    item.ImageUrl = image.Attributes["data-src"].Value;
 
 
                     parsedItems.Add(item);

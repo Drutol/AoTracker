@@ -92,13 +92,29 @@ namespace AoTracker.Android.Fragments.Settings
                 this.SetBinding(() => ViewModel.GenerateFeedAggregate,
                     () => GenerateFeedAggregate.Checked, BindingMode.TwoWay));
 
+            ProxyDomainSpinner.Adapter = new ArrayAdapter<ProxyDomain>(
+                Activity,
+                Resource.Layout.item_spinner,
+                new List<ProxyDomain>
+                {
+                    ProxyDomain.None,
+                    ProxyDomain.ZenMarket
+                });
+            ProxyDomainSpinner.SetSelection((int) ViewModel.ProxyDomain);
 
             ThemeRadioGroup.CheckedChange += ThemeRadioGroupOnCheckedChange;
+            ProxyDomainSpinner.ItemSelected += ProxyDomainSpinnerOnItemSelected;
             ApplyThemeButton.SetOnClickListener(new OnClickListener(view =>
             {
                 ViewModel.ApplyThemeCommand.Execute(null);
                 MainActivity.Instance.Recreate();
             }));
+
+        }
+
+        private void ProxyDomainSpinnerOnItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            ViewModel.ProxyDomain = (ProxyDomain) e.Position;
         }
 
         private void ProcessAppThemeUpdate()
@@ -219,6 +235,7 @@ namespace AoTracker.Android.Fragments.Settings
         private Button _applyThemeButton;
         private CheckBox _generateFeedAggregate;
         private CheckBox _automaticallyLoadFeedTab;
+        private Spinner _proxyDomainSpinner;
 
         public RadioButton LightThemeRadioButton => _lightThemeRadioButton ?? (_lightThemeRadioButton = FindViewById<RadioButton>(Resource.Id.LightThemeRadioButton));
         public RadioButton DarkThemeRadioButton => _darkThemeRadioButton ?? (_darkThemeRadioButton = FindViewById<RadioButton>(Resource.Id.DarkThemeRadioButton));
@@ -234,6 +251,7 @@ namespace AoTracker.Android.Fragments.Settings
         public Button ApplyThemeButton => _applyThemeButton ?? (_applyThemeButton = FindViewById<Button>(Resource.Id.ApplyThemeButton));
         public CheckBox GenerateFeedAggregate => _generateFeedAggregate ?? (_generateFeedAggregate = FindViewById<CheckBox>(Resource.Id.GenerateFeedAggregate));
         public CheckBox AutomaticallyLoadFeedTab => _automaticallyLoadFeedTab ?? (_automaticallyLoadFeedTab = FindViewById<CheckBox>(Resource.Id.AutomaticallyLoadFeedTab));
+        public Spinner ProxyDomainSpinner => _proxyDomainSpinner ?? (_proxyDomainSpinner = FindViewById<Spinner>(Resource.Id.ProxyDomainSpinner));
 
         #endregion
     }

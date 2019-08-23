@@ -278,9 +278,10 @@ namespace AoTracker.Android.Fragments.Feed
 
         private static void CommonFeedItemTemplate(FeedItemViewModel item, IFeedItemHolder holder)
         {
+            holder.ClickSurface.SetOnClickCommand(item.NavigateItemWebsiteCommand);
             holder.Price.Text = item.BackingModel.Price + "¥";
             holder.NewAlertSection.Visibility = BindingConverters.BoolToVisibility(item.IsNew);
-            ImageService.Instance.LoadUrl(item.BackingModel.ImageUrl).Into(holder.ImageLeft);
+            ImageService.Instance.LoadUrl(item.BackingModel.ImageUrl).Retry(2, 1000).Into(holder.ImageLeft);
 
             switch (item.PriceChange)
             {

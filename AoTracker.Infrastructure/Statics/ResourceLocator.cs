@@ -5,6 +5,7 @@ using AoLibs.Adapters.Core;
 using AoLibs.Adapters.Core.Interfaces;
 using AoTracker.Infrastructure.Crawling;
 using AoTracker.Infrastructure.Infrastructure;
+using AoTracker.Infrastructure.LinkHandlers;
 using AoTracker.Interfaces;
 using Autofac;
 
@@ -21,6 +22,11 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterType<UserDataProvider>().As<IUserDataProvider>().SingleInstance();
             builder.RegisterType<DataCache>().As<IDataCache>().SingleInstance();
             builder.RegisterType<FeedHistoryProvider>().As<IFeedHistoryProvider>().SingleInstance();
+
+            builder.RegisterType<DomainLinkHandlerManager>().As<IDomainLinkHandlerManager>().SingleInstance();
+            builder.RegisterType<DefaultDomainLinkHandler>().As<IDomainLinkHandler>().SingleInstance();
+            builder.RegisterType<ZenMarketLinkHandler>().As<IDomainLinkHandler>().SingleInstance();
+
             builder.RegisterType<AppVariables>().SingleInstance();
 
             builder.RegisterType<FeedProvider>().As<IFeedProvider>();

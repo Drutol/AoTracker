@@ -39,5 +39,11 @@ namespace AoTracker.Infrastructure.Infrastructure
             get => (AppTheme) (_settingsProvider.GetInt(nameof(AppTheme)) ?? (int?) (AppTheme.Dark | AppTheme.Lime));
             set => _settingsProvider.SetInt(nameof(AppTheme), (int) value);
         }
+
+        public ProxyDomain ProxyDomain
+        {
+            get => (ProxyDomain) (_settingsProvider.GetInt(nameof(ProxyDomain)) ?? (int?) (ProxyDomain.None));
+            set => _settingsProvider.SetInt(nameof(ProxyDomain), (int) value);
+        }
     }
 }

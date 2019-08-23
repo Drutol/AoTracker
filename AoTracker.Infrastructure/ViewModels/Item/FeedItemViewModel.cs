@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AoLibs.Adapters.Core.Interfaces;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
@@ -13,10 +14,18 @@ namespace AoTracker.Infrastructure.ViewModels.Item
 {
     public class FeedItemViewModel : ItemViewModelBase<ICrawlerResultItem>, IFeedItem
     {
+        private readonly IDomainLinkHandlerManager _domainLinkHandlerManager;
+        private readonly IUriLauncherAdapter _launcherAdapter;
         private readonly FeedTabViewModel _parent;
 
-        public FeedItemViewModel(ICrawlerResultItem item, FeedTabViewModel parent) : base(item)
+        public FeedItemViewModel(
+            IDomainLinkHandlerManager domainLinkHandlerManager,
+            IUriLauncherAdapter launcherAdapter,
+            ICrawlerResultItem item,
+            FeedTabViewModel parent) : base(item)
         {
+            _domainLinkHandlerManager = domainLinkHandlerManager;
+            _launcherAdapter = launcherAdapter;
             _parent = parent;
         }
 
@@ -25,6 +34,11 @@ namespace AoTracker.Infrastructure.ViewModels.Item
         public PriceChange PriceChange { get; private set; }
         public DateTime LastChanged { get; private set; }
         public CrawlerSet SetOfOrigin { get; private set; }
+
+        public RelayCommand NavigateItemWebsiteCommand => new RelayCommand(() =>
+        {
+            _launcherAdapter.LaunchUri(new Uri(_domainLinkHandlerManager.GenerateWebsiteLink(BackingModel)));
+        });
 
         public void WithHistory(List<HistoryFeedEntry> feedHistory, CrawlerSet setOfOrigin)
         {
@@ -82,7 +96,13 @@ namespace AoTracker.Infrastructure.ViewModels.Item
     {
         public T Item { get; }
 
-        public FeedItemViewModel(ICrawlerResultItem item, FeedTabViewModel parent) : base(item, parent)
+
+        public FeedItemViewModel(
+            IDomainLinkHandlerManager domainLinkHandlerManager,
+            IUriLauncherAdapter launcherAdapter,
+            ICrawlerResultItem item,
+            FeedTabViewModel parent)
+            : base(domainLinkHandlerManager, launcherAdapter, item, parent)
         {
             Item = (T) item;
         }

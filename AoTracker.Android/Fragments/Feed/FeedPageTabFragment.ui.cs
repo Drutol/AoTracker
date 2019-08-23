@@ -26,6 +26,7 @@ namespace AoTracker.Android.Fragments.Feed
             FloatingActionButton NewAlertSection { get; }
             TextView Price { get; }
             TextView PriceSubtitle { get; }
+            LinearLayout ClickSurface { get; }
         }
 
         #region Views

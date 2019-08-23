@@ -55,6 +55,16 @@ namespace AoTracker.Infrastructure.ViewModels.Settings
             }
         }
 
+        public ProxyDomain ProxyDomain
+        {
+            get => _settings.ProxyDomain;
+            set
+            {
+                _settings.ProxyDomain = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public bool HasThemeChanged => _settings.AppTheme != AppTheme;
 
         public RelayCommand ApplyThemeCommand => new RelayCommand(() =>
