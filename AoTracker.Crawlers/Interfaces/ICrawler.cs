@@ -12,7 +12,9 @@ namespace AoTracker.Crawlers.Interfaces
         CrawlerDomain Domain { get; }
         ICrawlerSource Source { get; }
 
-        Task<ICrawlerResult<ICrawlerResultItem>> Crawl(CrawlerParameters parameters);
+        Task<ICrawlerResultList<ICrawlerResultItem>> Crawl(CrawlerParameters parameters);
+        Task<ICrawlerResultSingle<ICrawlerResultItem>> CrawlById(string id);
+
         bool IsCached(CrawlerParameters parameters);
     }
 
@@ -21,6 +23,7 @@ namespace AoTracker.Crawlers.Interfaces
         ICrawlerParser<T> Parser { get; set; }
         ICrawlerCache<T> Cache { get; set; }
 
-        new Task<ICrawlerResult<T>> Crawl(CrawlerParameters parameters);
+        new Task<ICrawlerResultList<T>> Crawl(CrawlerParameters parameters);
+        new Task<ICrawlerResultSingle<T>> CrawlById(string id);
     }
 }

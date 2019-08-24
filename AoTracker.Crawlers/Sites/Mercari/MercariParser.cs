@@ -15,7 +15,7 @@ namespace AoTracker.Crawlers.Sites.Mercari
 {
     public class MercariParser : TypedParser<MercariItem, MercariSourceParameters>
     {
-        protected override Task<ICrawlerResult<MercariItem>> Parse(string data, MercariSourceParameters parameters)
+        protected override Task<ICrawlerResultList<MercariItem>> Parse(string data, MercariSourceParameters parameters)
         {
             var doc = new HtmlDocument();
             doc.LoadHtml(data);
@@ -63,7 +63,41 @@ namespace AoTracker.Crawlers.Sites.Mercari
                 output.Success = false;
             }
 
-            return Task.FromResult((ICrawlerResult<MercariItem>) output);
+            return Task.FromResult((ICrawlerResultList<MercariItem>) output);
+        }
+
+        public override Task<ICrawlerResultSingle<MercariItem>> ParseDetail(string data, string id)
+        {
+            var doc = new HtmlDocument();
+            doc.LoadHtml(data);
+
+            var output = new CrawlerResultBase<MercariItem>
+            {
+                Success = true
+            };
+
+            var image = doc.FirstOfDescendantsWithClass("img", "owl-lazy");
+
+            var item = new MercariItem();
+
+            item.Id = id;
+            item.InternalId = $"mercari_{item.Id}";
+            item.Name = WebUtility.HtmlDecode(image.Attributes["aly"].Value.Trim());
+            item.ImageUrl = image.Attributes["data-src"].Value;
+            if (data.Contains("売り切れました"))
+            {
+                item.Price = -1;
+            }
+            else
+            {
+                item.Price = float.Parse(doc.FirstOfDescendantsWithClass("div", "item-price bold")
+                    .InnerText.Replace("¥", "").Replace(",", "").Trim());
+            }
+
+            output.Result = item;
+
+
+            return Task.FromResult((ICrawlerResultSingle<MercariItem>)output);
         }
     }
 }

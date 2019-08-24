@@ -14,6 +14,7 @@ namespace AoTracker.Crawlers.Abstract
     {
         protected abstract Task<string> ObtainSource(TParams parameters, TVolatile volatileParameters);
 
+        public abstract Task<string> ObtainSource(string id);
         public Task<string> ObtainSource(CrawlerParameters parameters)
         {
             return ObtainSource((TParams) parameters.Parameters, (TVolatile) parameters.VolatileParameters);

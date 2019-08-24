@@ -12,6 +12,8 @@ namespace AoTracker.Crawlers.Sites.Yahoo
     {
         private const string FormatString =
             "https://www.fromjapan.co.jp/sites/yahooauction/search?exhibitType=0&condition=0&hits=120&keyword={0}&sort=end&category=All";
+        private const string FormatStringDetail =
+            "https://www.fromjapan.co.jp/en/auction/yahoo/input/{0}";
 
         private readonly IHttpClientProvider _clientProvider;
 
@@ -24,6 +26,11 @@ namespace AoTracker.Crawlers.Sites.Yahoo
             VolatileParametersBase volatileParameters)
         {
             return _clientProvider.HttpClient.GetStringAsync(string.Format(FormatString, parameters.SearchQuery));
+        }
+
+        public override Task<string> ObtainSource(string id)
+        {
+            return _clientProvider.HttpClient.GetStringAsync(string.Format(FormatStringDetail, id));
         }
     }
 }

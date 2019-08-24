@@ -7,7 +7,7 @@ namespace AoTracker.Domain.Models
 {
     public class FeedBatch
     {
-        public ICrawlerResult<ICrawlerResultItem> CrawlerResult { get; set; }
+        public ICrawlerResultList<ICrawlerResultItem> CrawlerResult { get; set; }
         public CrawlerSet SetOfOrigin { get; set; }
     }
 }

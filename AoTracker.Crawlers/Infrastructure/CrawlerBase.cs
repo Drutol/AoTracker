@@ -16,7 +16,7 @@ namespace AoTracker.Crawlers.Infrastructure
         public ICrawlerParser<T> Parser { get; set; }
         public ICrawlerCache<T> Cache { get; set; }
 
-        public virtual async Task<ICrawlerResult<T>> Crawl(CrawlerParameters parameters)
+        public virtual async Task<ICrawlerResultList<T>> Crawl(CrawlerParameters parameters)
         {
             if (parameters.VolatileParameters.UseCache && Cache.IsCached(parameters))
                 return CrawlerResultBase<T>.FromCache(Cache.Get(parameters));
@@ -39,14 +39,42 @@ namespace AoTracker.Crawlers.Infrastructure
             }
         }
 
+        public async Task<ICrawlerResultSingle<T>> CrawlById(string id)
+        {
+            if (Cache.IsCached(id))
+                return CrawlerResultBase<T>.FromCache(Cache.Get(id));
+
+            try
+            {
+                var source = await Source.ObtainSource(id);
+                var result = await Parser.ParseDetail(source, id);
+
+                Cache.Set(result.Result, id);
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new CrawlerResultBase<T>
+                {
+                    Success = false
+                };
+            }
+        }
+
         public bool IsCached(CrawlerParameters parameters)
         {
             return Cache.IsCached(parameters);
         }
 
-        async Task<ICrawlerResult<ICrawlerResultItem>> ICrawler.Crawl(CrawlerParameters parameters)
+        async Task<ICrawlerResultSingle<ICrawlerResultItem>> ICrawler.CrawlById(string id)
+        {
+            return (ICrawlerResultSingle<ICrawlerResultItem>)await CrawlById(id);
+        }
+
+        async Task<ICrawlerResultList<ICrawlerResultItem>> ICrawler.Crawl(CrawlerParameters parameters)
          {
-             return (ICrawlerResult<ICrawlerResultItem>) await Crawl(parameters);
+             return (ICrawlerResultList<ICrawlerResultItem>) await Crawl(parameters);
          }
     }
 }

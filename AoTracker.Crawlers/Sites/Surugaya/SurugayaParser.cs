@@ -16,7 +16,7 @@ namespace AoTracker.Crawlers.Surugaya
 {
     public class SurugayaParser : TypedParser<SurugayaItem, SurugayaSourceParameters>
     {
-        protected override Task<ICrawlerResult<SurugayaItem>> Parse(string data, SurugayaSourceParameters parameters)
+        protected override Task<ICrawlerResultList<SurugayaItem>> Parse(string data, SurugayaSourceParameters parameters)
         {
             var doc = new HtmlDocument();
             doc.LoadHtml(data);
@@ -59,7 +59,43 @@ namespace AoTracker.Crawlers.Surugaya
             {
                 output.Success = false;
             }
-            return Task.FromResult((ICrawlerResult<SurugayaItem>)output);
+            return Task.FromResult((ICrawlerResultList<SurugayaItem>)output);
+        }
+
+        public override Task<ICrawlerResultSingle<SurugayaItem>> ParseDetail(string data, string id)
+        {
+            var doc = new HtmlDocument();
+            doc.LoadHtml(data);
+
+            var output = new CrawlerResultBase<SurugayaItem>
+            {
+                Success = true
+            };
+
+            var item = new SurugayaItem();
+
+            var titleSection = doc.FirstOfDescendantsWithClass("h2", "item_title");
+            var categorySpan = titleSection.Descendants("span").First();
+            var title = titleSection.RemoveChild(categorySpan);
+
+            item.Id = id;
+            item.InternalId = $"surugaya_{item.Id}";
+            item.Name = WebUtility.HtmlDecode(title.InnerText.Trim());
+            item.Category = WebUtility.HtmlDecode(categorySpan.InnerText.Trim());
+            if (data.Contains("申し訳ございません。品切れ中です"))
+                item.Price = -1;
+            else
+            {
+                item.Price = float.Parse(doc.FirstOfDescendantsWithClass("span", "text-red text-bold mgnL10").InnerText
+                    .Replace(",", "").Replace("円 (税込)", "").Trim());
+            }
+
+            item.Brand = WebUtility.HtmlDecode(doc.FirstOfDescendantsWithClass("td", "t_contents").InnerText.Trim());
+            item.ImageUrl = doc.FirstOfDescendantsWithClass("a", "imagedetail").Attributes["href"].Value;
+
+            output.Result = item;
+
+            return Task.FromResult((ICrawlerResultSingle<SurugayaItem>)output);
         }
     }
 }

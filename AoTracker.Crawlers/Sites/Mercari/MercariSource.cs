@@ -11,6 +11,7 @@ namespace AoTracker.Crawlers.Sites.Mercari
     public class MercariSource : TypedSource<MercariSourceParameters, VolatileParametersBase>
     {
         private const string FormatString = "https://www.mercari.com/jp/search/?keyword={0}&category_root=&brand_name=&brand_id=&size_group=&price_min=&price_max=&status_on_sale=1";
+        private const string FormatStringDetail = "https://item.mercari.com/jp/{0}";
 
         private readonly IHttpClientProvider _httpClientProvider;
 
@@ -23,6 +24,11 @@ namespace AoTracker.Crawlers.Sites.Mercari
             VolatileParametersBase volatileParameters)
         {
             return _httpClientProvider.HttpClient.GetStringAsync(string.Format(FormatString, parameters.SearchQuery));
+        }
+
+        public override Task<string> ObtainSource(string id)
+        {
+            return _httpClientProvider.HttpClient.GetStringAsync(string.Format(FormatStringDetail, id));
         }
     }
 }

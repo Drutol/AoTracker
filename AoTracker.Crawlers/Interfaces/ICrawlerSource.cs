@@ -7,5 +7,6 @@ namespace AoTracker.Crawlers.Interfaces
     public interface ICrawlerSource
     {
         Task<string> ObtainSource(CrawlerParameters parameters);
+        Task<string> ObtainSource(string id);
     }
 }

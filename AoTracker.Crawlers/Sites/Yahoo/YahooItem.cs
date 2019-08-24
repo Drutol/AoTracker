@@ -23,7 +23,7 @@ namespace AoTracker.Crawlers.Sites.Yahoo
         public float Price { get; set; }
 
         public ItemCondition Condition { get; set; }
-        public int BuyoutPrice { get; set; }
+        public float BuyoutPrice { get; set; }
         public DateTime EndTime { get; set; }
         public bool IsShippingFree { get; set; }
         public int Tax { get; set; }

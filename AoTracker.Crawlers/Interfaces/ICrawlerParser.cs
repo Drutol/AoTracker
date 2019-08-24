@@ -6,6 +6,7 @@ namespace AoTracker.Crawlers.Interfaces
 {
     public interface ICrawlerParser<T> where T : ICrawlerResultItem
     {
-        Task<ICrawlerResult<T>> Parse(string data, CrawlerParameters parameters);
+        Task<ICrawlerResultList<T>> Parse(string data, CrawlerParameters parameters);
+        Task<ICrawlerResultSingle<T>> ParseDetail(string data, string id);
     }
 }

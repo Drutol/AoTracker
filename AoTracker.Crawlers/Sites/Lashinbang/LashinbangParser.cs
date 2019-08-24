@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using AoTracker.Crawlers.Abstract;
 using AoTracker.Crawlers.Infrastructure;
 using AoTracker.Crawlers.Interfaces;
+using AoTracker.Crawlers.Utils;
+using HtmlAgilityPack;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -13,7 +17,7 @@ namespace AoTracker.Crawlers.Sites.Lashinbang
     public class LashinbangParser : TypedParser<LashinbangItem, LashinbangSourceParameters>
     {
 
-        protected override Task<ICrawlerResult<LashinbangItem>> Parse(string data,
+        protected override Task<ICrawlerResultList<LashinbangItem>> Parse(string data,
             LashinbangSourceParameters parameters)
         {
             var root = JsonConvert.DeserializeObject<RootObject>(data.Substring(9).Trim(';',')'));
@@ -45,7 +49,35 @@ namespace AoTracker.Crawlers.Sites.Lashinbang
                 output.Success = false;
             }
 
-            return Task.FromResult((ICrawlerResult<LashinbangItem>)output);
+            return Task.FromResult((ICrawlerResultList<LashinbangItem>)output);
+        }
+
+        public override Task<ICrawlerResultSingle<LashinbangItem>> ParseDetail(string data, string id)
+        {
+            var doc = new HtmlDocument();
+            doc.LoadHtml(data);
+
+   
+            var output = new CrawlerResultBase<LashinbangItem>
+            {
+                Success = true
+            };
+
+
+            var item = new LashinbangItem();
+
+
+            item.Id = id;
+            item.InternalId = $"lashin_{item.Id}";
+            item.ImageUrl = doc.FirstOfDescendantsWithClass("img", "zoom_03").Attributes["data-zoom-image"].Value;
+            item.Name = WebUtility.HtmlDecode(doc.FirstOfDescendantsWithClass("div", "item_name").Descendants("h1")
+                .First().InnerText.Trim());
+            item.Price = float.Parse(doc.FirstOfDescendantsWithClass("p", "price red").InnerText.Split('円').First()
+                .Replace(",", "").Trim());
+
+            output.Result = item;
+
+            return Task.FromResult((ICrawlerResultSingle<LashinbangItem>)output);
         }
 
         [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]

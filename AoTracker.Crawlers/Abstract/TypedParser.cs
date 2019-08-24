@@ -11,11 +11,12 @@ namespace AoTracker.Crawlers.Abstract
         where T : ICrawlerResultItem
         where TParameters : ICrawlerSourceParameters
     {
-        public Task<ICrawlerResult<T>> Parse(string data, CrawlerParameters parameters)
+        public Task<ICrawlerResultList<T>> Parse(string data, CrawlerParameters parameters)
         {
             return Parse(data, (TParameters) parameters.Parameters);
         }
 
-        protected abstract Task<ICrawlerResult<T>> Parse(string data, TParameters parameters);
+        protected abstract Task<ICrawlerResultList<T>> Parse(string data, TParameters parameters);
+        public abstract Task<ICrawlerResultSingle<T>> ParseDetail(string data, string id);
     }
 }
