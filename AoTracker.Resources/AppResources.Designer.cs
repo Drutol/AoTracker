@@ -214,6 +214,15 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ignored Items.
+        /// </summary>
+        public static string Hamburger_Item_IgnoredItems {
+            get {
+                return ResourceManager.GetString("Hamburger_Item_IgnoredItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings &amp; More.
         /// </summary>
         public static string Hamburger_Item_Settings {
@@ -331,6 +340,15 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ignored at: {0}.
+        /// </summary>
+        public static string Item_IgnoredItem_IgnoredAt {
+            get {
+                return ResourceManager.GetString("Item_IgnoredItem_IgnoredAt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removes content from 「 」.
         /// </summary>
         public static string Item_SurugayaCrawlerCell_TrimsFromQuotationMarks {
@@ -363,6 +381,15 @@ namespace AoTracker.Resources {
         public static string PageTitle_Feed {
             get {
                 return ResourceManager.GetString("PageTitle_Feed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ignored Items.
+        /// </summary>
+        public static string PageTitle_IgnoredItems {
+            get {
+                return ResourceManager.GetString("PageTitle_IgnoredItems", resourceCulture);
             }
         }
         

@@ -41,6 +41,11 @@ namespace AoTracker.Infrastructure.ViewModels
                 Title = AppResources.Hamburger_Item_CrawlerSets,
                 Page = PageIndex.CrawlerSets,
             },
+            new HamburgerMenuEntryViewModel
+            {
+                Title = AppResources.Hamburger_Item_IgnoredItems,
+                Page = PageIndex.IgnoredItems,
+            },
         };
 
         public ObservableCollection<HamburgerMenuEntryViewModel> HamburgerItems

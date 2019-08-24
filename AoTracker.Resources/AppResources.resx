@@ -168,6 +168,9 @@
   <data name="Hamburger_Item_Feed" xml:space="preserve">
     <value>Feed</value>
   </data>
+  <data name="Hamburger_Item_IgnoredItems" xml:space="preserve">
+    <value>Ignored Items</value>
+  </data>
   <data name="Hamburger_Item_Settings" xml:space="preserve">
     <value>Settings &amp; More</value>
   </data>
@@ -207,6 +210,9 @@
   <data name="Item_Feed_RemoveWatched" xml:space="preserve">
     <value>Remove from watched</value>
   </data>
+  <data name="Item_IgnoredItem_IgnoredAt" xml:space="preserve">
+    <value>Ignored at: {0}</value>
+  </data>
   <data name="Item_SurugayaCrawlerCell_TrimsFromQuotationMarks" xml:space="preserve">
     <value>Removes content from 「 」</value>
   </data>
@@ -218,6 +224,9 @@
   </data>
   <data name="PageTitle_Feed" xml:space="preserve">
     <value>Feed</value>
+  </data>
+  <data name="PageTitle_IgnoredItems" xml:space="preserve">
+    <value>Ignored Items</value>
   </data>
   <data name="PageTitle_SetDetails" xml:space="preserve">
     <value>Set "{0}" Details</value>

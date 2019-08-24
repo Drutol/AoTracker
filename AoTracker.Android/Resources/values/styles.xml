@@ -135,4 +135,15 @@
         <item name="TextColourAccentContrast">@color/DarkTextColour</item>
     </style>
 
+    <style name="AoTracker.Dark.Lime" parent="AoTracker.Dark">
+        <item name="colorPrimary">@color/LimeColour</item>
+        <item name="colorPrimaryDark">@color/LimeDarkColour</item>
+        <item name="colorAccent">@color/LimeColour</item>
+
+        <item name="AccentColour">@color/LimeColour</item>
+        <item name="AccentDarkColour">@color/LimeDarkColour</item>
+
+        <item name="TextColourAccentContrast">@color/DarkTextColour</item>
+    </style>
+
 </resources>

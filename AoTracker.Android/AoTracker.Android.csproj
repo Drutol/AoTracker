@@ -74,20 +74,21 @@
     <Compile Include="Fragments\CrawlerConfigure\ConfigureMercariCrawlerPageFragment.cs" />
     <Compile Include="Fragments\CrawlerConfigure\ConfigureSurugayaCrawlerPageFragment.cs" />
     <Compile Include="Fragments\CrawlerConfigure\ConfigureYahooCrawlerPageFragment.cs" />
-    <Compile Include="Fragments\CrawlerSetDetailsPageFragment.ui.cs">
+    <Compile Include="Fragments\CrawlerSets\CrawlerSetDetailsPageFragment.ui.cs">
       <DependentUpon>CrawlerSetDetailsPageFragment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fragments\CrawlerSetsPageFragment.cs" />
-    <Compile Include="Fragments\CrawlerSetsPageFragment.ui.cs">
+    <Compile Include="Fragments\CrawlerSets\CrawlerSetsPageFragment.cs" />
+    <Compile Include="Fragments\CrawlerSets\CrawlerSetsPageFragment.ui.cs">
       <DependentUpon>CrawlerSetsPageFragment.cs</DependentUpon>
     </Compile>
     <Compile Include="Fragments\CustomFragmentBase.cs" />
     <Compile Include="Fragments\Feed\FeedPageFragment.cs" />
-    <Compile Include="Fragments\CrawlerSetDetailsPageFragment.cs" />
+    <Compile Include="Fragments\CrawlerSets\CrawlerSetDetailsPageFragment.cs" />
     <Compile Include="Fragments\Feed\FeedPageTabFragment.cs" />
     <Compile Include="Fragments\Feed\FeedPageTabFragment.ui.cs">
       <DependentUpon>FeedPageTabFragment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fragments\IgnoredItemsPageFragment.cs" />
     <Compile Include="Fragments\Settings\SettingsAboutPageFragment.cs" />
     <Compile Include="Fragments\Settings\SettingsGeneralPageFragment.cs" />
     <Compile Include="Fragments\Settings\SettingsIndexPageFragment.cs" />
@@ -482,6 +483,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon_eye_off.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_stop_big.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\page_ignored_items.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\item_ignored.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\page_watched_items.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

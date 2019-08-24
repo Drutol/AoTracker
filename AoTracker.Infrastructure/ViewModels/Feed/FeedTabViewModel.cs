@@ -22,6 +22,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
     {
         private readonly IFeedProvider _feedProvider;
         private readonly IFeedHistoryProvider _feedHistoryProvider;
+        private readonly IIgnoredItemsManager _ignoredItemsManager;
         private readonly ISettings _settings;
         private readonly ILifetimeScope _lifetimeScope;
         private readonly AppVariables _appVariables;
@@ -63,11 +64,13 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         public FeedTabViewModel(
             IFeedProvider feedProvider,
             IFeedHistoryProvider feedHistoryProvider,
+            IIgnoredItemsManager ignoredItemsManager,
             ISettings settings,
             AppVariables appVariables)
         {
             _feedProvider = feedProvider;
             _feedHistoryProvider = feedHistoryProvider;
+            _ignoredItemsManager = ignoredItemsManager;
             _settings = settings;
             _lifetimeScope = ResourceLocator.ObtainScope();
             _appVariables = appVariables;
@@ -110,7 +113,8 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             }
 
             var viewModels = new List<FeedItemViewModel>();
-            foreach (var crawlerResultItem in e.CrawlerResult.Results)
+            foreach (var crawlerResultItem in e.CrawlerResult.Results.Where(item =>
+                !_ignoredItemsManager.IsItemIgnored(item)))
             {
                 var vmType = crawlerResultItem.Domain == CrawlerDomain.Yahoo
                     ? typeof(FeedItemViewModel<YahooItem>)

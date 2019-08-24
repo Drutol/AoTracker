@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using AoTracker.Crawlers.Interfaces;
-using AoTracker.Infrastructure.Models;
+using AoTracker.Domain.Models;
 
 namespace AoTracker.Interfaces
 {

@@ -43,6 +43,8 @@ namespace AoTracker.Android.Utils
                 return Resource.Drawable.icon_setting;
             if (page == PageIndex.SettingsAbout)
                 return Resource.Drawable.icon_info;
+            if (page == PageIndex.IgnoredItems)
+                return Resource.Drawable.icon_stop;
             return 0;
         }
     }

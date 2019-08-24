@@ -25,6 +25,7 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterType<SettingsIndexViewModel>().InstancePerLifetimeScope();
             builder.RegisterType<SettingsAboutViewModel>().InstancePerLifetimeScope();
             builder.RegisterType<SettingsGeneralViewModel>().InstancePerLifetimeScope();
+            builder.RegisterType<IgnoredItemsViewModel>().InstancePerLifetimeScope();
 
             // one shots
             builder.RegisterType<ConfigureSurugayaCrawlerViewModel>();
