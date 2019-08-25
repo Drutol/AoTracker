@@ -22,5 +22,8 @@ namespace AoTracker.Infrastructure.Infrastructure
 
         [Variable]
         public Holder<List<IgnoredItemEntry>> IgnoredItems { get; set; }
+
+        [Variable]
+        public Holder<List<WatchedItemEntry>> WatchedItems { get; set; }
     }
 }

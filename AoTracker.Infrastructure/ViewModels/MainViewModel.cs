@@ -43,6 +43,11 @@ namespace AoTracker.Infrastructure.ViewModels
             },
             new HamburgerMenuEntryViewModel
             {
+                Title = AppResources.Hamburger_Item_WatchedItems,
+                Page = PageIndex.WatchedItems,
+            },
+            new HamburgerMenuEntryViewModel
+            {
                 Title = AppResources.Hamburger_Item_IgnoredItems,
                 Page = PageIndex.IgnoredItems,
             },

@@ -23,6 +23,7 @@ using AoLibs.Utilities.Android.Listeners;
 using AoLibs.Utilities.Android.Views;
 using AoTracker.Android.Themes;
 using AoTracker.Android.Utils;
+using AoTracker.Android.ViewHolders;
 using AoTracker.Crawlers.Mandarake;
 using AoTracker.Crawlers.Sites.Lashinbang;
 using AoTracker.Crawlers.Sites.Mercari;
@@ -31,6 +32,7 @@ using AoTracker.Crawlers.Surugaya;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Models;
+using AoTracker.Infrastructure.Util;
 using AoTracker.Infrastructure.ViewModels;
 using AoTracker.Infrastructure.ViewModels.Feed;
 using AoTracker.Infrastructure.ViewModels.Item;
@@ -90,13 +92,13 @@ namespace AoTracker.Android.Fragments.Feed
                     ManualLoadButton.Hide();
                 }
             }));
-            
+
             Bindings.Add(this.SetBinding(() => ViewModel.FeedGenerationProgress).WhenSourceChanges(() =>
             {
                 SmoothSetProgress(ViewModel.FeedGenerationProgress);
             }));
 
-            RecyclerView.SetAdapter(new RecyclerViewAdapterBuilder<IFeedItem, RecyclerView.ViewHolder>()
+            RecyclerView.SetAdapter(new RecyclerViewAdapterBuilder<IMerchItem, RecyclerView.ViewHolder>()
                 .WithItems(ViewModel.Feed)
                 .WithContentStretching()
                 .WithMultipleViews()
@@ -104,7 +106,7 @@ namespace AoTracker.Android.Fragments.Feed
                 {
                     builder.WithResourceId(LayoutInflater, Resource.Layout.item_feed);
                     builder.WithDataTemplate(FeedItemDataTemplate);
-                })    
+                })
                 .WithGroup<FeedItemViewModel<YahooItem>, FeedItemYahooHolder>(builder =>
                 {
                     builder.WithResourceId(LayoutInflater, Resource.Layout.item_feed_yahoo);
@@ -123,6 +125,8 @@ namespace AoTracker.Android.Fragments.Feed
             RecyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
             ManualLoadButton.SetOnClickCommand(ViewModel.RequestManualLoadCommand);
         }
+
+        #region Loader
 
         private void SmoothSetProgress(int progress)
         {
@@ -148,7 +152,7 @@ namespace AoTracker.Android.Fragments.Feed
                 if (token.IsCancellationRequested)
                     return;
 
-                ProgressBar.Progress += (float)step;
+                ProgressBar.Progress += (float) step;
                 try
                 {
                     await Task.Delay(delay, token);
@@ -160,12 +164,14 @@ namespace AoTracker.Android.Fragments.Feed
             }
         }
 
+        #endregion
+
         private void FeedChangeGroupDataTemplate(FeedChangeGroupItem item, FeedChangeGroupHolder holder, int position)
         {
             var diff = DateTime.UtcNow - item.LastChanged;
             if (diff > TimeSpan.FromMinutes(10))
             {
-                var changedDiff = TimeDiffToString(diff);
+                var changedDiff = SharedUtil.TimeDiffToString(diff);
 
                 holder.Label.Text = string.Format(AppResources.Item_Feed_LastChanged, changedDiff);
             }
@@ -183,142 +189,42 @@ namespace AoTracker.Android.Fragments.Feed
 
         private void FeedItemDataTemplate(FeedItemViewModel item, FeedItemHolder holder, int position)
         {
-            CommonFeedItemTemplate(item, holder);
-
-            if (item.BackingModel is SurugayaItem surugayaItem)
-            {
-                holder.Title.Text = surugayaItem.Category;
-                holder.Detail.Text = surugayaItem.Name;
-                holder.Detail.Visibility = ViewStates.Visible;
-                holder.Subtitle.Text = surugayaItem.Brand;
-                holder.StoreIcon.SetImageResource(Resource.Drawable.surugaya);
-            }
-            else if (item.BackingModel is MandarakeItem mandarakeItem)
-            {
-                holder.Title.Text = mandarakeItem.Name;
-                holder.Detail.Visibility = ViewStates.Gone;
-                holder.Subtitle.Text = mandarakeItem.Shop;
-                holder.StoreIcon.SetImageResource(Resource.Drawable.mandarake);
-            }
-            else if (item.BackingModel is MercariItem mercariItem)
-            {
-                holder.Title.Text = mercariItem.Name;
-                holder.Detail.Visibility = ViewStates.Gone;
-                holder.Subtitle.Text = string.Empty;
-                holder.StoreIcon.SetImageResource(Resource.Drawable.mercari);
-            }
-            else if (item.BackingModel is LashinbangItem lashinbangItem)
-            {
-                holder.Title.Text = lashinbangItem.Name;
-                holder.Detail.Visibility = ViewStates.Gone;
-                holder.Subtitle.Text = string.Empty;
-                holder.StoreIcon.SetImageResource(Resource.Drawable.lashinbang);
-            }
-        }
-
-        private void FeedItemYahooDataTemplate(FeedItemViewModel<YahooItem> item, FeedItemYahooHolder holder, int position)
-        {
-            CommonFeedItemTemplate(item, holder);
-
-            holder.Title.Text = item.Item.Name;
-            holder.DetailBids.SetText(GetYahooItemLabel("Bids:", item.Item.BidsCount.ToString()),
-                TextView.BufferType.Spannable);
-            holder.DetailEndsIn.SetText(GetYahooItemLabel("Ends in:", TimeDiffToString((DateTime.UtcNow - item.Item.EndTime).Duration())),
-                TextView.BufferType.Spannable);
-            holder.DetailCondition.SetText(GetYahooItemLabel("Condition:", item.Item.Condition.ToString()),
-                TextView.BufferType.Spannable);
-
-            //if (item.Item.BuyoutPrice != 0)
-            //{
-            //    holder.PriceSubtitle.Text = $"{item.Item.BuyoutPrice}¥";
-            //}
-
-            if (item.Item.Tax == 0)
-            {
-                holder.DetailsTax.Visibility = ViewStates.Gone;
-            }
-            else
-            {
-                holder.DetailsTax.Visibility = ViewStates.Visible;
-                holder.DetailsTax.SetText(GetYahooItemLabel("Tax:", $"+{item.Item.Tax}%"),
-                    TextView.BufferType.Spannable);
-            }
-
-            holder.DetailShipping.Visibility = BindingConverters.BoolToVisibility(item.Item.IsShippingFree);
-        }
-
-        private ICharSequence GetYahooItemLabel(string note, string value)
-        {
-            var spannable = new SpannableString($"{note} {value}");
-
-            spannable.SetSpan(
-                new TypefaceSpan(
-                    Activity.Resources.GetString(Resource.String.font_family_light)),
-                0,
-                note.Length,
-                SpanTypes.ExclusiveInclusive);
-            spannable.SetSpan(
-                new TypefaceSpan(
-                    Activity.Resources.GetString(Resource.String.font_family_medium)),
-                note.Length,
-                note.Length + value.Length + 1,
-                SpanTypes.ExclusiveInclusive);
-
-            return spannable;
-        }
-
-        private static string TimeDiffToString(TimeSpan diff)
-        {
-            var changedDiff = string.Empty;
-            if (diff.TotalDays > 1)
-                changedDiff += $"{diff.Days}d ";
-            if (diff.TotalHours > 1)
-                changedDiff += $"{diff.Hours}h ";
-            changedDiff += $"{diff.Minutes}m";
-            return changedDiff;
-        }
-
-        private void CommonFeedItemTemplate(FeedItemViewModel item, IFeedItemHolder holder)
-        {
-            holder.ClickSurface.SetOnClickCommand(item.NavigateItemWebsiteCommand);
+            MerchItemHolderTemplate.DataTemplate(item, holder, position);
             holder.ClickSurface.SetOnLongClickListener(new OnLongClickListener(view => HandlePopupMenu(view, item)));
-            holder.Price.Text = item.BackingModel.Price + "¥";
-            holder.NewAlertSection.Visibility = BindingConverters.BoolToVisibility(item.IsNew);
-            ImageService.Instance.LoadUrl(item.BackingModel.ImageUrl).Retry(2, 1000).Into(holder.ImageLeft);
+            holder.ClickSurface.SetOnClickCommand(item.NavigateItemWebsiteCommand);
+        }
 
-            switch (item.PriceChange)
-            {
-                case PriceChange.Stale:
-                    holder.PriceTrendIcon.Visibility = ViewStates.Gone;
-                    holder.PriceSubtitle.Visibility = ViewStates.Gone;
-                    break;
-                case PriceChange.Decrease:
-                    holder.PriceSubtitle.Text = $"({item.PriceDifference:N0}¥)";
-                    holder.PriceTrendIcon.Visibility = ViewStates.Visible;
-                    holder.PriceSubtitle.Visibility = ViewStates.Visible;
-                    holder.PriceTrendIcon.SetImageResource(Resource.Drawable.icon_chevron_triple_down);
-                    holder.PriceTrendIcon.ImageTintList = ColorStateList.ValueOf(ThemeManager.LimeColour);
-                    break;
-                case PriceChange.Increase:
-                    holder.PriceSubtitle.Text = $"(+{item.PriceDifference:N0}¥)";
-                    holder.PriceTrendIcon.Visibility = ViewStates.Visible;
-                    holder.PriceSubtitle.Visibility = ViewStates.Visible;
-                    holder.PriceTrendIcon.SetImageResource(Resource.Drawable.icon_chevron_triple_up);
-                    holder.PriceTrendIcon.ImageTintList = ColorStateList.ValueOf(ThemeManager.RedColour);
-                    break;
-            }
+        private void FeedItemYahooDataTemplate(FeedItemViewModel<YahooItem> item, FeedItemYahooHolder holder,
+            int position)
+        {
+            MerchItemYahooHolderTemplate.DataTemplate(item, holder, position);
+            holder.ClickSurface.SetOnLongClickListener(new OnLongClickListener(view => HandlePopupMenu(view, item)));
+            holder.ClickSurface.SetOnClickCommand(item.NavigateItemWebsiteCommand);
         }
 
         private void HandlePopupMenu(View view, FeedItemViewModel viewModel)
         {
             var menuBuilder = new MenuBuilder(Activity);
             menuBuilder.Add(0, 0, 0, AppResources.Item_Feed_AddIgnore).SetIcon(Resource.Drawable.icon_stop);
-            
+
+            if (!viewModel.IsWatched)
+                menuBuilder.Add(0, 1, 0, AppResources.Item_Feed_AddWatched).SetIcon(Resource.Drawable.icon_eye);
+            else
+                menuBuilder.Add(0, 2, 0, AppResources.Item_Feed_RemoveWatched).SetIcon(Resource.Drawable.icon_eye_off);
+
             menuBuilder.SetCallback(new MenuCallback((sender, menuItem) =>
             {
                 if (menuItem.ItemId == 0)
                 {
                     viewModel.IgnoreItemCommand.Execute(null);
+                }
+                else if (menuItem.ItemId == 1)
+                {
+                    viewModel.WatchItemCommand.Execute(null);
+                }
+                else if(menuItem.ItemId == 2)
+                {
+                    viewModel.UnwatchItemCommand.Execute(null);
                 }
             }));
             var menuPopupHelper = new MenuPopupHelper(Context, menuBuilder);

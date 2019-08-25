@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AoTracker.Crawlers.Interfaces;
 using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Interfaces;
 
 namespace AoTracker.Infrastructure.Models
 {
-    public class FeedChangeGroupItem : IFeedItem
+    public class FeedChangeGroupItem : IMerchItem
     {
         public FeedChangeGroupItem(DateTime lastChanged, IEnumerable<FeedItemViewModel> group)
         {
@@ -17,5 +18,7 @@ namespace AoTracker.Infrastructure.Models
 
         public DateTime LastChanged { get; }
         public HashSet<string> GroupedItems { get; }
+
+        public ICrawlerResultItem Item { get; }
     }
 }

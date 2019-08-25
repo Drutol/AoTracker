@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AoTracker.Crawlers.Abstract;
+using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Infrastructure;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Utils;
@@ -83,7 +84,7 @@ namespace AoTracker.Crawlers.Surugaya
             item.Name = WebUtility.HtmlDecode(title.InnerText.Trim());
             item.Category = WebUtility.HtmlDecode(categorySpan.InnerText.Trim());
             if (data.Contains("申し訳ございません。品切れ中です"))
-                item.Price = -1;
+                item.Price = CrawlerConstants.InvalidPrice;
             else
             {
                 item.Price = float.Parse(doc.FirstOfDescendantsWithClass("span", "text-red text-bold mgnL10").InnerText

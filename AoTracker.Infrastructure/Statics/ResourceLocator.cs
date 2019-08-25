@@ -36,6 +36,10 @@ namespace AoTracker.Infrastructure.Statics
                 .As<IIgnoredItemsManager>()
                 .As<IInitializable>()
                 .SingleInstance();
+            builder.RegisterType<WatchedItemsManager>()
+                .As<IWatchedItemsManager>()
+                .As<IInitializable>()
+                .SingleInstance();
 
             builder.RegisterType<DomainLinkHandlerManager>()
                 .As<IDomainLinkHandlerManager>()

@@ -92,6 +92,7 @@
     <Compile Include="Fragments\Settings\SettingsAboutPageFragment.cs" />
     <Compile Include="Fragments\Settings\SettingsGeneralPageFragment.cs" />
     <Compile Include="Fragments\Settings\SettingsIndexPageFragment.cs" />
+    <Compile Include="Fragments\WatchedItemsPageFragment.cs" />
     <Compile Include="PagerAdapters\FeedPagerAdapter.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,7 +104,11 @@
     <Compile Include="Utils\LinkerIncludes.cs" />
     <Compile Include="Utils\MenuCallback.cs" />
     <Compile Include="Utils\RecyclerViewAdapterBuilder.cs" />
+    <Compile Include="Utils\RecyclerViewSwipeDecorator.cs" />
     <Compile Include="Utils\Util.cs" />
+    <Compile Include="ViewHolderTemplates\IMerchItemHolder.cs" />
+    <Compile Include="ViewHolderTemplates\MerchItemsHolder.cs" />
+    <Compile Include="ViewHolderTemplates\MerchItemYahooHolder.cs" />
     <Compile Include="Views\ClickInterceptingContainer.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -496,6 +501,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\page_watched_items.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
     Other similar extension points exist, see Microsoft.Common.targets.

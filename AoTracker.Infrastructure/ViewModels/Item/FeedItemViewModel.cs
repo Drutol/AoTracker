@@ -6,29 +6,35 @@ using AoLibs.Adapters.Core.Interfaces;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
+using AoTracker.Infrastructure.Models;
 using AoTracker.Infrastructure.ViewModels.Feed;
 using AoTracker.Interfaces;
 using GalaSoft.MvvmLight.Command;
 
 namespace AoTracker.Infrastructure.ViewModels.Item
 {
-    public class FeedItemViewModel : ItemViewModelBase<ICrawlerResultItem>, IFeedItem
+    public class FeedItemViewModel : ItemViewModelBase<ICrawlerResultItem>, IMerchItem
     {
         private readonly IDomainLinkHandlerManager _domainLinkHandlerManager;
         private readonly IUriLauncherAdapter _launcherAdapter;
         private readonly IIgnoredItemsManager _ignoredItemsManager;
+        private readonly IWatchedItemsManager _watchedItemsManager;
         private readonly FeedTabViewModel _parent;
+
+        public ICrawlerResultItem Item => BackingModel;
 
         public FeedItemViewModel(
             IDomainLinkHandlerManager domainLinkHandlerManager,
             IUriLauncherAdapter launcherAdapter,
             IIgnoredItemsManager ignoredItemsManager,
+            IWatchedItemsManager watchedItemsManager,
             ICrawlerResultItem item,
             FeedTabViewModel parent) : base(item)
         {
             _domainLinkHandlerManager = domainLinkHandlerManager;
             _launcherAdapter = launcherAdapter;
             _ignoredItemsManager = ignoredItemsManager;
+            _watchedItemsManager = watchedItemsManager;
             _parent = parent;
         }
 
@@ -47,6 +53,18 @@ namespace AoTracker.Infrastructure.ViewModels.Item
         {
             _ignoredItemsManager.AddIgnoredItem(BackingModel);
             _parent.RemoveItem(this);
+        });
+
+        public bool IsWatched => _watchedItemsManager.IsWatched(BackingModel);
+
+        public RelayCommand WatchItemCommand => new RelayCommand(() =>
+        {
+            _watchedItemsManager.AddWatchedEntry(BackingModel);
+        });
+
+        public RelayCommand UnwatchItemCommand => new RelayCommand(() =>
+        {
+            _watchedItemsManager.RemoveWatchedEntry(BackingModel);
         });
 
         public void WithHistory(List<HistoryFeedEntry> feedHistory, CrawlerSet setOfOrigin)
@@ -99,6 +117,8 @@ namespace AoTracker.Infrastructure.ViewModels.Item
                 PreviousPrice = BackingModel.Price
             };
         }
+
+
     }
 
     public class FeedItemViewModel<T> : FeedItemViewModel where T : ICrawlerResultItem
@@ -106,9 +126,12 @@ namespace AoTracker.Infrastructure.ViewModels.Item
         public T Item { get; }
 
 
-        public FeedItemViewModel(IDomainLinkHandlerManager domainLinkHandlerManager, IUriLauncherAdapter launcherAdapter, IIgnoredItemsManager ignoredItemsManager, ICrawlerResultItem item, FeedTabViewModel parent) : base(domainLinkHandlerManager, launcherAdapter, ignoredItemsManager, item, parent)
+        public FeedItemViewModel(IDomainLinkHandlerManager domainLinkHandlerManager,
+            IUriLauncherAdapter launcherAdapter, IIgnoredItemsManager ignoredItemsManager,
+            IWatchedItemsManager watchedItemsManager, ICrawlerResultItem item, FeedTabViewModel parent) : base(
+            domainLinkHandlerManager, launcherAdapter, ignoredItemsManager, watchedItemsManager, item, parent)
         {
-            Item = (T)item;
+            Item = (T) item;
         }
     }
 }

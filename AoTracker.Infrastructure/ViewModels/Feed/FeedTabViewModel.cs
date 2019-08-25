@@ -57,8 +57,8 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
                 AwaitingManualLoad = true;
         }
 
-        public SmartObservableCollection<IFeedItem> Feed { get; } =
-            new SmartObservableCollection<IFeedItem>();
+        public SmartObservableCollection<IMerchItem> Feed { get; } =
+            new SmartObservableCollection<IMerchItem>();
 
 
         public FeedTabViewModel(
@@ -81,7 +81,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         private async void FeedProviderOnFinished(object sender, EventArgs e)
         {
             IsLoading = false;
-            var items = new List<IFeedItem>();
+            var items = new List<IMerchItem>();
             var groups = _aggregatedFeed
                 .GroupBy(model => model.LastChanged, new MinuteDateTimeEqualityComparer())
                 .OrderByDescending(g => g.Key);

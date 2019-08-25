@@ -18,6 +18,7 @@ namespace AoTracker.Domain.Enums
         SettingsIndex,
         SettingsGeneral,
         SettingsAbout,
-        IgnoredItems
+        IgnoredItems,
+        WatchedItems
     }
 }

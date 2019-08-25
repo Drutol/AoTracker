@@ -232,6 +232,15 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Watched Items.
+        /// </summary>
+        public static string Hamburger_Item_WatchedItems {
+            get {
+                return ResourceManager.GetString("Hamburger_Item_WatchedItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Price increase:.
         /// </summary>
         public static string Item_CrawlerCell_PriceIncrease {
@@ -444,6 +453,15 @@ namespace AoTracker.Resources {
         public static string PageTitle_SettingsIndex {
             get {
                 return ResourceManager.GetString("PageTitle_SettingsIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Watched Items.
+        /// </summary>
+        public static string PageTitle_WatchedItems {
+            get {
+                return ResourceManager.GetString("PageTitle_WatchedItems", resourceCulture);
             }
         }
         

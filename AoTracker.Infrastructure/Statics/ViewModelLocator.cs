@@ -26,6 +26,7 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterType<SettingsAboutViewModel>().InstancePerLifetimeScope();
             builder.RegisterType<SettingsGeneralViewModel>().InstancePerLifetimeScope();
             builder.RegisterType<IgnoredItemsViewModel>().InstancePerLifetimeScope();
+            builder.RegisterType<WatchedItemsViewModel>().InstancePerLifetimeScope();
 
             // one shots
             builder.RegisterType<ConfigureSurugayaCrawlerViewModel>();
@@ -39,8 +40,10 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterType<FeedItemViewModel>();
             builder.RegisterType<FeedTabViewModel>();
             builder.RegisterType<CrawlerSetViewModel>();
+            builder.RegisterType<WatchedItemViewModel>();
             builder.RegisterGeneric(typeof(CrawlerDescriptorViewModel<>));
             builder.RegisterGeneric(typeof(FeedItemViewModel<>));
+            builder.RegisterGeneric(typeof(WatchedItemViewModel<>));
         }
     }
 }

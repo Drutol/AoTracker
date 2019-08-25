@@ -13,22 +13,13 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using AoLibs.Utilities.Android.Views;
+using AoTracker.Android.ViewHolders;
 using Com.App.Adprogressbarlib;
 
 namespace AoTracker.Android.Fragments.Feed
 {
     public partial class FeedPageTabFragment
     {
-        interface IFeedItemHolder
-        {
-            ImageView PriceTrendIcon { get; }
-            ImageView ImageLeft { get; }
-            FloatingActionButton NewAlertSection { get; }
-            TextView Price { get; }
-            TextView PriceSubtitle { get; }
-            LinearLayout ClickSurface { get; }
-        }
-
         #region Views
 
         private RecyclerView _recyclerView;
@@ -51,7 +42,7 @@ namespace AoTracker.Android.Fragments.Feed
 
         #endregion
 
-        class FeedItemHolder : RecyclerView.ViewHolder, IFeedItemHolder
+        class FeedItemHolder : RecyclerView.ViewHolder, IMerchItemHolderGeneral
         {
             private readonly View _view;
 
@@ -70,6 +61,7 @@ namespace AoTracker.Android.Fragments.Feed
             private TextView _price;
             private TextView _priceSubtitle;
             private LinearLayout _clickSurface;
+            private LinearLayout _priceSection;
 
             public ImageView ImageLeft => _imageLeft ?? (_imageLeft = _view.FindViewById<ImageView>(Resource.Id.ImageLeft));
             public FloatingActionButton NewAlertSection => _newAlertSection ?? (_newAlertSection = _view.FindViewById<FloatingActionButton>(Resource.Id.NewAlertSection));
@@ -82,9 +74,10 @@ namespace AoTracker.Android.Fragments.Feed
             public TextView Price => _price ?? (_price = _view.FindViewById<TextView>(Resource.Id.Price));
             public TextView PriceSubtitle => _priceSubtitle ?? (_priceSubtitle = _view.FindViewById<TextView>(Resource.Id.PriceSubtitle));
             public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
+            public LinearLayout PriceSection => _priceSection ?? (_priceSection = _view.FindViewById<LinearLayout>(Resource.Id.PriceSection));
         }
 
-        class FeedItemYahooHolder : RecyclerView.ViewHolder, IFeedItemHolder
+        class FeedItemYahooHolder : RecyclerView.ViewHolder, IMerchItemHolderYahoo
         {
             private readonly View _view;
 
@@ -106,6 +99,7 @@ namespace AoTracker.Android.Fragments.Feed
             private TextView _price;
             private TextView _priceSubtitle;
             private LinearLayout _clickSurface;
+            private LinearLayout _priceSection;
 
             public ImageView ImageLeft => _imageLeft ?? (_imageLeft = _view.FindViewById<ImageView>(Resource.Id.ImageLeft));
             public FloatingActionButton NewAlertSection => _newAlertSection ?? (_newAlertSection = _view.FindViewById<FloatingActionButton>(Resource.Id.NewAlertSection));
@@ -121,6 +115,7 @@ namespace AoTracker.Android.Fragments.Feed
             public TextView Price => _price ?? (_price = _view.FindViewById<TextView>(Resource.Id.Price));
             public TextView PriceSubtitle => _priceSubtitle ?? (_priceSubtitle = _view.FindViewById<TextView>(Resource.Id.PriceSubtitle));
             public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
+            public LinearLayout PriceSection => _priceSection ?? (_priceSection = _view.FindViewById<LinearLayout>(Resource.Id.PriceSection));
         }
 
         class FeedChangeGroupHolder : RecyclerView.ViewHolder
@@ -145,11 +140,6 @@ namespace AoTracker.Android.Fragments.Feed
             public ScrollListener(FeedPageTabFragment parent)
             {
                 _parent = parent;
-            }
-
-            public override void OnScrollStateChanged(RecyclerView recyclerView, int newState)
-            {
-                base.OnScrollStateChanged(recyclerView, newState);
             }
 
             public override void OnScrolled(RecyclerView recyclerView, int dx, int dy)

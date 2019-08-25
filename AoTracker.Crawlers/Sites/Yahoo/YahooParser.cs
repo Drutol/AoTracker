@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using AoTracker.Crawlers.Abstract;
+using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Infrastructure;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Utils;
@@ -76,7 +77,7 @@ namespace AoTracker.Crawlers.Sites.Yahoo
             item.ImageUrl = image.Attributes["src"].Value;
             item.Name = WebUtility.HtmlDecode(image.Attributes["alt"].Value);
             if (data.Contains("Sorry: Auction of item URL or Auction ID that you filled in has been closed."))
-                item.Price = -1;
+                item.Price = CrawlerConstants.InvalidPrice;
             else
             {
                 var container = doc.FirstOfDescendantsWithClass("div", "dtl").WhereOfDescendantsWithClass("span", "num")

@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using AoTracker.Crawlers.Abstract;
+using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Infrastructure;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Mandarake;
@@ -86,7 +87,7 @@ namespace AoTracker.Crawlers.Sites.Mercari
             item.ImageUrl = image.Attributes["data-src"].Value;
             if (data.Contains("売り切れました"))
             {
-                item.Price = -1;
+                item.Price = CrawlerConstants.InvalidPrice;
             }
             else
             {

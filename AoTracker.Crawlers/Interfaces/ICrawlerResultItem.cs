@@ -6,10 +6,10 @@ namespace AoTracker.Crawlers.Interfaces
     {
         CrawlerDomain Domain { get; }
 
-        string Id { get; }
-        string InternalId { get; }
-        string Name { get; }
-        string ImageUrl { get; }
-        float Price { get; }
+        string Id { get; set; }
+        string InternalId { get; set; }
+        string Name { get; set; }
+        string ImageUrl { get; set; }
+        float Price { get; set; }
     }
 }

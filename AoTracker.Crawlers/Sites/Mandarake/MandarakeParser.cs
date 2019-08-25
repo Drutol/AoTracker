@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AoTracker.Crawlers.Abstract;
+using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Infrastructure;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Surugaya;
@@ -74,7 +75,7 @@ namespace AoTracker.Crawlers.Mandarake
             item.Name = WebUtility.HtmlDecode(doc.FirstOfDescendantsWithClass("div", "subject").InnerText.Trim());
 
             if (data.Contains("売り切れ"))
-                item.Price = -1;
+                item.Price = CrawlerConstants.InvalidPrice;
             else
                 item.Price = float.Parse(doc.FirstOfDescendantsWithClass("p", "__price").InnerText.Split('円').First()
                     .Replace(",", ""));
