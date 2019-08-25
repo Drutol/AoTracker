@@ -83,7 +83,7 @@ namespace AoTracker.Crawlers.Sites.Mercari
 
             item.Id = id;
             item.InternalId = $"mercari_{item.Id}";
-            item.Name = WebUtility.HtmlDecode(image.Attributes["aly"].Value.Trim());
+            item.Name = WebUtility.HtmlDecode(image.Attributes["alt"].Value.Trim());
             item.ImageUrl = image.Attributes["data-src"].Value;
             if (data.Contains("売り切れました"))
             {
@@ -91,7 +91,7 @@ namespace AoTracker.Crawlers.Sites.Mercari
             }
             else
             {
-                item.Price = float.Parse(doc.FirstOfDescendantsWithClass("div", "item-price bold")
+                item.Price = float.Parse(doc.FirstOfDescendantsWithClass("span", "item-price bold")
                     .InnerText.Replace("¥", "").Replace(",", "").Trim());
             }
 

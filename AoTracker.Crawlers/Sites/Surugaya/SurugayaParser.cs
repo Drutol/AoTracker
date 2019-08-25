@@ -75,13 +75,13 @@ namespace AoTracker.Crawlers.Surugaya
 
             var item = new SurugayaItem();
 
-            var titleSection = doc.FirstOfDescendantsWithClass("h2", "item_title");
+            var titleSection = doc.FirstOfDescendantsWithId("h2", "item_title");
             var categorySpan = titleSection.Descendants("span").First();
-            var title = titleSection.RemoveChild(categorySpan);
+            titleSection.RemoveChild(categorySpan);
 
             item.Id = id;
             item.InternalId = $"surugaya_{item.Id}";
-            item.Name = WebUtility.HtmlDecode(title.InnerText.Trim());
+            item.Name = WebUtility.HtmlDecode(titleSection.InnerText.Trim());
             item.Category = WebUtility.HtmlDecode(categorySpan.InnerText.Trim());
             if (data.Contains("申し訳ございません。品切れ中です"))
                 item.Price = CrawlerConstants.InvalidPrice;
@@ -91,8 +91,15 @@ namespace AoTracker.Crawlers.Surugaya
                     .Replace(",", "").Replace("円 (税込)", "").Trim());
             }
 
-            item.Brand = WebUtility.HtmlDecode(doc.FirstOfDescendantsWithClass("td", "t_contents").InnerText.Trim());
-            item.ImageUrl = doc.FirstOfDescendantsWithClass("a", "imagedetail").Attributes["href"].Value;
+            item.Brand = WebUtility.HtmlDecode(
+                doc
+                    .WhereOfDescendantsWithClass("td", "t_contents")
+                    .FirstOrDefault(node => node.Descendants("a").Any(htmlNode =>
+                        htmlNode.Attributes["href"].Value.Contains("category=&search_word=&restrict[]=brand")))?
+                    .InnerText?
+                    .Trim());
+            var image = doc.FirstOfDescendantsWithClass("a", "cloud-zoom");
+            item.ImageUrl = image.Attributes["href"].Value;
 
             output.Result = item;
 

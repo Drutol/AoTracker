@@ -80,7 +80,7 @@ namespace AoTracker.Crawlers.Sites.Yahoo
                 item.Price = CrawlerConstants.InvalidPrice;
             else
             {
-                var container = doc.FirstOfDescendantsWithClass("div", "dtl").WhereOfDescendantsWithClass("span", "num")
+                var container = doc.FirstOfDescendantsWithId("div", "dtl").WhereOfDescendantsWithClass("span", "num")
                     .ToList();
                 item.Price = float.Parse(container[0].InnerText.Replace(",", "").Trim());
                 if (container.Count == 2)
@@ -89,7 +89,7 @@ namespace AoTracker.Crawlers.Sites.Yahoo
                 }
             }
 
-            var detailsGrid = doc.FirstOfDescendantsWithClass("div", "wr");
+            var detailsGrid = doc.WhereOfDescendantsWithClass("div", "wr").First(node => node.InnerHtml.StartsWith("<table><tbody><tr><th"));
             var datesRow = detailsGrid.Descendants("tr").First(node => node.InnerText.Contains("End time"));
             item.EndTime =
                 new DateTimeOffset(
@@ -97,7 +97,7 @@ namespace AoTracker.Crawlers.Sites.Yahoo
                             .Replace("(Japan Time)", "").Trim())), TimeSpan.FromHours(9))
                     .ToUniversalTime().UtcDateTime;
 
-            var conditionRow = detailsGrid.Descendants("tr").First(node => node.InnerText.Contains("Condition"));
+            var conditionRow = detailsGrid.Descendants("tr").First(node => node.InnerText.Contains("condition"));
             var condition = conditionRow.Descendants("td").First().InnerText.Trim();
 
             if (condition == "New")
@@ -106,7 +106,7 @@ namespace AoTracker.Crawlers.Sites.Yahoo
                 item.Condition = YahooItem.ItemCondition.Used;
 
             var bidsRow = detailsGrid.Descendants("tr").First(node => node.InnerText.Contains("Current bids"));
-            var bids = conditionRow.Descendants("td").First().InnerText.Trim();
+            var bids = bidsRow.Descendants("td").Last().InnerText.Trim();
 
             item.BidsCount = int.Parse(bids);
 

@@ -45,12 +45,9 @@
                     android:src="@drawable/icon_new"
                     app:fabSize="mini" />
             </FrameLayout>
-
-
         </FrameLayout>
 
-
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -58,129 +55,147 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/DetailSectionContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?ForegroundShallowColour"
-                android:elevation="2dp"
-                android:gravity="center"
-                android:padding="4dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/Title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@string/font_family_medium"
-                    android:textColor="?TextColour"
-                    android:textSize="@dimen/FontSizeMedium"
-                    tools:text="Some Item Header" />
-
-                <ImageView
-                    android:id="@+id/StoreIcon"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    tools:src="@drawable/surugaya" />
-
-                <ImageView
-                    android:layout_width="14dp"
-                    android:layout_height="wrap_content"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/icon_more_vertical" />
-            </LinearLayout>
-
-            <FrameLayout
-                android:id="@+id/DetailSection"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="4dp"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/Detail"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:paddingTop="4dp"
-                    android:textColor="?TextColour"
-                    tools:text="Some item description\n\n\n" />
+                    android:background="?ForegroundShallowColour"
+                    android:elevation="2dp"
+                    android:gravity="center"
+                    android:padding="4dp">
 
-            </FrameLayout>
+                    <TextView
+                        android:id="@+id/Title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@string/font_family_medium"
+                        android:textColor="?TextColour"
+                        android:textSize="@dimen/FontSizeMedium"
+                        tools:text="Some Item Header" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:baselineAligned="true">
+                    <ImageView
+                        android:id="@+id/StoreIcon"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        tools:src="@drawable/surugaya" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/icon_more_vertical" />
+                </LinearLayout>
 
                 <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:id="@+id/DetailSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="4dp"
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/Subtitle"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/Detail"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:fontFamily="@string/font_family_light"
-                        android:textColor="?AccentColour"
-                        android:textSize="@dimen/FontSizeSemiNormal"
-                        tools:text="Bids: 12 Ends in: 6h 25m" />
+                        android:layout_marginTop="2dp"
+                        android:paddingTop="4dp"
+                        android:textColor="?TextColour"
+                        tools:text="Some item description\n\n\n" />
+
                 </FrameLayout>
 
                 <LinearLayout
-                    android:id="@+id/PriceSection"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/BottomDetailSection"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_margin="4dp"
-                    android:background="?ForegroundShallowColour"
-                    android:elevation="4dp"
-                    android:gravity="center"
-                    android:outlineAmbientShadowColor="?AccentColour"
-                    android:outlineSpotShadowColor="?AccentColour"
-                    android:padding="4dp">
+                    android:layout_marginStart="4dp"
+                    android:baselineAligned="true">
 
-                    <ImageView
-                        android:id="@+id/PriceTrendIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/icon_chevron_triple_up"
-                        tools:tint="@color/RedColour" />
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/Subtitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@string/font_family_light"
+                            android:textColor="?AccentColour"
+                            android:textSize="@dimen/FontSizeSemiNormal"
+                            tools:text="Bids: 12 Ends in: 6h 25m" />
+                    </FrameLayout>
 
                     <LinearLayout
+                        android:id="@+id/PriceSection"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_margin="4dp"
+                        android:background="?ForegroundShallowColour"
+                        android:elevation="4dp"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:outlineAmbientShadowColor="?AccentColour"
+                        android:outlineSpotShadowColor="?AccentColour"
+                        android:padding="4dp">
 
-                        <TextView
-                            android:id="@+id/Price"
+                        <ImageView
+                            android:id="@+id/PriceTrendIcon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginEnd="4dp"
-                            android:fontFamily="@string/font_family_medium"
-                            android:textColor="?TextColour"
-                            android:textSize="@dimen/FontSizeMedium"
-                            tools:text="1111¥" />
+                            android:src="@drawable/icon_chevron_triple_up"
+                            tools:tint="@color/RedColour" />
 
-                        <TextView
-                            android:id="@+id/PriceSubtitle"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@string/font_family_light"
-                            android:textSize="@dimen/FontSizeSemiNormal"
-                            android:textStyle="italic"
-                            tools:text="(+100¥)"
-                            tools:textColor="@color/RedColour" />
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/Price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                android:fontFamily="@string/font_family_medium"
+                                android:textColor="?TextColour"
+                                android:textSize="@dimen/FontSizeMedium"
+                                tools:text="1111¥" />
+
+                            <TextView
+                                android:id="@+id/PriceSubtitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@string/font_family_light"
+                                android:textSize="@dimen/FontSizeSemiNormal"
+                                android:textStyle="italic"
+                                tools:text="(+100¥)"
+                                tools:textColor="@color/RedColour" />
+                        </LinearLayout>
+
                     </LinearLayout>
 
                 </LinearLayout>
-
             </LinearLayout>
-        </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/LoadingSpinner"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:indeterminateOnly="true"
+                android:visibility="gone" />
+
+        </FrameLayout>
     </LinearLayout>
 
     <View

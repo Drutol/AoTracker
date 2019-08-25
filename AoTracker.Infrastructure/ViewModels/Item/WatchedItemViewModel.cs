@@ -35,6 +35,7 @@ namespace AoTracker.Infrastructure.ViewModels.Item
             if (e == BackingModel)
             {
                 Price = e.Data.Price;
+                IsLoading = false;
             }
         }
 

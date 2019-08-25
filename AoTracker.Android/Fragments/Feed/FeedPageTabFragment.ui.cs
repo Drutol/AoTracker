@@ -92,7 +92,7 @@ namespace AoTracker.Android.Fragments.Feed
             private TextView _detailBids;
             private TextView _detailEndsIn;
             private TextView _detailCondition;
-            private LinearLayout _detailSection;
+            private FrameLayout _detailSection;
             private TextView _detailShipping;
             private TextView _detailsTax;
             private ImageView _priceTrendIcon;
@@ -108,7 +108,7 @@ namespace AoTracker.Android.Fragments.Feed
             public TextView DetailBids => _detailBids ?? (_detailBids = _view.FindViewById<TextView>(Resource.Id.DetailBids));
             public TextView DetailEndsIn => _detailEndsIn ?? (_detailEndsIn = _view.FindViewById<TextView>(Resource.Id.DetailEndsIn));
             public TextView DetailCondition => _detailCondition ?? (_detailCondition = _view.FindViewById<TextView>(Resource.Id.DetailCondition));
-            public LinearLayout DetailSection => _detailSection ?? (_detailSection = _view.FindViewById<LinearLayout>(Resource.Id.DetailSection));
+            public FrameLayout DetailSection => _detailSection ?? (_detailSection = _view.FindViewById<FrameLayout>(Resource.Id.DetailSection));
             public TextView DetailShipping => _detailShipping ?? (_detailShipping = _view.FindViewById<TextView>(Resource.Id.DetailShipping));
             public TextView DetailsTax => _detailsTax ?? (_detailsTax = _view.FindViewById<TextView>(Resource.Id.DetailsTax));
             public ImageView PriceTrendIcon => _priceTrendIcon ?? (_priceTrendIcon = _view.FindViewById<ImageView>(Resource.Id.PriceTrendIcon));

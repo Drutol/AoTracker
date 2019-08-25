@@ -42,8 +42,11 @@ namespace AoTracker.Infrastructure.ViewModels
                 var vmType = entry.Domain == CrawlerDomain.Yahoo
                     ? typeof(WatchedItemViewModel<YahooItem>)
                     : typeof(WatchedItemViewModel);
-                return _lifetimeScope.TypedResolve<WatchedItemViewModel>(vmType, entry);
+                var vm = _lifetimeScope.TypedResolve<WatchedItemViewModel>(vmType, entry);
+                vm.IsLoading = true;
+                return vm;
             }));
+            _watchedItemsManager.StartAggregatingWatchedItemsData();
         }
     }
 }

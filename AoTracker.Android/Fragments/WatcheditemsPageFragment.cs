@@ -14,6 +14,7 @@ using Android.Widget;
 using AoLibs.Adapters.Android.Recycler;
 using AoLibs.Navigation.Android.Navigation.Attributes;
 using AoLibs.Utilities.Android;
+using AoTracker.Android.Themes;
 using AoTracker.Android.Utils;
 using AoTracker.Android.ViewHolders;
 using AoTracker.Crawlers.Enums;
@@ -23,6 +24,7 @@ using AoTracker.Infrastructure.Models;
 using AoTracker.Infrastructure.ViewModels;
 using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Interfaces;
+using AoTracker.Resources;
 using GalaSoft.MvvmLight.Helpers;
 
 namespace AoTracker.Android.Fragments
@@ -90,12 +92,21 @@ namespace AoTracker.Android.Fragments
 
             protected override void SetBindings()
             {
-                Bindings.Add(this.SetBinding(() => ViewModel.Price).WhenSourceChanges(() =>
+                Bindings.Add(this.SetBinding(() => ViewModel.IsLoading).WhenSourceChanges(() =>
                 {
-                    PriceSection.Visibility = 
-                        Math.Abs(ViewModel.Price - CrawlerConstants.InvalidPrice) < 0.0001 
-                        ? ViewStates.Gone 
-                        : ViewStates.Visible;
+                    LoadingSpinner.Visibility = BindingConverters.BoolToVisibility(ViewModel.IsLoading);
+                    DetailSection.Visibility = BottomDetailSection.Visibility =
+                        BindingConverters.BoolToVisibilityInverted(ViewModel.IsLoading);
+
+                    if (!ViewModel.IsLoading)
+                    {
+                        MerchItemHolderTemplate.DataTemplate(ViewModel, this, AdapterPosition);
+                        if (Math.Abs(ViewModel.Price - CrawlerConstants.InvalidPrice) < 0.0001)
+                        {
+                            Price.Text = AppResources.Item_WatchedItem_SoldOut;
+                            Price.SetTextColor(ThemeManager.RedColour);
+                        }
+                    }
                 }));
             }
 
@@ -110,6 +121,9 @@ namespace AoTracker.Android.Fragments
             private TextView _price;
             private TextView _priceSubtitle;
             private LinearLayout _priceSection;
+            private LinearLayout _bottomDetailSection;
+            private LinearLayout _detailSectionContainer;
+            private ProgressBar _loadingSpinner;
             private LinearLayout _clickSurface;
 
             public ImageView ImageLeft => _imageLeft ?? (_imageLeft = _view.FindViewById<ImageView>(Resource.Id.ImageLeft));
@@ -123,6 +137,9 @@ namespace AoTracker.Android.Fragments
             public TextView Price => _price ?? (_price = _view.FindViewById<TextView>(Resource.Id.Price));
             public TextView PriceSubtitle => _priceSubtitle ?? (_priceSubtitle = _view.FindViewById<TextView>(Resource.Id.PriceSubtitle));
             public LinearLayout PriceSection => _priceSection ?? (_priceSection = _view.FindViewById<LinearLayout>(Resource.Id.PriceSection));
+            public LinearLayout BottomDetailSection => _bottomDetailSection ?? (_bottomDetailSection = _view.FindViewById<LinearLayout>(Resource.Id.BottomDetailSection));
+            public LinearLayout DetailSectionContainer => _detailSectionContainer ?? (_detailSectionContainer = _view.FindViewById<LinearLayout>(Resource.Id.DetailSectionContainer));
+            public ProgressBar LoadingSpinner => _loadingSpinner ?? (_loadingSpinner = _view.FindViewById<ProgressBar>(Resource.Id.LoadingSpinner));
             public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
         }
 
@@ -139,12 +156,20 @@ namespace AoTracker.Android.Fragments
 
         protected override void SetBindings()
         {
-            Bindings.Add(this.SetBinding(() => ViewModel.Price).WhenSourceChanges(() =>
+            Bindings.Add(this.SetBinding(() => ViewModel.IsLoading).WhenSourceChanges(() =>
             {
-                PriceSection.Visibility =
-                    Math.Abs(ViewModel.Price - CrawlerConstants.InvalidPrice) < 0.0001
-                        ? ViewStates.Gone
-                        : ViewStates.Visible;
+                LoadingSpinner.Visibility = BindingConverters.BoolToVisibility(ViewModel.IsLoading);
+                DetailSection.Visibility = BindingConverters.BoolToVisibilityInverted(ViewModel.IsLoading);
+
+                if (!ViewModel.IsLoading)
+                {
+                    MerchItemYahooHolderTemplate.DataTemplate(ViewModel, this, AdapterPosition);
+                    if (Math.Abs(ViewModel.Price - CrawlerConstants.InvalidPrice) < 0.0001)
+                    {
+                        Price.Text = AppResources.Item_WatchedItem_AuctionEnded;
+                        Price.SetTextColor(ThemeManager.RedColour);
+                    }
+                }
             }));
         }
 
@@ -155,14 +180,15 @@ namespace AoTracker.Android.Fragments
         private TextView _detailBids;
         private TextView _detailEndsIn;
         private TextView _detailCondition;
-        private LinearLayout _detailSection;
         private TextView _detailShipping;
         private TextView _detailsTax;
         private ImageView _priceTrendIcon;
         private TextView _price;
         private TextView _priceSubtitle;
-        private LinearLayout _clickSurface;
         private LinearLayout _priceSection;
+        private FrameLayout _detailSection;
+        private ProgressBar _loadingSpinner;
+        private LinearLayout _clickSurface;
 
         public ImageView ImageLeft => _imageLeft ?? (_imageLeft = _view.FindViewById<ImageView>(Resource.Id.ImageLeft));
         public FloatingActionButton NewAlertSection => _newAlertSection ?? (_newAlertSection = _view.FindViewById<FloatingActionButton>(Resource.Id.NewAlertSection));
@@ -171,13 +197,14 @@ namespace AoTracker.Android.Fragments
         public TextView DetailBids => _detailBids ?? (_detailBids = _view.FindViewById<TextView>(Resource.Id.DetailBids));
         public TextView DetailEndsIn => _detailEndsIn ?? (_detailEndsIn = _view.FindViewById<TextView>(Resource.Id.DetailEndsIn));
         public TextView DetailCondition => _detailCondition ?? (_detailCondition = _view.FindViewById<TextView>(Resource.Id.DetailCondition));
-        public LinearLayout DetailSection => _detailSection ?? (_detailSection = _view.FindViewById<LinearLayout>(Resource.Id.DetailSection));
         public TextView DetailShipping => _detailShipping ?? (_detailShipping = _view.FindViewById<TextView>(Resource.Id.DetailShipping));
         public TextView DetailsTax => _detailsTax ?? (_detailsTax = _view.FindViewById<TextView>(Resource.Id.DetailsTax));
         public ImageView PriceTrendIcon => _priceTrendIcon ?? (_priceTrendIcon = _view.FindViewById<ImageView>(Resource.Id.PriceTrendIcon));
         public TextView Price => _price ?? (_price = _view.FindViewById<TextView>(Resource.Id.Price));
         public TextView PriceSubtitle => _priceSubtitle ?? (_priceSubtitle = _view.FindViewById<TextView>(Resource.Id.PriceSubtitle));
-        public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
         public LinearLayout PriceSection => _priceSection ?? (_priceSection = _view.FindViewById<LinearLayout>(Resource.Id.PriceSection));
+        public FrameLayout DetailSection => _detailSection ?? (_detailSection = _view.FindViewById<FrameLayout>(Resource.Id.DetailSection));
+        public ProgressBar LoadingSpinner => _loadingSpinner ?? (_loadingSpinner = _view.FindViewById<ProgressBar>(Resource.Id.LoadingSpinner));
+        public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
     }
 }

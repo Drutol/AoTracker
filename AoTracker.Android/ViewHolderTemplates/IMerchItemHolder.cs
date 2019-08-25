@@ -40,7 +40,7 @@ namespace AoTracker.Android.ViewHolders
         TextView DetailBids { get; }
         TextView DetailEndsIn { get; }
         TextView DetailCondition { get; }
-        LinearLayout DetailSection { get; }
+        FrameLayout DetailSection { get; }
         TextView DetailShipping { get; }
         TextView DetailsTax { get; }
     }

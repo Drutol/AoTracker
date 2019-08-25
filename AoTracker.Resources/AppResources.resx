@@ -219,6 +219,12 @@
   <data name="Item_SurugayaCrawlerCell_TrimsFromQuotationMarks" xml:space="preserve">
     <value>Removes content from 「 」</value>
   </data>
+  <data name="Item_WatchedItem_AuctionEnded" xml:space="preserve">
+    <value>FInished</value>
+  </data>
+  <data name="Item_WatchedItem_SoldOut" xml:space="preserve">
+    <value>Sold out</value>
+  </data>
   <data name="Meta_TargetAndroidFile" xml:space="preserve">
     <value>AoTracker.Android\Resources\values\app_resources.xml</value>
   </data>

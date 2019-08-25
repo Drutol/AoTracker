@@ -367,6 +367,24 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FInished.
+        /// </summary>
+        public static string Item_WatchedItem_AuctionEnded {
+            get {
+                return ResourceManager.GetString("Item_WatchedItem_AuctionEnded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sold out.
+        /// </summary>
+        public static string Item_WatchedItem_SoldOut {
+            get {
+                return ResourceManager.GetString("Item_WatchedItem_SoldOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AoTracker.Android\Resources\values\app_resources.xml.
         /// </summary>
         public static string Meta_TargetAndroidFile {

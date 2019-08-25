@@ -8,7 +8,7 @@ namespace AoTracker.Crawlers.Mandarake
 {
     public class MandarakeItem : ICrawlerResultItem
     {
-        public CrawlerDomain Domain { get; set; }
+        public CrawlerDomain Domain { get; } = CrawlerDomain.Mandarake;
         public string Id { get; set; }
         public string InternalId { get; set; }
         public string Name { get; set; }

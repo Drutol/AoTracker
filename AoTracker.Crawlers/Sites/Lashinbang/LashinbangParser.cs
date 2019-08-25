@@ -69,10 +69,10 @@ namespace AoTracker.Crawlers.Sites.Lashinbang
 
             item.Id = id;
             item.InternalId = $"lashin_{item.Id}";
-            item.ImageUrl = doc.FirstOfDescendantsWithClass("img", "zoom_03").Attributes["data-zoom-image"].Value;
+            item.ImageUrl = doc.FirstOfDescendantsWithId("img", "zoom_03").Attributes["data-zoom-image"].Value;
             item.Name = WebUtility.HtmlDecode(doc.FirstOfDescendantsWithClass("div", "item_name").Descendants("h1")
                 .First().InnerText.Trim());
-            item.Price = float.Parse(doc.FirstOfDescendantsWithClass("p", "price red").InnerText.Split('円').First()
+            item.Price = float.Parse(doc.FirstOfDescendantsWithClass("div", "price red").InnerText.Split('円').First()
                 .Replace(",", "").Trim());
 
             output.Result = item;

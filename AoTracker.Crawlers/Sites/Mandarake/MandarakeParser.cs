@@ -35,10 +35,9 @@ namespace AoTracker.Crawlers.Mandarake
                 {
                     var item = new MandarakeItem();
 
-                    var id = itemNode.FirstOfDescendantsWithClass("p", "itemno").InnerText.Trim();
-                    var startId = id.IndexOf('(');
+                    var id = itemNode.FirstOfDescendantsWithClass("a", "addbasket").Attributes["data-index"].Value.Trim();
 
-                    item.Id = id.Substring(startId + 1).Trim(')');
+                    item.Id = id;
                     item.Name = WebUtility.HtmlDecode(itemNode.FirstOfDescendantsWithClass("div", "title").InnerText.Trim());
                     item.Price = float.Parse(itemNode.FirstOfDescendantsWithClass("div", "price").InnerText.Replace("円+税", "")
                         .Replace(",", ""));
@@ -74,13 +73,14 @@ namespace AoTracker.Crawlers.Mandarake
             item.Shop = WebUtility.HtmlDecode(doc.FirstOfDescendantsWithClass("div", "shop").InnerText.Trim());
             item.Name = WebUtility.HtmlDecode(doc.FirstOfDescendantsWithClass("div", "subject").InnerText.Trim());
 
-            if (data.Contains("売り切れ"))
+            if (doc.WhereOfDescendantsWithClass("a", "addalert").Any())
                 item.Price = CrawlerConstants.InvalidPrice;
             else
                 item.Price = float.Parse(doc.FirstOfDescendantsWithClass("p", "__price").InnerText.Split('円').First()
                     .Replace(",", ""));
 
             item.ImageUrl = doc.FirstOfDescendantsWithClass("img", "xzoom").Attributes["xoriginal"].Value;
+            item.ImageUrl = item.ImageUrl.Insert(item.ImageUrl.LastIndexOf('/') + 1, "s_");
 
             output.Result = item;
 
