@@ -93,6 +93,10 @@
     <Compile Include="Fragments\Settings\SettingsGeneralPageFragment.cs" />
     <Compile Include="Fragments\Settings\SettingsIndexPageFragment.cs" />
     <Compile Include="Fragments\WatchedItemsPageFragment.cs" />
+    <Compile Include="Fragments\WatchedItemsPageFragment.ui.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>WatchedItemsPageFragment.cs</DependentUpon>
+    </Compile>
     <Compile Include="PagerAdapters\FeedPagerAdapter.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -501,7 +505,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\page_watched_items.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_reload.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
     Other similar extension points exist, see Microsoft.Common.targets.

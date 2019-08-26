@@ -86,6 +86,7 @@
                         tools:src="@drawable/surugaya" />
 
                     <ImageView
+                        android:id="@+id/IconMore"
                         android:layout_width="14dp"
                         android:layout_height="wrap_content"
                         android:scaleType="centerCrop"

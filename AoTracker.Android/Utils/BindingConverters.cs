@@ -19,9 +19,14 @@ namespace AoTracker.Android.Utils
             return arg ? ViewStates.Visible : ViewStates.Gone;
         }
 
-        public static ViewStates BoolToVisibilityInverted(bool arg)
+        public static ViewStates BoolToVisibility(bool arg, ViewStates goneState = ViewStates.Gone)
         {
-            return arg ? ViewStates.Gone : ViewStates.Visible;
+            return arg ? ViewStates.Visible : goneState;
+        }
+
+        public static ViewStates BoolToVisibilityInverted(bool arg, ViewStates goneState = ViewStates.Gone)
+        {
+            return arg ? goneState : ViewStates.Visible;
         }
     }
 }

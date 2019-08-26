@@ -12,6 +12,7 @@ using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Interfaces;
 using AoTracker.Resources;
 using Autofac;
+using GalaSoft.MvvmLight.Command;
 
 namespace AoTracker.Infrastructure.ViewModels
 {
@@ -33,6 +34,19 @@ namespace AoTracker.Infrastructure.ViewModels
             PageTitle = AppResources.PageTitle_WatchedItems;
         }
 
+        public RelayCommand<WatchedItemViewModel> ReloadWatchedItemCommand => new RelayCommand<WatchedItemViewModel>(
+            model =>
+            {
+                model.IsLoading = true;
+                _watchedItemsManager.RequestSingleItemUpdate(model.BackingModel);
+            });
+
+        public RelayCommand<WatchedItemViewModel> RemoveWatchedItemCommand => new RelayCommand<WatchedItemViewModel>(
+            model =>
+            {
+                _watchedItemsManager.RemoveWatchedEntry(model.BackingModel);
+                WatchedItems.Remove(model);
+            });
 
         public void NavigatedTo()
         {
@@ -46,6 +60,15 @@ namespace AoTracker.Infrastructure.ViewModels
                 vm.IsLoading = true;
                 return vm;
             }));
+            _watchedItemsManager.StartAggregatingWatchedItemsData();
+        }
+
+        public void RefreshAll()
+        {
+            foreach (var watchedItemViewModel in WatchedItems)
+            {
+                watchedItemViewModel.IsLoading = true;
+            }
             _watchedItemsManager.StartAggregatingWatchedItemsData();
         }
     }

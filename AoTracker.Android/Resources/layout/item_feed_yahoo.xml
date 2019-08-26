@@ -87,6 +87,13 @@
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:src="@drawable/yahoo" />
+
+                    <ImageView
+                        android:id="@+id/IconMore"
+                        android:layout_width="14dp" android:layout_marginStart="2dp"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/icon_more_vertical" />
                 </LinearLayout>
 
                 <FrameLayout
