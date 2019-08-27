@@ -7,11 +7,22 @@ namespace AoTracker.Infrastructure.Models.NavArgs
 {
     public class CrawlerSetDetailsPageNavArgs
     {
+        public static CrawlerSetDetailsPageNavArgs AddNew => new CrawlerSetDetailsPageNavArgs
+        {
+            AddingNew = true
+        };
+
         public CrawlerSetDetailsPageNavArgs(CrawlerSet set)
         {
             CrawlerSet = set;
         }
 
-        public CrawlerSet CrawlerSet { get; set; }
+        private CrawlerSetDetailsPageNavArgs()
+        {
+
+        }
+
+        public bool AddingNew { get; private set; }
+        public CrawlerSet CrawlerSet { get;  }
     }
 }

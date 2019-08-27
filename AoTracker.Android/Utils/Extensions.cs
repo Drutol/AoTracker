@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -7,8 +8,10 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using AoLibs.Adapters.Android.Recycler;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Domain.Enums;
 
@@ -48,6 +51,15 @@ namespace AoTracker.Android.Utils
             if (page == PageIndex.WatchedItems)
                 return Resource.Drawable.icon_eye;
             return 0;
+        }
+
+        public static void SetUpWithEmptyState<T>(this ObservableCollection<T> collection, View emptyState)
+        {
+            collection.CollectionChanged += (sender, args) =>
+            {
+                emptyState.Visibility = BindingConverters.BoolToVisibility(collection.Count == 0);
+            };
+            emptyState.Visibility = BindingConverters.BoolToVisibility(collection.Count == 0);
         }
     }
 }

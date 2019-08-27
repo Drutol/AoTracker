@@ -35,17 +35,18 @@ namespace AoTracker.Android.Fragments
 
         protected override void InitBindings()
         {
-            Bindings.Add(this.SetBinding(() => ViewModel.Sets).WhenSourceChanges(() =>
-            {
-                SetsRecyclerView.SetAdapter(new ObservableRecyclerAdapter<CrawlerSetViewModel, CrawlerSetHolder>(ViewModel.Sets,
-                        DataTemplate, LayoutInflater,
-                        Resource.Layout.item_crawler_set)
-                    { StretchContentHorizonatally = true });
-            }));
-
+            SetsRecyclerView.SetAdapter(new ObservableRecyclerAdapter<CrawlerSetViewModel, CrawlerSetHolder>(
+                    ViewModel.Sets,
+                    DataTemplate, LayoutInflater,
+                    Resource.Layout.item_crawler_set)
+                {StretchContentHorizonatally = true});
+            ViewModel.Sets.SetUpWithEmptyState(EmptyState);
             SetsRecyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
             var touchHelper = new ItemTouchHelper(new ItemTouchHelperCallback(this));
             touchHelper.AttachToRecyclerView(SetsRecyclerView);
+
+            EmptyStateIcon.SetImageResource(Resource.Drawable.icon_playlist_plus_huge);
+            EmptyStateSubtitle.Text = AppResources.EmptyState_Subtitle_CrawlerSets;
 
             AddButton.SetOnClickCommand(ViewModel.AddNewSetCommand);
         }

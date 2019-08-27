@@ -46,40 +46,38 @@ namespace AoTracker.Android.Fragments
 
         protected override void InitBindings()
         {
-            Bindings.Add(this.SetBinding(() => ViewModel.CrawlerDescriptors).WhenSourceChanges(() =>
-            {
-                CrawlersRecyclerView.SetAdapter(
-                    new RecyclerViewAdapterBuilder<CrawlerDescriptorViewModel, RecyclerView.ViewHolder>()
-                        .WithItems(ViewModel.CrawlerDescriptors)
-                        .WithContentStretching()
-                        .WithMultipleViews()
-                        .WithGroup<CrawlerDescriptorViewModel<SurugayaItem>, SurugayaCrawlerHolder>(builder =>
-                        {
-                            builder.WithResourceId(LayoutInflater, Resource.Layout.item_surugaya_crawler);
-                            builder.WithDataTemplate(SurugayaCrawlerDescriptorDataTemplate);
-                        })
-                        .WithGroup<CrawlerDescriptorViewModel<MandarakeItem>, MandarakeCrawlerHolder>(builder =>
-                        {
-                            builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
-                            builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
-                        })
-                        .WithGroup<CrawlerDescriptorViewModel<MercariItem>, MercariCrawlerHolder>(builder =>
-                        {
-                            builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
-                            builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
-                        })
-                        .WithGroup<CrawlerDescriptorViewModel<YahooItem>, YahooCrawlerHolder>(builder =>
-                        {
-                            builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
-                            builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
-                        })
-                        .WithGroup<CrawlerDescriptorViewModel<LashinbangItem>, LashinbangCrawlerHolder>(builder =>
-                        {
-                            builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
-                            builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
-                        })
-                        .Build());
-            }));
+            CrawlersRecyclerView.SetAdapter(
+                new RecyclerViewAdapterBuilder<CrawlerDescriptorViewModel, RecyclerView.ViewHolder>()
+                    .WithItems(ViewModel.CrawlerDescriptors)
+                    .WithContentStretching()
+                    .WithMultipleViews()
+                    .WithGroup<CrawlerDescriptorViewModel<SurugayaItem>, SurugayaCrawlerHolder>(builder =>
+                    {
+                        builder.WithResourceId(LayoutInflater, Resource.Layout.item_surugaya_crawler);
+                        builder.WithDataTemplate(SurugayaCrawlerDescriptorDataTemplate);
+                    })
+                    .WithGroup<CrawlerDescriptorViewModel<MandarakeItem>, MandarakeCrawlerHolder>(builder =>
+                    {
+                        builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
+                        builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
+                    })
+                    .WithGroup<CrawlerDescriptorViewModel<MercariItem>, MercariCrawlerHolder>(builder =>
+                    {
+                        builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
+                        builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
+                    })
+                    .WithGroup<CrawlerDescriptorViewModel<YahooItem>, YahooCrawlerHolder>(builder =>
+                    {
+                        builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
+                        builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
+                    })
+                    .WithGroup<CrawlerDescriptorViewModel<LashinbangItem>, LashinbangCrawlerHolder>(builder =>
+                    {
+                        builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
+                        builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
+                    })
+                    .Build());
+            ViewModel.CrawlerDescriptors.SetUpWithEmptyState(EmptyState);
 
             AddCrawlersRecyclerView.SetAdapter(
                 new ObservableRecyclerAdapter<CrawlerEntryViewModel, AddCrawlerHolder>(
@@ -92,6 +90,9 @@ namespace AoTracker.Android.Fragments
                 this.SetBinding(() => ViewModel.SetName,
                     () => TitleTextBox.Text, BindingMode.TwoWay));
 
+
+            EmptyStateIcon.SetImageResource(Resource.Drawable.icon_playlist_plus_huge);
+            EmptyStateSubtitle.Text = AppResources.EmptyState_Subtitle_CrawlerSetDetails;
 
             CrawlersRecyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
             AddCrawlersRecyclerView.SetLayoutManager(new CustomFlexboxLayoutManager(Activity)

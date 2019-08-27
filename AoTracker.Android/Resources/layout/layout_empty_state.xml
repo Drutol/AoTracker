@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/EmptyStateIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha=".2"
+        android:src="@drawable/icon_book_huge" />
+
+    <TextView
+        android:id="@+id/EmptyStateSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@string/font_family_light"
+        android:text="@string/EmptyState_Subtitle_Default"
+        android:textSize="@dimen/FontSizeBig"
+        android:textStyle="italic" />
+
+</LinearLayout>

@@ -35,7 +35,7 @@ namespace AoTracker.Android.Fragments
                 .WithDataTemplate(IgnoredItemDataTemplate)
                 .Build());
             RecyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
-
+            ViewModel.IgnoredItems.SetUpWithEmptyState(EmptyState);
             var touchHelper = new ItemTouchHelper(new ItemTouchHelperCallback(this));
             touchHelper.AttachToRecyclerView(RecyclerView);
         }
@@ -57,8 +57,12 @@ namespace AoTracker.Android.Fragments
         #region Views
 
         private RecyclerView _recyclerView;
+        private ImageView _emptyStateIcon;
+        private LinearLayout _emptyState;
 
         public RecyclerView RecyclerView => _recyclerView ?? (_recyclerView = FindViewById<RecyclerView>(Resource.Id.RecyclerView));
+        public ImageView EmptyStateIcon => _emptyStateIcon ?? (_emptyStateIcon = FindViewById<ImageView>(Resource.Id.EmptyStateIcon));
+        public LinearLayout EmptyState => _emptyState ?? (_emptyState = FindViewById<LinearLayout>(Resource.Id.EmptyState));
 
         #endregion
 

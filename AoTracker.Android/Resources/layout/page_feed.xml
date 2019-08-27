@@ -21,6 +21,10 @@
 
     </android.support.v4.view.ViewPager>
 
+    <include
+        android:id="@+id/EmptyState"
+        layout="@layout/layout_empty_state" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/JumpToButton"
         android:layout_width="wrap_content"

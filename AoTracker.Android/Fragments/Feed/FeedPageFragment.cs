@@ -4,6 +4,7 @@ using Android.Support.V4.View;
 using Android.Support.V7.View.Menu;
 using Android.Util;
 using Android.Views;
+using Android.Widget;
 using AoLibs.Navigation.Android.Navigation.Attributes;
 using AoLibs.Utilities.Android.Listeners;
 using AoTracker.Android.PagerAdapters;
@@ -76,6 +77,16 @@ namespace AoTracker.Android.Fragments.Feed
 
         public void UpdateTabIcons()
         {
+            EmptyState.Visibility = BindingConverters.BoolToVisibility(ViewModel.FeedTabEntries.Count == 0);
+
+            if (ViewModel.FeedTabEntries.Count <= 1)
+            {
+                TabStrip.Visibility = ViewStates.Gone;
+                return;
+            }
+
+            TabStrip.Visibility = ViewStates.Visible;
+
             if (ViewModel.ContainsAggregate)
             {
                 for (int i = 0; i < TabStrip.TabCount; i++)
@@ -123,10 +134,14 @@ namespace AoTracker.Android.Fragments.Feed
 
         private TabLayout _tabStrip;
         private ViewPager _viewPager;
+        private ImageView _emptyStateIcon;
+        private LinearLayout _emptyState;
         private FloatingActionButton _jumpToButton;
 
         public TabLayout TabStrip => _tabStrip ?? (_tabStrip = FindViewById<TabLayout>(Resource.Id.TabStrip));
         public ViewPager ViewPager => _viewPager ?? (_viewPager = FindViewById<ViewPager>(Resource.Id.ViewPager));
+        public ImageView EmptyStateIcon => _emptyStateIcon ?? (_emptyStateIcon = FindViewById<ImageView>(Resource.Id.EmptyStateIcon));
+        public LinearLayout EmptyState => _emptyState ?? (_emptyState = FindViewById<LinearLayout>(Resource.Id.EmptyState));
         public FloatingActionButton JumpToButton => _jumpToButton ?? (_jumpToButton = FindViewById<FloatingActionButton>(Resource.Id.JumpToButton));
 
         #endregion

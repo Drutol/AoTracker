@@ -33,9 +33,13 @@ namespace AoTracker.Android.Fragments
 
         private RecyclerView _recyclerView;
         private ScrollableSwipeToRefreshLayout _swipeToRefreshLayout;
+        private ImageView _emptyStateIcon;
+        private LinearLayout _emptyState;
 
         public RecyclerView RecyclerView => _recyclerView ?? (_recyclerView = FindViewById<RecyclerView>(Resource.Id.RecyclerView));
         public ScrollableSwipeToRefreshLayout SwipeToRefreshLayout => _swipeToRefreshLayout ?? (_swipeToRefreshLayout = FindViewById<ScrollableSwipeToRefreshLayout>(Resource.Id.SwipeToRefreshLayout));
+        public ImageView EmptyStateIcon => _emptyStateIcon ?? (_emptyStateIcon = FindViewById<ImageView>(Resource.Id.EmptyStateIcon));
+        public LinearLayout EmptyState => _emptyState ?? (_emptyState = FindViewById<LinearLayout>(Resource.Id.EmptyState));
 
         #endregion
 

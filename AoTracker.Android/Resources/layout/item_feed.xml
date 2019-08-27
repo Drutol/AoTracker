@@ -198,9 +198,4 @@
 
         </FrameLayout>
     </LinearLayout>
-
-    <View
-        style="@style/ViewDivider"
-        android:layout_marginTop="16dp" />
-
 </LinearLayout>

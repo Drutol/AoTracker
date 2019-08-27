@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AoLibs.Utilities.Shared;
+using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Infrastructure;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Domain.Models;
@@ -18,7 +21,8 @@ namespace AoTracker.Infrastructure.Infrastructure
         private readonly AppVariables _appVariables;
         private readonly ICrawlerManager _crawlerManager;
         private bool _isAggregating;
-        private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(3);
+        private readonly ConcurrentDictionary<CrawlerDomain, SemaphoreSlim> _domainSemaphores =
+            new ConcurrentDictionary<CrawlerDomain, SemaphoreSlim>();
 
         public event EventHandler<FeedBatch> NewCrawlerBatch;
         public event EventHandler Finished;
@@ -37,6 +41,11 @@ namespace AoTracker.Infrastructure.Infrastructure
             _userDataProvider = userDataProvider;
             _appVariables = appVariables;
             _crawlerManager = crawlerManagerProvider.Manager;
+
+            foreach (CrawlerDomain domain in Enum.GetValues(typeof(CrawlerDomain)))
+            {
+                _domainSemaphores[domain] = new SemaphoreSlim(2);
+            }
         }
 
         public void StartAggregating(List<CrawlerSet> sets, CancellationToken feedCtsToken, bool force, ref int expectedBatches)
@@ -92,20 +101,20 @@ namespace AoTracker.Infrastructure.Infrastructure
         }
 
         private async Task CrawlDescriptor(CrawlerSet crawlingSet, VolatileParametersBase volatileParameters)
-        {
+        { 
             foreach (var descriptor in crawlingSet.Descriptors)
             {
+                var semaphore = _domainSemaphores[descriptor.CrawlerDomain];
                 try
                 {
-                    await _semaphore.WaitAsync();
-
+                    await semaphore.WaitAsync();
                     var crawler = _crawlerManager.GetCrawler(descriptor.CrawlerDomain);
 
-                    var result =
+                    var result = await Task.Run(async () => 
                         await crawler.Crawl(
-                            new CrawlerParameters(
-                                descriptor.CrawlerSourceParameters,
-                                volatileParameters));
+                        new CrawlerParameters(
+                            descriptor.CrawlerSourceParameters,
+                            volatileParameters)));
 
                     if (result.Success)
                     {
@@ -118,7 +127,7 @@ namespace AoTracker.Infrastructure.Infrastructure
                 }
                 finally
                 {
-                    _semaphore.Release();
+                    semaphore.Release();
                 }
             }
         }

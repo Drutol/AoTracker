@@ -25,9 +25,15 @@ namespace AoTracker.Android.Fragments
 
         private RecyclerView _setsRecyclerView;
         private FloatingActionButton _addButton;
+        private ImageView _emptyStateIcon;
+        private TextView _emptyStateSubtitle;
+        private LinearLayout _emptyState;
 
         public RecyclerView SetsRecyclerView => _setsRecyclerView ?? (_setsRecyclerView = FindViewById<RecyclerView>(Resource.Id.SetsRecyclerView));
         public FloatingActionButton AddButton => _addButton ?? (_addButton = FindViewById<FloatingActionButton>(Resource.Id.AddButton));
+        public ImageView EmptyStateIcon => _emptyStateIcon ?? (_emptyStateIcon = FindViewById<ImageView>(Resource.Id.EmptyStateIcon));
+        public TextView EmptyStateSubtitle => _emptyStateSubtitle ?? (_emptyStateSubtitle = FindViewById<TextView>(Resource.Id.EmptyStateSubtitle));
+        public LinearLayout EmptyState => _emptyState ?? (_emptyState = FindViewById<LinearLayout>(Resource.Id.EmptyState));
 
         #endregion
 

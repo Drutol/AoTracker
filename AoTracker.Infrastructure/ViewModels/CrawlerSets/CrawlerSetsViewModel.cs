@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using AoLibs.Navigation.Core.Interfaces;
+using AoLibs.Utilities.Shared;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Models.Messages;
@@ -38,19 +39,18 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public void NavigatedTo()
         {
-            Sets = new ObservableCollection<CrawlerSetViewModel>(
+            Sets.Clear();
+            Sets.AddRange(
                 _userDataProvider.CrawlingSets.Select(set => _lifetimeScope.TypedResolve<CrawlerSetViewModel>(set)));
         }
 
-        public ObservableCollection<CrawlerSetViewModel> Sets
-        {
-            get => _sets;
-            set => Set(ref _sets, value);
-        }
+        public SmartObservableCollection<CrawlerSetViewModel> Sets { get; } =
+            new SmartObservableCollection<CrawlerSetViewModel>();
+
 
         public RelayCommand AddNewSetCommand => new RelayCommand(() =>
         {
-            _navigationManager.Navigate(PageIndex.CrawlerSetDetails);
+            _navigationManager.Navigate(PageIndex.CrawlerSetDetails, CrawlerSetDetailsPageNavArgs.AddNew);
         });
 
         public RelayCommand<CrawlerSetViewModel> NavigateSetCommand => new RelayCommand<CrawlerSetViewModel>(set =>

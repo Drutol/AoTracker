@@ -159,6 +159,15 @@
   <data name="CrawlerSetsPage_CurrentCrawlersHeader" xml:space="preserve">
     <value>Current crawlers</value>
   </data>
+  <data name="EmptyState_Subtitle_CrawlerSetDetails" xml:space="preserve">
+    <value>Added crawlers will show here.</value>
+  </data>
+  <data name="EmptyState_Subtitle_CrawlerSets" xml:space="preserve">
+    <value>Crawler sets will show up here.</value>
+  </data>
+  <data name="EmptyState_Subtitle_Default" xml:space="preserve">
+    <value>Nothing to show here...</value>
+  </data>
   <data name="Generic_Delete" xml:space="preserve">
     <value>Delete</value>
   </data>

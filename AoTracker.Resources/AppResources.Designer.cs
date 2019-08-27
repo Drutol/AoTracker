@@ -187,6 +187,33 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Added crawlers will show here..
+        /// </summary>
+        public static string EmptyState_Subtitle_CrawlerSetDetails {
+            get {
+                return ResourceManager.GetString("EmptyState_Subtitle_CrawlerSetDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crawler sets will show up here..
+        /// </summary>
+        public static string EmptyState_Subtitle_CrawlerSets {
+            get {
+                return ResourceManager.GetString("EmptyState_Subtitle_CrawlerSets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nothing to show here....
+        /// </summary>
+        public static string EmptyState_Subtitle_Default {
+            get {
+                return ResourceManager.GetString("EmptyState_Subtitle_Default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string Generic_Delete {

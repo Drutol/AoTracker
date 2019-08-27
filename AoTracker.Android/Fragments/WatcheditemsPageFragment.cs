@@ -56,6 +56,7 @@ namespace AoTracker.Android.Fragments
             SwipeToRefreshLayout.ScrollingView = RecyclerView;
             SwipeToRefreshLayout.Refresh += SwipeToRefreshLayoutOnRefresh;
             RecyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
+            ViewModel.WatchedItems.SetUpWithEmptyState(EmptyState);
             var touchHelper = new ItemTouchHelper(new ItemTouchHelperCallback(this));
             touchHelper.AttachToRecyclerView(RecyclerView);
         }

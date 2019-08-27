@@ -21,4 +21,8 @@
         android:tint="?TextColourAccentContrast"
         app:fabSize="normal" />
 
+    <include
+        android:id="@+id/EmptyState"
+        layout="@layout/layout_empty_state" />
+
 </FrameLayout>

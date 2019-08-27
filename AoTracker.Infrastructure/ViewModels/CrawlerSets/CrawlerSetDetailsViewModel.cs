@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using AoLibs.Navigation.Core.Interfaces;
+using AoLibs.Utilities.Shared;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Mandarake;
 using AoTracker.Crawlers.Sites.Lashinbang;
@@ -146,29 +147,29 @@ namespace AoTracker.Infrastructure.ViewModels
         {
             StartListeningForToolbarActions();
 
-            var crawlerSet = navArgs?.CrawlerSet;
+            var crawlerSet = navArgs.CrawlerSet;
 
-            if (crawlerSet == _currentSet && crawlerSet != null)
+            if (crawlerSet == _currentSet && crawlerSet != null && _currentSet != null)
                 return;
 
-            if (crawlerSet == null)
+            if (crawlerSet == null  && navArgs.AddingNew)
             {
+                _currentSet = null;
                 PageTitle = _currentSet == null
                     ? AppResources.PageTitle_SetDetails_AddNew
                     : string.Format(AppResources.PageTitle_SetDetails, _currentSet.Name);
 
-                CrawlerDescriptors = new ObservableCollection<CrawlerDescriptorViewModel>();
-                IsAddingNew = true;
 
+                IsAddingNew = true;
                 SetName = string.Empty;
-                CrawlerDescriptors = new ObservableCollection<CrawlerDescriptorViewModel>();
+                CrawlerDescriptors.Clear();
             }
             else
             {
                 _currentSet = crawlerSet;
                 PageTitle = string.Format(AppResources.PageTitle_SetDetails, crawlerSet.Name);
                 SetName = crawlerSet.Name;
-                CrawlerDescriptors = new ObservableCollection<CrawlerDescriptorViewModel>(crawlerSet.Descriptors.Select(
+                CrawlerDescriptors.AddRange(crawlerSet.Descriptors.Select(
                     descriptor =>
                     {
                         var type = CrawlerDomainToCrawlerViewModelType(descriptor.CrawlerDomain);
@@ -225,11 +226,8 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public List<CrawlerEntryViewModel> CrawlerEntries { get; }
 
-        public ObservableCollection<CrawlerDescriptorViewModel> CrawlerDescriptors
-        {
-            get => _crawlerDescriptors;
-            set => Set(ref _crawlerDescriptors, value);
-        }
+        public SmartObservableCollection<CrawlerDescriptorViewModel> CrawlerDescriptors { get; } =
+            new SmartObservableCollection<CrawlerDescriptorViewModel>();
 
         public string SetName
         {
