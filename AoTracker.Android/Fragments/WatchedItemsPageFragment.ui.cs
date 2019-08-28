@@ -135,7 +135,6 @@ namespace AoTracker.Android.Fragments
             private FloatingActionButton _newAlertSection;
             private TextView _title;
             private ImageView _storeIcon;
-            private ImageView _iconMore;
             private TextView _detail;
             private FrameLayout _detailSection;
             private TextView _subtitle;
@@ -152,7 +151,6 @@ namespace AoTracker.Android.Fragments
             public FloatingActionButton NewAlertSection => _newAlertSection ?? (_newAlertSection = _view.FindViewById<FloatingActionButton>(Resource.Id.NewAlertSection));
             public TextView Title => _title ?? (_title = _view.FindViewById<TextView>(Resource.Id.Title));
             public ImageView StoreIcon => _storeIcon ?? (_storeIcon = _view.FindViewById<ImageView>(Resource.Id.StoreIcon));
-            public ImageView IconMore => _iconMore ?? (_iconMore = _view.FindViewById<ImageView>(Resource.Id.IconMore));
             public TextView Detail => _detail ?? (_detail = _view.FindViewById<TextView>(Resource.Id.Detail));
             public FrameLayout DetailSection => _detailSection ?? (_detailSection = _view.FindViewById<FrameLayout>(Resource.Id.DetailSection));
             public TextView Subtitle => _subtitle ?? (_subtitle = _view.FindViewById<TextView>(Resource.Id.Subtitle));
@@ -198,7 +196,6 @@ namespace AoTracker.Android.Fragments
             private FloatingActionButton _newAlertSection;
             private TextView _title;
             private ImageView _storeIcon;
-            private ImageView _iconMore;
             private TextView _detailBids;
             private TextView _detailEndsIn;
             private TextView _detailCondition;
@@ -216,7 +213,6 @@ namespace AoTracker.Android.Fragments
             public FloatingActionButton NewAlertSection => _newAlertSection ?? (_newAlertSection = _view.FindViewById<FloatingActionButton>(Resource.Id.NewAlertSection));
             public TextView Title => _title ?? (_title = _view.FindViewById<TextView>(Resource.Id.Title));
             public ImageView StoreIcon => _storeIcon ?? (_storeIcon = _view.FindViewById<ImageView>(Resource.Id.StoreIcon));
-            public ImageView IconMore => _iconMore ?? (_iconMore = _view.FindViewById<ImageView>(Resource.Id.IconMore));
             public TextView DetailBids => _detailBids ?? (_detailBids = _view.FindViewById<TextView>(Resource.Id.DetailBids));
             public TextView DetailEndsIn => _detailEndsIn ?? (_detailEndsIn = _view.FindViewById<TextView>(Resource.Id.DetailEndsIn));
             public TextView DetailCondition => _detailCondition ?? (_detailCondition = _view.FindViewById<TextView>(Resource.Id.DetailCondition));

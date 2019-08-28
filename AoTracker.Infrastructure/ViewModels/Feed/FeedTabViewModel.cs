@@ -94,7 +94,8 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
 
             foreach (var group in _aggregatedFeed.GroupBy(model => model.SetOfOrigin))
             {
-                await _feedHistoryProvider.UpdateHistory(group.Key,
+                await _feedHistoryProvider.UpdateHistory(
+                    group.Key,
                     group.Select(model => model.BuildHistoryEntry()).ToList());
             }
 
@@ -107,29 +108,34 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
 
             if (!e.CrawlerResult.IsCached)
             {
+                if (e.CrawlerResult.HasMore)
+                    _expectedBatches++;
                 _receivedBatches++;
                 FeedGenerationProgress = (int)((_receivedBatches * 100d) / _expectedBatches);
                 ProgressLabel = $"{_receivedBatches}/{_expectedBatches}";
             }
 
-            var viewModels = new List<FeedItemViewModel>();
-            foreach (var crawlerResultItem in e.CrawlerResult.Results.Where(item =>
-                !_ignoredItemsManager.IsItemIgnored(item)))
+            if (e.CrawlerResult.Success)
             {
-                var vmType = crawlerResultItem.Domain == CrawlerDomain.Yahoo
-                    ? typeof(FeedItemViewModel<YahooItem>)
-                    : typeof(FeedItemViewModel);
+                var viewModels = new List<FeedItemViewModel>();
+                foreach (var crawlerResultItem in e.CrawlerResult.Results.Where(item =>
+                    !_ignoredItemsManager.IsItemIgnored(item)))
+                {
+                    var vmType = crawlerResultItem.Domain == CrawlerDomain.Yahoo
+                        ? typeof(FeedItemViewModel<YahooItem>)
+                        : typeof(FeedItemViewModel);
 
-                var vm = (FeedItemViewModel) _lifetimeScope.Resolve(
-                    vmType,
-                    new TypedParameter(typeof(ICrawlerResultItem), crawlerResultItem),
-                    new TypedParameter(typeof(FeedTabViewModel), this));
+                    var vm = (FeedItemViewModel)_lifetimeScope.Resolve(
+                        vmType,
+                        new TypedParameter(typeof(ICrawlerResultItem), crawlerResultItem),
+                        new TypedParameter(typeof(FeedTabViewModel), this));
 
-                vm.WithHistory(_feedHistory, e.SetOfOrigin);
-                viewModels.Add(vm);
+                    vm.WithHistory(_feedHistory, e.SetOfOrigin);
+                    viewModels.Add(vm);
+                }
+
+                _aggregatedFeed.AddRange(viewModels);
             }
-
-            _aggregatedFeed.AddRange(viewModels);
         }
 
         public async void RefreshFeed(bool force = false)

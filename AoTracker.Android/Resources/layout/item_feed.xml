@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?ForegroundColour"
     android:orientation="vertical">
 
     <LinearLayout
@@ -19,7 +18,7 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="?ForegroundShallowColour"
+            android:background="?ForegroundColour"
             android:elevation="4dp">
 
             <FrameLayout
@@ -85,12 +84,6 @@
                         android:layout_height="25dp"
                         tools:src="@drawable/surugaya" />
 
-                    <ImageView
-                        android:id="@+id/IconMore"
-                        android:layout_width="14dp"
-                        android:layout_height="wrap_content"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/icon_more_vertical" />
                 </LinearLayout>
 
                 <FrameLayout
@@ -198,4 +191,7 @@
 
         </FrameLayout>
     </LinearLayout>
+
+    <View style="@style/ViewDivider"/>
+
 </LinearLayout>

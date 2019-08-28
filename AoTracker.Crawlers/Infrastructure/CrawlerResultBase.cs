@@ -6,7 +6,7 @@ using AoTracker.Crawlers.Interfaces;
 
 namespace AoTracker.Crawlers.Infrastructure
 {
-    public class CrawlerResultBase<T> : 
+    public class CrawlerResultBase<T> :
         ICrawlerResultList<T>,
         ICrawlerResultSingle<T> where T : ICrawlerResultItem
     {
@@ -14,6 +14,7 @@ namespace AoTracker.Crawlers.Infrastructure
         public IEnumerable<T> Results { get; set; }
 
         public bool IsCached { get; set; }
+        public bool HasMore { get; set; }
         public DateTime? CacheTime { get; set; }
         public T Result { get; set; }
 

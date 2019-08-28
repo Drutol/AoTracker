@@ -8,6 +8,7 @@ namespace AoTracker.Crawlers.Interfaces
         bool Success { get; }
 
         bool IsCached { get; }
+        bool HasMore { get; }
         DateTime? CacheTime { get; set; }
     }
 

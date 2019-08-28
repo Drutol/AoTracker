@@ -32,7 +32,7 @@ namespace AoTracker.Infrastructure.ViewModels.Item
 
         private void WatchedItemsManagerOnItemDetailsFetched(object sender, WatchedItemDataEntry e)
         {
-            if (e == BackingModel)
+            if (e == BackingModel && e.Data != null)
             {
                 Price = e.Data.Price;
                 IsLoading = false;

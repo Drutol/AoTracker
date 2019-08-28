@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AoTracker.Android</string>
+    <string name="app_name">AoTracker</string>
     <string name="action_settings">Settings</string>
 
   <string name="DrawerOpen">Open navigation drawer</string>

@@ -77,14 +77,12 @@ namespace AoTracker.Android.Fragments
         {
             MerchItemYahooHolderTemplate.DataTemplate(item, holder, position);
             holder.ClickSurface.SetOnClickCommand(item.NavigateItemWebsiteCommand);
-            holder.IconMore.Visibility = ViewStates.Gone;
         }
 
         private void WatchedItemDataTemplate(WatchedItemViewModel item, WatchedItemHolder holder, int position)
         {
             MerchItemHolderTemplate.DataTemplate(item, holder, position);
             holder.ClickSurface.SetOnClickCommand(item.NavigateItemWebsiteCommand);
-            holder.IconMore.Visibility = ViewStates.Gone;
             if (item.Item.Domain == CrawlerDomain.Surugaya)
                 holder.Title.Text = item.Item.Name;
         }

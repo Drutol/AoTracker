@@ -44,6 +44,8 @@ namespace AoTracker.Infrastructure.ViewModels.Item
         public DateTime LastChanged { get; private set; }
         public CrawlerSet SetOfOrigin { get; private set; }
 
+        public float PreviousPrice { get; set; }
+
         public RelayCommand NavigateItemWebsiteCommand => new RelayCommand(() =>
         {
             _launcherAdapter.LaunchUri(new Uri(_domainLinkHandlerManager.GenerateWebsiteLink(BackingModel)));
@@ -82,14 +84,29 @@ namespace AoTracker.Infrastructure.ViewModels.Item
             {
                 IsNew = true;
                 LastChanged = DateTime.UtcNow;
+                PreviousPrice = BackingModel.Price;
             }
             else
             {
-                if (BackingModel.Price > historyEntry.PreviousPrice)
+                float priceToCompare;
+                if (Math.Abs(BackingModel.Price - historyEntry.LatestPrice) < 0.001)
+                {
+                    LastChanged = historyEntry.LastChanged;
+                    PreviousPrice = historyEntry.PreviousPrice;
+                    priceToCompare = historyEntry.PreviousPrice;
+                }
+                else
+                {
+                    LastChanged = DateTime.UtcNow;
+                    PreviousPrice = historyEntry.LatestPrice;
+                    priceToCompare = historyEntry.LatestPrice;
+                }
+
+                if (BackingModel.Price > priceToCompare)
                 {
                     PriceChange = PriceChange.Increase;
                 }
-                else if (BackingModel.Price < historyEntry.PreviousPrice)
+                else if (BackingModel.Price < priceToCompare)
                 {
                     PriceChange = PriceChange.Decrease;
                 }
@@ -100,11 +117,8 @@ namespace AoTracker.Infrastructure.ViewModels.Item
 
                 if (PriceChange != PriceChange.Stale)
                 {
-                    LastChanged = DateTime.UtcNow;
-                    PriceDifference = BackingModel.Price - historyEntry.PreviousPrice;
+                    PriceDifference = BackingModel.Price - priceToCompare;
                 }
-                else
-                    LastChanged = historyEntry.LastChanged;
             }
         }
 
@@ -114,7 +128,8 @@ namespace AoTracker.Infrastructure.ViewModels.Item
             {
                 InternalId = BackingModel.InternalId,
                 LastChanged = LastChanged,
-                PreviousPrice = BackingModel.Price
+                LatestPrice = BackingModel.Price,
+                PreviousPrice = PreviousPrice
             };
         }
 

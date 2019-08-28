@@ -23,6 +23,7 @@ namespace AoTracker.Infrastructure.Infrastructure
         private bool _isAggregating;
         private readonly ConcurrentDictionary<CrawlerDomain, SemaphoreSlim> _domainSemaphores =
             new ConcurrentDictionary<CrawlerDomain, SemaphoreSlim>();
+        private readonly List<Task> _branchedTasks = new List<Task>();
 
         public event EventHandler<FeedBatch> NewCrawlerBatch;
         public event EventHandler Finished;
@@ -87,10 +88,15 @@ namespace AoTracker.Infrastructure.Infrastructure
                 var tasks = new List<Task>();
                 foreach (var crawlingSet in sets)
                 {
-                    tasks.Add(CrawlDescriptor(crawlingSet, volatileParameters));
+                    tasks.Add(CrawlDescriptor(
+                        crawlingSet.Descriptors,
+                        crawlingSet,
+                        volatileParameters));
                 }
 
                 await Task.WhenAll(tasks);
+                await Task.WhenAll(_branchedTasks);
+                _branchedTasks.Clear();
             }
             finally
             {
@@ -100,9 +106,12 @@ namespace AoTracker.Infrastructure.Infrastructure
             Finished?.Invoke(this, EventArgs.Empty);
         }
 
-        private async Task CrawlDescriptor(CrawlerSet crawlingSet, VolatileParametersBase volatileParameters)
+        private async Task CrawlDescriptor(
+            List<CrawlerDescriptor> descriptors,
+            CrawlerSet crawlingSet,
+            VolatileParametersBase volatileParameters)
         { 
-            foreach (var descriptor in crawlingSet.Descriptors)
+            foreach (var descriptor in descriptors)
             {
                 var semaphore = _domainSemaphores[descriptor.CrawlerDomain];
                 try
@@ -123,6 +132,23 @@ namespace AoTracker.Infrastructure.Infrastructure
                             CrawlerResult = result,
                             SetOfOrigin = crawlingSet
                         });
+                    }
+
+                    if (result.HasMore)
+                    {
+                        var task = CrawlDescriptor(new List<CrawlerDescriptor>
+                        {
+                            descriptor
+                        }, crawlingSet, new VolatileParametersBase
+                        {
+                            Page = volatileParameters.Page + 1,
+                            UseCache = volatileParameters.UseCache
+                        });
+                        _branchedTasks.Add(task);
+#pragma warning disable 4014
+                        Task.Run(async () => await task);
+#pragma warning restore 4014
+
                     }
                 }
                 finally
