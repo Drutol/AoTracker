@@ -28,6 +28,8 @@ namespace AoTracker.Android.Activities
     [Activity(
         Label = "@string/app_name",
         Theme = "@style/AoTracker.Dark",
+        Icon = "@mipmap/ic_launcher",
+        RoundIcon = "@mipmap/ic_launcher_round",
         MainLauncher = true, LaunchMode = LaunchMode.SingleInstance,
         ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize)]
     public partial class MainActivity : AppCompatActivity
