@@ -27,7 +27,7 @@ namespace AoTracker.Android.Activities
 {
     [Activity(
         Label = "@string/app_name",
-        Theme = "@style/AoTracker.Dark",
+        Theme = "@style/AoTracker.Splashscreen",
         Icon = "@mipmap/ic_launcher",
         RoundIcon = "@mipmap/ic_launcher_round",
         MainLauncher = true, LaunchMode = LaunchMode.SingleInstance,

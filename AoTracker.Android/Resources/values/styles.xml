@@ -124,6 +124,19 @@
         <item name="ToolbarBackgroundColour">@color/DarkToolbarBackgroundColour</item>
     </style>
 
+    <style name="AoTracker.Splashscreen"
+        parent="android:Theme">
+        <item name="android:windowBackground">
+            @drawable/background_splashscreen
+        </item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!--DEBUG-->
+
     <style name="AoTracker.Light.Lime" parent="AoTracker.Light">
         <item name="colorPrimary">@color/LimeColour</item>
         <item name="colorPrimaryDark">@color/LimeDarkColour</item>
