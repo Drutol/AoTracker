@@ -124,6 +124,18 @@ namespace AoTracker.Android.Fragments.Feed
             ViewModel.NavigatedTo();
         }
 
+        public override void NavigatedBack()
+        {
+            base.NavigatedBack();
+            ViewModel.NavigatedBack();
+        }
+
+        public override void NavigatedFrom()
+        {
+            base.NavigatedFrom();
+            ViewModel.NavigatedFrom();
+        }
+
         private void ViewPagerOnPageSelected(object sender, ViewPager.PageSelectedEventArgs e)
         {
             _lastSelectedFragment = _adapter.Fragments[e.Position];

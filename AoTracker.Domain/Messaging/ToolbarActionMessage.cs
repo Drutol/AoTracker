@@ -6,6 +6,8 @@ namespace AoTracker.Domain.Messaging
 {
     public enum ToolbarActionMessage
     {
-        ClickedSaveButton
+        ClickedSaveButton,
+        CollapsedSearchQuery,
+        ExpandedSearchQuery
     }
 }

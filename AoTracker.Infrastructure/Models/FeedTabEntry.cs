@@ -6,9 +6,10 @@ using AoTracker.Domain.Models;
 
 namespace AoTracker.Infrastructure.Models
 {
-    public class FeedTabEntry
+    public class FeedTabEntry : IDisposable
     {
         public event EventHandler CrawlerSetsChanged;
+        public event EventHandler Disposed;
 
         private List<CrawlerSet> _crawlerSets;
 
@@ -32,6 +33,11 @@ namespace AoTracker.Infrastructure.Models
         public void ResetEventSubscriptions()
         {
             CrawlerSetsChanged = null;
+        }
+
+        public void Dispose()
+        {
+            Disposed?.Invoke(this, EventArgs.Empty);
         }
     }
 }

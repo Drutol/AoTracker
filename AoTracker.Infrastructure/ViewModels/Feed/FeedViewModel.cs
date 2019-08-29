@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AoLibs.Utilities.Shared;
+using AoTracker.Domain.Messaging;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Models;
 using AoTracker.Infrastructure.Models.Messages;
@@ -126,6 +127,8 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
 
         public async void NavigatedTo()
         {
+            MessengerInstance.Send(ToolbarRequestMessage.ShowSearchInterface);
+
             if (FeedTabEntries?.Any() ?? false)
             {
                 // we have pages generated so now let's just check for changes
@@ -178,7 +181,21 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             if (FeedTabEntries.Count <= 2)
                 JumpToButtonVisibility = false;
 
+        }
 
+        public void NavigatedBack()
+        {
+            HideSearchInterface();
+        }
+
+        public void NavigatedFrom()
+        {
+            HideSearchInterface();
+        }
+
+        private void HideSearchInterface()
+        {
+            MessengerInstance.Send(ToolbarRequestMessage.ResetToolbar);
         }
 
         private FeedTabEntry BuildAggregateTab()

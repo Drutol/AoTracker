@@ -22,16 +22,19 @@ using AoTracker.Android.Utils;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Messaging;
 using AoTracker.Infrastructure.Models;
+using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Resources;
 using GalaSoft.MvvmLight.Helpers;
 using Messenger = GalaSoft.MvvmLight.Messaging.Messenger;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
+using SearchView = Android.Support.V7.Widget.SearchView;
 
 namespace AoTracker.Android.Activities
 {
-    public partial class MainActivity
+    public partial class MainActivity : IMenuItemOnActionExpandListener
     {
         private HamburgerEntryHolder _settingsButtonHolder;
+        private SearchView _searchView;
 
         private void InitDrawer()
         {
@@ -99,12 +102,29 @@ namespace AoTracker.Android.Activities
             switch (request)
             {
                 case ToolbarRequestMessage.ShowSaveButton:
-                    Toolbar.Menu.Add(0, (int)ToolbarActionMessage.ClickedSaveButton, 0, "Save")
+                    Toolbar.Menu.Add(0, (int) ToolbarActionMessage.ClickedSaveButton, 0, "Save")
                         .SetIcon(Resource.Drawable.icon_tick)
                         .SetShowAsAction(ShowAsAction.Always);
                     break;
                 case ToolbarRequestMessage.ResetToolbar:
                     Toolbar.Menu.Clear();
+                    break;
+                case ToolbarRequestMessage.ShowSearchInterface:
+                    _searchView = new SearchView(this)
+                    {
+                        LayoutParameters = new Toolbar.LayoutParams(
+                            ViewGroup.LayoutParams.MatchParent,
+                            ViewGroup.LayoutParams.WrapContent)
+                    };
+                    _searchView.MaxWidth = int.MaxValue;
+                    _searchView.FindViewById<TextView>(Resource.Id.search_src_text).SetOnEditorActionListener(
+                        new OnEditorActionListener(
+                            tuple => { Messenger.Default.Send(new SearchQueryMessage(_searchView.Query)); }));
+                    Toolbar.Menu.Add(0, -1, 0, "Search")
+                        .SetActionView(_searchView)
+                        .SetIcon(Resource.Drawable.icon_search)
+                        .SetOnActionExpandListener(this)
+                        .SetShowAsActionFlags(ShowAsAction.CollapseActionView | ShowAsAction.IfRoom);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(request), request, null);
@@ -118,6 +138,7 @@ namespace AoTracker.Android.Activities
         }
 
         #endregion
+
 
 
         class HamburgerEntryHolder : BindingViewHolderBase<HamburgerMenuEntryViewModel>
@@ -170,5 +191,16 @@ namespace AoTracker.Android.Activities
             public FrameLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<FrameLayout>(Resource.Id.ClickSurface));
         }
 
+        public bool OnMenuItemActionCollapse(IMenuItem item)
+        {
+            Messenger.Default.Send(ToolbarActionMessage.CollapsedSearchQuery);
+            return true;
+        }
+
+        public bool OnMenuItemActionExpand(IMenuItem item)
+        {
+            Messenger.Default.Send(ToolbarActionMessage.ExpandedSearchQuery);
+            return true;
+        }
     }
 }

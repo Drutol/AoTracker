@@ -7,9 +7,11 @@ using AoLibs.Utilities.Shared;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Sites.Yahoo;
+using AoTracker.Domain.Messaging;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Infrastructure;
 using AoTracker.Infrastructure.Models;
+using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Infrastructure.Statics;
 using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Interfaces;
@@ -37,17 +39,29 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         private bool _isPreparing;
         private string _progressLabel;
         private bool _awaitingManualLoad;
+        private string _searchQuery;
+        private string _previousSearchQueryBeforeCollapse;
 
         public FeedTabEntry TabEntry
         {
             get => _tabEntry;
             set
             {
-                if(_tabEntry != null)
+                if (_tabEntry != null)
+                {
                     _tabEntry.CrawlerSetsChanged -= TabEntryOnCrawlerSetsChanged;
+                    _tabEntry.Disposed -= TabEntryOnDisposed;
+                }
                 _tabEntry = value;
                 _tabEntry.CrawlerSetsChanged += TabEntryOnCrawlerSetsChanged;
+                _tabEntry.Disposed += TabEntryOnDisposed;
             }
+        }
+
+        private void TabEntryOnDisposed(object sender, EventArgs e)
+        {
+            MessengerInstance.Unregister<SearchQueryMessage>(this, OnSearchQueryMessage);
+            MessengerInstance.Unregister<ToolbarActionMessage>(this, OnToolbarAction);
         }
 
         private void TabEntryOnCrawlerSetsChanged(object sender, EventArgs e)
@@ -59,7 +73,6 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
 
         public SmartObservableCollection<IMerchItem> Feed { get; } =
             new SmartObservableCollection<IMerchItem>();
-
 
         public FeedTabViewModel(
             IFeedProvider feedProvider,
@@ -76,21 +89,45 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             _appVariables = appVariables;
             _feedProvider.NewCrawlerBatch += FeedProviderOnNewCrawlerBatch;
             _feedProvider.Finished += FeedProviderOnFinished;
+
+            MessengerInstance.Register<SearchQueryMessage>(this, OnSearchQueryMessage);
+            MessengerInstance.Register<ToolbarActionMessage>(this, OnToolbarAction);
+        }
+
+        private void OnToolbarAction(ToolbarActionMessage action)
+        {
+            if(action == ToolbarActionMessage.CollapsedSearchQuery)
+            {
+                if (!string.IsNullOrEmpty(_searchQuery))
+                {
+                    _searchQuery = null;
+                    BuildFeed();
+                }
+            }
+            //else if(action == ToolbarActionMessage.ExpandedSearchQuery)
+            //{
+            //    if (!string.IsNullOrEmpty(_previousSearchQueryBeforeCollapse))
+            //    {
+            //        _searchQuery = _previousSearchQueryBeforeCollapse;
+            //        BuildFeed();
+            //    }
+            //}
+        }
+
+        private void OnSearchQueryMessage(SearchQueryMessage message)
+        {
+            if (!message.Query.Equals(_searchQuery))
+            {
+                //_previousSearchQueryBeforeCollapse = message.Query;
+                _searchQuery = message.Query;
+                BuildFeed();
+            }
         }
 
         private async void FeedProviderOnFinished(object sender, EventArgs e)
         {
             IsLoading = false;
-            var items = new List<IMerchItem>();
-            var groups = _aggregatedFeed
-                .GroupBy(model => model.LastChanged, new MinuteDateTimeEqualityComparer())
-                .OrderByDescending(g => g.Key);
-            foreach (var group in groups)
-            {
-                items.Add(new FeedChangeGroupItem(group.Key, group));
-                items.AddRange(group);
-            }
-            Feed.AddRange(items);
+            BuildFeed();
 
             foreach (var group in _aggregatedFeed.GroupBy(model => model.SetOfOrigin))
             {
@@ -98,8 +135,32 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
                     group.Key,
                     group.Select(model => model.BuildHistoryEntry()).ToList());
             }
+        }
 
-            _aggregatedFeed.Clear();
+        private void BuildFeed()
+        {
+            if(!_aggregatedFeed?.Any() ?? true)
+                return;
+
+            Feed.Clear();
+
+            var items = new List<IMerchItem>();
+
+            IEnumerable<FeedItemViewModel> finalFeedSource = _aggregatedFeed;
+
+            if (!string.IsNullOrEmpty(_searchQuery))
+                finalFeedSource = finalFeedSource.Where(model => model.Item.Name.Contains(_searchQuery));
+
+            var groups = finalFeedSource
+                .GroupBy(model => model.LastChanged, new MinuteDateTimeEqualityComparer())
+                .OrderByDescending(g => g.Key);
+            foreach (var group in groups)
+            {
+                items.Add(new FeedChangeGroupItem(group.Key, group));
+                items.AddRange(group);
+            }
+
+            Feed.AddRange(items);
         }
 
         private void FeedProviderOnNewCrawlerBatch(object sender, FeedBatch e)
@@ -141,6 +202,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         public async void RefreshFeed(bool force = false)
         {
             AwaitingManualLoad = false;
+            _aggregatedFeed.Clear();
             Feed.Clear();
             var historyTasks = TabEntry.CrawlerSets
                 .Select(set => _feedHistoryProvider.GetHistory(set))
