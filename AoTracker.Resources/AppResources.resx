@@ -309,4 +309,7 @@
   <data name="Settings_General_LightTheme" xml:space="preserve">
     <value>Light theme</value>
   </data>
+  <data name="Toast_MaxCountOfExcludedKeywordsReached" xml:space="preserve">
+    <value>You can only add up to five excluded keywords.</value>
+  </data>
 </root>

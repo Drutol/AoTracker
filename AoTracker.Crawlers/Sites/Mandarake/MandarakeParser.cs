@@ -33,12 +33,17 @@ namespace AoTracker.Crawlers.Mandarake
             {
                 foreach (var itemNode in items)
                 {
+                    var itemName = WebUtility.HtmlDecode(itemNode.FirstOfDescendantsWithClass("div", "title").InnerText.Trim());
+                    
+                    if (IsItemExcluded(itemName, parameters))
+                        continue;
+
                     var item = new MandarakeItem();
 
                     var id = itemNode.FirstOfDescendantsWithClass("a", "addbasket").Attributes["data-index"].Value.Trim();
 
                     item.Id = id;
-                    item.Name = WebUtility.HtmlDecode(itemNode.FirstOfDescendantsWithClass("div", "title").InnerText.Trim());
+                    item.Name = itemName;
                     item.Price = float.Parse(itemNode.FirstOfDescendantsWithClass("div", "price").InnerText.Replace("円+税", "")
                         .Replace(",", ""));
                     item.ImageUrl = itemNode.Descendants("img").Last().Attributes["src"].Value;

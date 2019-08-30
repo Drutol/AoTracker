@@ -33,13 +33,17 @@ namespace AoTracker.Crawlers.Surugaya
             {
                 foreach (var itemNode in items)
                 {
-                    var item = new SurugayaItem();
-
                     var link = itemNode.FirstOfDescendantsWithClass("p", "title").Descendants("a").First();
                     var priceBlock = itemNode.FirstOfDescendantsWithClass("p", "price_teika");
+                    var itemName = WebUtility.HtmlDecode(link.InnerText);
+
+                    if (IsItemExcluded(itemName, parameters))
+                        continue;
+
+                    var item = new SurugayaItem();
 
                     item.Id = link.Attributes["href"].Value.Split('/').Last();
-                    item.Name = WebUtility.HtmlDecode(link.InnerText);
+                    item.Name = itemName;
                     item.Price = float.Parse(priceBlock.Descendants("strong").First().InnerText.Replace("￥", "")
                         .Replace(",", ""));
                     item.ImageUrl = itemNode.Descendants("img").First().Attributes["src"].Value;

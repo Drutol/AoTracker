@@ -32,6 +32,9 @@ namespace AoTracker.Crawlers.Sites.Lashinbang
             {
                 foreach (var resultItem in root.Kotohaco.Result.Items)
                 {
+                    if(IsItemExcluded(resultItem.Title, parameters))
+                        continue;
+
                     var item = new LashinbangItem
                     {
                         Id = resultItem.Itemid,

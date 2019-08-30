@@ -10,6 +10,7 @@ using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Infrastructure.ViewModels.Crawlers;
 using AoTracker.Interfaces;
+using AoTracker.Interfaces.Adapters;
 using AoTracker.Resources;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
@@ -20,7 +21,9 @@ namespace AoTracker.Infrastructure.ViewModels
     {
         private bool _trimJapaneseQuotationMarks;
 
-        public ConfigureSurugayaCrawlerViewModel(INavigationManager<PageIndex> navigationManager) : base(navigationManager)
+        public ConfigureSurugayaCrawlerViewModel(INavigationManager<PageIndex> navigationManager,
+            ISnackbarProvider snackbarProvider)
+            : base(navigationManager, snackbarProvider)
         {
         }
 

@@ -13,6 +13,7 @@ using AoTracker.Domain.Messaging;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Infrastructure.Models.NavArgs;
+using AoTracker.Interfaces.Adapters;
 using AoTracker.Resources;
 using GalaSoft.MvvmLight.Command;
 
@@ -22,6 +23,7 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
         where TParameters : class, ICrawlerSourceParameters, new()
     {
         private readonly INavigationManager<PageIndex> _navigationManager;
+        private readonly ISnackbarProvider _snackbarProvider;
         private ConfigureCrawlerPageNavArgs _navArgs;
         private string _searchQueryInput;
         private double _costPercentageIncrease;
@@ -33,9 +35,12 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
         protected abstract TParameters FillInParameters(TParameters parameters);
         protected abstract void InitParameters(TParameters parameters);
 
-        public ConfigureCrawlerViewModelBase(INavigationManager<PageIndex> navigationManager)
+        public ConfigureCrawlerViewModelBase(
+            INavigationManager<PageIndex> navigationManager,
+            ISnackbarProvider snackbarProvider)
         {
             _navigationManager = navigationManager;
+            _snackbarProvider = snackbarProvider;
         }
 
         public void NavigatedTo(ConfigureCrawlerPageNavArgs navArgs)
@@ -95,6 +100,11 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
         {
             if (!string.IsNullOrEmpty(keyword) && !ExcludedKeywords.Contains(keyword))
             {
+                if (ExcludedKeywords.Count >= 5)
+                {
+                    _snackbarProvider.ShowToast(AppResources.Toast_MaxCountOfExcludedKeywordsReached);
+                    return;
+                }
                 ExcludedKeywords.Add(keyword);
             }
         });  

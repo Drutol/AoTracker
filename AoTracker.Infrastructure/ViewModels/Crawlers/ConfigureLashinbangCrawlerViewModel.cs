@@ -5,12 +5,16 @@ using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Sites.Lashinbang;
 using AoTracker.Domain.Enums;
+using AoTracker.Interfaces.Adapters;
 
 namespace AoTracker.Infrastructure.ViewModels.Crawlers
 {
     public class ConfigureLashinbangCrawlerViewModel : ConfigureCrawlerViewModelBase<LashinbangSourceParameters>
     {
-        public ConfigureLashinbangCrawlerViewModel(INavigationManager<PageIndex> navigationManager) : base(navigationManager)
+        public ConfigureLashinbangCrawlerViewModel(
+            INavigationManager<PageIndex> navigationManager,
+            ISnackbarProvider snackbarProvider) 
+            : base(navigationManager, snackbarProvider)
         {
         }
 

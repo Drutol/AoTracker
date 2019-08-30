@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AoTracker.Crawlers.Infrastructure;
@@ -11,9 +12,30 @@ namespace AoTracker.Crawlers.Abstract
         where T : ICrawlerResultItem
         where TParameters : ICrawlerSourceParameters
     {
-        public Task<ICrawlerResultList<T>> Parse(string data, CrawlerParameters parameters)
+        public async Task<ICrawlerResultList<T>> Parse(string data, CrawlerParameters parameters)
         {
-            return Parse(data, (TParameters) parameters.Parameters);
+            var result = await Parse(data, (TParameters) parameters.Parameters);
+
+            foreach (var crawlerResultItem in result.Results)
+            {
+                ApplyPriceOffsets(crawlerResultItem, parameters.Parameters);
+            }
+
+            return result;
+        }
+
+        private void ApplyPriceOffsets(T item, ICrawlerSourceParameters parameters)
+        {
+            item.Price += (float)parameters.OffsetIncrease;
+            item.Price += (float)(item.Price * parameters.PercentageIncrease / 100);
+        }
+
+        protected bool IsItemExcluded(string itemName, TParameters parameters)
+        {
+            if (parameters.ExcludedKeywords == null)
+                return false;
+
+            return parameters.ExcludedKeywords.Any(itemName.Contains);
         }
 
         protected abstract Task<ICrawlerResultList<T>> Parse(string data, TParameters parameters);

@@ -635,5 +635,14 @@ namespace AoTracker.Resources {
                 return ResourceManager.GetString("SettingsIndex_Entry_General_Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can only add up to five excluded keywords..
+        /// </summary>
+        public static string Toast_MaxCountOfExcludedKeywordsReached {
+            get {
+                return ResourceManager.GetString("Toast_MaxCountOfExcludedKeywordsReached", resourceCulture);
+            }
+        }
     }
 }

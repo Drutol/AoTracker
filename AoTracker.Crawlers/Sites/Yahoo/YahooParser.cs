@@ -30,6 +30,9 @@ namespace AoTracker.Crawlers.Sites.Yahoo
 
             foreach (var rootItem in root.Items)
             {
+                if (IsItemExcluded(rootItem.Title, parameters))
+                    continue;
+
                 YahooItem.ItemCondition condition = YahooItem.ItemCondition.Unknown;
 
                 if (rootItem.Condition == "中古")

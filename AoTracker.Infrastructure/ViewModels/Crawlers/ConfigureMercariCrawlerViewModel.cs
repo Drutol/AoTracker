@@ -5,12 +5,15 @@ using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Sites.Mercari;
 using AoTracker.Domain.Enums;
+using AoTracker.Interfaces.Adapters;
 
 namespace AoTracker.Infrastructure.ViewModels.Crawlers
 {
     public class ConfigureMercariCrawlerViewModel : ConfigureCrawlerViewModelBase<MercariSourceParameters>
     {
-        public ConfigureMercariCrawlerViewModel(INavigationManager<PageIndex> navigationManager) : base(navigationManager)
+        public ConfigureMercariCrawlerViewModel(INavigationManager<PageIndex> navigationManager,
+            ISnackbarProvider snackbarProvider)
+            : base(navigationManager, snackbarProvider)
         {
         }
 

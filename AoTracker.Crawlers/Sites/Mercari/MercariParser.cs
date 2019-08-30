@@ -38,10 +38,14 @@ namespace AoTracker.Crawlers.Sites.Mercari
 
                 foreach (var itemNode in itemNodes)
                 {
-                    var item = new MercariItem();
-
                     var image = itemNode.Descendants("img").First();
                     var link = itemNode.Descendants("a").First();
+                    var itemName = WebUtility.HtmlDecode(image.Attributes["alt"].Value.Trim());
+
+                    if (IsItemExcluded(itemName, parameters))
+                        continue;
+
+                    var item = new MercariItem();
 
                     var idTemp = link.Attributes["href"].Value;
                     var pos = idTemp.IndexOf('?');
@@ -50,7 +54,7 @@ namespace AoTracker.Crawlers.Sites.Mercari
 
                     item.Id = idTemp.Substring(pos + 1);
                     item.InternalId = $"mercari_{item.Id}";
-                    item.Name = WebUtility.HtmlDecode(image.Attributes["alt"].Value.Trim());
+                    item.Name = itemName;
                     item.Price = float.Parse(itemNode.FirstOfDescendantsWithClass("div", "items-box-price font-5")
                         .InnerText.Replace("¥", "").Replace(",", "").Trim());
                     item.ImageUrl = image.Attributes["data-src"].Value;

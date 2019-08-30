@@ -17,10 +17,12 @@ using AoLibs.Adapters.Core.Interfaces;
 using AoLibs.Navigation.Android.Navigation;
 using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Android.Activities;
+using AoTracker.Android.Adapters;
 using AoTracker.Android.Utils;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Statics;
+using AoTracker.Interfaces.Adapters;
 using Autofac;
 using FFImageLoading;
 using ModernHttpClient;
@@ -68,6 +70,7 @@ namespace AoTracker.Android
             containerBuilder.RegisterType<ContextProvider>().As<IContextProvider>().SingleInstance();
             containerBuilder.RegisterType<PhotoPickerAdapter>().As<IPhotoPickerAdapter>().SingleInstance();
             containerBuilder.RegisterType<PhoneCallAdapter>().As<IPhoneCallAdapter>().SingleInstance();
+            containerBuilder.RegisterType<SnackbarProvider>().As<ISnackbarProvider>().SingleInstance();
 
             containerBuilder.RegisterType<HttpClientProvider>().As<IHttpClientProvider>();
 
