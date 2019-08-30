@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using AoTracker.Interfaces;
 using Autofac;
+using Microsoft.AppCenter.Crashes;
 
 namespace AoTracker.Infrastructure.Statics
 {
-    public class AppInitializationRoutines
+    public static class AppInitializationRoutines
     {
         private static IContainer Container { get; set; }
 
@@ -22,6 +23,15 @@ namespace AoTracker.Infrastructure.Statics
             dependenciesRegistration(builder);
 
             Container = builder.Build();
+
+            Crashes.GetErrorAttachments = report =>
+            {
+                var provider = Container.Resolve<ICrashDumpLogProvider>();
+                return new[]
+                {
+                    ErrorAttachmentLog.AttachmentWithText(provider.GetLogs(), "logs.txt"),
+                };
+            };
         }
 
         public static async void InitializeDependencies()

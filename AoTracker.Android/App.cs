@@ -25,6 +25,7 @@ using AoTracker.Infrastructure.Statics;
 using AoTracker.Interfaces.Adapters;
 using Autofac;
 using FFImageLoading;
+using Microsoft.Extensions.Logging;
 using ModernHttpClient;
 using Newtonsoft.Json;
 
@@ -71,6 +72,7 @@ namespace AoTracker.Android
             containerBuilder.RegisterType<PhotoPickerAdapter>().As<IPhotoPickerAdapter>().SingleInstance();
             containerBuilder.RegisterType<PhoneCallAdapter>().As<IPhoneCallAdapter>().SingleInstance();
             containerBuilder.RegisterType<SnackbarProvider>().As<ISnackbarProvider>().SingleInstance();
+            containerBuilder.RegisterType<AndroidLoggerProvider>().As<ILoggerProvider>().SingleInstance();
 
             containerBuilder.RegisterType<HttpClientProvider>().As<IHttpClientProvider>();
 

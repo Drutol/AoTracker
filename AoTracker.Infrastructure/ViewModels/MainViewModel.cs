@@ -12,11 +12,14 @@ using AoTracker.Infrastructure.Models;
 using AoTracker.Interfaces;
 using AoTracker.Resources;
 using GalaSoft.MvvmLight.Command;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.Extensions.Logging;
 
 namespace AoTracker.Infrastructure.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        private readonly ILogger<MainViewModel> _logger;
         private readonly ISettings _settings;
         private readonly INavigationManager<PageIndex> _navigationManager;
         private readonly IUserDataProvider _userDataProvider;
@@ -59,10 +62,13 @@ namespace AoTracker.Infrastructure.ViewModels
             set => Set(ref _hamburgerItems, value);
         }
 
-        public MainViewModel(ISettings settings,
+        public MainViewModel(
+            ILogger<MainViewModel> logger,
+            ISettings settings,
             INavigationManager<PageIndex> navigationManager,
             IUserDataProvider userDataProvider)
         {
+            _logger = logger;
             _settings = settings;
             _navigationManager = navigationManager;
             _userDataProvider = userDataProvider;
@@ -82,6 +88,8 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public async void Initialize()
         {
+            _logger.LogDebug("App management passed to ViewModel layer.");
+            Crashes.GenerateTestCrash();
             await _userDataProvider.Initialize();
 
             if (!_settings.PassedWelcome)

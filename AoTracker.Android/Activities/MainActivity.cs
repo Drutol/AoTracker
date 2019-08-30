@@ -20,6 +20,9 @@ using AoTracker.Infrastructure.Statics;
 using AoTracker.Infrastructure.ViewModels;
 using Autofac;
 using GalaSoft.MvvmLight.Helpers;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Messenger = GalaSoft.MvvmLight.Messaging.Messenger;
 using Toolbar = global::Android.Support.V7.Widget.Toolbar;
 
@@ -49,6 +52,7 @@ namespace AoTracker.Android.Activities
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            AppCenter.Start("cabc9418-9bd8-480d-a062-16cb6f7228c4", typeof(Analytics), typeof(Crashes));
             this.ApplyTheme();
             if(ThemeManager.IsDarkTheme)
                 Window.SetStatusBarColor(ThemeManager.DarkBackgroundColour);
