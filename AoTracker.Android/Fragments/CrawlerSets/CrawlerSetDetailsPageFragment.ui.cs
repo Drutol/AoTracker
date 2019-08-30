@@ -14,6 +14,7 @@ using Android.Views;
 using Android.Widget;
 using AoLibs.Adapters.Android.Recycler;
 using AoTracker.Android.Utils;
+using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Mandarake;
 using AoTracker.Crawlers.Sites.Lashinbang;
 using AoTracker.Crawlers.Sites.Mercari;
@@ -68,63 +69,34 @@ namespace AoTracker.Android.Fragments
             object ViewModelProxy { get; set; }
         }
 
-        class SurugayaCrawlerHolder : BindingViewHolderBase<CrawlerDescriptorViewModel<SurugayaItem>>, ICrawlerHolder
+        class SurugayaCrawlerHolder : SharedCrawlerHolder<CrawlerDescriptorViewModel<SurugayaItem>>, ICrawlerHolder
         {
-            private readonly View _view;
-
-            public object ViewModelProxy
-            {
-                get => ViewModel;
-                set => ViewModel = (CrawlerDescriptorViewModel<SurugayaItem>)value;
-            }
 
             public SurugayaCrawlerHolder(View view) : base(view)
             {
-                _view = view;
+
             }
 
-            protected override void SetBindings()
+            protected override void OnParamsChanged(ICrawlerSourceParameters parameters)
             {
-                Bindings.Add(this.SetBinding(() => ViewModel.CrawlerSourceParameters).WhenSourceChanges(() =>
-                {
-                    var param = ViewModel.CrawlerSourceParameters as SurugayaSourceParameters;
-
-                    SearchPhrase.Text = param.SearchQuery;
-                    if (param.PercentageIncrease == 0 && param.OffsetIncrease == 0)
-                    {
-                        PriceIncreaseSection.Visibility = PriceIncreaseSectionDivider.Visibility = ViewStates.Gone;
-                    }
-                    else
-                    {
-                        PriceIncreaseSection.Visibility = PriceIncreaseSectionDivider.Visibility = ViewStates.Visible;
-                        PriceIncrease.Text = $"+{param.OffsetIncrease}¥  +{param.PercentageIncrease}%";
-                    }
-                    RemovesQuotationMarksIndicator.Visibility =
-                        param.TrimJapaneseQuotationMarks ? ViewStates.Visible : ViewStates.Gone;
-                }));
+                var param = (SurugayaSourceParameters) parameters;
+                RemovesQuotationMarksIndicator.Visibility =
+                    param.TrimJapaneseQuotationMarks ? ViewStates.Visible : ViewStates.Gone;
             }
 
-            private ImageView _image;
-            private TextView _searchPhrase;
-            private View _priceIncreaseSectionDivider;
-            private TextView _priceIncrease;
-            private LinearLayout _priceIncreaseSection;
             private LinearLayout _removesQuotationMarksIndicator;
-            private LinearLayout _clickSurface;
 
-            public ImageView Image => _image ?? (_image = _view.FindViewById<ImageView>(Resource.Id.Image));
-            public TextView SearchPhrase => _searchPhrase ?? (_searchPhrase = _view.FindViewById<TextView>(Resource.Id.SearchPhrase));
-            public View PriceIncreaseSectionDivider => _priceIncreaseSectionDivider ?? (_priceIncreaseSectionDivider = _view.FindViewById<View>(Resource.Id.PriceIncreaseSectionDivider));
-            public TextView PriceIncrease => _priceIncrease ?? (_priceIncrease = _view.FindViewById<TextView>(Resource.Id.PriceIncrease));
-            public LinearLayout PriceIncreaseSection => _priceIncreaseSection ?? (_priceIncreaseSection = _view.FindViewById<LinearLayout>(Resource.Id.PriceIncreaseSection));
             public LinearLayout RemovesQuotationMarksIndicator => _removesQuotationMarksIndicator ?? (_removesQuotationMarksIndicator = _view.FindViewById<LinearLayout>(Resource.Id.RemovesQuotationMarksIndicator));
-            public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
+            
         }
+
 
 
         abstract class SharedCrawlerHolder<T> : BindingViewHolderBase<T> where T : CrawlerDescriptorViewModel
         {
-            private View _view;
+            // For code generation purpose
+            // ReSharper disable once InconsistentNaming
+            protected readonly View _view;
 
             public object ViewModelProxy
             {
@@ -137,6 +109,11 @@ namespace AoTracker.Android.Fragments
                 _view = view;
             }
 
+            protected virtual void OnParamsChanged(ICrawlerSourceParameters parameters)
+            {
+
+            }
+
             protected override void SetBindings()
             {
                 Image.SetImageResource(ViewModel.BackingModel.CrawlerDomain.ToImageResource());
@@ -146,7 +123,7 @@ namespace AoTracker.Android.Fragments
                     var param = ViewModel.CrawlerSourceParameters;
 
                     SearchPhrase.Text = param.SearchQuery;
-                    if (param.PercentageIncrease == 0 && param.OffsetIncrease == 0)
+                    if (Math.Abs(param.PercentageIncrease) < 0.001 && Math.Abs(param.OffsetIncrease) < 0.001)
                     {
                         PriceIncreaseSection.Visibility = PriceIncreaseSectionDivider.Visibility = ViewStates.Gone;
                     }
@@ -154,11 +131,24 @@ namespace AoTracker.Android.Fragments
                     {
                         PriceIncreaseSection.Visibility = PriceIncreaseSectionDivider.Visibility = ViewStates.Visible;
                         PriceIncrease.Text = $"+{param.OffsetIncrease}¥  +{param.PercentageIncrease}%";
+                    }   
+                    
+                    if (!param.ExcludedKeywords?.Any() ?? true)
+                    {
+                        ExcludedKeywordsSection.Visibility = ExcludedKeywordsSectionDivider.Visibility = ViewStates.Gone;
+                    }
+                    else
+                    {
+                        ExcludedKeywordsSection.Visibility = ExcludedKeywordsSectionDivider.Visibility = ViewStates.Visible;
+                        ExcludedKeywords.Text = string.Join(", ", param.ExcludedKeywords);
                     }
                 }));
             }
             private ImageView _image;
             private TextView _searchPhrase;
+            private View _excludedKeywordsSectionDivider;
+            private TextView _excludedKeywords;
+            private LinearLayout _excludedKeywordsSection;
             private View _priceIncreaseSectionDivider;
             private TextView _priceIncrease;
             private LinearLayout _priceIncreaseSection;
@@ -166,11 +156,15 @@ namespace AoTracker.Android.Fragments
 
             public ImageView Image => _image ?? (_image = _view.FindViewById<ImageView>(Resource.Id.Image));
             public TextView SearchPhrase => _searchPhrase ?? (_searchPhrase = _view.FindViewById<TextView>(Resource.Id.SearchPhrase));
+            public View ExcludedKeywordsSectionDivider => _excludedKeywordsSectionDivider ?? (_excludedKeywordsSectionDivider = _view.FindViewById<View>(Resource.Id.ExcludedKeywordsSectionDivider));
+            public TextView ExcludedKeywords => _excludedKeywords ?? (_excludedKeywords = _view.FindViewById<TextView>(Resource.Id.ExcludedKeywords));
+            public LinearLayout ExcludedKeywordsSection => _excludedKeywordsSection ?? (_excludedKeywordsSection = _view.FindViewById<LinearLayout>(Resource.Id.ExcludedKeywordsSection));
             public View PriceIncreaseSectionDivider => _priceIncreaseSectionDivider ?? (_priceIncreaseSectionDivider = _view.FindViewById<View>(Resource.Id.PriceIncreaseSectionDivider));
             public TextView PriceIncrease => _priceIncrease ?? (_priceIncrease = _view.FindViewById<TextView>(Resource.Id.PriceIncrease));
             public LinearLayout PriceIncreaseSection => _priceIncreaseSection ?? (_priceIncreaseSection = _view.FindViewById<LinearLayout>(Resource.Id.PriceIncreaseSection));
             public LinearLayout ClickSurface => _clickSurface ?? (_clickSurface = _view.FindViewById<LinearLayout>(Resource.Id.ClickSurface));
         }
+
 
 
         class MandarakeCrawlerHolder : SharedCrawlerHolder<CrawlerDescriptorViewModel<MandarakeItem>>, ICrawlerHolder

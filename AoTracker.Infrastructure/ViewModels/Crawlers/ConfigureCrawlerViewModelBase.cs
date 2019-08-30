@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using AoLibs.Navigation.Core.Interfaces;
+using AoLibs.Utilities.Shared;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Mandarake;
 using AoTracker.Domain.Enums;
+using AoTracker.Domain.Messaging;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Infrastructure.Models.NavArgs;
@@ -23,6 +27,8 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
         private double _costPercentageIncrease;
         private double _costOffsetIncrease;
 
+        public SmartObservableCollection<string> ExcludedKeywords { get; set; } = new SmartObservableCollection<string>();
+
         protected abstract CrawlerDomain Domain { get; }
         protected abstract TParameters FillInParameters(TParameters parameters);
         protected abstract void InitParameters(TParameters parameters);
@@ -34,6 +40,9 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
 
         public void NavigatedTo(ConfigureCrawlerPageNavArgs navArgs)
         {
+            MessengerInstance.Send(ToolbarRequestMessage.ShowSaveButton);
+            MessengerInstance.Register<ToolbarActionMessage>(this, OntoolbarAction);
+
             _navArgs = navArgs;
             PageTitle = string.Format(AppResources.PageTitle_ConfigureCrawlers, Domain.ToString());
 
@@ -44,9 +53,24 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
                 SearchQueryInput = descriptor.SearchQuery;
                 CostOffsetIncrease = descriptor.OffsetIncrease;
                 CostPercentageIncrease = descriptor.PercentageIncrease;
+                ExcludedKeywords.AddRange(descriptor.ExcludedKeywords ?? Enumerable.Empty<string>());
 
                 InitParameters(descriptor as TParameters);
             }
+        }
+
+        private void OntoolbarAction(ToolbarActionMessage message)
+        {
+            if (message == ToolbarActionMessage.ClickedSaveButton)
+            {
+                SaveCommand.Execute(null);
+            }
+        }
+
+        public void NavigatedFrom()
+        {
+            MessengerInstance.Send(ToolbarRequestMessage.ResetToolbar);
+            MessengerInstance.Unregister<ToolbarActionMessage>(this, OntoolbarAction);
         }
 
         public string SearchQueryInput
@@ -67,6 +91,19 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
             set => Set(ref _costOffsetIncrease, value);
         }
 
+        public RelayCommand<string> AddExcludedKeywordCommand => new RelayCommand<string>(keyword =>
+        {
+            if (!string.IsNullOrEmpty(keyword) && !ExcludedKeywords.Contains(keyword))
+            {
+                ExcludedKeywords.Add(keyword);
+            }
+        });  
+        
+        public RelayCommand<string> RemoveExcludedKeywordCommand => new RelayCommand<string>(keyword =>
+        {
+            ExcludedKeywords.Remove(keyword);
+        });
+
         public RelayCommand SaveCommand => new RelayCommand(() =>
         {
             var resultMessage = new ConfigureCrawlerResultMessage
@@ -81,6 +118,7 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
                 SearchQuery = SearchQueryInput,
                 OffsetIncrease = CostOffsetIncrease,
                 PercentageIncrease = CostPercentageIncrease,
+                ExcludedKeywords = ExcludedKeywords.ToList()
             });
 
             switch (resultMessage.Action)

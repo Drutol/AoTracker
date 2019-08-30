@@ -37,7 +37,47 @@
             android:layout_marginStart="4dp"
             android:textColor="?TextColour"
             android:textSize="@dimen/FontSizeMedium"
-            tools:text="蒼の彼方のフォーリズム　タペストリ" />
+            tools:text="蒼の彼方のフォーリズムタペストリ" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/ExcludedKeywordsSectionDivider"
+        style="@style/ViewDivider" />
+
+    <LinearLayout
+        android:id="@+id/ExcludedKeywordsSection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp">
+
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_stop_small"
+                android:tint="?AccentColour" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@string/font_family_light"
+                android:text="Excluded:"
+                android:textColor="?TextColour" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ExcludedKeywords"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textColor="?TextColour"
+            android:textSize="@dimen/FontSizeMedium"
+            tools:text="有坂真白" />
     </LinearLayout>
 
     <View

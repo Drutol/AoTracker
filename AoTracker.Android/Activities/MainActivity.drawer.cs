@@ -103,7 +103,7 @@ namespace AoTracker.Android.Activities
             {
                 case ToolbarRequestMessage.ShowSaveButton:
                     Toolbar.Menu.Add(0, (int) ToolbarActionMessage.ClickedSaveButton, 0, "Save")
-                        .SetIcon(Resource.Drawable.icon_tick)
+                        .SetIcon(Resource.Drawable.icon_save)
                         .SetShowAsAction(ShowAsAction.Always);
                     break;
                 case ToolbarRequestMessage.ResetToolbar:

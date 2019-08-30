@@ -10,5 +10,6 @@ namespace AoTracker.Crawlers.Interfaces
 
         double PercentageIncrease { get; set; }
         double OffsetIncrease { get; set; }
+        List<string> ExcludedKeywords { get; set; }
     }
 }

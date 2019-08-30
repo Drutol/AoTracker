@@ -159,6 +159,9 @@
   <data name="CrawlerSetsPage_CurrentCrawlersHeader" xml:space="preserve">
     <value>Current crawlers</value>
   </data>
+  <data name="EmptyState_Subtitle_ConfigureCrawler" xml:space="preserve">
+    <value>Add new excluded keywords</value>
+  </data>
   <data name="EmptyState_Subtitle_CrawlerSetDetails" xml:space="preserve">
     <value>Added crawlers will show here.</value>
   </data>

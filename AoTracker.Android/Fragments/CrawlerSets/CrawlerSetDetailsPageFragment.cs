@@ -54,27 +54,27 @@ namespace AoTracker.Android.Fragments
                     .WithGroup<CrawlerDescriptorViewModel<SurugayaItem>, SurugayaCrawlerHolder>(builder =>
                     {
                         builder.WithResourceId(LayoutInflater, Resource.Layout.item_surugaya_crawler);
-                        builder.WithDataTemplate(SurugayaCrawlerDescriptorDataTemplate);
+                        builder.WithDataTemplate(SharedCrawlerDescriptorDataTemplate);
                     })
                     .WithGroup<CrawlerDescriptorViewModel<MandarakeItem>, MandarakeCrawlerHolder>(builder =>
                     {
                         builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
-                        builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
+                        builder.WithDataTemplate(SharedCrawlerDescriptorDataTemplate);
                     })
                     .WithGroup<CrawlerDescriptorViewModel<MercariItem>, MercariCrawlerHolder>(builder =>
                     {
                         builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
-                        builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
+                        builder.WithDataTemplate(SharedCrawlerDescriptorDataTemplate);
                     })
                     .WithGroup<CrawlerDescriptorViewModel<YahooItem>, YahooCrawlerHolder>(builder =>
                     {
                         builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
-                        builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
+                        builder.WithDataTemplate(SharedCrawlerDescriptorDataTemplate);
                     })
                     .WithGroup<CrawlerDescriptorViewModel<LashinbangItem>, LashinbangCrawlerHolder>(builder =>
                     {
                         builder.WithResourceId(LayoutInflater, Resource.Layout.item_mandarake_crawler);
-                        builder.WithDataTemplate(MandarakeCrawlerDescriptorDataTemplate);
+                        builder.WithDataTemplate(SharedCrawlerDescriptorDataTemplate);
                     })
                     .Build());
             ViewModel.CrawlerDescriptors.SetUpWithEmptyState(EmptyState);
@@ -102,12 +102,7 @@ namespace AoTracker.Android.Fragments
             });
         }
 
-        private void SurugayaCrawlerDescriptorDataTemplate(CrawlerDescriptorViewModel<SurugayaItem> item, SurugayaCrawlerHolder holder, int position)
-        {
-            BaseCrawlerTemplate(item, holder);
-        }
-
-        private void MandarakeCrawlerDescriptorDataTemplate(CrawlerDescriptorViewModel item, ICrawlerHolder holder, int position)
+        private void SharedCrawlerDescriptorDataTemplate(CrawlerDescriptorViewModel item, ICrawlerHolder holder, int position)
         {
             BaseCrawlerTemplate(item, holder);
         }

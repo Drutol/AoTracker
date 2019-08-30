@@ -187,6 +187,15 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new excluded keywords.
+        /// </summary>
+        public static string EmptyState_Subtitle_ConfigureCrawler {
+            get {
+                return ResourceManager.GetString("EmptyState_Subtitle_ConfigureCrawler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Added crawlers will show here..
         /// </summary>
         public static string EmptyState_Subtitle_CrawlerSetDetails {

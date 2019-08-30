@@ -11,5 +11,6 @@ namespace AoTracker.Crawlers.Infrastructure
 
         public double PercentageIncrease { get; set; }
         public double OffsetIncrease { get; set; }
+        public List<string> ExcludedKeywords { get; set; }
     }
 }
