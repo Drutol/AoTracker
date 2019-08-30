@@ -45,9 +45,9 @@ namespace AoTracker.Infrastructure.Logging
 
             public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
             {
-                var message =$"[{DateTime.UtcNow}] [{logLevel}]";
+                var message = $"[{DateTime.UtcNow}] [{logLevel}] [{_categoryName}] ";
                 if (_scopes.Any())
-                    message += $" [Scopes: {string.Join(", ", _scopes.Select(lifetime => lifetime.Scope))}] ";
+                    message += $"[Scopes: {string.Join(", ", _scopes.Select(lifetime => lifetime.Scope))}] ";
                 message += formatter(state, exception);
                 _parent.WriteLog(message);
             }

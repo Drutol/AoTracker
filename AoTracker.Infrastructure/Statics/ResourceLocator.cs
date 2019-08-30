@@ -25,6 +25,7 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterType<UserDataProvider>().As<IUserDataProvider>().SingleInstance();
             builder.RegisterType<DataCache>().As<IDataCache>().SingleInstance();
             builder.RegisterType<FeedHistoryProvider>().As<IFeedHistoryProvider>().SingleInstance();
+            builder.RegisterType<TelemetryProvider>().As<ITelemetryProvider>().SingleInstance();
             builder.RegisterType<IgnoredItemsManager>().As<IIgnoredItemsManager>().As<IInitializable>().SingleInstance();
             builder.RegisterType<WatchedItemsManager>().As<IWatchedItemsManager>().As<IInitializable>().SingleInstance();
 

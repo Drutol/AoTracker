@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -12,11 +13,19 @@ using AoTracker.Crawlers.Infrastructure;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Utils;
 using HtmlAgilityPack;
+using Microsoft.Extensions.Logging;
 
 namespace AoTracker.Crawlers.Surugaya
 {
     public class SurugayaParser : TypedParser<SurugayaItem, SurugayaSourceParameters>
     {
+        private ILogger<SurugayaParser> _logger;
+
+        public SurugayaParser(ILogger<SurugayaParser> logger)
+        {
+            _logger = logger;
+        }
+
         protected override Task<ICrawlerResultList<SurugayaItem>> Parse(string data, SurugayaSourceParameters parameters)
         {
             var doc = new HtmlDocument();
@@ -27,7 +36,6 @@ namespace AoTracker.Crawlers.Surugaya
             var output = new CrawlerResultBase<SurugayaItem>
             {
                 Results = parsedItems,
-                Success = true
             };
             try
             {
@@ -59,11 +67,14 @@ namespace AoTracker.Crawlers.Surugaya
 
                     parsedItems.Add(item);
                 }
+
+                output.Success = true;
             }
-            catch
+            catch (Exception e)
             {
-                output.Success = false;
+                _logger.LogError(e, $"Failed to parse list of items. ({parameters.SearchQuery})");
             }
+
             return Task.FromResult((ICrawlerResultList<SurugayaItem>)output);
         }
 
@@ -72,41 +83,46 @@ namespace AoTracker.Crawlers.Surugaya
             var doc = new HtmlDocument();
             doc.LoadHtml(data);
 
-            var output = new CrawlerResultBase<SurugayaItem>
+            var output = new CrawlerResultBase<SurugayaItem>();
+
+            try
             {
-                Success = true
-            };
+                var item = new SurugayaItem();
 
-            var item = new SurugayaItem();
+                var titleSection = doc.FirstOfDescendantsWithId("h2", "item_title");
+                var categorySpan = titleSection.Descendants("span").First();
+                titleSection.RemoveChild(categorySpan);
 
-            var titleSection = doc.FirstOfDescendantsWithId("h2", "item_title");
-            var categorySpan = titleSection.Descendants("span").First();
-            titleSection.RemoveChild(categorySpan);
+                item.Id = id;
+                item.InternalId = $"surugaya_{item.Id}";
+                item.Name = WebUtility.HtmlDecode(titleSection.InnerText.Trim());
+                item.Category = WebUtility.HtmlDecode(categorySpan.InnerText.Trim());
+                if (data.Contains("申し訳ございません。品切れ中です"))
+                    item.Price = CrawlerConstants.InvalidPrice;
+                else
+                {
+                    item.Price = float.Parse(doc.FirstOfDescendantsWithClass("span", "text-red text-bold mgnL10").InnerText
+                        .Replace(",", "").Replace("円 (税込)", "").Trim());
+                }
 
-            item.Id = id;
-            item.InternalId = $"surugaya_{item.Id}";
-            item.Name = WebUtility.HtmlDecode(titleSection.InnerText.Trim());
-            item.Category = WebUtility.HtmlDecode(categorySpan.InnerText.Trim());
-            if (data.Contains("申し訳ございません。品切れ中です"))
-                item.Price = CrawlerConstants.InvalidPrice;
-            else
-            {
-                item.Price = float.Parse(doc.FirstOfDescendantsWithClass("span", "text-red text-bold mgnL10").InnerText
-                    .Replace(",", "").Replace("円 (税込)", "").Trim());
+                item.Brand = WebUtility.HtmlDecode(
+                    doc
+                        .WhereOfDescendantsWithClass("td", "t_contents")
+                        .FirstOrDefault(node => node.Descendants("a").Any(htmlNode =>
+                            htmlNode.Attributes["href"].Value.Contains("category=&search_word=&restrict[]=brand")))?
+                        .InnerText?
+                        .Trim());
+                var image = doc.FirstOfDescendantsWithClass("a", "cloud-zoom");
+                item.ImageUrl = image.Attributes["href"].Value;
+
+                output.Success = true;
+                output.Result = item;
             }
-
-            item.Brand = WebUtility.HtmlDecode(
-                doc
-                    .WhereOfDescendantsWithClass("td", "t_contents")
-                    .FirstOrDefault(node => node.Descendants("a").Any(htmlNode =>
-                        htmlNode.Attributes["href"].Value.Contains("category=&search_word=&restrict[]=brand")))?
-                    .InnerText?
-                    .Trim());
-            var image = doc.FirstOfDescendantsWithClass("a", "cloud-zoom");
-            item.ImageUrl = image.Attributes["href"].Value;
-
-            output.Result = item;
-
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"Failed to parse item detail ({id}).");
+            }
+            
             return Task.FromResult((ICrawlerResultSingle<SurugayaItem>)output);
         }
     }

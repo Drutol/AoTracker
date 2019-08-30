@@ -31,8 +31,8 @@ namespace AoTracker.Android.Utils
                 throwOnCaptiveNetwork: false,
                 new TLSConfig
                 {
-                    DangerousAcceptAnyServerCertificateValidator = true,
-                    DangerousAllowInsecureHTTPLoads = true
+                    //DangerousAcceptAnyServerCertificateValidator = true,
+                    //DangerousAllowInsecureHTTPLoads = true
                 },
                 cookieHandler: cookieHandler)
             {

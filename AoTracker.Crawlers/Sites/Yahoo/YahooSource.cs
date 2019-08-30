@@ -10,8 +10,11 @@ namespace AoTracker.Crawlers.Sites.Yahoo
 {
     public class YahooSource : TypedSource<YahooSourceParameters, VolatileParametersBase>
     {
+        public static int ItemsPerRequest { get; } = 120;
+
         private const string FormatString =
-            "https://www.fromjapan.co.jp/sites/yahooauction/search?exhibitType=0&condition=0&hits=120&keyword={0}&sort=end&category=All&page={1}";
+            "https://www.fromjapan.co.jp/sites/yahooauction/search?exhibitType=0&condition=0&hits={2}&keyword={0}&sort=end&category=All&page={1}";
+
         private const string FormatStringDetail =
             "https://www.fromjapan.co.jp/en/auction/yahoo/input/{0}";
 
@@ -22,10 +25,13 @@ namespace AoTracker.Crawlers.Sites.Yahoo
             _clientProvider = clientProvider;
         }
 
+
+
         protected override Task<string> ObtainSource(YahooSourceParameters parameters,
             VolatileParametersBase volatileParameters)
         {
-            return _clientProvider.HttpClient.GetStringAsync(string.Format(FormatString, parameters.SearchQuery, volatileParameters.Page));
+            return _clientProvider.HttpClient.GetStringAsync(string.Format(FormatString, parameters.SearchQuery,
+                volatileParameters.Page, ItemsPerRequest));
         }
 
         public override Task<string> ObtainSource(string id)

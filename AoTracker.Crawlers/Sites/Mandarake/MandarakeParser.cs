@@ -12,11 +12,19 @@ using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Surugaya;
 using AoTracker.Crawlers.Utils;
 using HtmlAgilityPack;
+using Microsoft.Extensions.Logging;
 
 namespace AoTracker.Crawlers.Mandarake
 {
     public class MandarakeParser : TypedParser<MandarakeItem, MandarakeSourceParameters>
     {
+        private ILogger<MandarakeParser> _logger;
+
+        public MandarakeParser(ILogger<MandarakeParser> logger)
+        {
+            _logger = logger;
+        }
+
         protected override Task<ICrawlerResultList<MandarakeItem>> Parse(string data, MandarakeSourceParameters parameters)
         {
             var doc = new HtmlDocument();
@@ -27,7 +35,6 @@ namespace AoTracker.Crawlers.Mandarake
             var output = new CrawlerResultBase<MandarakeItem>
             {
                 Results = parsedItems,
-                Success = true
             };
             try
             {
@@ -53,11 +60,14 @@ namespace AoTracker.Crawlers.Mandarake
 
                     parsedItems.Add(item);
                 }
+
+                output.Success = true;
             }
-            catch
+            catch(Exception e)
             {
-                output.Success = false;
+                _logger.LogError(e, $"Failed to parse list of items. ({parameters.SearchQuery})");
             }
+
             return Task.FromResult((ICrawlerResultList<MandarakeItem>)output);
         }
 
@@ -66,30 +76,36 @@ namespace AoTracker.Crawlers.Mandarake
             var doc = new HtmlDocument();
             doc.LoadHtml(data);
 
-            var output = new CrawlerResultBase<MandarakeItem>
+            var output = new CrawlerResultBase<MandarakeItem>();
+
+            try
             {
-                Success = true
-            };
+                var item = new MandarakeItem();
 
-            var item = new MandarakeItem();
+                item.Id = id;
+                item.InternalId = $"mandarake_{item.Id}";
+                item.Shop = WebUtility.HtmlDecode(doc.FirstOfDescendantsWithClass("div", "shop").InnerText.Trim());
+                item.Name = WebUtility.HtmlDecode(doc.FirstOfDescendantsWithClass("div", "subject").InnerText.Trim());
 
-            item.Id = id;
-            item.InternalId = $"mandarake_{item.Id}";
-            item.Shop = WebUtility.HtmlDecode(doc.FirstOfDescendantsWithClass("div", "shop").InnerText.Trim());
-            item.Name = WebUtility.HtmlDecode(doc.FirstOfDescendantsWithClass("div", "subject").InnerText.Trim());
+                if (doc.WhereOfDescendantsWithClass("a", "addalert").Any())
+                    item.Price = CrawlerConstants.InvalidPrice;
+                else
+                    item.Price = float.Parse(doc.FirstOfDescendantsWithClass("p", "__price").InnerText.Split('円')
+                        .First()
+                        .Replace(",", ""));
 
-            if (doc.WhereOfDescendantsWithClass("a", "addalert").Any())
-                item.Price = CrawlerConstants.InvalidPrice;
-            else
-                item.Price = float.Parse(doc.FirstOfDescendantsWithClass("p", "__price").InnerText.Split('円').First()
-                    .Replace(",", ""));
+                item.ImageUrl = doc.FirstOfDescendantsWithClass("img", "xzoom").Attributes["xoriginal"].Value;
+                item.ImageUrl = item.ImageUrl.Insert(item.ImageUrl.LastIndexOf('/') + 1, "s_");
 
-            item.ImageUrl = doc.FirstOfDescendantsWithClass("img", "xzoom").Attributes["xoriginal"].Value;
-            item.ImageUrl = item.ImageUrl.Insert(item.ImageUrl.LastIndexOf('/') + 1, "s_");
+                output.Success = true;
+                output.Result = item;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"Failed to parse item detail ({id}).");
+            }
 
-            output.Result = item;
-
-            return Task.FromResult((ICrawlerResultSingle<MandarakeItem>)output);
+            return Task.FromResult((ICrawlerResultSingle<MandarakeItem>) output);
         }
     }
 }

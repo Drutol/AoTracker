@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Infrastructure;
 using AoTracker.Crawlers.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace AoTracker.Crawlers.Sites.Yahoo
 {
     class YahooCrawler : CrawlerBase<YahooItem>
     {
-        public YahooCrawler(IHttpClientProvider httpClientProvider)
+        public YahooCrawler(IHttpClientProvider httpClientProvider, ILoggerFactory loggerFactory)
         {
             Domain = CrawlerDomain.Yahoo;
-            Parser = new YahooParser();
+            Parser = new YahooParser(loggerFactory.CreateLogger<YahooParser>());
             Source = new YahooSource(httpClientProvider);
             Cache = new CrawlerCache<YahooItem>();
         }
@@ -26,7 +27,7 @@ namespace AoTracker.Crawlers.Sites.Yahoo
             if (result.Success)
             {
                 var yahooResult = (CrawlerResultBase<YahooItem>) result;
-                if (result.Results.Count() == 120)
+                if (result.Results.Count() == YahooSource.ItemsPerRequest)
                     yahooResult.HasMore = true;
             }
 

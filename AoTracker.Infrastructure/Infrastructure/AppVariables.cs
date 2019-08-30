@@ -18,9 +18,6 @@ namespace AoTracker.Infrastructure.Infrastructure
         public Holder<List<CrawlerSet>> CrawlerSets { get; set; }
 
         [Variable]
-        public Holder<List<HistoryFeedEntry>> FeedHistory { get; set; }
-
-        [Variable]
         public Holder<List<IgnoredItemEntry>> IgnoredItems { get; set; }
 
         [Variable]

@@ -8,6 +8,7 @@ using AoTracker.Crawlers.Sites.Lashinbang;
 using AoTracker.Crawlers.Sites.Mercari;
 using AoTracker.Crawlers.Sites.Yahoo;
 using AoTracker.Crawlers.Surugaya;
+using Microsoft.Extensions.Logging;
 
 namespace AoTracker.Crawlers.Infrastructure
 {
@@ -20,15 +21,15 @@ namespace AoTracker.Crawlers.Infrastructure
             {typeof(SurugayaItem), CrawlerDomain.Surugaya}
         };
 
-        public virtual void InitializeCrawlers(IHttpClientProvider httpClientProvider)
+        public virtual void InitializeCrawlers(IHttpClientProvider httpClientProvider, ILoggerFactory loggerFactory)
         {
             _crawlers = new Dictionary<CrawlerDomain, ICrawler>
             {
-                {CrawlerDomain.Surugaya, new SurugayaCrawler(httpClientProvider)},
-                {CrawlerDomain.Mandarake, new MandarakeCrawler(httpClientProvider)},
-                {CrawlerDomain.Mercari, new MercariCrawler(httpClientProvider)},
-                {CrawlerDomain.Yahoo, new YahooCrawler(httpClientProvider)},
-                {CrawlerDomain.Lashinbang, new LashinbangCrawler(httpClientProvider)},
+                {CrawlerDomain.Surugaya, new SurugayaCrawler(httpClientProvider, loggerFactory)},
+                {CrawlerDomain.Mandarake, new MandarakeCrawler(httpClientProvider, loggerFactory)},
+                {CrawlerDomain.Mercari, new MercariCrawler(httpClientProvider, loggerFactory)},
+                {CrawlerDomain.Yahoo, new YahooCrawler(httpClientProvider, loggerFactory)},
+                {CrawlerDomain.Lashinbang, new LashinbangCrawler(httpClientProvider, loggerFactory)},
             };
         }
 

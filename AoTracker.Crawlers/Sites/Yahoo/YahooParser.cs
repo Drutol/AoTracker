@@ -11,6 +11,7 @@ using AoTracker.Crawlers.Infrastructure;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Utils;
 using HtmlAgilityPack;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -18,6 +19,13 @@ namespace AoTracker.Crawlers.Sites.Yahoo
 {
     class YahooParser : TypedParser<YahooItem, YahooSourceParameters>
     {
+        private ILogger<YahooParser> _logger;
+
+        public YahooParser(ILogger<YahooParser> logger)
+        {
+            _logger = logger;
+        }
+
         protected override Task<ICrawlerResultList<YahooItem>> Parse(string data, YahooSourceParameters parameters)
         {
             var root = JsonConvert.DeserializeObject<RootObject>(data);
@@ -25,40 +33,48 @@ namespace AoTracker.Crawlers.Sites.Yahoo
             var output = new CrawlerResultBase<YahooItem>
             {
                 Results = parsedItems,
-                Success = true
             };
 
-            foreach (var rootItem in root.Items)
+            try
             {
-                if (IsItemExcluded(rootItem.Title, parameters))
-                    continue;
-
-                YahooItem.ItemCondition condition = YahooItem.ItemCondition.Unknown;
-
-                if (rootItem.Condition == "中古")
-                    condition = YahooItem.ItemCondition.Used;
-                else if (rootItem.Condition == "新品")
-                    condition = YahooItem.ItemCondition.New;
-
-                var item = new YahooItem
+                foreach (var rootItem in root.Items)
                 {
-                    Id = rootItem.Id,
-                    InternalId = $"yahoo_{rootItem.Id}",
-                    ImageUrl = rootItem.ImageUrl,
-                    Name = rootItem.Title,
-                    Price = rootItem.Price,
-                    BuyoutPrice = rootItem.BuyItNowPrice,
-                    EndTime = new DateTimeOffset(DateTime.Parse(rootItem.EndTime), TimeSpan.FromHours(9))
-                        .ToUniversalTime().UtcDateTime,
-                    IsShippingFree = rootItem.Postage == 0,
-                    Condition = condition,
-                    Tax = rootItem.Tax,
-                    BidsCount = rootItem.Bids,
-                };
+                    if (IsItemExcluded(rootItem.Title, parameters))
+                        continue;
 
-                parsedItems.Add(item);
+                    YahooItem.ItemCondition condition = YahooItem.ItemCondition.Unknown;
+
+                    if (rootItem.Condition == "中古")
+                        condition = YahooItem.ItemCondition.Used;
+                    else if (rootItem.Condition == "新品")
+                        condition = YahooItem.ItemCondition.New;
+
+                    var item = new YahooItem
+                    {
+                        Id = rootItem.Id,
+                        InternalId = $"yahoo_{rootItem.Id}",
+                        ImageUrl = rootItem.ImageUrl,
+                        Name = rootItem.Title,
+                        Price = rootItem.Price,
+                        BuyoutPrice = rootItem.BuyItNowPrice,
+                        EndTime = new DateTimeOffset(DateTime.Parse(rootItem.EndTime), TimeSpan.FromHours(9))
+                            .ToUniversalTime().UtcDateTime,
+                        IsShippingFree = rootItem.Postage == 0,
+                        Condition = condition,
+                        Tax = rootItem.Tax,
+                        BidsCount = rootItem.Bids,
+                    };
+
+                    parsedItems.Add(item);
+                }
+
+                output.Success = true;
             }
-
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"Failed to parse list of items. ({parameters.SearchQuery})");
+            }
+            
             return Task.FromResult((ICrawlerResultList<YahooItem>)output);
         }
 
@@ -67,53 +83,57 @@ namespace AoTracker.Crawlers.Sites.Yahoo
             var doc = new HtmlDocument();
             doc.LoadHtml(data);
 
-            var output = new CrawlerResultBase<YahooItem>
+            var output = new CrawlerResultBase<YahooItem>();
+            try
             {
-                Success = true
-            };
+                var image = doc.FirstOfDescendantsWithClass("p", "fjd_img img").Descendants("img").First();
 
-            var image = doc.FirstOfDescendantsWithClass("p", "fjd_img img").Descendants("img").First();
-
-            var item = new YahooItem();
-            item.Id = id;
-            item.InternalId = $"yahoo_{item.Id}";
-            item.ImageUrl = image.Attributes["src"].Value;
-            item.Name = WebUtility.HtmlDecode(image.Attributes["alt"].Value);
-            if (data.Contains("Sorry: Auction of item URL or Auction ID that you filled in has been closed."))
-                item.Price = CrawlerConstants.InvalidPrice;
-            else
-            {
-                var container = doc.FirstOfDescendantsWithId("div", "dtl").WhereOfDescendantsWithClass("span", "num")
-                    .ToList();
-                item.Price = float.Parse(container[0].InnerText.Replace(",", "").Trim());
-                if (container.Count == 2)
+                var item = new YahooItem();
+                item.Id = id;
+                item.InternalId = $"yahoo_{item.Id}";
+                item.ImageUrl = image.Attributes["src"].Value;
+                item.Name = WebUtility.HtmlDecode(image.Attributes["alt"].Value);
+                if (data.Contains("Sorry: Auction of item URL or Auction ID that you filled in has been closed."))
+                    item.Price = CrawlerConstants.InvalidPrice;
+                else
                 {
-                    item.BuyoutPrice = float.Parse(container[1].InnerText.Replace(",", "").Trim());
+                    var container = doc.FirstOfDescendantsWithId("div", "dtl").WhereOfDescendantsWithClass("span", "num")
+                        .ToList();
+                    item.Price = float.Parse(container[0].InnerText.Replace(",", "").Trim());
+                    if (container.Count == 2)
+                    {
+                        item.BuyoutPrice = float.Parse(container[1].InnerText.Replace(",", "").Trim());
+                    }
                 }
+
+                var detailsGrid = doc.WhereOfDescendantsWithClass("div", "wr").First(node => node.InnerHtml.StartsWith("<table><tbody><tr><th"));
+                var datesRow = detailsGrid.Descendants("tr").First(node => node.InnerText.Contains("End time"));
+                item.EndTime =
+                    new DateTimeOffset(
+                            DateTime.Parse(WebUtility.HtmlDecode(datesRow.Descendants("td").Last().InnerText
+                                .Replace("(Japan Time)", "").Trim())), TimeSpan.FromHours(9))
+                        .ToUniversalTime().UtcDateTime;
+
+                var conditionRow = detailsGrid.Descendants("tr").First(node => node.InnerText.Contains("condition"));
+                var condition = conditionRow.Descendants("td").First().InnerText.Trim();
+
+                if (condition == "New")
+                    item.Condition = YahooItem.ItemCondition.New;
+                else if (condition == "Used")
+                    item.Condition = YahooItem.ItemCondition.Used;
+
+                var bidsRow = detailsGrid.Descendants("tr").First(node => node.InnerText.Contains("Current bids"));
+                var bids = bidsRow.Descendants("td").Last().InnerText.Trim();
+
+                item.BidsCount = int.Parse(bids);
+
+                output.Success = true;
+                output.Result = item;
             }
-
-            var detailsGrid = doc.WhereOfDescendantsWithClass("div", "wr").First(node => node.InnerHtml.StartsWith("<table><tbody><tr><th"));
-            var datesRow = detailsGrid.Descendants("tr").First(node => node.InnerText.Contains("End time"));
-            item.EndTime =
-                new DateTimeOffset(
-                        DateTime.Parse(WebUtility.HtmlDecode(datesRow.Descendants("td").Last().InnerText
-                            .Replace("(Japan Time)", "").Trim())), TimeSpan.FromHours(9))
-                    .ToUniversalTime().UtcDateTime;
-
-            var conditionRow = detailsGrid.Descendants("tr").First(node => node.InnerText.Contains("condition"));
-            var condition = conditionRow.Descendants("td").First().InnerText.Trim();
-
-            if (condition == "New")
-                item.Condition = YahooItem.ItemCondition.New;
-            else if (condition == "Used")
-                item.Condition = YahooItem.ItemCondition.Used;
-
-            var bidsRow = detailsGrid.Descendants("tr").First(node => node.InnerText.Contains("Current bids"));
-            var bids = bidsRow.Descendants("td").Last().InnerText.Trim();
-
-            item.BidsCount = int.Parse(bids);
-
-            output.Result = item;
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"Failed to parse item detail ({id}).");
+            }
 
             return Task.FromResult((ICrawlerResultSingle<YahooItem>) output);
         }

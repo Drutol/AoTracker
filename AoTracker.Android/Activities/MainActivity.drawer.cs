@@ -58,6 +58,7 @@ namespace AoTracker.Android.Activities
             SetUpHamburgerButton();
             Toolbar.MenuItemClick += ToolbarOnMenuItemClick;
 
+            //Don't use object initializer
             _settingsButtonHolder = new HamburgerEntryHolder(SettingsNavButton, this);
             _settingsButtonHolder.ViewModel = ViewModel.SettingsButtonViewModel;
         }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Input;
 using AoLibs.Navigation.Core;
 using AoLibs.Navigation.Core.Interfaces;
+using AoTracker.Crawlers.Enums;
 using AoTracker.Domain;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Models;
@@ -20,11 +21,11 @@ namespace AoTracker.Infrastructure.ViewModels
     public class MainViewModel : ViewModelBase
     {
         private readonly ILogger<MainViewModel> _logger;
+        private readonly ITelemetryProvider _telemetryProvider;
         private readonly ISettings _settings;
         private readonly INavigationManager<PageIndex> _navigationManager;
         private readonly IUserDataProvider _userDataProvider;
         private ObservableCollection<HamburgerMenuEntryViewModel> _hamburgerItems;
-        private HamburgerMenuEntryViewModel _selectedItem;
 
         public HamburgerMenuEntryViewModel SettingsButtonViewModel { get; } = new HamburgerMenuEntryViewModel
         {
@@ -64,11 +65,13 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public MainViewModel(
             ILogger<MainViewModel> logger,
+            ITelemetryProvider telemetryProvider,
             ISettings settings,
             INavigationManager<PageIndex> navigationManager,
             IUserDataProvider userDataProvider)
         {
             _logger = logger;
+            _telemetryProvider = telemetryProvider;
             _settings = settings;
             _navigationManager = navigationManager;
             _userDataProvider = userDataProvider;
@@ -81,6 +84,9 @@ namespace AoTracker.Infrastructure.ViewModels
 
         private void NavigationManagerOnNavigated(object sender, PageIndex e)
         {
+            _logger.LogInformation($"Navigated to: {e}");
+            _telemetryProvider.TrackEvent(TelemetryEvent.Navigation, e.ToString());
+
             SetSelectedItem(HamburgerItems
                 .Concat(new[] {SettingsButtonViewModel})
                 .FirstOrDefault(model => model.Page == e));
@@ -88,8 +94,7 @@ namespace AoTracker.Infrastructure.ViewModels
 
         public async void Initialize()
         {
-            _logger.LogDebug("App management passed to ViewModel layer.");
-            Crashes.GenerateTestCrash();
+            _logger.LogInformation("App management passed to ViewModel layer.");
             await _userDataProvider.Initialize();
 
             if (!_settings.PassedWelcome)

@@ -17,12 +17,14 @@ using AoTracker.Android.Utils;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.ViewModels.Settings;
 using GalaSoft.MvvmLight.Helpers;
+using Microsoft.Extensions.Logging;
 
 namespace AoTracker.Android.Fragments.Settings
 {
     [NavigationPage(PageIndex.SettingsGeneral)]
     class SettingsGeneralPageFragment : CustomFragmentBase<SettingsGeneralViewModel>
     {
+        private ILogger<SettingsGeneralPageFragment> _logger;
         public override int LayoutResourceId { get; } = Resource.Layout.page_settings_general;
 
         private List<ImageButton> _accentButtons;
@@ -52,6 +54,11 @@ namespace AoTracker.Android.Fragments.Settings
             {Resource.Id.ColorLimeAccentButton, AppTheme.Lime},
             {Resource.Id.ColorBlueAccentButton, AppTheme.SkyBlue},
         };
+
+        public SettingsGeneralPageFragment()
+        {
+            _logger = Resolve<ILogger<SettingsGeneralPageFragment>>();
+        }
 
         protected override void InitBindings()
         {
@@ -106,6 +113,7 @@ namespace AoTracker.Android.Fragments.Settings
             ProxyDomainSpinner.ItemSelected += ProxyDomainSpinnerOnItemSelected;
             ApplyThemeButton.SetOnClickListener(new OnClickListener(view =>
             {
+                _logger.LogInformation("Applying new theme.");
                 ViewModel.ApplyThemeCommand.Execute(null);
                 MainActivity.Instance.Recreate();
             }));

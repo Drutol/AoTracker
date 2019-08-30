@@ -9,6 +9,7 @@ using AoTracker.Crawlers.Infrastructure;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Utils;
 using HtmlAgilityPack;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -16,6 +17,12 @@ namespace AoTracker.Crawlers.Sites.Lashinbang
 {
     public class LashinbangParser : TypedParser<LashinbangItem, LashinbangSourceParameters>
     {
+        private ILogger<LashinbangParser> _logger;
+
+        public LashinbangParser(ILogger<LashinbangParser> logger)
+        {
+            _logger = logger;
+        }
 
         protected override Task<ICrawlerResultList<LashinbangItem>> Parse(string data,
             LashinbangSourceParameters parameters)
@@ -25,7 +32,6 @@ namespace AoTracker.Crawlers.Sites.Lashinbang
             var output = new CrawlerResultBase<LashinbangItem>
             {
                 Results = parsedItems,
-                Success = true
             };
 
             try
@@ -46,10 +52,12 @@ namespace AoTracker.Crawlers.Sites.Lashinbang
 
                     parsedItems.Add(item);
                 }
+
+                output.Success = true;
             }
             catch (Exception e)
             {
-                output.Success = false;
+                _logger.LogError(e, $"Failed to parse list of items. ({parameters.SearchQuery})");
             }
 
             return Task.FromResult((ICrawlerResultList<LashinbangItem>)output);
@@ -60,25 +68,26 @@ namespace AoTracker.Crawlers.Sites.Lashinbang
             var doc = new HtmlDocument();
             doc.LoadHtml(data);
 
-   
-            var output = new CrawlerResultBase<LashinbangItem>
+            var output = new CrawlerResultBase<LashinbangItem>();
+            try
             {
-                Success = true
-            };
+                var item = new LashinbangItem();
 
+                item.Id = id;
+                item.InternalId = $"lashin_{item.Id}";
+                item.ImageUrl = doc.FirstOfDescendantsWithId("img", "zoom_03").Attributes["data-zoom-image"].Value;
+                item.Name = WebUtility.HtmlDecode(doc.FirstOfDescendantsWithClass("div", "item_name").Descendants("h1")
+                    .First().InnerText.Trim());
+                item.Price = float.Parse(doc.FirstOfDescendantsWithClass("div", "price red").InnerText.Split('円').First()
+                    .Replace(",", "").Trim());
 
-            var item = new LashinbangItem();
-
-
-            item.Id = id;
-            item.InternalId = $"lashin_{item.Id}";
-            item.ImageUrl = doc.FirstOfDescendantsWithId("img", "zoom_03").Attributes["data-zoom-image"].Value;
-            item.Name = WebUtility.HtmlDecode(doc.FirstOfDescendantsWithClass("div", "item_name").Descendants("h1")
-                .First().InnerText.Trim());
-            item.Price = float.Parse(doc.FirstOfDescendantsWithClass("div", "price red").InnerText.Split('円').First()
-                .Replace(",", "").Trim());
-
-            output.Result = item;
+                output.Success = true;
+                output.Result = item;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"Failed to parse item detail ({id}).");
+            }
 
             return Task.FromResult((ICrawlerResultSingle<LashinbangItem>)output);
         }

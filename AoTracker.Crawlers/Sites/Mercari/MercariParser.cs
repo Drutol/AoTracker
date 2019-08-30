@@ -11,11 +11,19 @@ using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Mandarake;
 using AoTracker.Crawlers.Utils;
 using HtmlAgilityPack;
+using Microsoft.Extensions.Logging;
 
 namespace AoTracker.Crawlers.Sites.Mercari
 {
     public class MercariParser : TypedParser<MercariItem, MercariSourceParameters>
     {
+        private ILogger<MercariParser> _logger;
+
+        public MercariParser(ILogger<MercariParser> logger)
+        {
+            _logger = logger;
+        }
+
         protected override Task<ICrawlerResultList<MercariItem>> Parse(string data, MercariSourceParameters parameters)
         {
             var doc = new HtmlDocument();
@@ -26,9 +34,7 @@ namespace AoTracker.Crawlers.Sites.Mercari
             var output = new CrawlerResultBase<MercariItem>
             {
                 Results = parsedItems,
-                Success = true
             };
-
 
             try
             {
@@ -62,10 +68,12 @@ namespace AoTracker.Crawlers.Sites.Mercari
 
                     parsedItems.Add(item);
                 }
+
+                output.Success = true;
             }
             catch (Exception e)
             {
-                output.Success = false;
+                _logger.LogError(e, $"Failed to parse list of items. ({parameters.SearchQuery})");
             }
 
             return Task.FromResult((ICrawlerResultList<MercariItem>) output);
@@ -76,31 +84,35 @@ namespace AoTracker.Crawlers.Sites.Mercari
             var doc = new HtmlDocument();
             doc.LoadHtml(data);
 
-            var output = new CrawlerResultBase<MercariItem>
+            var output = new CrawlerResultBase<MercariItem>();
+
+            try
             {
-                Success = true
-            };
+                var image = doc.FirstOfDescendantsWithClass("img", "owl-lazy");
 
-            var image = doc.FirstOfDescendantsWithClass("img", "owl-lazy");
+                var item = new MercariItem();
 
-            var item = new MercariItem();
+                item.Id = id;
+                item.InternalId = $"mercari_{item.Id}";
+                item.Name = WebUtility.HtmlDecode(image.Attributes["alt"].Value.Trim());
+                item.ImageUrl = image.Attributes["data-src"].Value;
+                if (data.Contains("売り切れました"))
+                {
+                    item.Price = CrawlerConstants.InvalidPrice;
+                }
+                else
+                {
+                    item.Price = float.Parse(doc.FirstOfDescendantsWithClass("span", "item-price bold")
+                        .InnerText.Replace("¥", "").Replace(",", "").Trim());
+                }
 
-            item.Id = id;
-            item.InternalId = $"mercari_{item.Id}";
-            item.Name = WebUtility.HtmlDecode(image.Attributes["alt"].Value.Trim());
-            item.ImageUrl = image.Attributes["data-src"].Value;
-            if (data.Contains("売り切れました"))
-            {
-                item.Price = CrawlerConstants.InvalidPrice;
+                output.Success = true;
+                output.Result = item;
             }
-            else
+            catch (Exception e)
             {
-                item.Price = float.Parse(doc.FirstOfDescendantsWithClass("span", "item-price bold")
-                    .InnerText.Replace("¥", "").Replace(",", "").Trim());
+                _logger.LogError(e, $"Failed to parse item detail ({id}).");
             }
-
-            output.Result = item;
-
 
             return Task.FromResult((ICrawlerResultSingle<MercariItem>)output);
         }

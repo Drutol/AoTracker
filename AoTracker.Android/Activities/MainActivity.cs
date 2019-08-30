@@ -23,6 +23,7 @@ using GalaSoft.MvvmLight.Helpers;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Microsoft.Extensions.Logging;
 using Messenger = GalaSoft.MvvmLight.Messaging.Messenger;
 using Toolbar = global::Android.Support.V7.Widget.Toolbar;
 
@@ -39,6 +40,7 @@ namespace AoTracker.Android.Activities
     {
         private ActionBarDrawerToggle _hamburgerToggle;
         private MainViewModel ViewModel { get; set; }
+        private ILogger<MainActivity> _logger;
 
         public static Activity Instance { get; set; }
 
@@ -52,7 +54,7 @@ namespace AoTracker.Android.Activities
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            AppCenter.Start("cabc9418-9bd8-480d-a062-16cb6f7228c4", typeof(Analytics), typeof(Crashes));
+            AppCenter.Start("c0a878f9-4b3b-4c60-b56d-41e237fbf515", typeof(Analytics), typeof(Crashes));
             this.ApplyTheme();
             if(ThemeManager.IsDarkTheme)
                 Window.SetStatusBarColor(ThemeManager.DarkBackgroundColour);
@@ -67,6 +69,7 @@ namespace AoTracker.Android.Activities
             using (var scope = ResourceLocator.ObtainScope())
             {
                 ViewModel = scope.Resolve<MainViewModel>();
+                _logger = scope.Resolve<ILogger<MainActivity>>();
             }
 
             ViewModel.Initialize();
@@ -85,10 +88,23 @@ namespace AoTracker.Android.Activities
 
         }
 
+        protected override void OnResume()
+        {
+            _logger.LogInformation("App resumed.");
+            base.OnResume();
+        }
+
+        protected override void OnRestart()
+        {
+            _logger.LogInformation("Restarting");
+            base.OnRestart();
+        }
+
         public override void OnBackPressed()
         {
             if (!App.NavigationManager.OnBackRequested())
             {
+                _logger.LogInformation("Moving task to back.");
                 MoveTaskToBack(true);
             }
         }
