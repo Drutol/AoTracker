@@ -69,13 +69,13 @@ namespace AoTracker.Infrastructure.ViewModels.Item
             _watchedItemsManager.RemoveWatchedEntry(BackingModel);
         });
 
-        public void WithHistory(List<HistoryFeedEntry> feedHistory, CrawlerSet setOfOrigin)
+        public void WithHistory(List<HistoryFeedEntry> feedHistory, CrawlerSet setOfOrigin, DateTime now)
         {
             SetOfOrigin = setOfOrigin;
 
             if (feedHistory == null)
             {
-                LastChanged = DateTime.UtcNow;
+                LastChanged = now;
                 return;
             }
 
@@ -83,7 +83,7 @@ namespace AoTracker.Infrastructure.ViewModels.Item
             if (historyEntry == null)
             {
                 IsNew = true;
-                LastChanged = DateTime.UtcNow;
+                LastChanged = now;
                 PreviousPrice = BackingModel.Price;
             }
             else
@@ -97,7 +97,7 @@ namespace AoTracker.Infrastructure.ViewModels.Item
                 }
                 else
                 {
-                    LastChanged = DateTime.UtcNow;
+                    LastChanged = now;
                     PreviousPrice = historyEntry.LatestPrice;
                     priceToCompare = historyEntry.LatestPrice;
                 }

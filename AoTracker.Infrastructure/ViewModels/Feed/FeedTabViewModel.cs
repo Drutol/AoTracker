@@ -41,6 +41,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         private bool _awaitingManualLoad;
         private string _searchQuery;
         private string _previousSearchQueryBeforeCollapse;
+        private DateTime _batchGenerationTime;
 
         public FeedTabEntry TabEntry
         {
@@ -165,7 +166,13 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
 
         private void FeedProviderOnNewCrawlerBatch(object sender, FeedBatch e)
         {
+            if (IsPreparing)
+            {
+                _batchGenerationTime = DateTime.UtcNow;
+            }
+
             IsPreparing = false;
+            
 
             if (!e.CrawlerResult.IsCached)
             {
@@ -191,7 +198,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
                         new TypedParameter(typeof(ICrawlerResultItem), crawlerResultItem),
                         new TypedParameter(typeof(FeedTabViewModel), this));
 
-                    vm.WithHistory(_feedHistory, e.SetOfOrigin);
+                    vm.WithHistory(_feedHistory, e.SetOfOrigin, _batchGenerationTime);
                     viewModels.Add(vm);
                 }
 

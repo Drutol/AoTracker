@@ -54,8 +54,8 @@ namespace AoTracker.Android
                 throwOnCaptiveNetwork: false,
                 new TLSConfig
                 {
-                    //DangerousAcceptAnyServerCertificateValidator = true,
-                    //DangerousAllowInsecureHTTPLoads = true
+                    DangerousAcceptAnyServerCertificateValidator = true,
+                    DangerousAllowInsecureHTTPLoads = true
                 }) {AllowAutoRedirect = true});
             AppInitializationRoutines.InitializeDependencyInjection(DependenciesRegistration);
         }
