@@ -51,6 +51,13 @@ namespace AoTracker.Android.Utils
             if (page == PageIndex.WatchedItems)
                 return Resource.Drawable.icon_eye;
             return 0;
+        }   
+        
+        public static int ToIconResource(this WelcomeStage stage)
+        {
+            if (stage == WelcomeStage.Hello)
+                return Resource.Drawable.icon_stop_big;
+            return Resource.Drawable.icon_stop_big;
         }
 
         public static void SetUpWithEmptyState<T>(this ObservableCollection<T> collection, View emptyState)

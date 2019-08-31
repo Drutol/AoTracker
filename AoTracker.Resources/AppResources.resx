@@ -273,6 +273,9 @@
   <data name="PageTitle_WatchedItems" xml:space="preserve">
     <value>Watched Items</value>
   </data>
+  <data name="PageTitle_Welcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
   <data name="SettingsIndex_Entry_About_Subtitle" xml:space="preserve">
     <value>AoTracker app information</value>
   </data>

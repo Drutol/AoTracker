@@ -57,10 +57,18 @@ namespace AoTracker.Infrastructure.ViewModels
             },
         };
 
+        private bool _isDrawerEnabled;
+
         public ObservableCollection<HamburgerMenuEntryViewModel> HamburgerItems
         {
             get => _hamburgerItems;
             set => Set(ref _hamburgerItems, value);
+        }
+
+        public bool IsDrawerEnabled
+        {
+            get => _isDrawerEnabled;
+            set => Set(ref _isDrawerEnabled, value);
         }
 
         public MainViewModel(
@@ -87,18 +95,28 @@ namespace AoTracker.Infrastructure.ViewModels
             _logger.LogInformation($"Navigated to: {e}");
             _telemetryProvider.TrackEvent(TelemetryEvent.Navigation, e.ToString());
 
-            SetSelectedItem(HamburgerItems
+            IsDrawerEnabled = e != PageIndex.Welcome;
+
+                SetSelectedItem(HamburgerItems
                 .Concat(new[] {SettingsButtonViewModel})
                 .FirstOrDefault(model => model.Page == e));
         }
 
         public async void Initialize()
         {
-            _logger.LogInformation("App management passed to ViewModel layer.");
             await _userDataProvider.Initialize();
 
             if (!_settings.PassedWelcome)
-                _navigationManager.Navigate(PageIndex.CrawlerSets, NavigationBackstackOption.SetAsRootPage);
+            {
+                _navigationManager.Navigate(PageIndex.Welcome, NavigationBackstackOption.SetAsRootPage);
+            }
+            else
+            {
+                if (_userDataProvider.CrawlingSets.Any())
+                    _navigationManager.Navigate(PageIndex.Feed, NavigationBackstackOption.SetAsRootPage);
+                else
+                    _navigationManager.Navigate(PageIndex.CrawlerSets, NavigationBackstackOption.SetAsRootPage);
+            }
         }
 
         public RelayCommand<HamburgerMenuEntryViewModel> SelectHamburgerItemCommand =>

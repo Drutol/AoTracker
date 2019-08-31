@@ -51,4 +51,10 @@
         <item name="android:src">@drawable/icon_tick</item>
     </style>
 
+    <style name="TextBlockButton">
+        <item name="android:stateListAnimator">@animator/flat_button_animator</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">?AccentColour</item>
+    </style>
 </resources>

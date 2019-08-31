@@ -529,6 +529,15 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Welcome.
+        /// </summary>
+        public static string PageTitle_Welcome {
+            get {
+                return ResourceManager.GetString("PageTitle_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply!.
         /// </summary>
         public static string Settings_General_Apply {

@@ -35,6 +35,7 @@ namespace AoTracker.Android.Activities
     {
         private HamburgerEntryHolder _settingsButtonHolder;
         private SearchView _searchView;
+        private bool _hamburgerButtonAdded;
 
         private void InitDrawer()
         {
@@ -57,6 +58,23 @@ namespace AoTracker.Android.Activities
 
             SetUpHamburgerButton();
             Toolbar.MenuItemClick += ToolbarOnMenuItemClick;
+
+            Bindings.Add(this.SetBinding(() => ViewModel.IsDrawerEnabled).WhenSourceChanges(() =>
+            {
+                if (ViewModel.IsDrawerEnabled)
+                {
+                    DrawerLayout.SetDrawerLockMode(global::Android.Support.V4.Widget.DrawerLayout.LockModeUndefined);
+                    DrawerLayout.AddDrawerListener(_hamburgerToggle);
+                    _hamburgerToggle.SyncState();
+                    _hamburgerButtonAdded = true;
+                }
+                else
+                {
+                    DrawerLayout.SetDrawerLockMode(global::Android.Support.V4.Widget.DrawerLayout.LockModeLockedClosed);
+                    if(_hamburgerButtonAdded)
+                        DrawerLayout.RemoveDrawerListener(_hamburgerToggle);
+                }
+            }));
 
             //Don't use object initializer
             _settingsButtonHolder = new HamburgerEntryHolder(SettingsNavButton, this);
@@ -84,9 +102,6 @@ namespace AoTracker.Android.Activities
                     Color = ThemeManager.ToolbarTextColour
                 }
             };
-
-            DrawerLayout.AddDrawerListener(_hamburgerToggle);
-            _hamburgerToggle.SyncState();
         }
 
         #endregion
