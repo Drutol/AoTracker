@@ -28,6 +28,7 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterType<TelemetryProvider>().As<ITelemetryProvider>().SingleInstance();
             builder.RegisterType<IgnoredItemsManager>().As<IIgnoredItemsManager>().As<IInitializable>().SingleInstance();
             builder.RegisterType<WatchedItemsManager>().As<IWatchedItemsManager>().As<IInitializable>().SingleInstance();
+            builder.RegisterType<ChangelogHandler>().As<IInitializable>().SingleInstance();
 
             builder.RegisterType<DomainLinkHandlerManager>().As<IDomainLinkHandlerManager>().SingleInstance();
             builder.RegisterType<DefaultDomainLinkHandler>().As<IDomainLinkHandler>().SingleInstance();

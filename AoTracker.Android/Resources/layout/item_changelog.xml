@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Text"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:drawableStart="@drawable/icon_chevron_right_small"
+    android:drawableTint="?AccentColour"
+    android:fontFamily="@string/font_family_light"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:textColor="?TextColour"
+    tools:text="Some change." />

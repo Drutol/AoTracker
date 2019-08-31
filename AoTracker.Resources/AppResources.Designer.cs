@@ -187,6 +187,15 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changelog.
+        /// </summary>
+        public static string Dialog_Changelog_Changelog {
+            get {
+                return ResourceManager.GetString("Dialog_Changelog_Changelog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add new excluded keywords.
         /// </summary>
         public static string EmptyState_Subtitle_ConfigureCrawler {

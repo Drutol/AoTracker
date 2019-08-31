@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using AoTracker.Infrastructure.ViewModels;
 using AoTracker.Infrastructure.ViewModels.Crawlers;
+using AoTracker.Infrastructure.ViewModels.Dialogs;
 using AoTracker.Infrastructure.ViewModels.Feed;
 using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Infrastructure.ViewModels.Settings;
@@ -34,6 +35,7 @@ namespace AoTracker.Infrastructure.Statics
             builder.RegisterType<ConfigureYahooCrawlerViewModel>();
             builder.RegisterType<ConfigureMercariCrawlerViewModel>();
             builder.RegisterType<ConfigureLashinbangCrawlerViewModel>();
+            builder.RegisterType<ChangelogDialogViewModel>();
 
             // items
             builder.RegisterType<CrawlerEntryViewModel>();

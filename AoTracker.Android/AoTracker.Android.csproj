@@ -80,6 +80,7 @@
     <Compile Include="Adapters\AppCenterCrashDumpLoggerProvider.cs" />
     <Compile Include="Adapters\SnackbarProvider.cs" />
     <Compile Include="App.cs" />
+    <Compile Include="Dialogs\ChangelogDialog.cs" />
     <Compile Include="Fragments\CrawlerConfigure\ConfigureCrawlerPageFragmentBase.cs" />
     <Compile Include="Fragments\CrawlerConfigure\ConfigureLashinbangCrawlerPageFragment.cs" />
     <Compile Include="Fragments\CrawlerConfigure\ConfigureMandarakeCrawlerPageFragment.cs" />
@@ -164,6 +165,12 @@
     <PackageReference Include="AoLibs.Adapters.Core">
       <Version>0.6.3</Version>
     </PackageReference>
+    <PackageReference Include="AoLibs.Dialogs.Android">
+      <Version>0.6.3</Version>
+    </PackageReference>
+    <PackageReference Include="AoLibs.Dialogs.Core">
+      <Version>0.6.3</Version>
+    </PackageReference>
     <PackageReference Include="AoLibs.Navigation.Android">
       <Version>0.6.3</Version>
     </PackageReference>
@@ -203,6 +210,9 @@
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.CustomTabs" Version="28.0.0.1" />
+    <PackageReference Include="Xamarin.Essentials">
+      <Version>1.3.0</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading">
       <Version>2.4.11.982</Version>
     </PackageReference>
@@ -569,6 +579,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\item_changelog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\dialog_changelog.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -11,8 +11,12 @@ using Android.Support.V7.Widget;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using AoLibs.Dialogs.Android;
+using AoLibs.Dialogs.Core;
+using AoLibs.Dialogs.Core.Interfaces;
 using AoLibs.Navigation.Android.Navigation;
 using AoLibs.Navigation.Core.Interfaces;
+using AoTracker.Android.Dialogs;
 using AoTracker.Android.Themes;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Messaging;
@@ -54,16 +58,26 @@ namespace AoTracker.Android.Activities
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             AppCenter.Start("c0a878f9-4b3b-4c60-b56d-41e237fbf515", typeof(Analytics), typeof(Crashes));
             this.ApplyTheme();
             if(ThemeManager.IsDarkTheme)
                 Window.SetStatusBarColor(ThemeManager.DarkBackgroundColour);
             SetContentView(Resource.Layout.activity_main);
-            AppInitializationRoutines.InitializeDependencies();
+
             App.NavigationManager = new NavigationManager<PageIndex>(
                 SupportFragmentManager,
                 RootView,
                 new ViewModelResolver());
+            App.DialogManager = new CustomDialogsManager<DialogIndex>(
+                SupportFragmentManager,
+                new Dictionary<DialogIndex, ICustomDialogProvider>
+                {
+                    {DialogIndex.ChangelogDialog, new OneshotCustomDialogProvider<ChangelogDialog>()}
+                }, 
+                new ViewModelResolver());
+
+            AppInitializationRoutines.InitializeDependencies();
             SetSupportActionBar(Toolbar);
 
             using (var scope = ResourceLocator.ObtainScope())
@@ -139,11 +153,20 @@ namespace AoTracker.Android.Activities
 
         #endregion
 
-        private class ViewModelResolver : IViewModelResolver
+        private class ViewModelResolver : IViewModelResolver, ICustomDialogViewModelResolver
         {
-            public TViewModel Resolve<TViewModel>()
+            TViewModel IViewModelResolver.Resolve<TViewModel>()
             {
-                Log.Debug(nameof(App), $"Resolving ViewModel: {typeof(TViewModel).Name}");
+                return Resolve<TViewModel>();
+            }
+
+            TViewModel ICustomDialogViewModelResolver.Resolve<TViewModel>()
+            {
+                return Resolve<TViewModel>();
+            }
+
+            private TViewModel Resolve<TViewModel>()
+            {
                 try
                 {
                     return ResourceLocator.CurrentScope.Resolve<TViewModel>();

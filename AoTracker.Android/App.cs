@@ -14,6 +14,7 @@ using AoLibs.Adapters.Android;
 using AoLibs.Adapters.Android.Interfaces;
 using AoLibs.Adapters.Core;
 using AoLibs.Adapters.Core.Interfaces;
+using AoLibs.Dialogs.Core.Interfaces;
 using AoLibs.Navigation.Android.Navigation;
 using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Android.Activities;
@@ -36,6 +37,7 @@ namespace AoTracker.Android
     {
         public static App Current { get; private set; }
         public static INavigationManager<PageIndex> NavigationManager { get; set; }
+        public static ICustomDialogsManager<DialogIndex> DialogManager { get; set; }
 
         public App(IntPtr handle, JniHandleOwnership ownerShip) : base(handle, ownerShip)
         {
@@ -52,8 +54,8 @@ namespace AoTracker.Android
                 throwOnCaptiveNetwork: false,
                 new TLSConfig
                 {
-                    DangerousAcceptAnyServerCertificateValidator = true,
-                    DangerousAllowInsecureHTTPLoads = true
+                    //DangerousAcceptAnyServerCertificateValidator = true,
+                    //DangerousAllowInsecureHTTPLoads = true
                 }) {AllowAutoRedirect = true});
             AppInitializationRoutines.InitializeDependencyInjection(DependenciesRegistration);
         }
@@ -76,10 +78,10 @@ namespace AoTracker.Android
 
             containerBuilder.RegisterType<HttpClientProvider>().As<IHttpClientProvider>();
 
-            containerBuilder
-                .Register(context => MainActivity.Instance);
+            containerBuilder.Register(context => MainActivity.Instance);
 
             containerBuilder.Register(ctx => NavigationManager).As<INavigationManager<PageIndex>>();
+            containerBuilder.Register(ctx => DialogManager).As<ICustomDialogsManager<DialogIndex>>();
         }
 
         private class ContextProvider : IContextProvider

@@ -26,8 +26,1797 @@ namespace AoTracker.Android
 		
 		public static void UpdateIdValues()
 		{
+			global::AoLibs.Dialogs.Android.Resource.Animation.abc_fade_in = global::AoTracker.Android.Resource.Animation.abc_fade_in;
+			global::AoLibs.Dialogs.Android.Resource.Animation.abc_fade_out = global::AoTracker.Android.Resource.Animation.abc_fade_out;
+			global::AoLibs.Dialogs.Android.Resource.Animation.abc_grow_fade_in_from_bottom = global::AoTracker.Android.Resource.Animation.abc_grow_fade_in_from_bottom;
+			global::AoLibs.Dialogs.Android.Resource.Animation.abc_popup_enter = global::AoTracker.Android.Resource.Animation.abc_popup_enter;
+			global::AoLibs.Dialogs.Android.Resource.Animation.abc_popup_exit = global::AoTracker.Android.Resource.Animation.abc_popup_exit;
+			global::AoLibs.Dialogs.Android.Resource.Animation.abc_shrink_fade_out_from_bottom = global::AoTracker.Android.Resource.Animation.abc_shrink_fade_out_from_bottom;
+			global::AoLibs.Dialogs.Android.Resource.Animation.abc_slide_in_bottom = global::AoTracker.Android.Resource.Animation.abc_slide_in_bottom;
+			global::AoLibs.Dialogs.Android.Resource.Animation.abc_slide_in_top = global::AoTracker.Android.Resource.Animation.abc_slide_in_top;
+			global::AoLibs.Dialogs.Android.Resource.Animation.abc_slide_out_bottom = global::AoTracker.Android.Resource.Animation.abc_slide_out_bottom;
+			global::AoLibs.Dialogs.Android.Resource.Animation.abc_slide_out_top = global::AoTracker.Android.Resource.Animation.abc_slide_out_top;
+			global::AoLibs.Dialogs.Android.Resource.Animation.abc_tooltip_enter = global::AoTracker.Android.Resource.Animation.abc_tooltip_enter;
+			global::AoLibs.Dialogs.Android.Resource.Animation.abc_tooltip_exit = global::AoTracker.Android.Resource.Animation.abc_tooltip_exit;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionBarDivider = global::AoTracker.Android.Resource.Attribute.actionBarDivider;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionBarItemBackground = global::AoTracker.Android.Resource.Attribute.actionBarItemBackground;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionBarPopupTheme = global::AoTracker.Android.Resource.Attribute.actionBarPopupTheme;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionBarSize = global::AoTracker.Android.Resource.Attribute.actionBarSize;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionBarSplitStyle = global::AoTracker.Android.Resource.Attribute.actionBarSplitStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionBarStyle = global::AoTracker.Android.Resource.Attribute.actionBarStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionBarTabBarStyle = global::AoTracker.Android.Resource.Attribute.actionBarTabBarStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionBarTabStyle = global::AoTracker.Android.Resource.Attribute.actionBarTabStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionBarTabTextStyle = global::AoTracker.Android.Resource.Attribute.actionBarTabTextStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionBarTheme = global::AoTracker.Android.Resource.Attribute.actionBarTheme;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionBarWidgetTheme = global::AoTracker.Android.Resource.Attribute.actionBarWidgetTheme;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionButtonStyle = global::AoTracker.Android.Resource.Attribute.actionButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionDropDownStyle = global::AoTracker.Android.Resource.Attribute.actionDropDownStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionLayout = global::AoTracker.Android.Resource.Attribute.actionLayout;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionMenuTextAppearance = global::AoTracker.Android.Resource.Attribute.actionMenuTextAppearance;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionMenuTextColor = global::AoTracker.Android.Resource.Attribute.actionMenuTextColor;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionModeBackground = global::AoTracker.Android.Resource.Attribute.actionModeBackground;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionModeCloseButtonStyle = global::AoTracker.Android.Resource.Attribute.actionModeCloseButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionModeCloseDrawable = global::AoTracker.Android.Resource.Attribute.actionModeCloseDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionModeCopyDrawable = global::AoTracker.Android.Resource.Attribute.actionModeCopyDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionModeCutDrawable = global::AoTracker.Android.Resource.Attribute.actionModeCutDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionModeFindDrawable = global::AoTracker.Android.Resource.Attribute.actionModeFindDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionModePasteDrawable = global::AoTracker.Android.Resource.Attribute.actionModePasteDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionModePopupWindowStyle = global::AoTracker.Android.Resource.Attribute.actionModePopupWindowStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionModeSelectAllDrawable = global::AoTracker.Android.Resource.Attribute.actionModeSelectAllDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionModeShareDrawable = global::AoTracker.Android.Resource.Attribute.actionModeShareDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionModeSplitBackground = global::AoTracker.Android.Resource.Attribute.actionModeSplitBackground;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionModeStyle = global::AoTracker.Android.Resource.Attribute.actionModeStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionModeWebSearchDrawable = global::AoTracker.Android.Resource.Attribute.actionModeWebSearchDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionOverflowButtonStyle = global::AoTracker.Android.Resource.Attribute.actionOverflowButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionOverflowMenuStyle = global::AoTracker.Android.Resource.Attribute.actionOverflowMenuStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionProviderClass = global::AoTracker.Android.Resource.Attribute.actionProviderClass;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.actionViewClass = global::AoTracker.Android.Resource.Attribute.actionViewClass;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.activityChooserViewStyle = global::AoTracker.Android.Resource.Attribute.activityChooserViewStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.alertDialogButtonGroupStyle = global::AoTracker.Android.Resource.Attribute.alertDialogButtonGroupStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.alertDialogCenterButtons = global::AoTracker.Android.Resource.Attribute.alertDialogCenterButtons;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.alertDialogStyle = global::AoTracker.Android.Resource.Attribute.alertDialogStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.alertDialogTheme = global::AoTracker.Android.Resource.Attribute.alertDialogTheme;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.allowStacking = global::AoTracker.Android.Resource.Attribute.allowStacking;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.alpha = global::AoTracker.Android.Resource.Attribute.alpha;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.alphabeticModifiers = global::AoTracker.Android.Resource.Attribute.alphabeticModifiers;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.arrowHeadLength = global::AoTracker.Android.Resource.Attribute.arrowHeadLength;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.arrowShaftLength = global::AoTracker.Android.Resource.Attribute.arrowShaftLength;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.autoCompleteTextViewStyle = global::AoTracker.Android.Resource.Attribute.autoCompleteTextViewStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.autoSizeMaxTextSize = global::AoTracker.Android.Resource.Attribute.autoSizeMaxTextSize;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.autoSizeMinTextSize = global::AoTracker.Android.Resource.Attribute.autoSizeMinTextSize;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.autoSizePresetSizes = global::AoTracker.Android.Resource.Attribute.autoSizePresetSizes;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.autoSizeStepGranularity = global::AoTracker.Android.Resource.Attribute.autoSizeStepGranularity;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.autoSizeTextType = global::AoTracker.Android.Resource.Attribute.autoSizeTextType;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.background = global::AoTracker.Android.Resource.Attribute.background;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.backgroundSplit = global::AoTracker.Android.Resource.Attribute.backgroundSplit;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.backgroundStacked = global::AoTracker.Android.Resource.Attribute.backgroundStacked;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.backgroundTint = global::AoTracker.Android.Resource.Attribute.backgroundTint;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.backgroundTintMode = global::AoTracker.Android.Resource.Attribute.backgroundTintMode;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.barLength = global::AoTracker.Android.Resource.Attribute.barLength;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.borderlessButtonStyle = global::AoTracker.Android.Resource.Attribute.borderlessButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.buttonBarButtonStyle = global::AoTracker.Android.Resource.Attribute.buttonBarButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.buttonBarNegativeButtonStyle = global::AoTracker.Android.Resource.Attribute.buttonBarNegativeButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.buttonBarNeutralButtonStyle = global::AoTracker.Android.Resource.Attribute.buttonBarNeutralButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.buttonBarPositiveButtonStyle = global::AoTracker.Android.Resource.Attribute.buttonBarPositiveButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.buttonBarStyle = global::AoTracker.Android.Resource.Attribute.buttonBarStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.buttonGravity = global::AoTracker.Android.Resource.Attribute.buttonGravity;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.buttonIconDimen = global::AoTracker.Android.Resource.Attribute.buttonIconDimen;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.buttonPanelSideLayout = global::AoTracker.Android.Resource.Attribute.buttonPanelSideLayout;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.buttonStyle = global::AoTracker.Android.Resource.Attribute.buttonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.buttonStyleSmall = global::AoTracker.Android.Resource.Attribute.buttonStyleSmall;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.buttonTint = global::AoTracker.Android.Resource.Attribute.buttonTint;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.buttonTintMode = global::AoTracker.Android.Resource.Attribute.buttonTintMode;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.checkboxStyle = global::AoTracker.Android.Resource.Attribute.checkboxStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.checkedTextViewStyle = global::AoTracker.Android.Resource.Attribute.checkedTextViewStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.closeIcon = global::AoTracker.Android.Resource.Attribute.closeIcon;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.closeItemLayout = global::AoTracker.Android.Resource.Attribute.closeItemLayout;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.collapseContentDescription = global::AoTracker.Android.Resource.Attribute.collapseContentDescription;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.collapseIcon = global::AoTracker.Android.Resource.Attribute.collapseIcon;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.color = global::AoTracker.Android.Resource.Attribute.color;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.colorAccent = global::AoTracker.Android.Resource.Attribute.colorAccent;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.colorBackgroundFloating = global::AoTracker.Android.Resource.Attribute.colorBackgroundFloating;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.colorButtonNormal = global::AoTracker.Android.Resource.Attribute.colorButtonNormal;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.colorControlActivated = global::AoTracker.Android.Resource.Attribute.colorControlActivated;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.colorControlHighlight = global::AoTracker.Android.Resource.Attribute.colorControlHighlight;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.colorControlNormal = global::AoTracker.Android.Resource.Attribute.colorControlNormal;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.colorError = global::AoTracker.Android.Resource.Attribute.colorError;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.colorPrimary = global::AoTracker.Android.Resource.Attribute.colorPrimary;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.colorPrimaryDark = global::AoTracker.Android.Resource.Attribute.colorPrimaryDark;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.colorSwitchThumbNormal = global::AoTracker.Android.Resource.Attribute.colorSwitchThumbNormal;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.commitIcon = global::AoTracker.Android.Resource.Attribute.commitIcon;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.contentDescription = global::AoTracker.Android.Resource.Attribute.contentDescription;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.contentInsetEnd = global::AoTracker.Android.Resource.Attribute.contentInsetEnd;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.contentInsetEndWithActions = global::AoTracker.Android.Resource.Attribute.contentInsetEndWithActions;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.contentInsetLeft = global::AoTracker.Android.Resource.Attribute.contentInsetLeft;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.contentInsetRight = global::AoTracker.Android.Resource.Attribute.contentInsetRight;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.contentInsetStart = global::AoTracker.Android.Resource.Attribute.contentInsetStart;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.contentInsetStartWithNavigation = global::AoTracker.Android.Resource.Attribute.contentInsetStartWithNavigation;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.controlBackground = global::AoTracker.Android.Resource.Attribute.controlBackground;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.coordinatorLayoutStyle = global::AoTracker.Android.Resource.Attribute.coordinatorLayoutStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.customNavigationLayout = global::AoTracker.Android.Resource.Attribute.customNavigationLayout;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.defaultQueryHint = global::AoTracker.Android.Resource.Attribute.defaultQueryHint;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.dialogCornerRadius = global::AoTracker.Android.Resource.Attribute.dialogCornerRadius;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.dialogPreferredPadding = global::AoTracker.Android.Resource.Attribute.dialogPreferredPadding;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.dialogTheme = global::AoTracker.Android.Resource.Attribute.dialogTheme;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.displayOptions = global::AoTracker.Android.Resource.Attribute.displayOptions;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.divider = global::AoTracker.Android.Resource.Attribute.divider;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.dividerHorizontal = global::AoTracker.Android.Resource.Attribute.dividerHorizontal;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.dividerPadding = global::AoTracker.Android.Resource.Attribute.dividerPadding;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.dividerVertical = global::AoTracker.Android.Resource.Attribute.dividerVertical;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.drawableSize = global::AoTracker.Android.Resource.Attribute.drawableSize;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.drawerArrowStyle = global::AoTracker.Android.Resource.Attribute.drawerArrowStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.dropDownListViewStyle = global::AoTracker.Android.Resource.Attribute.dropDownListViewStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.dropdownListPreferredItemHeight = global::AoTracker.Android.Resource.Attribute.dropdownListPreferredItemHeight;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.editTextBackground = global::AoTracker.Android.Resource.Attribute.editTextBackground;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.editTextColor = global::AoTracker.Android.Resource.Attribute.editTextColor;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.editTextStyle = global::AoTracker.Android.Resource.Attribute.editTextStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.elevation = global::AoTracker.Android.Resource.Attribute.elevation;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.expandActivityOverflowButtonDrawable = global::AoTracker.Android.Resource.Attribute.expandActivityOverflowButtonDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.firstBaselineToTopHeight = global::AoTracker.Android.Resource.Attribute.firstBaselineToTopHeight;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.font = global::AoTracker.Android.Resource.Attribute.font;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.fontFamily = global::AoTracker.Android.Resource.Attribute.fontFamily;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.fontProviderAuthority = global::AoTracker.Android.Resource.Attribute.fontProviderAuthority;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.fontProviderCerts = global::AoTracker.Android.Resource.Attribute.fontProviderCerts;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.fontProviderFetchStrategy = global::AoTracker.Android.Resource.Attribute.fontProviderFetchStrategy;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.fontProviderFetchTimeout = global::AoTracker.Android.Resource.Attribute.fontProviderFetchTimeout;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.fontProviderPackage = global::AoTracker.Android.Resource.Attribute.fontProviderPackage;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.fontProviderQuery = global::AoTracker.Android.Resource.Attribute.fontProviderQuery;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.fontStyle = global::AoTracker.Android.Resource.Attribute.fontStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.fontVariationSettings = global::AoTracker.Android.Resource.Attribute.fontVariationSettings;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.fontWeight = global::AoTracker.Android.Resource.Attribute.fontWeight;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.gapBetweenBars = global::AoTracker.Android.Resource.Attribute.gapBetweenBars;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.goIcon = global::AoTracker.Android.Resource.Attribute.goIcon;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.height = global::AoTracker.Android.Resource.Attribute.height;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.hideOnContentScroll = global::AoTracker.Android.Resource.Attribute.hideOnContentScroll;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.homeAsUpIndicator = global::AoTracker.Android.Resource.Attribute.homeAsUpIndicator;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.homeLayout = global::AoTracker.Android.Resource.Attribute.homeLayout;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.icon = global::AoTracker.Android.Resource.Attribute.icon;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.iconTint = global::AoTracker.Android.Resource.Attribute.iconTint;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.iconTintMode = global::AoTracker.Android.Resource.Attribute.iconTintMode;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.iconifiedByDefault = global::AoTracker.Android.Resource.Attribute.iconifiedByDefault;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.imageButtonStyle = global::AoTracker.Android.Resource.Attribute.imageButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.indeterminateProgressStyle = global::AoTracker.Android.Resource.Attribute.indeterminateProgressStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.initialActivityCount = global::AoTracker.Android.Resource.Attribute.initialActivityCount;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.isLightTheme = global::AoTracker.Android.Resource.Attribute.isLightTheme;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.itemPadding = global::AoTracker.Android.Resource.Attribute.itemPadding;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.keylines = global::AoTracker.Android.Resource.Attribute.keylines;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.lastBaselineToBottomHeight = global::AoTracker.Android.Resource.Attribute.lastBaselineToBottomHeight;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.layout = global::AoTracker.Android.Resource.Attribute.layout;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.layout_anchor = global::AoTracker.Android.Resource.Attribute.layout_anchor;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.layout_anchorGravity = global::AoTracker.Android.Resource.Attribute.layout_anchorGravity;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.layout_behavior = global::AoTracker.Android.Resource.Attribute.layout_behavior;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.layout_dodgeInsetEdges = global::AoTracker.Android.Resource.Attribute.layout_dodgeInsetEdges;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.layout_insetEdge = global::AoTracker.Android.Resource.Attribute.layout_insetEdge;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.layout_keyline = global::AoTracker.Android.Resource.Attribute.layout_keyline;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.lineHeight = global::AoTracker.Android.Resource.Attribute.lineHeight;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.listChoiceBackgroundIndicator = global::AoTracker.Android.Resource.Attribute.listChoiceBackgroundIndicator;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.listDividerAlertDialog = global::AoTracker.Android.Resource.Attribute.listDividerAlertDialog;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.listItemLayout = global::AoTracker.Android.Resource.Attribute.listItemLayout;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.listLayout = global::AoTracker.Android.Resource.Attribute.listLayout;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.listMenuViewStyle = global::AoTracker.Android.Resource.Attribute.listMenuViewStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.listPopupWindowStyle = global::AoTracker.Android.Resource.Attribute.listPopupWindowStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.listPreferredItemHeight = global::AoTracker.Android.Resource.Attribute.listPreferredItemHeight;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.listPreferredItemHeightLarge = global::AoTracker.Android.Resource.Attribute.listPreferredItemHeightLarge;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.listPreferredItemHeightSmall = global::AoTracker.Android.Resource.Attribute.listPreferredItemHeightSmall;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.listPreferredItemPaddingLeft = global::AoTracker.Android.Resource.Attribute.listPreferredItemPaddingLeft;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.listPreferredItemPaddingRight = global::AoTracker.Android.Resource.Attribute.listPreferredItemPaddingRight;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.logo = global::AoTracker.Android.Resource.Attribute.logo;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.logoDescription = global::AoTracker.Android.Resource.Attribute.logoDescription;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.maxButtonHeight = global::AoTracker.Android.Resource.Attribute.maxButtonHeight;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.measureWithLargestChild = global::AoTracker.Android.Resource.Attribute.measureWithLargestChild;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.multiChoiceItemLayout = global::AoTracker.Android.Resource.Attribute.multiChoiceItemLayout;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.navigationContentDescription = global::AoTracker.Android.Resource.Attribute.navigationContentDescription;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.navigationIcon = global::AoTracker.Android.Resource.Attribute.navigationIcon;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.navigationMode = global::AoTracker.Android.Resource.Attribute.navigationMode;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.numericModifiers = global::AoTracker.Android.Resource.Attribute.numericModifiers;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.overlapAnchor = global::AoTracker.Android.Resource.Attribute.overlapAnchor;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.paddingBottomNoButtons = global::AoTracker.Android.Resource.Attribute.paddingBottomNoButtons;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.paddingEnd = global::AoTracker.Android.Resource.Attribute.paddingEnd;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.paddingStart = global::AoTracker.Android.Resource.Attribute.paddingStart;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.paddingTopNoTitle = global::AoTracker.Android.Resource.Attribute.paddingTopNoTitle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.panelBackground = global::AoTracker.Android.Resource.Attribute.panelBackground;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.panelMenuListTheme = global::AoTracker.Android.Resource.Attribute.panelMenuListTheme;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.panelMenuListWidth = global::AoTracker.Android.Resource.Attribute.panelMenuListWidth;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.popupMenuStyle = global::AoTracker.Android.Resource.Attribute.popupMenuStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.popupTheme = global::AoTracker.Android.Resource.Attribute.popupTheme;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.popupWindowStyle = global::AoTracker.Android.Resource.Attribute.popupWindowStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.preserveIconSpacing = global::AoTracker.Android.Resource.Attribute.preserveIconSpacing;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.progressBarPadding = global::AoTracker.Android.Resource.Attribute.progressBarPadding;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.progressBarStyle = global::AoTracker.Android.Resource.Attribute.progressBarStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.queryBackground = global::AoTracker.Android.Resource.Attribute.queryBackground;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.queryHint = global::AoTracker.Android.Resource.Attribute.queryHint;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.radioButtonStyle = global::AoTracker.Android.Resource.Attribute.radioButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.ratingBarStyle = global::AoTracker.Android.Resource.Attribute.ratingBarStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.ratingBarStyleIndicator = global::AoTracker.Android.Resource.Attribute.ratingBarStyleIndicator;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.ratingBarStyleSmall = global::AoTracker.Android.Resource.Attribute.ratingBarStyleSmall;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.searchHintIcon = global::AoTracker.Android.Resource.Attribute.searchHintIcon;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.searchIcon = global::AoTracker.Android.Resource.Attribute.searchIcon;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.searchViewStyle = global::AoTracker.Android.Resource.Attribute.searchViewStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.seekBarStyle = global::AoTracker.Android.Resource.Attribute.seekBarStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.selectableItemBackground = global::AoTracker.Android.Resource.Attribute.selectableItemBackground;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.selectableItemBackgroundBorderless = global::AoTracker.Android.Resource.Attribute.selectableItemBackgroundBorderless;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.showAsAction = global::AoTracker.Android.Resource.Attribute.showAsAction;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.showDividers = global::AoTracker.Android.Resource.Attribute.showDividers;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.showText = global::AoTracker.Android.Resource.Attribute.showText;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.showTitle = global::AoTracker.Android.Resource.Attribute.showTitle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.singleChoiceItemLayout = global::AoTracker.Android.Resource.Attribute.singleChoiceItemLayout;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.spinBars = global::AoTracker.Android.Resource.Attribute.spinBars;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.spinnerDropDownItemStyle = global::AoTracker.Android.Resource.Attribute.spinnerDropDownItemStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.spinnerStyle = global::AoTracker.Android.Resource.Attribute.spinnerStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.splitTrack = global::AoTracker.Android.Resource.Attribute.splitTrack;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.srcCompat = global::AoTracker.Android.Resource.Attribute.srcCompat;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.state_above_anchor = global::AoTracker.Android.Resource.Attribute.state_above_anchor;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.statusBarBackground = global::AoTracker.Android.Resource.Attribute.statusBarBackground;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.subMenuArrow = global::AoTracker.Android.Resource.Attribute.subMenuArrow;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.submitBackground = global::AoTracker.Android.Resource.Attribute.submitBackground;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.subtitle = global::AoTracker.Android.Resource.Attribute.subtitle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.subtitleTextAppearance = global::AoTracker.Android.Resource.Attribute.subtitleTextAppearance;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.subtitleTextColor = global::AoTracker.Android.Resource.Attribute.subtitleTextColor;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.subtitleTextStyle = global::AoTracker.Android.Resource.Attribute.subtitleTextStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.suggestionRowLayout = global::AoTracker.Android.Resource.Attribute.suggestionRowLayout;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.switchMinWidth = global::AoTracker.Android.Resource.Attribute.switchMinWidth;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.switchPadding = global::AoTracker.Android.Resource.Attribute.switchPadding;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.switchStyle = global::AoTracker.Android.Resource.Attribute.switchStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.switchTextAppearance = global::AoTracker.Android.Resource.Attribute.switchTextAppearance;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.textAllCaps = global::AoTracker.Android.Resource.Attribute.textAllCaps;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.textAppearanceLargePopupMenu = global::AoTracker.Android.Resource.Attribute.textAppearanceLargePopupMenu;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.textAppearanceListItem = global::AoTracker.Android.Resource.Attribute.textAppearanceListItem;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.textAppearanceListItemSecondary = global::AoTracker.Android.Resource.Attribute.textAppearanceListItemSecondary;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.textAppearanceListItemSmall = global::AoTracker.Android.Resource.Attribute.textAppearanceListItemSmall;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.textAppearancePopupMenuHeader = global::AoTracker.Android.Resource.Attribute.textAppearancePopupMenuHeader;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.textAppearanceSearchResultSubtitle = global::AoTracker.Android.Resource.Attribute.textAppearanceSearchResultSubtitle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.textAppearanceSearchResultTitle = global::AoTracker.Android.Resource.Attribute.textAppearanceSearchResultTitle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.textAppearanceSmallPopupMenu = global::AoTracker.Android.Resource.Attribute.textAppearanceSmallPopupMenu;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.textColorAlertDialogListItem = global::AoTracker.Android.Resource.Attribute.textColorAlertDialogListItem;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.textColorSearchUrl = global::AoTracker.Android.Resource.Attribute.textColorSearchUrl;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.theme = global::AoTracker.Android.Resource.Attribute.theme;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.thickness = global::AoTracker.Android.Resource.Attribute.thickness;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.thumbTextPadding = global::AoTracker.Android.Resource.Attribute.thumbTextPadding;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.thumbTint = global::AoTracker.Android.Resource.Attribute.thumbTint;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.thumbTintMode = global::AoTracker.Android.Resource.Attribute.thumbTintMode;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.tickMark = global::AoTracker.Android.Resource.Attribute.tickMark;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.tickMarkTint = global::AoTracker.Android.Resource.Attribute.tickMarkTint;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.tickMarkTintMode = global::AoTracker.Android.Resource.Attribute.tickMarkTintMode;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.tint = global::AoTracker.Android.Resource.Attribute.tint;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.tintMode = global::AoTracker.Android.Resource.Attribute.tintMode;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.title = global::AoTracker.Android.Resource.Attribute.title;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.titleMargin = global::AoTracker.Android.Resource.Attribute.titleMargin;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.titleMarginBottom = global::AoTracker.Android.Resource.Attribute.titleMarginBottom;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.titleMarginEnd = global::AoTracker.Android.Resource.Attribute.titleMarginEnd;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.titleMarginStart = global::AoTracker.Android.Resource.Attribute.titleMarginStart;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.titleMarginTop = global::AoTracker.Android.Resource.Attribute.titleMarginTop;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.titleMargins = global::AoTracker.Android.Resource.Attribute.titleMargins;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.titleTextAppearance = global::AoTracker.Android.Resource.Attribute.titleTextAppearance;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.titleTextColor = global::AoTracker.Android.Resource.Attribute.titleTextColor;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.titleTextStyle = global::AoTracker.Android.Resource.Attribute.titleTextStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.toolbarNavigationButtonStyle = global::AoTracker.Android.Resource.Attribute.toolbarNavigationButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.toolbarStyle = global::AoTracker.Android.Resource.Attribute.toolbarStyle;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.tooltipForegroundColor = global::AoTracker.Android.Resource.Attribute.tooltipForegroundColor;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.tooltipFrameBackground = global::AoTracker.Android.Resource.Attribute.tooltipFrameBackground;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.tooltipText = global::AoTracker.Android.Resource.Attribute.tooltipText;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.track = global::AoTracker.Android.Resource.Attribute.track;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.trackTint = global::AoTracker.Android.Resource.Attribute.trackTint;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.trackTintMode = global::AoTracker.Android.Resource.Attribute.trackTintMode;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.ttcIndex = global::AoTracker.Android.Resource.Attribute.ttcIndex;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.viewInflaterClass = global::AoTracker.Android.Resource.Attribute.viewInflaterClass;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.voiceIcon = global::AoTracker.Android.Resource.Attribute.voiceIcon;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.windowActionBar = global::AoTracker.Android.Resource.Attribute.windowActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.windowActionBarOverlay = global::AoTracker.Android.Resource.Attribute.windowActionBarOverlay;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.windowActionModeOverlay = global::AoTracker.Android.Resource.Attribute.windowActionModeOverlay;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.windowFixedHeightMajor = global::AoTracker.Android.Resource.Attribute.windowFixedHeightMajor;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.windowFixedHeightMinor = global::AoTracker.Android.Resource.Attribute.windowFixedHeightMinor;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.windowFixedWidthMajor = global::AoTracker.Android.Resource.Attribute.windowFixedWidthMajor;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.windowFixedWidthMinor = global::AoTracker.Android.Resource.Attribute.windowFixedWidthMinor;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.windowMinWidthMajor = global::AoTracker.Android.Resource.Attribute.windowMinWidthMajor;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.windowMinWidthMinor = global::AoTracker.Android.Resource.Attribute.windowMinWidthMinor;
+			global::AoLibs.Dialogs.Android.Resource.Attribute.windowNoTitle = global::AoTracker.Android.Resource.Attribute.windowNoTitle;
+			global::AoLibs.Dialogs.Android.Resource.Boolean.abc_action_bar_embed_tabs = global::AoTracker.Android.Resource.Boolean.abc_action_bar_embed_tabs;
+			global::AoLibs.Dialogs.Android.Resource.Boolean.abc_allow_stacked_button_bar = global::AoTracker.Android.Resource.Boolean.abc_allow_stacked_button_bar;
+			global::AoLibs.Dialogs.Android.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::AoTracker.Android.Resource.Boolean.abc_config_actionMenuItemAllCaps;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_background_cache_hint_selector_material_dark = global::AoTracker.Android.Resource.Color.abc_background_cache_hint_selector_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_background_cache_hint_selector_material_light = global::AoTracker.Android.Resource.Color.abc_background_cache_hint_selector_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_btn_colored_borderless_text_material = global::AoTracker.Android.Resource.Color.abc_btn_colored_borderless_text_material;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_btn_colored_text_material = global::AoTracker.Android.Resource.Color.abc_btn_colored_text_material;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_color_highlight_material = global::AoTracker.Android.Resource.Color.abc_color_highlight_material;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_hint_foreground_material_dark = global::AoTracker.Android.Resource.Color.abc_hint_foreground_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_hint_foreground_material_light = global::AoTracker.Android.Resource.Color.abc_hint_foreground_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_input_method_navigation_guard = global::AoTracker.Android.Resource.Color.abc_input_method_navigation_guard;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_primary_text_disable_only_material_dark = global::AoTracker.Android.Resource.Color.abc_primary_text_disable_only_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_primary_text_disable_only_material_light = global::AoTracker.Android.Resource.Color.abc_primary_text_disable_only_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_primary_text_material_dark = global::AoTracker.Android.Resource.Color.abc_primary_text_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_primary_text_material_light = global::AoTracker.Android.Resource.Color.abc_primary_text_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_search_url_text = global::AoTracker.Android.Resource.Color.abc_search_url_text;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_search_url_text_normal = global::AoTracker.Android.Resource.Color.abc_search_url_text_normal;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_search_url_text_pressed = global::AoTracker.Android.Resource.Color.abc_search_url_text_pressed;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_search_url_text_selected = global::AoTracker.Android.Resource.Color.abc_search_url_text_selected;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_secondary_text_material_dark = global::AoTracker.Android.Resource.Color.abc_secondary_text_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_secondary_text_material_light = global::AoTracker.Android.Resource.Color.abc_secondary_text_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_tint_btn_checkable = global::AoTracker.Android.Resource.Color.abc_tint_btn_checkable;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_tint_default = global::AoTracker.Android.Resource.Color.abc_tint_default;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_tint_edittext = global::AoTracker.Android.Resource.Color.abc_tint_edittext;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_tint_seek_thumb = global::AoTracker.Android.Resource.Color.abc_tint_seek_thumb;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_tint_spinner = global::AoTracker.Android.Resource.Color.abc_tint_spinner;
+			global::AoLibs.Dialogs.Android.Resource.Color.abc_tint_switch_track = global::AoTracker.Android.Resource.Color.abc_tint_switch_track;
+			global::AoLibs.Dialogs.Android.Resource.Color.accent_material_dark = global::AoTracker.Android.Resource.Color.accent_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.accent_material_light = global::AoTracker.Android.Resource.Color.accent_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.background_floating_material_dark = global::AoTracker.Android.Resource.Color.background_floating_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.background_floating_material_light = global::AoTracker.Android.Resource.Color.background_floating_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.background_material_dark = global::AoTracker.Android.Resource.Color.background_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.background_material_light = global::AoTracker.Android.Resource.Color.background_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.bright_foreground_disabled_material_dark = global::AoTracker.Android.Resource.Color.bright_foreground_disabled_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.bright_foreground_disabled_material_light = global::AoTracker.Android.Resource.Color.bright_foreground_disabled_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.bright_foreground_inverse_material_dark = global::AoTracker.Android.Resource.Color.bright_foreground_inverse_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.bright_foreground_inverse_material_light = global::AoTracker.Android.Resource.Color.bright_foreground_inverse_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.bright_foreground_material_dark = global::AoTracker.Android.Resource.Color.bright_foreground_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.bright_foreground_material_light = global::AoTracker.Android.Resource.Color.bright_foreground_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.button_material_dark = global::AoTracker.Android.Resource.Color.button_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.button_material_light = global::AoTracker.Android.Resource.Color.button_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.dim_foreground_disabled_material_dark = global::AoTracker.Android.Resource.Color.dim_foreground_disabled_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.dim_foreground_disabled_material_light = global::AoTracker.Android.Resource.Color.dim_foreground_disabled_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.dim_foreground_material_dark = global::AoTracker.Android.Resource.Color.dim_foreground_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.dim_foreground_material_light = global::AoTracker.Android.Resource.Color.dim_foreground_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.error_color_material_dark = global::AoTracker.Android.Resource.Color.error_color_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.error_color_material_light = global::AoTracker.Android.Resource.Color.error_color_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.foreground_material_dark = global::AoTracker.Android.Resource.Color.foreground_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.foreground_material_light = global::AoTracker.Android.Resource.Color.foreground_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.highlighted_text_material_dark = global::AoTracker.Android.Resource.Color.highlighted_text_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.highlighted_text_material_light = global::AoTracker.Android.Resource.Color.highlighted_text_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.material_blue_grey_800 = global::AoTracker.Android.Resource.Color.material_blue_grey_800;
+			global::AoLibs.Dialogs.Android.Resource.Color.material_blue_grey_900 = global::AoTracker.Android.Resource.Color.material_blue_grey_900;
+			global::AoLibs.Dialogs.Android.Resource.Color.material_blue_grey_950 = global::AoTracker.Android.Resource.Color.material_blue_grey_950;
+			global::AoLibs.Dialogs.Android.Resource.Color.material_deep_teal_200 = global::AoTracker.Android.Resource.Color.material_deep_teal_200;
+			global::AoLibs.Dialogs.Android.Resource.Color.material_deep_teal_500 = global::AoTracker.Android.Resource.Color.material_deep_teal_500;
+			global::AoLibs.Dialogs.Android.Resource.Color.material_grey_100 = global::AoTracker.Android.Resource.Color.material_grey_100;
+			global::AoLibs.Dialogs.Android.Resource.Color.material_grey_300 = global::AoTracker.Android.Resource.Color.material_grey_300;
+			global::AoLibs.Dialogs.Android.Resource.Color.material_grey_50 = global::AoTracker.Android.Resource.Color.material_grey_50;
+			global::AoLibs.Dialogs.Android.Resource.Color.material_grey_600 = global::AoTracker.Android.Resource.Color.material_grey_600;
+			global::AoLibs.Dialogs.Android.Resource.Color.material_grey_800 = global::AoTracker.Android.Resource.Color.material_grey_800;
+			global::AoLibs.Dialogs.Android.Resource.Color.material_grey_850 = global::AoTracker.Android.Resource.Color.material_grey_850;
+			global::AoLibs.Dialogs.Android.Resource.Color.material_grey_900 = global::AoTracker.Android.Resource.Color.material_grey_900;
+			global::AoLibs.Dialogs.Android.Resource.Color.notification_action_color_filter = global::AoTracker.Android.Resource.Color.notification_action_color_filter;
+			global::AoLibs.Dialogs.Android.Resource.Color.notification_icon_bg_color = global::AoTracker.Android.Resource.Color.notification_icon_bg_color;
+			global::AoLibs.Dialogs.Android.Resource.Color.primary_dark_material_dark = global::AoTracker.Android.Resource.Color.primary_dark_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.primary_dark_material_light = global::AoTracker.Android.Resource.Color.primary_dark_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.primary_material_dark = global::AoTracker.Android.Resource.Color.primary_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.primary_material_light = global::AoTracker.Android.Resource.Color.primary_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.primary_text_default_material_dark = global::AoTracker.Android.Resource.Color.primary_text_default_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.primary_text_default_material_light = global::AoTracker.Android.Resource.Color.primary_text_default_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.primary_text_disabled_material_dark = global::AoTracker.Android.Resource.Color.primary_text_disabled_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.primary_text_disabled_material_light = global::AoTracker.Android.Resource.Color.primary_text_disabled_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.ripple_material_dark = global::AoTracker.Android.Resource.Color.ripple_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.ripple_material_light = global::AoTracker.Android.Resource.Color.ripple_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.secondary_text_default_material_dark = global::AoTracker.Android.Resource.Color.secondary_text_default_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.secondary_text_default_material_light = global::AoTracker.Android.Resource.Color.secondary_text_default_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.secondary_text_disabled_material_dark = global::AoTracker.Android.Resource.Color.secondary_text_disabled_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.secondary_text_disabled_material_light = global::AoTracker.Android.Resource.Color.secondary_text_disabled_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.switch_thumb_disabled_material_dark = global::AoTracker.Android.Resource.Color.switch_thumb_disabled_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.switch_thumb_disabled_material_light = global::AoTracker.Android.Resource.Color.switch_thumb_disabled_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.switch_thumb_material_dark = global::AoTracker.Android.Resource.Color.switch_thumb_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.switch_thumb_material_light = global::AoTracker.Android.Resource.Color.switch_thumb_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.switch_thumb_normal_material_dark = global::AoTracker.Android.Resource.Color.switch_thumb_normal_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.switch_thumb_normal_material_light = global::AoTracker.Android.Resource.Color.switch_thumb_normal_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Color.tooltip_background_dark = global::AoTracker.Android.Resource.Color.tooltip_background_dark;
+			global::AoLibs.Dialogs.Android.Resource.Color.tooltip_background_light = global::AoTracker.Android.Resource.Color.tooltip_background_light;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_bar_content_inset_material = global::AoTracker.Android.Resource.Dimension.abc_action_bar_content_inset_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_bar_content_inset_with_nav = global::AoTracker.Android.Resource.Dimension.abc_action_bar_content_inset_with_nav;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_bar_default_height_material = global::AoTracker.Android.Resource.Dimension.abc_action_bar_default_height_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_bar_default_padding_end_material = global::AoTracker.Android.Resource.Dimension.abc_action_bar_default_padding_end_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_bar_default_padding_start_material = global::AoTracker.Android.Resource.Dimension.abc_action_bar_default_padding_start_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_bar_elevation_material = global::AoTracker.Android.Resource.Dimension.abc_action_bar_elevation_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::AoTracker.Android.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::AoTracker.Android.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::AoTracker.Android.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_bar_stacked_max_height = global::AoTracker.Android.Resource.Dimension.abc_action_bar_stacked_max_height;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::AoTracker.Android.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::AoTracker.Android.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::AoTracker.Android.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_button_min_height_material = global::AoTracker.Android.Resource.Dimension.abc_action_button_min_height_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_button_min_width_material = global::AoTracker.Android.Resource.Dimension.abc_action_button_min_width_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_action_button_min_width_overflow_material = global::AoTracker.Android.Resource.Dimension.abc_action_button_min_width_overflow_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_alert_dialog_button_bar_height = global::AoTracker.Android.Resource.Dimension.abc_alert_dialog_button_bar_height;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_alert_dialog_button_dimen = global::AoTracker.Android.Resource.Dimension.abc_alert_dialog_button_dimen;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_button_inset_horizontal_material = global::AoTracker.Android.Resource.Dimension.abc_button_inset_horizontal_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_button_inset_vertical_material = global::AoTracker.Android.Resource.Dimension.abc_button_inset_vertical_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_button_padding_horizontal_material = global::AoTracker.Android.Resource.Dimension.abc_button_padding_horizontal_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_button_padding_vertical_material = global::AoTracker.Android.Resource.Dimension.abc_button_padding_vertical_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_cascading_menus_min_smallest_width = global::AoTracker.Android.Resource.Dimension.abc_cascading_menus_min_smallest_width;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_config_prefDialogWidth = global::AoTracker.Android.Resource.Dimension.abc_config_prefDialogWidth;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_control_corner_material = global::AoTracker.Android.Resource.Dimension.abc_control_corner_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_control_inset_material = global::AoTracker.Android.Resource.Dimension.abc_control_inset_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_control_padding_material = global::AoTracker.Android.Resource.Dimension.abc_control_padding_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_dialog_corner_radius_material = global::AoTracker.Android.Resource.Dimension.abc_dialog_corner_radius_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_dialog_fixed_height_major = global::AoTracker.Android.Resource.Dimension.abc_dialog_fixed_height_major;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_dialog_fixed_height_minor = global::AoTracker.Android.Resource.Dimension.abc_dialog_fixed_height_minor;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_dialog_fixed_width_major = global::AoTracker.Android.Resource.Dimension.abc_dialog_fixed_width_major;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_dialog_fixed_width_minor = global::AoTracker.Android.Resource.Dimension.abc_dialog_fixed_width_minor;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons = global::AoTracker.Android.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_dialog_list_padding_top_no_title = global::AoTracker.Android.Resource.Dimension.abc_dialog_list_padding_top_no_title;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_dialog_min_width_major = global::AoTracker.Android.Resource.Dimension.abc_dialog_min_width_major;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_dialog_min_width_minor = global::AoTracker.Android.Resource.Dimension.abc_dialog_min_width_minor;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_dialog_padding_material = global::AoTracker.Android.Resource.Dimension.abc_dialog_padding_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_dialog_padding_top_material = global::AoTracker.Android.Resource.Dimension.abc_dialog_padding_top_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_dialog_title_divider_material = global::AoTracker.Android.Resource.Dimension.abc_dialog_title_divider_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_disabled_alpha_material_dark = global::AoTracker.Android.Resource.Dimension.abc_disabled_alpha_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_disabled_alpha_material_light = global::AoTracker.Android.Resource.Dimension.abc_disabled_alpha_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_dropdownitem_icon_width = global::AoTracker.Android.Resource.Dimension.abc_dropdownitem_icon_width;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_dropdownitem_text_padding_left = global::AoTracker.Android.Resource.Dimension.abc_dropdownitem_text_padding_left;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_dropdownitem_text_padding_right = global::AoTracker.Android.Resource.Dimension.abc_dropdownitem_text_padding_right;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_edit_text_inset_bottom_material = global::AoTracker.Android.Resource.Dimension.abc_edit_text_inset_bottom_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::AoTracker.Android.Resource.Dimension.abc_edit_text_inset_horizontal_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_edit_text_inset_top_material = global::AoTracker.Android.Resource.Dimension.abc_edit_text_inset_top_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_floating_window_z = global::AoTracker.Android.Resource.Dimension.abc_floating_window_z;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_list_item_padding_horizontal_material = global::AoTracker.Android.Resource.Dimension.abc_list_item_padding_horizontal_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_panel_menu_list_width = global::AoTracker.Android.Resource.Dimension.abc_panel_menu_list_width;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_progress_bar_height_material = global::AoTracker.Android.Resource.Dimension.abc_progress_bar_height_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_search_view_preferred_height = global::AoTracker.Android.Resource.Dimension.abc_search_view_preferred_height;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_search_view_preferred_width = global::AoTracker.Android.Resource.Dimension.abc_search_view_preferred_width;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_seekbar_track_background_height_material = global::AoTracker.Android.Resource.Dimension.abc_seekbar_track_background_height_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_seekbar_track_progress_height_material = global::AoTracker.Android.Resource.Dimension.abc_seekbar_track_progress_height_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_select_dialog_padding_start_material = global::AoTracker.Android.Resource.Dimension.abc_select_dialog_padding_start_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_switch_padding = global::AoTracker.Android.Resource.Dimension.abc_switch_padding;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_body_1_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_body_1_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_body_2_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_body_2_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_button_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_button_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_caption_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_caption_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_display_1_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_display_1_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_display_2_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_display_2_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_display_3_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_display_3_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_display_4_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_display_4_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_headline_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_headline_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_large_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_large_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_medium_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_medium_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_menu_header_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_menu_header_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_menu_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_menu_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_small_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_small_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_subhead_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_subhead_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::AoTracker.Android.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_title_material = global::AoTracker.Android.Resource.Dimension.abc_text_size_title_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.abc_text_size_title_material_toolbar = global::AoTracker.Android.Resource.Dimension.abc_text_size_title_material_toolbar;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.compat_button_inset_horizontal_material = global::AoTracker.Android.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.compat_button_inset_vertical_material = global::AoTracker.Android.Resource.Dimension.compat_button_inset_vertical_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.compat_button_padding_horizontal_material = global::AoTracker.Android.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.compat_button_padding_vertical_material = global::AoTracker.Android.Resource.Dimension.compat_button_padding_vertical_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.compat_control_corner_material = global::AoTracker.Android.Resource.Dimension.compat_control_corner_material;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.compat_notification_large_icon_max_height = global::AoTracker.Android.Resource.Dimension.compat_notification_large_icon_max_height;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.compat_notification_large_icon_max_width = global::AoTracker.Android.Resource.Dimension.compat_notification_large_icon_max_width;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.disabled_alpha_material_dark = global::AoTracker.Android.Resource.Dimension.disabled_alpha_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.disabled_alpha_material_light = global::AoTracker.Android.Resource.Dimension.disabled_alpha_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.highlight_alpha_material_colored = global::AoTracker.Android.Resource.Dimension.highlight_alpha_material_colored;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.highlight_alpha_material_dark = global::AoTracker.Android.Resource.Dimension.highlight_alpha_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.highlight_alpha_material_light = global::AoTracker.Android.Resource.Dimension.highlight_alpha_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.hint_alpha_material_dark = global::AoTracker.Android.Resource.Dimension.hint_alpha_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.hint_alpha_material_light = global::AoTracker.Android.Resource.Dimension.hint_alpha_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.hint_pressed_alpha_material_dark = global::AoTracker.Android.Resource.Dimension.hint_pressed_alpha_material_dark;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.hint_pressed_alpha_material_light = global::AoTracker.Android.Resource.Dimension.hint_pressed_alpha_material_light;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.notification_action_icon_size = global::AoTracker.Android.Resource.Dimension.notification_action_icon_size;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.notification_action_text_size = global::AoTracker.Android.Resource.Dimension.notification_action_text_size;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.notification_big_circle_margin = global::AoTracker.Android.Resource.Dimension.notification_big_circle_margin;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.notification_content_margin_start = global::AoTracker.Android.Resource.Dimension.notification_content_margin_start;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.notification_large_icon_height = global::AoTracker.Android.Resource.Dimension.notification_large_icon_height;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.notification_large_icon_width = global::AoTracker.Android.Resource.Dimension.notification_large_icon_width;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.notification_main_column_padding_top = global::AoTracker.Android.Resource.Dimension.notification_main_column_padding_top;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.notification_media_narrow_margin = global::AoTracker.Android.Resource.Dimension.notification_media_narrow_margin;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.notification_right_icon_size = global::AoTracker.Android.Resource.Dimension.notification_right_icon_size;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.notification_right_side_padding_top = global::AoTracker.Android.Resource.Dimension.notification_right_side_padding_top;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.notification_small_icon_background_padding = global::AoTracker.Android.Resource.Dimension.notification_small_icon_background_padding;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.notification_small_icon_size_as_large = global::AoTracker.Android.Resource.Dimension.notification_small_icon_size_as_large;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.notification_subtext_size = global::AoTracker.Android.Resource.Dimension.notification_subtext_size;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.notification_top_pad = global::AoTracker.Android.Resource.Dimension.notification_top_pad;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.notification_top_pad_large_text = global::AoTracker.Android.Resource.Dimension.notification_top_pad_large_text;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.tooltip_corner_radius = global::AoTracker.Android.Resource.Dimension.tooltip_corner_radius;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.tooltip_horizontal_padding = global::AoTracker.Android.Resource.Dimension.tooltip_horizontal_padding;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.tooltip_margin = global::AoTracker.Android.Resource.Dimension.tooltip_margin;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.tooltip_precise_anchor_extra_offset = global::AoTracker.Android.Resource.Dimension.tooltip_precise_anchor_extra_offset;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.tooltip_precise_anchor_threshold = global::AoTracker.Android.Resource.Dimension.tooltip_precise_anchor_threshold;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.tooltip_vertical_padding = global::AoTracker.Android.Resource.Dimension.tooltip_vertical_padding;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.tooltip_y_offset_non_touch = global::AoTracker.Android.Resource.Dimension.tooltip_y_offset_non_touch;
+			global::AoLibs.Dialogs.Android.Resource.Dimension.tooltip_y_offset_touch = global::AoTracker.Android.Resource.Dimension.tooltip_y_offset_touch;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_action_bar_item_background_material = global::AoTracker.Android.Resource.Drawable.abc_action_bar_item_background_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_btn_borderless_material = global::AoTracker.Android.Resource.Drawable.abc_btn_borderless_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_btn_check_material = global::AoTracker.Android.Resource.Drawable.abc_btn_check_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::AoTracker.Android.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::AoTracker.Android.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_btn_colored_material = global::AoTracker.Android.Resource.Drawable.abc_btn_colored_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_btn_default_mtrl_shape = global::AoTracker.Android.Resource.Drawable.abc_btn_default_mtrl_shape;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_btn_radio_material = global::AoTracker.Android.Resource.Drawable.abc_btn_radio_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::AoTracker.Android.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::AoTracker.Android.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::AoTracker.Android.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::AoTracker.Android.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_cab_background_internal_bg = global::AoTracker.Android.Resource.Drawable.abc_cab_background_internal_bg;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_cab_background_top_material = global::AoTracker.Android.Resource.Drawable.abc_cab_background_top_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_control_background_material = global::AoTracker.Android.Resource.Drawable.abc_control_background_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_dialog_material_background = global::AoTracker.Android.Resource.Drawable.abc_dialog_material_background;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_edit_text_material = global::AoTracker.Android.Resource.Drawable.abc_edit_text_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_ab_back_material = global::AoTracker.Android.Resource.Drawable.abc_ic_ab_back_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp = global::AoTracker.Android.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_clear_material = global::AoTracker.Android.Resource.Drawable.abc_ic_clear_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_go_search_api_material = global::AoTracker.Android.Resource.Drawable.abc_ic_go_search_api_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::AoTracker.Android.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_menu_overflow_material = global::AoTracker.Android.Resource.Drawable.abc_ic_menu_overflow_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::AoTracker.Android.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_search_api_material = global::AoTracker.Android.Resource.Drawable.abc_ic_search_api_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_star_black_16dp = global::AoTracker.Android.Resource.Drawable.abc_ic_star_black_16dp;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_star_black_36dp = global::AoTracker.Android.Resource.Drawable.abc_ic_star_black_36dp;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_star_black_48dp = global::AoTracker.Android.Resource.Drawable.abc_ic_star_black_48dp;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_star_half_black_16dp = global::AoTracker.Android.Resource.Drawable.abc_ic_star_half_black_16dp;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_star_half_black_36dp = global::AoTracker.Android.Resource.Drawable.abc_ic_star_half_black_36dp;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_star_half_black_48dp = global::AoTracker.Android.Resource.Drawable.abc_ic_star_half_black_48dp;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ic_voice_search_api_material = global::AoTracker.Android.Resource.Drawable.abc_ic_voice_search_api_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_item_background_holo_dark = global::AoTracker.Android.Resource.Drawable.abc_item_background_holo_dark;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_item_background_holo_light = global::AoTracker.Android.Resource.Drawable.abc_item_background_holo_light;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_list_divider_material = global::AoTracker.Android.Resource.Drawable.abc_list_divider_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_list_divider_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_list_divider_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_list_focused_holo = global::AoTracker.Android.Resource.Drawable.abc_list_focused_holo;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_list_longpressed_holo = global::AoTracker.Android.Resource.Drawable.abc_list_longpressed_holo;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_list_pressed_holo_dark = global::AoTracker.Android.Resource.Drawable.abc_list_pressed_holo_dark;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_list_pressed_holo_light = global::AoTracker.Android.Resource.Drawable.abc_list_pressed_holo_light;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::AoTracker.Android.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::AoTracker.Android.Resource.Drawable.abc_list_selector_background_transition_holo_light;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::AoTracker.Android.Resource.Drawable.abc_list_selector_disabled_holo_dark;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_list_selector_disabled_holo_light = global::AoTracker.Android.Resource.Drawable.abc_list_selector_disabled_holo_light;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_list_selector_holo_dark = global::AoTracker.Android.Resource.Drawable.abc_list_selector_holo_dark;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_list_selector_holo_light = global::AoTracker.Android.Resource.Drawable.abc_list_selector_holo_light;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::AoTracker.Android.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_popup_background_mtrl_mult = global::AoTracker.Android.Resource.Drawable.abc_popup_background_mtrl_mult;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ratingbar_indicator_material = global::AoTracker.Android.Resource.Drawable.abc_ratingbar_indicator_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ratingbar_material = global::AoTracker.Android.Resource.Drawable.abc_ratingbar_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_ratingbar_small_material = global::AoTracker.Android.Resource.Drawable.abc_ratingbar_small_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000 = global::AoTracker.Android.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005 = global::AoTracker.Android.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_scrubber_primary_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_scrubber_primary_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_scrubber_track_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_scrubber_track_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_seekbar_thumb_material = global::AoTracker.Android.Resource.Drawable.abc_seekbar_thumb_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_seekbar_tick_mark_material = global::AoTracker.Android.Resource.Drawable.abc_seekbar_tick_mark_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_seekbar_track_material = global::AoTracker.Android.Resource.Drawable.abc_seekbar_track_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::AoTracker.Android.Resource.Drawable.abc_spinner_mtrl_am_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_spinner_textfield_background_material = global::AoTracker.Android.Resource.Drawable.abc_spinner_textfield_background_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_switch_thumb_material = global::AoTracker.Android.Resource.Drawable.abc_switch_thumb_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_switch_track_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_switch_track_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_tab_indicator_material = global::AoTracker.Android.Resource.Drawable.abc_tab_indicator_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_text_cursor_material = global::AoTracker.Android.Resource.Drawable.abc_text_cursor_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_text_select_handle_left_mtrl_dark = global::AoTracker.Android.Resource.Drawable.abc_text_select_handle_left_mtrl_dark;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_text_select_handle_left_mtrl_light = global::AoTracker.Android.Resource.Drawable.abc_text_select_handle_left_mtrl_light;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark = global::AoTracker.Android.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_text_select_handle_middle_mtrl_light = global::AoTracker.Android.Resource.Drawable.abc_text_select_handle_middle_mtrl_light;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_text_select_handle_right_mtrl_dark = global::AoTracker.Android.Resource.Drawable.abc_text_select_handle_right_mtrl_dark;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_text_select_handle_right_mtrl_light = global::AoTracker.Android.Resource.Drawable.abc_text_select_handle_right_mtrl_light;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_textfield_default_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::AoTracker.Android.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_textfield_search_material = global::AoTracker.Android.Resource.Drawable.abc_textfield_search_material;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.abc_vector_test = global::AoTracker.Android.Resource.Drawable.abc_vector_test;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.notification_action_background = global::AoTracker.Android.Resource.Drawable.notification_action_background;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.notification_bg = global::AoTracker.Android.Resource.Drawable.notification_bg;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.notification_bg_low = global::AoTracker.Android.Resource.Drawable.notification_bg_low;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.notification_bg_low_normal = global::AoTracker.Android.Resource.Drawable.notification_bg_low_normal;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.notification_bg_low_pressed = global::AoTracker.Android.Resource.Drawable.notification_bg_low_pressed;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.notification_bg_normal = global::AoTracker.Android.Resource.Drawable.notification_bg_normal;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.notification_bg_normal_pressed = global::AoTracker.Android.Resource.Drawable.notification_bg_normal_pressed;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.notification_icon_background = global::AoTracker.Android.Resource.Drawable.notification_icon_background;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.notification_template_icon_bg = global::AoTracker.Android.Resource.Drawable.notification_template_icon_bg;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.notification_template_icon_low_bg = global::AoTracker.Android.Resource.Drawable.notification_template_icon_low_bg;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.notification_tile_bg = global::AoTracker.Android.Resource.Drawable.notification_tile_bg;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.notify_panel_notification_icon_bg = global::AoTracker.Android.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.tooltip_frame_dark = global::AoTracker.Android.Resource.Drawable.tooltip_frame_dark;
+			global::AoLibs.Dialogs.Android.Resource.Drawable.tooltip_frame_light = global::AoTracker.Android.Resource.Drawable.tooltip_frame_light;
+			global::AoLibs.Dialogs.Android.Resource.Id.ALT = global::AoTracker.Android.Resource.Id.ALT;
+			global::AoLibs.Dialogs.Android.Resource.Id.CTRL = global::AoTracker.Android.Resource.Id.CTRL;
+			global::AoLibs.Dialogs.Android.Resource.Id.FUNCTION = global::AoTracker.Android.Resource.Id.FUNCTION;
+			global::AoLibs.Dialogs.Android.Resource.Id.META = global::AoTracker.Android.Resource.Id.META;
+			global::AoLibs.Dialogs.Android.Resource.Id.SHIFT = global::AoTracker.Android.Resource.Id.SHIFT;
+			global::AoLibs.Dialogs.Android.Resource.Id.SYM = global::AoTracker.Android.Resource.Id.SYM;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_bar = global::AoTracker.Android.Resource.Id.action_bar;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_bar_activity_content = global::AoTracker.Android.Resource.Id.action_bar_activity_content;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_bar_container = global::AoTracker.Android.Resource.Id.action_bar_container;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_bar_root = global::AoTracker.Android.Resource.Id.action_bar_root;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_bar_spinner = global::AoTracker.Android.Resource.Id.action_bar_spinner;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_bar_subtitle = global::AoTracker.Android.Resource.Id.action_bar_subtitle;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_bar_title = global::AoTracker.Android.Resource.Id.action_bar_title;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_container = global::AoTracker.Android.Resource.Id.action_container;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_context_bar = global::AoTracker.Android.Resource.Id.action_context_bar;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_divider = global::AoTracker.Android.Resource.Id.action_divider;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_image = global::AoTracker.Android.Resource.Id.action_image;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_menu_divider = global::AoTracker.Android.Resource.Id.action_menu_divider;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_menu_presenter = global::AoTracker.Android.Resource.Id.action_menu_presenter;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_mode_bar = global::AoTracker.Android.Resource.Id.action_mode_bar;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_mode_bar_stub = global::AoTracker.Android.Resource.Id.action_mode_bar_stub;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_mode_close_button = global::AoTracker.Android.Resource.Id.action_mode_close_button;
+			global::AoLibs.Dialogs.Android.Resource.Id.action_text = global::AoTracker.Android.Resource.Id.action_text;
+			global::AoLibs.Dialogs.Android.Resource.Id.actions = global::AoTracker.Android.Resource.Id.actions;
+			global::AoLibs.Dialogs.Android.Resource.Id.activity_chooser_view_content = global::AoTracker.Android.Resource.Id.activity_chooser_view_content;
+			global::AoLibs.Dialogs.Android.Resource.Id.add = global::AoTracker.Android.Resource.Id.add;
+			global::AoLibs.Dialogs.Android.Resource.Id.alertTitle = global::AoTracker.Android.Resource.Id.alertTitle;
+			global::AoLibs.Dialogs.Android.Resource.Id.all = global::AoTracker.Android.Resource.Id.all;
+			global::AoLibs.Dialogs.Android.Resource.Id.always = global::AoTracker.Android.Resource.Id.always;
+			global::AoLibs.Dialogs.Android.Resource.Id.async = global::AoTracker.Android.Resource.Id.async;
+			global::AoLibs.Dialogs.Android.Resource.Id.beginning = global::AoTracker.Android.Resource.Id.beginning;
+			global::AoLibs.Dialogs.Android.Resource.Id.blocking = global::AoTracker.Android.Resource.Id.blocking;
+			global::AoLibs.Dialogs.Android.Resource.Id.bottom = global::AoTracker.Android.Resource.Id.bottom;
+			global::AoLibs.Dialogs.Android.Resource.Id.buttonPanel = global::AoTracker.Android.Resource.Id.buttonPanel;
+			global::AoLibs.Dialogs.Android.Resource.Id.center = global::AoTracker.Android.Resource.Id.center;
+			global::AoLibs.Dialogs.Android.Resource.Id.center_horizontal = global::AoTracker.Android.Resource.Id.center_horizontal;
+			global::AoLibs.Dialogs.Android.Resource.Id.center_vertical = global::AoTracker.Android.Resource.Id.center_vertical;
+			global::AoLibs.Dialogs.Android.Resource.Id.checkbox = global::AoTracker.Android.Resource.Id.checkbox;
+			global::AoLibs.Dialogs.Android.Resource.Id.chronometer = global::AoTracker.Android.Resource.Id.chronometer;
+			global::AoLibs.Dialogs.Android.Resource.Id.clip_horizontal = global::AoTracker.Android.Resource.Id.clip_horizontal;
+			global::AoLibs.Dialogs.Android.Resource.Id.clip_vertical = global::AoTracker.Android.Resource.Id.clip_vertical;
+			global::AoLibs.Dialogs.Android.Resource.Id.collapseActionView = global::AoTracker.Android.Resource.Id.collapseActionView;
+			global::AoLibs.Dialogs.Android.Resource.Id.content = global::AoTracker.Android.Resource.Id.content;
+			global::AoLibs.Dialogs.Android.Resource.Id.contentPanel = global::AoTracker.Android.Resource.Id.contentPanel;
+			global::AoLibs.Dialogs.Android.Resource.Id.custom = global::AoTracker.Android.Resource.Id.custom;
+			global::AoLibs.Dialogs.Android.Resource.Id.customPanel = global::AoTracker.Android.Resource.Id.customPanel;
+			global::AoLibs.Dialogs.Android.Resource.Id.decor_content_parent = global::AoTracker.Android.Resource.Id.decor_content_parent;
+			global::AoLibs.Dialogs.Android.Resource.Id.default_activity_button = global::AoTracker.Android.Resource.Id.default_activity_button;
+			global::AoLibs.Dialogs.Android.Resource.Id.disableHome = global::AoTracker.Android.Resource.Id.disableHome;
+			global::AoLibs.Dialogs.Android.Resource.Id.edit_query = global::AoTracker.Android.Resource.Id.edit_query;
+			global::AoLibs.Dialogs.Android.Resource.Id.end = global::AoTracker.Android.Resource.Id.end;
+			global::AoLibs.Dialogs.Android.Resource.Id.expand_activities_button = global::AoTracker.Android.Resource.Id.expand_activities_button;
+			global::AoLibs.Dialogs.Android.Resource.Id.expanded_menu = global::AoTracker.Android.Resource.Id.expanded_menu;
+			global::AoLibs.Dialogs.Android.Resource.Id.fill = global::AoTracker.Android.Resource.Id.fill;
+			global::AoLibs.Dialogs.Android.Resource.Id.fill_horizontal = global::AoTracker.Android.Resource.Id.fill_horizontal;
+			global::AoLibs.Dialogs.Android.Resource.Id.fill_vertical = global::AoTracker.Android.Resource.Id.fill_vertical;
+			global::AoLibs.Dialogs.Android.Resource.Id.forever = global::AoTracker.Android.Resource.Id.forever;
+			global::AoLibs.Dialogs.Android.Resource.Id.group_divider = global::AoTracker.Android.Resource.Id.group_divider;
+			global::AoLibs.Dialogs.Android.Resource.Id.home = global::AoTracker.Android.Resource.Id.home;
+			global::AoLibs.Dialogs.Android.Resource.Id.homeAsUp = global::AoTracker.Android.Resource.Id.homeAsUp;
+			global::AoLibs.Dialogs.Android.Resource.Id.icon = global::AoTracker.Android.Resource.Id.icon;
+			global::AoLibs.Dialogs.Android.Resource.Id.icon_group = global::AoTracker.Android.Resource.Id.icon_group;
+			global::AoLibs.Dialogs.Android.Resource.Id.ifRoom = global::AoTracker.Android.Resource.Id.ifRoom;
+			global::AoLibs.Dialogs.Android.Resource.Id.image = global::AoTracker.Android.Resource.Id.image;
+			global::AoLibs.Dialogs.Android.Resource.Id.info = global::AoTracker.Android.Resource.Id.info;
+			global::AoLibs.Dialogs.Android.Resource.Id.italic = global::AoTracker.Android.Resource.Id.italic;
+			global::AoLibs.Dialogs.Android.Resource.Id.left = global::AoTracker.Android.Resource.Id.left;
+			global::AoLibs.Dialogs.Android.Resource.Id.line1 = global::AoTracker.Android.Resource.Id.line1;
+			global::AoLibs.Dialogs.Android.Resource.Id.line3 = global::AoTracker.Android.Resource.Id.line3;
+			global::AoLibs.Dialogs.Android.Resource.Id.listMode = global::AoTracker.Android.Resource.Id.listMode;
+			global::AoLibs.Dialogs.Android.Resource.Id.list_item = global::AoTracker.Android.Resource.Id.list_item;
+			global::AoLibs.Dialogs.Android.Resource.Id.message = global::AoTracker.Android.Resource.Id.message;
+			global::AoLibs.Dialogs.Android.Resource.Id.middle = global::AoTracker.Android.Resource.Id.middle;
+			global::AoLibs.Dialogs.Android.Resource.Id.multiply = global::AoTracker.Android.Resource.Id.multiply;
+			global::AoLibs.Dialogs.Android.Resource.Id.never = global::AoTracker.Android.Resource.Id.never;
+			global::AoLibs.Dialogs.Android.Resource.Id.none = global::AoTracker.Android.Resource.Id.none;
+			global::AoLibs.Dialogs.Android.Resource.Id.normal = global::AoTracker.Android.Resource.Id.normal;
+			global::AoLibs.Dialogs.Android.Resource.Id.notification_background = global::AoTracker.Android.Resource.Id.notification_background;
+			global::AoLibs.Dialogs.Android.Resource.Id.notification_main_column = global::AoTracker.Android.Resource.Id.notification_main_column;
+			global::AoLibs.Dialogs.Android.Resource.Id.notification_main_column_container = global::AoTracker.Android.Resource.Id.notification_main_column_container;
+			global::AoLibs.Dialogs.Android.Resource.Id.parentPanel = global::AoTracker.Android.Resource.Id.parentPanel;
+			global::AoLibs.Dialogs.Android.Resource.Id.progress_circular = global::AoTracker.Android.Resource.Id.progress_circular;
+			global::AoLibs.Dialogs.Android.Resource.Id.progress_horizontal = global::AoTracker.Android.Resource.Id.progress_horizontal;
+			global::AoLibs.Dialogs.Android.Resource.Id.radio = global::AoTracker.Android.Resource.Id.radio;
+			global::AoLibs.Dialogs.Android.Resource.Id.right = global::AoTracker.Android.Resource.Id.right;
+			global::AoLibs.Dialogs.Android.Resource.Id.right_icon = global::AoTracker.Android.Resource.Id.right_icon;
+			global::AoLibs.Dialogs.Android.Resource.Id.right_side = global::AoTracker.Android.Resource.Id.right_side;
+			global::AoLibs.Dialogs.Android.Resource.Id.screen = global::AoTracker.Android.Resource.Id.screen;
+			global::AoLibs.Dialogs.Android.Resource.Id.scrollIndicatorDown = global::AoTracker.Android.Resource.Id.scrollIndicatorDown;
+			global::AoLibs.Dialogs.Android.Resource.Id.scrollIndicatorUp = global::AoTracker.Android.Resource.Id.scrollIndicatorUp;
+			global::AoLibs.Dialogs.Android.Resource.Id.scrollView = global::AoTracker.Android.Resource.Id.scrollView;
+			global::AoLibs.Dialogs.Android.Resource.Id.search_badge = global::AoTracker.Android.Resource.Id.search_badge;
+			global::AoLibs.Dialogs.Android.Resource.Id.search_bar = global::AoTracker.Android.Resource.Id.search_bar;
+			global::AoLibs.Dialogs.Android.Resource.Id.search_button = global::AoTracker.Android.Resource.Id.search_button;
+			global::AoLibs.Dialogs.Android.Resource.Id.search_close_btn = global::AoTracker.Android.Resource.Id.search_close_btn;
+			global::AoLibs.Dialogs.Android.Resource.Id.search_edit_frame = global::AoTracker.Android.Resource.Id.search_edit_frame;
+			global::AoLibs.Dialogs.Android.Resource.Id.search_go_btn = global::AoTracker.Android.Resource.Id.search_go_btn;
+			global::AoLibs.Dialogs.Android.Resource.Id.search_mag_icon = global::AoTracker.Android.Resource.Id.search_mag_icon;
+			global::AoLibs.Dialogs.Android.Resource.Id.search_plate = global::AoTracker.Android.Resource.Id.search_plate;
+			global::AoLibs.Dialogs.Android.Resource.Id.search_src_text = global::AoTracker.Android.Resource.Id.search_src_text;
+			global::AoLibs.Dialogs.Android.Resource.Id.search_voice_btn = global::AoTracker.Android.Resource.Id.search_voice_btn;
+			global::AoLibs.Dialogs.Android.Resource.Id.select_dialog_listview = global::AoTracker.Android.Resource.Id.select_dialog_listview;
+			global::AoLibs.Dialogs.Android.Resource.Id.shortcut = global::AoTracker.Android.Resource.Id.shortcut;
+			global::AoLibs.Dialogs.Android.Resource.Id.showCustom = global::AoTracker.Android.Resource.Id.showCustom;
+			global::AoLibs.Dialogs.Android.Resource.Id.showHome = global::AoTracker.Android.Resource.Id.showHome;
+			global::AoLibs.Dialogs.Android.Resource.Id.showTitle = global::AoTracker.Android.Resource.Id.showTitle;
+			global::AoLibs.Dialogs.Android.Resource.Id.spacer = global::AoTracker.Android.Resource.Id.spacer;
+			global::AoLibs.Dialogs.Android.Resource.Id.split_action_bar = global::AoTracker.Android.Resource.Id.split_action_bar;
+			global::AoLibs.Dialogs.Android.Resource.Id.src_atop = global::AoTracker.Android.Resource.Id.src_atop;
+			global::AoLibs.Dialogs.Android.Resource.Id.src_in = global::AoTracker.Android.Resource.Id.src_in;
+			global::AoLibs.Dialogs.Android.Resource.Id.src_over = global::AoTracker.Android.Resource.Id.src_over;
+			global::AoLibs.Dialogs.Android.Resource.Id.start = global::AoTracker.Android.Resource.Id.start;
+			global::AoLibs.Dialogs.Android.Resource.Id.submenuarrow = global::AoTracker.Android.Resource.Id.submenuarrow;
+			global::AoLibs.Dialogs.Android.Resource.Id.submit_area = global::AoTracker.Android.Resource.Id.submit_area;
+			global::AoLibs.Dialogs.Android.Resource.Id.tabMode = global::AoTracker.Android.Resource.Id.tabMode;
+			global::AoLibs.Dialogs.Android.Resource.Id.tag_transition_group = global::AoTracker.Android.Resource.Id.tag_transition_group;
+			global::AoLibs.Dialogs.Android.Resource.Id.tag_unhandled_key_event_manager = global::AoTracker.Android.Resource.Id.tag_unhandled_key_event_manager;
+			global::AoLibs.Dialogs.Android.Resource.Id.tag_unhandled_key_listeners = global::AoTracker.Android.Resource.Id.tag_unhandled_key_listeners;
+			global::AoLibs.Dialogs.Android.Resource.Id.text = global::AoTracker.Android.Resource.Id.text;
+			global::AoLibs.Dialogs.Android.Resource.Id.text2 = global::AoTracker.Android.Resource.Id.text2;
+			global::AoLibs.Dialogs.Android.Resource.Id.textSpacerNoButtons = global::AoTracker.Android.Resource.Id.textSpacerNoButtons;
+			global::AoLibs.Dialogs.Android.Resource.Id.textSpacerNoTitle = global::AoTracker.Android.Resource.Id.textSpacerNoTitle;
+			global::AoLibs.Dialogs.Android.Resource.Id.time = global::AoTracker.Android.Resource.Id.time;
+			global::AoLibs.Dialogs.Android.Resource.Id.title = global::AoTracker.Android.Resource.Id.title;
+			global::AoLibs.Dialogs.Android.Resource.Id.titleDividerNoCustom = global::AoTracker.Android.Resource.Id.titleDividerNoCustom;
+			global::AoLibs.Dialogs.Android.Resource.Id.title_template = global::AoTracker.Android.Resource.Id.title_template;
+			global::AoLibs.Dialogs.Android.Resource.Id.top = global::AoTracker.Android.Resource.Id.top;
+			global::AoLibs.Dialogs.Android.Resource.Id.topPanel = global::AoTracker.Android.Resource.Id.topPanel;
+			global::AoLibs.Dialogs.Android.Resource.Id.uniform = global::AoTracker.Android.Resource.Id.uniform;
+			global::AoLibs.Dialogs.Android.Resource.Id.up = global::AoTracker.Android.Resource.Id.up;
+			global::AoLibs.Dialogs.Android.Resource.Id.useLogo = global::AoTracker.Android.Resource.Id.useLogo;
+			global::AoLibs.Dialogs.Android.Resource.Id.withText = global::AoTracker.Android.Resource.Id.withText;
+			global::AoLibs.Dialogs.Android.Resource.Id.wrap_content = global::AoTracker.Android.Resource.Id.wrap_content;
+			global::AoLibs.Dialogs.Android.Resource.Integer.abc_config_activityDefaultDur = global::AoTracker.Android.Resource.Integer.abc_config_activityDefaultDur;
+			global::AoLibs.Dialogs.Android.Resource.Integer.abc_config_activityShortDur = global::AoTracker.Android.Resource.Integer.abc_config_activityShortDur;
+			global::AoLibs.Dialogs.Android.Resource.Integer.cancel_button_image_alpha = global::AoTracker.Android.Resource.Integer.cancel_button_image_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Integer.config_tooltipAnimTime = global::AoTracker.Android.Resource.Integer.config_tooltipAnimTime;
+			global::AoLibs.Dialogs.Android.Resource.Integer.status_bar_notification_info_maxnum = global::AoTracker.Android.Resource.Integer.status_bar_notification_info_maxnum;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_action_bar_title_item = global::AoTracker.Android.Resource.Layout.abc_action_bar_title_item;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_action_bar_up_container = global::AoTracker.Android.Resource.Layout.abc_action_bar_up_container;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_action_menu_item_layout = global::AoTracker.Android.Resource.Layout.abc_action_menu_item_layout;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_action_menu_layout = global::AoTracker.Android.Resource.Layout.abc_action_menu_layout;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_action_mode_bar = global::AoTracker.Android.Resource.Layout.abc_action_mode_bar;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_action_mode_close_item_material = global::AoTracker.Android.Resource.Layout.abc_action_mode_close_item_material;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_activity_chooser_view = global::AoTracker.Android.Resource.Layout.abc_activity_chooser_view;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_activity_chooser_view_list_item = global::AoTracker.Android.Resource.Layout.abc_activity_chooser_view_list_item;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_alert_dialog_button_bar_material = global::AoTracker.Android.Resource.Layout.abc_alert_dialog_button_bar_material;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_alert_dialog_material = global::AoTracker.Android.Resource.Layout.abc_alert_dialog_material;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_alert_dialog_title_material = global::AoTracker.Android.Resource.Layout.abc_alert_dialog_title_material;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_cascading_menu_item_layout = global::AoTracker.Android.Resource.Layout.abc_cascading_menu_item_layout;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_dialog_title_material = global::AoTracker.Android.Resource.Layout.abc_dialog_title_material;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_expanded_menu_layout = global::AoTracker.Android.Resource.Layout.abc_expanded_menu_layout;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_list_menu_item_checkbox = global::AoTracker.Android.Resource.Layout.abc_list_menu_item_checkbox;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_list_menu_item_icon = global::AoTracker.Android.Resource.Layout.abc_list_menu_item_icon;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_list_menu_item_layout = global::AoTracker.Android.Resource.Layout.abc_list_menu_item_layout;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_list_menu_item_radio = global::AoTracker.Android.Resource.Layout.abc_list_menu_item_radio;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_popup_menu_header_item_layout = global::AoTracker.Android.Resource.Layout.abc_popup_menu_header_item_layout;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_popup_menu_item_layout = global::AoTracker.Android.Resource.Layout.abc_popup_menu_item_layout;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_screen_content_include = global::AoTracker.Android.Resource.Layout.abc_screen_content_include;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_screen_simple = global::AoTracker.Android.Resource.Layout.abc_screen_simple;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_screen_simple_overlay_action_mode = global::AoTracker.Android.Resource.Layout.abc_screen_simple_overlay_action_mode;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_screen_toolbar = global::AoTracker.Android.Resource.Layout.abc_screen_toolbar;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_search_dropdown_item_icons_2line = global::AoTracker.Android.Resource.Layout.abc_search_dropdown_item_icons_2line;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_search_view = global::AoTracker.Android.Resource.Layout.abc_search_view;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_select_dialog_material = global::AoTracker.Android.Resource.Layout.abc_select_dialog_material;
+			global::AoLibs.Dialogs.Android.Resource.Layout.abc_tooltip = global::AoTracker.Android.Resource.Layout.abc_tooltip;
+			global::AoLibs.Dialogs.Android.Resource.Layout.notification_action = global::AoTracker.Android.Resource.Layout.notification_action;
+			global::AoLibs.Dialogs.Android.Resource.Layout.notification_action_tombstone = global::AoTracker.Android.Resource.Layout.notification_action_tombstone;
+			global::AoLibs.Dialogs.Android.Resource.Layout.notification_template_custom_big = global::AoTracker.Android.Resource.Layout.notification_template_custom_big;
+			global::AoLibs.Dialogs.Android.Resource.Layout.notification_template_icon_group = global::AoTracker.Android.Resource.Layout.notification_template_icon_group;
+			global::AoLibs.Dialogs.Android.Resource.Layout.notification_template_part_chronometer = global::AoTracker.Android.Resource.Layout.notification_template_part_chronometer;
+			global::AoLibs.Dialogs.Android.Resource.Layout.notification_template_part_time = global::AoTracker.Android.Resource.Layout.notification_template_part_time;
+			global::AoLibs.Dialogs.Android.Resource.Layout.select_dialog_item_material = global::AoTracker.Android.Resource.Layout.select_dialog_item_material;
+			global::AoLibs.Dialogs.Android.Resource.Layout.select_dialog_multichoice_material = global::AoTracker.Android.Resource.Layout.select_dialog_multichoice_material;
+			global::AoLibs.Dialogs.Android.Resource.Layout.select_dialog_singlechoice_material = global::AoTracker.Android.Resource.Layout.select_dialog_singlechoice_material;
+			global::AoLibs.Dialogs.Android.Resource.Layout.support_simple_spinner_dropdown_item = global::AoTracker.Android.Resource.Layout.support_simple_spinner_dropdown_item;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_action_bar_home_description = global::AoTracker.Android.Resource.String.abc_action_bar_home_description;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_action_bar_up_description = global::AoTracker.Android.Resource.String.abc_action_bar_up_description;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_action_menu_overflow_description = global::AoTracker.Android.Resource.String.abc_action_menu_overflow_description;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_action_mode_done = global::AoTracker.Android.Resource.String.abc_action_mode_done;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_activity_chooser_view_see_all = global::AoTracker.Android.Resource.String.abc_activity_chooser_view_see_all;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_activitychooserview_choose_application = global::AoTracker.Android.Resource.String.abc_activitychooserview_choose_application;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_capital_off = global::AoTracker.Android.Resource.String.abc_capital_off;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_capital_on = global::AoTracker.Android.Resource.String.abc_capital_on;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_font_family_body_1_material = global::AoTracker.Android.Resource.String.abc_font_family_body_1_material;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_font_family_body_2_material = global::AoTracker.Android.Resource.String.abc_font_family_body_2_material;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_font_family_button_material = global::AoTracker.Android.Resource.String.abc_font_family_button_material;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_font_family_caption_material = global::AoTracker.Android.Resource.String.abc_font_family_caption_material;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_font_family_display_1_material = global::AoTracker.Android.Resource.String.abc_font_family_display_1_material;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_font_family_display_2_material = global::AoTracker.Android.Resource.String.abc_font_family_display_2_material;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_font_family_display_3_material = global::AoTracker.Android.Resource.String.abc_font_family_display_3_material;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_font_family_display_4_material = global::AoTracker.Android.Resource.String.abc_font_family_display_4_material;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_font_family_headline_material = global::AoTracker.Android.Resource.String.abc_font_family_headline_material;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_font_family_menu_material = global::AoTracker.Android.Resource.String.abc_font_family_menu_material;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_font_family_subhead_material = global::AoTracker.Android.Resource.String.abc_font_family_subhead_material;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_font_family_title_material = global::AoTracker.Android.Resource.String.abc_font_family_title_material;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_menu_alt_shortcut_label = global::AoTracker.Android.Resource.String.abc_menu_alt_shortcut_label;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_menu_ctrl_shortcut_label = global::AoTracker.Android.Resource.String.abc_menu_ctrl_shortcut_label;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_menu_delete_shortcut_label = global::AoTracker.Android.Resource.String.abc_menu_delete_shortcut_label;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_menu_enter_shortcut_label = global::AoTracker.Android.Resource.String.abc_menu_enter_shortcut_label;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_menu_function_shortcut_label = global::AoTracker.Android.Resource.String.abc_menu_function_shortcut_label;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_menu_meta_shortcut_label = global::AoTracker.Android.Resource.String.abc_menu_meta_shortcut_label;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_menu_shift_shortcut_label = global::AoTracker.Android.Resource.String.abc_menu_shift_shortcut_label;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_menu_space_shortcut_label = global::AoTracker.Android.Resource.String.abc_menu_space_shortcut_label;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_menu_sym_shortcut_label = global::AoTracker.Android.Resource.String.abc_menu_sym_shortcut_label;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_prepend_shortcut_label = global::AoTracker.Android.Resource.String.abc_prepend_shortcut_label;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_search_hint = global::AoTracker.Android.Resource.String.abc_search_hint;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_searchview_description_clear = global::AoTracker.Android.Resource.String.abc_searchview_description_clear;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_searchview_description_query = global::AoTracker.Android.Resource.String.abc_searchview_description_query;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_searchview_description_search = global::AoTracker.Android.Resource.String.abc_searchview_description_search;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_searchview_description_submit = global::AoTracker.Android.Resource.String.abc_searchview_description_submit;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_searchview_description_voice = global::AoTracker.Android.Resource.String.abc_searchview_description_voice;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_shareactionprovider_share_with = global::AoTracker.Android.Resource.String.abc_shareactionprovider_share_with;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_shareactionprovider_share_with_application = global::AoTracker.Android.Resource.String.abc_shareactionprovider_share_with_application;
+			global::AoLibs.Dialogs.Android.Resource.String.abc_toolbar_collapse_description = global::AoTracker.Android.Resource.String.abc_toolbar_collapse_description;
+			global::AoLibs.Dialogs.Android.Resource.String.app_name = global::AoTracker.Android.Resource.String.app_name;
+			global::AoLibs.Dialogs.Android.Resource.String.hello = global::AoTracker.Android.Resource.String.hello;
+			global::AoLibs.Dialogs.Android.Resource.String.search_menu_title = global::AoTracker.Android.Resource.String.search_menu_title;
+			global::AoLibs.Dialogs.Android.Resource.String.status_bar_notification_info_overflow = global::AoTracker.Android.Resource.String.status_bar_notification_info_overflow;
+			global::AoLibs.Dialogs.Android.Resource.Style.AlertDialog_AppCompat = global::AoTracker.Android.Resource.Style.AlertDialog_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.AlertDialog_AppCompat_Light = global::AoTracker.Android.Resource.Style.AlertDialog_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Animation_AppCompat_Dialog = global::AoTracker.Android.Resource.Style.Animation_AppCompat_Dialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Animation_AppCompat_DropDownUp = global::AoTracker.Android.Resource.Style.Animation_AppCompat_DropDownUp;
+			global::AoLibs.Dialogs.Android.Resource.Style.Animation_AppCompat_Tooltip = global::AoTracker.Android.Resource.Style.Animation_AppCompat_Tooltip;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_AlertDialog_AppCompat = global::AoTracker.Android.Resource.Style.Base_AlertDialog_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_AlertDialog_AppCompat_Light = global::AoTracker.Android.Resource.Style.Base_AlertDialog_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Animation_AppCompat_Dialog = global::AoTracker.Android.Resource.Style.Base_Animation_AppCompat_Dialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::AoTracker.Android.Resource.Style.Base_Animation_AppCompat_DropDownUp;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Animation_AppCompat_Tooltip = global::AoTracker.Android.Resource.Style.Base_Animation_AppCompat_Tooltip;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_DialogWindowTitle_AppCompat = global::AoTracker.Android.Resource.Style.Base_DialogWindowTitle_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::AoTracker.Android.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Body1;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Body2;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Button = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Button;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Caption;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Display1;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Display2;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Display3;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Display4;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Headline;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Large = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Large;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Medium;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Menu;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Small = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Small;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Title = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Title;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Tooltip = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Tooltip;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::AoTracker.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::AoTracker.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::AoTracker.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::AoTracker.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Theme_AppCompat = global::AoTracker.Android.Resource.Style.Base_Theme_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::AoTracker.Android.Resource.Style.Base_Theme_AppCompat_CompactMenu;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Theme_AppCompat_Dialog = global::AoTracker.Android.Resource.Style.Base_Theme_AppCompat_Dialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::AoTracker.Android.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::AoTracker.Android.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::AoTracker.Android.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::AoTracker.Android.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Theme_AppCompat_Light = global::AoTracker.Android.Resource.Style.Base_Theme_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::AoTracker.Android.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::AoTracker.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::AoTracker.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::AoTracker.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::AoTracker.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::AoTracker.Android.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_ThemeOverlay_AppCompat = global::AoTracker.Android.Resource.Style.Base_ThemeOverlay_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::AoTracker.Android.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::AoTracker.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::AoTracker.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog = global::AoTracker.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert = global::AoTracker.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::AoTracker.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V21_Theme_AppCompat = global::AoTracker.Android.Resource.Style.Base_V21_Theme_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::AoTracker.Android.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V21_Theme_AppCompat_Light = global::AoTracker.Android.Resource.Style.Base_V21_Theme_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::AoTracker.Android.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::AoTracker.Android.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V22_Theme_AppCompat = global::AoTracker.Android.Resource.Style.Base_V22_Theme_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V22_Theme_AppCompat_Light = global::AoTracker.Android.Resource.Style.Base_V22_Theme_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V23_Theme_AppCompat = global::AoTracker.Android.Resource.Style.Base_V23_Theme_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V23_Theme_AppCompat_Light = global::AoTracker.Android.Resource.Style.Base_V23_Theme_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V26_Theme_AppCompat = global::AoTracker.Android.Resource.Style.Base_V26_Theme_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V26_Theme_AppCompat_Light = global::AoTracker.Android.Resource.Style.Base_V26_Theme_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V26_Widget_AppCompat_Toolbar = global::AoTracker.Android.Resource.Style.Base_V26_Widget_AppCompat_Toolbar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V28_Theme_AppCompat = global::AoTracker.Android.Resource.Style.Base_V28_Theme_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V28_Theme_AppCompat_Light = global::AoTracker.Android.Resource.Style.Base_V28_Theme_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V7_Theme_AppCompat = global::AoTracker.Android.Resource.Style.Base_V7_Theme_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::AoTracker.Android.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V7_Theme_AppCompat_Light = global::AoTracker.Android.Resource.Style.Base_V7_Theme_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::AoTracker.Android.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::AoTracker.Android.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::AoTracker.Android.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::AoTracker.Android.Resource.Style.Base_V7_Widget_AppCompat_EditText;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_V7_Widget_AppCompat_Toolbar = global::AoTracker.Android.Resource.Style.Base_V7_Widget_AppCompat_Toolbar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ActionBar = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ActionButton = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ActionButton;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ActionMode = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ActionMode;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Button = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Button;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Button_Colored;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Button_Small = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Button_Small;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_EditText = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_EditText;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ImageButton = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ImageButton;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ListMenuView = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ListMenuView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ListView = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ListView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_PopupMenu;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_PopupWindow;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ProgressBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_RatingBar = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_RatingBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_RatingBar_Small = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_RatingBar_Small;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_SearchView = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_SearchView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_SeekBar = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_SeekBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Spinner = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Spinner;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Toolbar = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Toolbar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::AoTracker.Android.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
+			global::AoLibs.Dialogs.Android.Resource.Style.Platform_AppCompat = global::AoTracker.Android.Resource.Style.Platform_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Platform_AppCompat_Light = global::AoTracker.Android.Resource.Style.Platform_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Platform_ThemeOverlay_AppCompat = global::AoTracker.Android.Resource.Style.Platform_ThemeOverlay_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::AoTracker.Android.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
+			global::AoLibs.Dialogs.Android.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::AoTracker.Android.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Platform_V21_AppCompat = global::AoTracker.Android.Resource.Style.Platform_V21_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Platform_V21_AppCompat_Light = global::AoTracker.Android.Resource.Style.Platform_V21_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Platform_V25_AppCompat = global::AoTracker.Android.Resource.Style.Platform_V25_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Platform_V25_AppCompat_Light = global::AoTracker.Android.Resource.Style.Platform_V25_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Platform_Widget_AppCompat_Spinner = global::AoTracker.Android.Resource.Style.Platform_Widget_AppCompat_Spinner;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::AoTracker.Android.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::AoTracker.Android.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::AoTracker.Android.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::AoTracker.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::AoTracker.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut = global::AoTracker.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow = global::AoTracker.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::AoTracker.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title = global::AoTracker.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::AoTracker.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::AoTracker.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::AoTracker.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::AoTracker.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::AoTracker.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::AoTracker.Android.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::AoTracker.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
+			global::AoLibs.Dialogs.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::AoTracker.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Body1 = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Body1;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Body2 = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Body2;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Button = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Button;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Caption = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Caption;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Display1 = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Display1;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Display2 = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Display2;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Display3 = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Display3;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Display4 = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Display4;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Headline = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Headline;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Inverse = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Large = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Large;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Medium = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Medium;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Menu = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Menu;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Small = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Small;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Subhead = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Subhead;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Title = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Title;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Tooltip = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Tooltip;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::AoTracker.Android.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_Compat_Notification = global::AoTracker.Android.Resource.Style.TextAppearance_Compat_Notification;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_Compat_Notification_Info = global::AoTracker.Android.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::AoTracker.Android.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_Compat_Notification_Time = global::AoTracker.Android.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_Compat_Notification_Title = global::AoTracker.Android.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::AoTracker.Android.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::AoTracker.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::AoLibs.Dialogs.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::AoTracker.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat = global::AoTracker.Android.Resource.Style.Theme_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_CompactMenu = global::AoTracker.Android.Resource.Style.Theme_AppCompat_CompactMenu;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_DayNight = global::AoTracker.Android.Resource.Style.Theme_AppCompat_DayNight;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::AoTracker.Android.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::AoTracker.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::AoTracker.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::AoTracker.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::AoTracker.Android.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::AoTracker.Android.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_Dialog = global::AoTracker.Android.Resource.Style.Theme_AppCompat_Dialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_Dialog_Alert = global::AoTracker.Android.Resource.Style.Theme_AppCompat_Dialog_Alert;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::AoTracker.Android.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::AoTracker.Android.Resource.Style.Theme_AppCompat_DialogWhenLarge;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_Light = global::AoTracker.Android.Resource.Style.Theme_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::AoTracker.Android.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_Light_Dialog = global::AoTracker.Android.Resource.Style.Theme_AppCompat_Light_Dialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::AoTracker.Android.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::AoTracker.Android.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::AoTracker.Android.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::AoTracker.Android.Resource.Style.Theme_AppCompat_Light_NoActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Theme_AppCompat_NoActionBar = global::AoTracker.Android.Resource.Style.Theme_AppCompat_NoActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.ThemeOverlay_AppCompat = global::AoTracker.Android.Resource.Style.ThemeOverlay_AppCompat;
+			global::AoLibs.Dialogs.Android.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::AoTracker.Android.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.ThemeOverlay_AppCompat_Dark = global::AoTracker.Android.Resource.Style.ThemeOverlay_AppCompat_Dark;
+			global::AoLibs.Dialogs.Android.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::AoTracker.Android.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.ThemeOverlay_AppCompat_Dialog = global::AoTracker.Android.Resource.Style.ThemeOverlay_AppCompat_Dialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert = global::AoTracker.Android.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert;
+			global::AoLibs.Dialogs.Android.Resource.Style.ThemeOverlay_AppCompat_Light = global::AoTracker.Android.Resource.Style.ThemeOverlay_AppCompat_Light;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ActionBar = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ActionBar_Solid;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ActionBar_TabText;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ActionBar_TabView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ActionButton = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ActionButton;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ActionMode = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ActionMode;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ActivityChooserView = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ActivityChooserView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::AoTracker.Android.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Button = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Button;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Button_Borderless = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Button_Borderless;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Button_Colored = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Button_Colored;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Button_Small = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Button_Small;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ButtonBar = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ButtonBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::AoTracker.Android.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::AoTracker.Android.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::AoTracker.Android.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::AoTracker.Android.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::AoTracker.Android.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_EditText = global::AoTracker.Android.Resource.Style.Widget_AppCompat_EditText;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ImageButton = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ImageButton;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ActionBar = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ActionButton = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ActionButton;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_PopupMenu;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_SearchView = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_SearchView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ListMenuView = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ListMenuView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ListPopupWindow = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ListPopupWindow;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ListView = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ListView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ListView_DropDown = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ListView_DropDown;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ListView_Menu = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ListView_Menu;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_PopupMenu = global::AoTracker.Android.Resource.Style.Widget_AppCompat_PopupMenu;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::AoTracker.Android.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_PopupWindow = global::AoTracker.Android.Resource.Style.Widget_AppCompat_PopupWindow;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ProgressBar = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ProgressBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::AoTracker.Android.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_RatingBar = global::AoTracker.Android.Resource.Style.Widget_AppCompat_RatingBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_RatingBar_Indicator = global::AoTracker.Android.Resource.Style.Widget_AppCompat_RatingBar_Indicator;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_RatingBar_Small = global::AoTracker.Android.Resource.Style.Widget_AppCompat_RatingBar_Small;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_SearchView = global::AoTracker.Android.Resource.Style.Widget_AppCompat_SearchView;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::AoTracker.Android.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_SeekBar = global::AoTracker.Android.Resource.Style.Widget_AppCompat_SeekBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_SeekBar_Discrete = global::AoTracker.Android.Resource.Style.Widget_AppCompat_SeekBar_Discrete;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Spinner = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Spinner;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Spinner_DropDown;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Spinner_Underlined;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::AoTracker.Android.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Toolbar = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Toolbar;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::AoTracker.Android.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_Compat_NotificationActionContainer = global::AoTracker.Android.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_Compat_NotificationActionText = global::AoTracker.Android.Resource.Style.Widget_Compat_NotificationActionText;
+			global::AoLibs.Dialogs.Android.Resource.Style.Widget_Support_CoordinatorLayout = global::AoTracker.Android.Resource.Style.Widget_Support_CoordinatorLayout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar = global::AoTracker.Android.Resource.Styleable.ActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_background = global::AoTracker.Android.Resource.Styleable.ActionBar_background;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_backgroundSplit = global::AoTracker.Android.Resource.Styleable.ActionBar_backgroundSplit;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_backgroundStacked = global::AoTracker.Android.Resource.Styleable.ActionBar_backgroundStacked;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_contentInsetEnd = global::AoTracker.Android.Resource.Styleable.ActionBar_contentInsetEnd;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_contentInsetEndWithActions = global::AoTracker.Android.Resource.Styleable.ActionBar_contentInsetEndWithActions;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_contentInsetLeft = global::AoTracker.Android.Resource.Styleable.ActionBar_contentInsetLeft;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_contentInsetRight = global::AoTracker.Android.Resource.Styleable.ActionBar_contentInsetRight;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_contentInsetStart = global::AoTracker.Android.Resource.Styleable.ActionBar_contentInsetStart;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_contentInsetStartWithNavigation = global::AoTracker.Android.Resource.Styleable.ActionBar_contentInsetStartWithNavigation;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_customNavigationLayout = global::AoTracker.Android.Resource.Styleable.ActionBar_customNavigationLayout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_displayOptions = global::AoTracker.Android.Resource.Styleable.ActionBar_displayOptions;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_divider = global::AoTracker.Android.Resource.Styleable.ActionBar_divider;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_elevation = global::AoTracker.Android.Resource.Styleable.ActionBar_elevation;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_height = global::AoTracker.Android.Resource.Styleable.ActionBar_height;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_hideOnContentScroll = global::AoTracker.Android.Resource.Styleable.ActionBar_hideOnContentScroll;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_homeAsUpIndicator = global::AoTracker.Android.Resource.Styleable.ActionBar_homeAsUpIndicator;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_homeLayout = global::AoTracker.Android.Resource.Styleable.ActionBar_homeLayout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_icon = global::AoTracker.Android.Resource.Styleable.ActionBar_icon;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::AoTracker.Android.Resource.Styleable.ActionBar_indeterminateProgressStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_itemPadding = global::AoTracker.Android.Resource.Styleable.ActionBar_itemPadding;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_logo = global::AoTracker.Android.Resource.Styleable.ActionBar_logo;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_navigationMode = global::AoTracker.Android.Resource.Styleable.ActionBar_navigationMode;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_popupTheme = global::AoTracker.Android.Resource.Styleable.ActionBar_popupTheme;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_progressBarPadding = global::AoTracker.Android.Resource.Styleable.ActionBar_progressBarPadding;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_progressBarStyle = global::AoTracker.Android.Resource.Styleable.ActionBar_progressBarStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_subtitle = global::AoTracker.Android.Resource.Styleable.ActionBar_subtitle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_subtitleTextStyle = global::AoTracker.Android.Resource.Styleable.ActionBar_subtitleTextStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_title = global::AoTracker.Android.Resource.Styleable.ActionBar_title;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBar_titleTextStyle = global::AoTracker.Android.Resource.Styleable.ActionBar_titleTextStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBarLayout = global::AoTracker.Android.Resource.Styleable.ActionBarLayout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::AoTracker.Android.Resource.Styleable.ActionBarLayout_android_layout_gravity;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionMenuItemView = global::AoTracker.Android.Resource.Styleable.ActionMenuItemView;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionMenuItemView_android_minWidth = global::AoTracker.Android.Resource.Styleable.ActionMenuItemView_android_minWidth;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionMenuView = global::AoTracker.Android.Resource.Styleable.ActionMenuView;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionMode = global::AoTracker.Android.Resource.Styleable.ActionMode;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionMode_background = global::AoTracker.Android.Resource.Styleable.ActionMode_background;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionMode_backgroundSplit = global::AoTracker.Android.Resource.Styleable.ActionMode_backgroundSplit;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionMode_closeItemLayout = global::AoTracker.Android.Resource.Styleable.ActionMode_closeItemLayout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionMode_height = global::AoTracker.Android.Resource.Styleable.ActionMode_height;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionMode_subtitleTextStyle = global::AoTracker.Android.Resource.Styleable.ActionMode_subtitleTextStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActionMode_titleTextStyle = global::AoTracker.Android.Resource.Styleable.ActionMode_titleTextStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActivityChooserView = global::AoTracker.Android.Resource.Styleable.ActivityChooserView;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::AoTracker.Android.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ActivityChooserView_initialActivityCount = global::AoTracker.Android.Resource.Styleable.ActivityChooserView_initialActivityCount;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AlertDialog = global::AoTracker.Android.Resource.Styleable.AlertDialog;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AlertDialog_android_layout = global::AoTracker.Android.Resource.Styleable.AlertDialog_android_layout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AlertDialog_buttonIconDimen = global::AoTracker.Android.Resource.Styleable.AlertDialog_buttonIconDimen;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::AoTracker.Android.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AlertDialog_listItemLayout = global::AoTracker.Android.Resource.Styleable.AlertDialog_listItemLayout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AlertDialog_listLayout = global::AoTracker.Android.Resource.Styleable.AlertDialog_listLayout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::AoTracker.Android.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AlertDialog_showTitle = global::AoTracker.Android.Resource.Styleable.AlertDialog_showTitle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::AoTracker.Android.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AnimatedStateListDrawableCompat = global::AoTracker.Android.Resource.Styleable.AnimatedStateListDrawableCompat;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AnimatedStateListDrawableCompat_android_constantSize = global::AoTracker.Android.Resource.Styleable.AnimatedStateListDrawableCompat_android_constantSize;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AnimatedStateListDrawableCompat_android_dither = global::AoTracker.Android.Resource.Styleable.AnimatedStateListDrawableCompat_android_dither;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration = global::AoTracker.Android.Resource.Styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration = global::AoTracker.Android.Resource.Styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AnimatedStateListDrawableCompat_android_variablePadding = global::AoTracker.Android.Resource.Styleable.AnimatedStateListDrawableCompat_android_variablePadding;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AnimatedStateListDrawableCompat_android_visible = global::AoTracker.Android.Resource.Styleable.AnimatedStateListDrawableCompat_android_visible;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AnimatedStateListDrawableItem = global::AoTracker.Android.Resource.Styleable.AnimatedStateListDrawableItem;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AnimatedStateListDrawableItem_android_drawable = global::AoTracker.Android.Resource.Styleable.AnimatedStateListDrawableItem_android_drawable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AnimatedStateListDrawableItem_android_id = global::AoTracker.Android.Resource.Styleable.AnimatedStateListDrawableItem_android_id;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AnimatedStateListDrawableTransition = global::AoTracker.Android.Resource.Styleable.AnimatedStateListDrawableTransition;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AnimatedStateListDrawableTransition_android_drawable = global::AoTracker.Android.Resource.Styleable.AnimatedStateListDrawableTransition_android_drawable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AnimatedStateListDrawableTransition_android_fromId = global::AoTracker.Android.Resource.Styleable.AnimatedStateListDrawableTransition_android_fromId;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible = global::AoTracker.Android.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId = global::AoTracker.Android.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatImageView = global::AoTracker.Android.Resource.Styleable.AppCompatImageView;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatImageView_android_src = global::AoTracker.Android.Resource.Styleable.AppCompatImageView_android_src;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatImageView_srcCompat = global::AoTracker.Android.Resource.Styleable.AppCompatImageView_srcCompat;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatImageView_tint = global::AoTracker.Android.Resource.Styleable.AppCompatImageView_tint;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatImageView_tintMode = global::AoTracker.Android.Resource.Styleable.AppCompatImageView_tintMode;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatSeekBar = global::AoTracker.Android.Resource.Styleable.AppCompatSeekBar;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatSeekBar_android_thumb = global::AoTracker.Android.Resource.Styleable.AppCompatSeekBar_android_thumb;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatSeekBar_tickMark = global::AoTracker.Android.Resource.Styleable.AppCompatSeekBar_tickMark;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatSeekBar_tickMarkTint = global::AoTracker.Android.Resource.Styleable.AppCompatSeekBar_tickMarkTint;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode = global::AoTracker.Android.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextHelper = global::AoTracker.Android.Resource.Styleable.AppCompatTextHelper;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextHelper_android_drawableBottom = global::AoTracker.Android.Resource.Styleable.AppCompatTextHelper_android_drawableBottom;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextHelper_android_drawableEnd = global::AoTracker.Android.Resource.Styleable.AppCompatTextHelper_android_drawableEnd;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextHelper_android_drawableLeft = global::AoTracker.Android.Resource.Styleable.AppCompatTextHelper_android_drawableLeft;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextHelper_android_drawableRight = global::AoTracker.Android.Resource.Styleable.AppCompatTextHelper_android_drawableRight;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextHelper_android_drawableStart = global::AoTracker.Android.Resource.Styleable.AppCompatTextHelper_android_drawableStart;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextHelper_android_drawableTop = global::AoTracker.Android.Resource.Styleable.AppCompatTextHelper_android_drawableTop;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextHelper_android_textAppearance = global::AoTracker.Android.Resource.Styleable.AppCompatTextHelper_android_textAppearance;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextView = global::AoTracker.Android.Resource.Styleable.AppCompatTextView;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextView_android_textAppearance = global::AoTracker.Android.Resource.Styleable.AppCompatTextView_android_textAppearance;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize = global::AoTracker.Android.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize = global::AoTracker.Android.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextView_autoSizePresetSizes = global::AoTracker.Android.Resource.Styleable.AppCompatTextView_autoSizePresetSizes;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity = global::AoTracker.Android.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextView_autoSizeTextType = global::AoTracker.Android.Resource.Styleable.AppCompatTextView_autoSizeTextType;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight = global::AoTracker.Android.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextView_fontFamily = global::AoTracker.Android.Resource.Styleable.AppCompatTextView_fontFamily;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight = global::AoTracker.Android.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextView_lineHeight = global::AoTracker.Android.Resource.Styleable.AppCompatTextView_lineHeight;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTextView_textAllCaps = global::AoTracker.Android.Resource.Styleable.AppCompatTextView_textAllCaps;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme = global::AoTracker.Android.Resource.Styleable.AppCompatTheme;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionBarDivider = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionBarDivider;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionBarPopupTheme = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionBarPopupTheme;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionBarSize = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionBarSize;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionBarSplitStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionBarSplitStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionBarStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionBarStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionBarTabStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionBarTabStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionBarTheme = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionBarTheme;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionButtonStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionDropDownStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionDropDownStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionMenuTextColor = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionMenuTextColor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionModeBackground = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionModeBackground;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionModeCutDrawable = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionModeCutDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionModeFindDrawable = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionModeFindDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionModePasteDrawable = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionModePasteDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionModeShareDrawable = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionModeShareDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionModeSplitBackground = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionModeSplitBackground;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionModeStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionModeStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_activityChooserViewStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_activityChooserViewStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_alertDialogStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_alertDialogStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_alertDialogTheme = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_alertDialogTheme;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_android_windowIsFloating = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_android_windowIsFloating;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_borderlessButtonStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_borderlessButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_buttonBarStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_buttonBarStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_buttonStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_buttonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_buttonStyleSmall = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_buttonStyleSmall;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_checkboxStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_checkboxStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_checkedTextViewStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_checkedTextViewStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_colorAccent = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_colorAccent;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_colorBackgroundFloating = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_colorBackgroundFloating;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_colorButtonNormal = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_colorButtonNormal;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_colorControlActivated = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_colorControlActivated;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_colorControlHighlight;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_colorControlNormal = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_colorControlNormal;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_colorError = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_colorError;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_colorPrimary = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_colorPrimary;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_controlBackground = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_controlBackground;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_dialogCornerRadius = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_dialogCornerRadius;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_dialogTheme = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_dialogTheme;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_dividerHorizontal;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_dividerVertical = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_dividerVertical;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_editTextBackground = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_editTextBackground;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_editTextColor = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_editTextColor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_editTextStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_editTextStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_imageButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_listMenuViewStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_listMenuViewStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_panelBackground = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_panelBackground;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_popupMenuStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_popupMenuStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_popupWindowStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_popupWindowStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_radioButtonStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_radioButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_ratingBarStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_ratingBarStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_searchViewStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_searchViewStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_seekBarStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_seekBarStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_selectableItemBackground = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_selectableItemBackground;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_spinnerStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_spinnerStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_switchStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_switchStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_textAppearanceListItem = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_textAppearanceListItem;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_toolbarStyle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_toolbarStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_tooltipForegroundColor = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_tooltipForegroundColor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_tooltipFrameBackground = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_tooltipFrameBackground;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_viewInflaterClass = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_viewInflaterClass;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_windowActionBar = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_windowActionBar;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.AppCompatTheme_windowNoTitle = global::AoTracker.Android.Resource.Styleable.AppCompatTheme_windowNoTitle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ButtonBarLayout = global::AoTracker.Android.Resource.Styleable.ButtonBarLayout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ButtonBarLayout_allowStacking = global::AoTracker.Android.Resource.Styleable.ButtonBarLayout_allowStacking;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ColorStateListItem = global::AoTracker.Android.Resource.Styleable.ColorStateListItem;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ColorStateListItem_alpha = global::AoTracker.Android.Resource.Styleable.ColorStateListItem_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ColorStateListItem_android_alpha = global::AoTracker.Android.Resource.Styleable.ColorStateListItem_android_alpha;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ColorStateListItem_android_color = global::AoTracker.Android.Resource.Styleable.ColorStateListItem_android_color;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.CompoundButton = global::AoTracker.Android.Resource.Styleable.CompoundButton;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.CompoundButton_android_button = global::AoTracker.Android.Resource.Styleable.CompoundButton_android_button;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.CompoundButton_buttonTint = global::AoTracker.Android.Resource.Styleable.CompoundButton_buttonTint;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.CompoundButton_buttonTintMode = global::AoTracker.Android.Resource.Styleable.CompoundButton_buttonTintMode;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.CoordinatorLayout = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.CoordinatorLayout_keylines = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_keylines;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_statusBarBackground;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.CoordinatorLayout_Layout = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.DrawerArrowToggle = global::AoTracker.Android.Resource.Styleable.DrawerArrowToggle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::AoTracker.Android.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::AoTracker.Android.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.DrawerArrowToggle_barLength = global::AoTracker.Android.Resource.Styleable.DrawerArrowToggle_barLength;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.DrawerArrowToggle_color = global::AoTracker.Android.Resource.Styleable.DrawerArrowToggle_color;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.DrawerArrowToggle_drawableSize = global::AoTracker.Android.Resource.Styleable.DrawerArrowToggle_drawableSize;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::AoTracker.Android.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.DrawerArrowToggle_spinBars = global::AoTracker.Android.Resource.Styleable.DrawerArrowToggle_spinBars;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.DrawerArrowToggle_thickness = global::AoTracker.Android.Resource.Styleable.DrawerArrowToggle_thickness;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamily = global::AoTracker.Android.Resource.Styleable.FontFamily;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamily_fontProviderAuthority = global::AoTracker.Android.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamily_fontProviderCerts = global::AoTracker.Android.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::AoTracker.Android.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::AoTracker.Android.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamily_fontProviderPackage = global::AoTracker.Android.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamily_fontProviderQuery = global::AoTracker.Android.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamilyFont = global::AoTracker.Android.Resource.Styleable.FontFamilyFont;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamilyFont_android_font = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_android_font;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamilyFont_android_fontStyle = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamilyFont_android_fontWeight = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_android_ttcIndex;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamilyFont_font = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_font;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamilyFont_fontStyle = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_fontVariationSettings;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamilyFont_fontWeight = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.FontFamilyFont_ttcIndex = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_ttcIndex;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColor = global::AoTracker.Android.Resource.Styleable.GradientColor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColor_android_centerColor = global::AoTracker.Android.Resource.Styleable.GradientColor_android_centerColor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColor_android_centerX = global::AoTracker.Android.Resource.Styleable.GradientColor_android_centerX;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColor_android_centerY = global::AoTracker.Android.Resource.Styleable.GradientColor_android_centerY;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColor_android_endColor = global::AoTracker.Android.Resource.Styleable.GradientColor_android_endColor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColor_android_endX = global::AoTracker.Android.Resource.Styleable.GradientColor_android_endX;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColor_android_endY = global::AoTracker.Android.Resource.Styleable.GradientColor_android_endY;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColor_android_gradientRadius = global::AoTracker.Android.Resource.Styleable.GradientColor_android_gradientRadius;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColor_android_startColor = global::AoTracker.Android.Resource.Styleable.GradientColor_android_startColor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColor_android_startX = global::AoTracker.Android.Resource.Styleable.GradientColor_android_startX;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColor_android_startY = global::AoTracker.Android.Resource.Styleable.GradientColor_android_startY;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColor_android_tileMode = global::AoTracker.Android.Resource.Styleable.GradientColor_android_tileMode;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColor_android_type = global::AoTracker.Android.Resource.Styleable.GradientColor_android_type;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColorItem = global::AoTracker.Android.Resource.Styleable.GradientColorItem;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColorItem_android_color = global::AoTracker.Android.Resource.Styleable.GradientColorItem_android_color;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.GradientColorItem_android_offset = global::AoTracker.Android.Resource.Styleable.GradientColorItem_android_offset;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.LinearLayoutCompat = global::AoTracker.Android.Resource.Styleable.LinearLayoutCompat;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::AoTracker.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::AoTracker.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.LinearLayoutCompat_android_gravity = global::AoTracker.Android.Resource.Styleable.LinearLayoutCompat_android_gravity;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.LinearLayoutCompat_android_orientation = global::AoTracker.Android.Resource.Styleable.LinearLayoutCompat_android_orientation;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::AoTracker.Android.Resource.Styleable.LinearLayoutCompat_android_weightSum;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.LinearLayoutCompat_divider = global::AoTracker.Android.Resource.Styleable.LinearLayoutCompat_divider;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::AoTracker.Android.Resource.Styleable.LinearLayoutCompat_dividerPadding;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::AoTracker.Android.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.LinearLayoutCompat_showDividers = global::AoTracker.Android.Resource.Styleable.LinearLayoutCompat_showDividers;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.LinearLayoutCompat_Layout = global::AoTracker.Android.Resource.Styleable.LinearLayoutCompat_Layout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::AoTracker.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::AoTracker.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::AoTracker.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::AoTracker.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ListPopupWindow = global::AoTracker.Android.Resource.Styleable.ListPopupWindow;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::AoTracker.Android.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::AoTracker.Android.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuGroup = global::AoTracker.Android.Resource.Styleable.MenuGroup;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuGroup_android_checkableBehavior = global::AoTracker.Android.Resource.Styleable.MenuGroup_android_checkableBehavior;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuGroup_android_enabled = global::AoTracker.Android.Resource.Styleable.MenuGroup_android_enabled;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuGroup_android_id = global::AoTracker.Android.Resource.Styleable.MenuGroup_android_id;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuGroup_android_menuCategory = global::AoTracker.Android.Resource.Styleable.MenuGroup_android_menuCategory;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuGroup_android_orderInCategory = global::AoTracker.Android.Resource.Styleable.MenuGroup_android_orderInCategory;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuGroup_android_visible = global::AoTracker.Android.Resource.Styleable.MenuGroup_android_visible;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem = global::AoTracker.Android.Resource.Styleable.MenuItem;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_actionLayout = global::AoTracker.Android.Resource.Styleable.MenuItem_actionLayout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_actionProviderClass = global::AoTracker.Android.Resource.Styleable.MenuItem_actionProviderClass;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_actionViewClass = global::AoTracker.Android.Resource.Styleable.MenuItem_actionViewClass;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_alphabeticModifiers = global::AoTracker.Android.Resource.Styleable.MenuItem_alphabeticModifiers;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::AoTracker.Android.Resource.Styleable.MenuItem_android_alphabeticShortcut;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_android_checkable = global::AoTracker.Android.Resource.Styleable.MenuItem_android_checkable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_android_checked = global::AoTracker.Android.Resource.Styleable.MenuItem_android_checked;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_android_enabled = global::AoTracker.Android.Resource.Styleable.MenuItem_android_enabled;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_android_icon = global::AoTracker.Android.Resource.Styleable.MenuItem_android_icon;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_android_id = global::AoTracker.Android.Resource.Styleable.MenuItem_android_id;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_android_menuCategory = global::AoTracker.Android.Resource.Styleable.MenuItem_android_menuCategory;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_android_numericShortcut = global::AoTracker.Android.Resource.Styleable.MenuItem_android_numericShortcut;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_android_onClick = global::AoTracker.Android.Resource.Styleable.MenuItem_android_onClick;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_android_orderInCategory = global::AoTracker.Android.Resource.Styleable.MenuItem_android_orderInCategory;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_android_title = global::AoTracker.Android.Resource.Styleable.MenuItem_android_title;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_android_titleCondensed = global::AoTracker.Android.Resource.Styleable.MenuItem_android_titleCondensed;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_android_visible = global::AoTracker.Android.Resource.Styleable.MenuItem_android_visible;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_contentDescription = global::AoTracker.Android.Resource.Styleable.MenuItem_contentDescription;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_iconTint = global::AoTracker.Android.Resource.Styleable.MenuItem_iconTint;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_iconTintMode = global::AoTracker.Android.Resource.Styleable.MenuItem_iconTintMode;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_numericModifiers = global::AoTracker.Android.Resource.Styleable.MenuItem_numericModifiers;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_showAsAction = global::AoTracker.Android.Resource.Styleable.MenuItem_showAsAction;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuItem_tooltipText = global::AoTracker.Android.Resource.Styleable.MenuItem_tooltipText;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuView = global::AoTracker.Android.Resource.Styleable.MenuView;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuView_android_headerBackground = global::AoTracker.Android.Resource.Styleable.MenuView_android_headerBackground;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuView_android_horizontalDivider = global::AoTracker.Android.Resource.Styleable.MenuView_android_horizontalDivider;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuView_android_itemBackground = global::AoTracker.Android.Resource.Styleable.MenuView_android_itemBackground;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::AoTracker.Android.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuView_android_itemTextAppearance = global::AoTracker.Android.Resource.Styleable.MenuView_android_itemTextAppearance;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuView_android_verticalDivider = global::AoTracker.Android.Resource.Styleable.MenuView_android_verticalDivider;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuView_android_windowAnimationStyle = global::AoTracker.Android.Resource.Styleable.MenuView_android_windowAnimationStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuView_preserveIconSpacing = global::AoTracker.Android.Resource.Styleable.MenuView_preserveIconSpacing;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.MenuView_subMenuArrow = global::AoTracker.Android.Resource.Styleable.MenuView_subMenuArrow;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.PopupWindow = global::AoTracker.Android.Resource.Styleable.PopupWindow;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.PopupWindow_android_popupAnimationStyle = global::AoTracker.Android.Resource.Styleable.PopupWindow_android_popupAnimationStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.PopupWindow_android_popupBackground = global::AoTracker.Android.Resource.Styleable.PopupWindow_android_popupBackground;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.PopupWindow_overlapAnchor = global::AoTracker.Android.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.PopupWindowBackgroundState = global::AoTracker.Android.Resource.Styleable.PopupWindowBackgroundState;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::AoTracker.Android.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.RecycleListView = global::AoTracker.Android.Resource.Styleable.RecycleListView;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::AoTracker.Android.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::AoTracker.Android.Resource.Styleable.RecycleListView_paddingTopNoTitle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView = global::AoTracker.Android.Resource.Styleable.SearchView;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_android_focusable = global::AoTracker.Android.Resource.Styleable.SearchView_android_focusable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_android_imeOptions = global::AoTracker.Android.Resource.Styleable.SearchView_android_imeOptions;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_android_inputType = global::AoTracker.Android.Resource.Styleable.SearchView_android_inputType;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_android_maxWidth = global::AoTracker.Android.Resource.Styleable.SearchView_android_maxWidth;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_closeIcon = global::AoTracker.Android.Resource.Styleable.SearchView_closeIcon;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_commitIcon = global::AoTracker.Android.Resource.Styleable.SearchView_commitIcon;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_defaultQueryHint = global::AoTracker.Android.Resource.Styleable.SearchView_defaultQueryHint;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_goIcon = global::AoTracker.Android.Resource.Styleable.SearchView_goIcon;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_iconifiedByDefault = global::AoTracker.Android.Resource.Styleable.SearchView_iconifiedByDefault;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_layout = global::AoTracker.Android.Resource.Styleable.SearchView_layout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_queryBackground = global::AoTracker.Android.Resource.Styleable.SearchView_queryBackground;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_queryHint = global::AoTracker.Android.Resource.Styleable.SearchView_queryHint;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_searchHintIcon = global::AoTracker.Android.Resource.Styleable.SearchView_searchHintIcon;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_searchIcon = global::AoTracker.Android.Resource.Styleable.SearchView_searchIcon;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_submitBackground = global::AoTracker.Android.Resource.Styleable.SearchView_submitBackground;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_suggestionRowLayout = global::AoTracker.Android.Resource.Styleable.SearchView_suggestionRowLayout;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SearchView_voiceIcon = global::AoTracker.Android.Resource.Styleable.SearchView_voiceIcon;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Spinner = global::AoTracker.Android.Resource.Styleable.Spinner;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Spinner_android_dropDownWidth = global::AoTracker.Android.Resource.Styleable.Spinner_android_dropDownWidth;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Spinner_android_entries = global::AoTracker.Android.Resource.Styleable.Spinner_android_entries;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Spinner_android_popupBackground = global::AoTracker.Android.Resource.Styleable.Spinner_android_popupBackground;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Spinner_android_prompt = global::AoTracker.Android.Resource.Styleable.Spinner_android_prompt;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Spinner_popupTheme = global::AoTracker.Android.Resource.Styleable.Spinner_popupTheme;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.StateListDrawable = global::AoTracker.Android.Resource.Styleable.StateListDrawable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.StateListDrawable_android_constantSize = global::AoTracker.Android.Resource.Styleable.StateListDrawable_android_constantSize;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.StateListDrawable_android_dither = global::AoTracker.Android.Resource.Styleable.StateListDrawable_android_dither;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.StateListDrawable_android_enterFadeDuration = global::AoTracker.Android.Resource.Styleable.StateListDrawable_android_enterFadeDuration;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.StateListDrawable_android_exitFadeDuration = global::AoTracker.Android.Resource.Styleable.StateListDrawable_android_exitFadeDuration;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.StateListDrawable_android_variablePadding = global::AoTracker.Android.Resource.Styleable.StateListDrawable_android_variablePadding;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.StateListDrawable_android_visible = global::AoTracker.Android.Resource.Styleable.StateListDrawable_android_visible;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.StateListDrawableItem = global::AoTracker.Android.Resource.Styleable.StateListDrawableItem;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.StateListDrawableItem_android_drawable = global::AoTracker.Android.Resource.Styleable.StateListDrawableItem_android_drawable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SwitchCompat = global::AoTracker.Android.Resource.Styleable.SwitchCompat;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SwitchCompat_android_textOff = global::AoTracker.Android.Resource.Styleable.SwitchCompat_android_textOff;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SwitchCompat_android_textOn = global::AoTracker.Android.Resource.Styleable.SwitchCompat_android_textOn;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SwitchCompat_android_thumb = global::AoTracker.Android.Resource.Styleable.SwitchCompat_android_thumb;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SwitchCompat_showText = global::AoTracker.Android.Resource.Styleable.SwitchCompat_showText;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SwitchCompat_splitTrack = global::AoTracker.Android.Resource.Styleable.SwitchCompat_splitTrack;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SwitchCompat_switchMinWidth = global::AoTracker.Android.Resource.Styleable.SwitchCompat_switchMinWidth;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SwitchCompat_switchPadding = global::AoTracker.Android.Resource.Styleable.SwitchCompat_switchPadding;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SwitchCompat_switchTextAppearance = global::AoTracker.Android.Resource.Styleable.SwitchCompat_switchTextAppearance;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SwitchCompat_thumbTextPadding = global::AoTracker.Android.Resource.Styleable.SwitchCompat_thumbTextPadding;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SwitchCompat_thumbTint = global::AoTracker.Android.Resource.Styleable.SwitchCompat_thumbTint;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SwitchCompat_thumbTintMode = global::AoTracker.Android.Resource.Styleable.SwitchCompat_thumbTintMode;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SwitchCompat_track = global::AoTracker.Android.Resource.Styleable.SwitchCompat_track;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SwitchCompat_trackTint = global::AoTracker.Android.Resource.Styleable.SwitchCompat_trackTint;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.SwitchCompat_trackTintMode = global::AoTracker.Android.Resource.Styleable.SwitchCompat_trackTintMode;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.TextAppearance = global::AoTracker.Android.Resource.Styleable.TextAppearance;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.TextAppearance_android_fontFamily = global::AoTracker.Android.Resource.Styleable.TextAppearance_android_fontFamily;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.TextAppearance_android_shadowColor = global::AoTracker.Android.Resource.Styleable.TextAppearance_android_shadowColor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.TextAppearance_android_shadowDx = global::AoTracker.Android.Resource.Styleable.TextAppearance_android_shadowDx;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.TextAppearance_android_shadowDy = global::AoTracker.Android.Resource.Styleable.TextAppearance_android_shadowDy;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.TextAppearance_android_shadowRadius = global::AoTracker.Android.Resource.Styleable.TextAppearance_android_shadowRadius;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.TextAppearance_android_textColor = global::AoTracker.Android.Resource.Styleable.TextAppearance_android_textColor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.TextAppearance_android_textColorHint = global::AoTracker.Android.Resource.Styleable.TextAppearance_android_textColorHint;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.TextAppearance_android_textColorLink = global::AoTracker.Android.Resource.Styleable.TextAppearance_android_textColorLink;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.TextAppearance_android_textSize = global::AoTracker.Android.Resource.Styleable.TextAppearance_android_textSize;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.TextAppearance_android_textStyle = global::AoTracker.Android.Resource.Styleable.TextAppearance_android_textStyle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.TextAppearance_android_typeface = global::AoTracker.Android.Resource.Styleable.TextAppearance_android_typeface;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.TextAppearance_fontFamily = global::AoTracker.Android.Resource.Styleable.TextAppearance_fontFamily;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.TextAppearance_textAllCaps = global::AoTracker.Android.Resource.Styleable.TextAppearance_textAllCaps;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar = global::AoTracker.Android.Resource.Styleable.Toolbar;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_android_gravity = global::AoTracker.Android.Resource.Styleable.Toolbar_android_gravity;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_android_minHeight = global::AoTracker.Android.Resource.Styleable.Toolbar_android_minHeight;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_buttonGravity = global::AoTracker.Android.Resource.Styleable.Toolbar_buttonGravity;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_collapseContentDescription = global::AoTracker.Android.Resource.Styleable.Toolbar_collapseContentDescription;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_collapseIcon = global::AoTracker.Android.Resource.Styleable.Toolbar_collapseIcon;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_contentInsetEnd = global::AoTracker.Android.Resource.Styleable.Toolbar_contentInsetEnd;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_contentInsetEndWithActions = global::AoTracker.Android.Resource.Styleable.Toolbar_contentInsetEndWithActions;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_contentInsetLeft = global::AoTracker.Android.Resource.Styleable.Toolbar_contentInsetLeft;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_contentInsetRight = global::AoTracker.Android.Resource.Styleable.Toolbar_contentInsetRight;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_contentInsetStart = global::AoTracker.Android.Resource.Styleable.Toolbar_contentInsetStart;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_contentInsetStartWithNavigation = global::AoTracker.Android.Resource.Styleable.Toolbar_contentInsetStartWithNavigation;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_logo = global::AoTracker.Android.Resource.Styleable.Toolbar_logo;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_logoDescription = global::AoTracker.Android.Resource.Styleable.Toolbar_logoDescription;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_maxButtonHeight = global::AoTracker.Android.Resource.Styleable.Toolbar_maxButtonHeight;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_navigationContentDescription = global::AoTracker.Android.Resource.Styleable.Toolbar_navigationContentDescription;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_navigationIcon = global::AoTracker.Android.Resource.Styleable.Toolbar_navigationIcon;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_popupTheme = global::AoTracker.Android.Resource.Styleable.Toolbar_popupTheme;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_subtitle = global::AoTracker.Android.Resource.Styleable.Toolbar_subtitle;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_subtitleTextAppearance = global::AoTracker.Android.Resource.Styleable.Toolbar_subtitleTextAppearance;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_subtitleTextColor = global::AoTracker.Android.Resource.Styleable.Toolbar_subtitleTextColor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_title = global::AoTracker.Android.Resource.Styleable.Toolbar_title;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_titleMargin = global::AoTracker.Android.Resource.Styleable.Toolbar_titleMargin;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_titleMarginBottom = global::AoTracker.Android.Resource.Styleable.Toolbar_titleMarginBottom;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_titleMarginEnd = global::AoTracker.Android.Resource.Styleable.Toolbar_titleMarginEnd;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_titleMarginStart = global::AoTracker.Android.Resource.Styleable.Toolbar_titleMarginStart;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_titleMarginTop = global::AoTracker.Android.Resource.Styleable.Toolbar_titleMarginTop;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_titleMargins = global::AoTracker.Android.Resource.Styleable.Toolbar_titleMargins;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_titleTextAppearance = global::AoTracker.Android.Resource.Styleable.Toolbar_titleTextAppearance;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.Toolbar_titleTextColor = global::AoTracker.Android.Resource.Styleable.Toolbar_titleTextColor;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.View = global::AoTracker.Android.Resource.Styleable.View;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.View_android_focusable = global::AoTracker.Android.Resource.Styleable.View_android_focusable;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.View_android_theme = global::AoTracker.Android.Resource.Styleable.View_android_theme;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.View_paddingEnd = global::AoTracker.Android.Resource.Styleable.View_paddingEnd;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.View_paddingStart = global::AoTracker.Android.Resource.Styleable.View_paddingStart;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.View_theme = global::AoTracker.Android.Resource.Styleable.View_theme;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ViewBackgroundHelper = global::AoTracker.Android.Resource.Styleable.ViewBackgroundHelper;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ViewBackgroundHelper_android_background = global::AoTracker.Android.Resource.Styleable.ViewBackgroundHelper_android_background;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::AoTracker.Android.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::AoTracker.Android.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ViewStubCompat = global::AoTracker.Android.Resource.Styleable.ViewStubCompat;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ViewStubCompat_android_id = global::AoTracker.Android.Resource.Styleable.ViewStubCompat_android_id;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ViewStubCompat_android_inflatedId = global::AoTracker.Android.Resource.Styleable.ViewStubCompat_android_inflatedId;
+			global::AoLibs.Dialogs.Android.Resource.Styleable.ViewStubCompat_android_layout = global::AoTracker.Android.Resource.Styleable.ViewStubCompat_android_layout;
 			global::ModernHttpClient.Resource.String.app_name = global::AoTracker.Android.Resource.String.app_name;
 			global::ModernHttpClient.Resource.String.hello = global::AoTracker.Android.Resource.String.hello;
+			global::Xamarin.Essentials.Resource.Attribute.alpha = global::AoTracker.Android.Resource.Attribute.alpha;
+			global::Xamarin.Essentials.Resource.Attribute.coordinatorLayoutStyle = global::AoTracker.Android.Resource.Attribute.coordinatorLayoutStyle;
+			global::Xamarin.Essentials.Resource.Attribute.font = global::AoTracker.Android.Resource.Attribute.font;
+			global::Xamarin.Essentials.Resource.Attribute.fontProviderAuthority = global::AoTracker.Android.Resource.Attribute.fontProviderAuthority;
+			global::Xamarin.Essentials.Resource.Attribute.fontProviderCerts = global::AoTracker.Android.Resource.Attribute.fontProviderCerts;
+			global::Xamarin.Essentials.Resource.Attribute.fontProviderFetchStrategy = global::AoTracker.Android.Resource.Attribute.fontProviderFetchStrategy;
+			global::Xamarin.Essentials.Resource.Attribute.fontProviderFetchTimeout = global::AoTracker.Android.Resource.Attribute.fontProviderFetchTimeout;
+			global::Xamarin.Essentials.Resource.Attribute.fontProviderPackage = global::AoTracker.Android.Resource.Attribute.fontProviderPackage;
+			global::Xamarin.Essentials.Resource.Attribute.fontProviderQuery = global::AoTracker.Android.Resource.Attribute.fontProviderQuery;
+			global::Xamarin.Essentials.Resource.Attribute.fontStyle = global::AoTracker.Android.Resource.Attribute.fontStyle;
+			global::Xamarin.Essentials.Resource.Attribute.fontVariationSettings = global::AoTracker.Android.Resource.Attribute.fontVariationSettings;
+			global::Xamarin.Essentials.Resource.Attribute.fontWeight = global::AoTracker.Android.Resource.Attribute.fontWeight;
+			global::Xamarin.Essentials.Resource.Attribute.keylines = global::AoTracker.Android.Resource.Attribute.keylines;
+			global::Xamarin.Essentials.Resource.Attribute.layout_anchor = global::AoTracker.Android.Resource.Attribute.layout_anchor;
+			global::Xamarin.Essentials.Resource.Attribute.layout_anchorGravity = global::AoTracker.Android.Resource.Attribute.layout_anchorGravity;
+			global::Xamarin.Essentials.Resource.Attribute.layout_behavior = global::AoTracker.Android.Resource.Attribute.layout_behavior;
+			global::Xamarin.Essentials.Resource.Attribute.layout_dodgeInsetEdges = global::AoTracker.Android.Resource.Attribute.layout_dodgeInsetEdges;
+			global::Xamarin.Essentials.Resource.Attribute.layout_insetEdge = global::AoTracker.Android.Resource.Attribute.layout_insetEdge;
+			global::Xamarin.Essentials.Resource.Attribute.layout_keyline = global::AoTracker.Android.Resource.Attribute.layout_keyline;
+			global::Xamarin.Essentials.Resource.Attribute.statusBarBackground = global::AoTracker.Android.Resource.Attribute.statusBarBackground;
+			global::Xamarin.Essentials.Resource.Attribute.ttcIndex = global::AoTracker.Android.Resource.Attribute.ttcIndex;
+			global::Xamarin.Essentials.Resource.Color.browser_actions_bg_grey = global::AoTracker.Android.Resource.Color.browser_actions_bg_grey;
+			global::Xamarin.Essentials.Resource.Color.browser_actions_divider_color = global::AoTracker.Android.Resource.Color.browser_actions_divider_color;
+			global::Xamarin.Essentials.Resource.Color.browser_actions_text_color = global::AoTracker.Android.Resource.Color.browser_actions_text_color;
+			global::Xamarin.Essentials.Resource.Color.browser_actions_title_color = global::AoTracker.Android.Resource.Color.browser_actions_title_color;
+			global::Xamarin.Essentials.Resource.Color.notification_action_color_filter = global::AoTracker.Android.Resource.Color.notification_action_color_filter;
+			global::Xamarin.Essentials.Resource.Color.notification_icon_bg_color = global::AoTracker.Android.Resource.Color.notification_icon_bg_color;
+			global::Xamarin.Essentials.Resource.Color.ripple_material_light = global::AoTracker.Android.Resource.Color.ripple_material_light;
+			global::Xamarin.Essentials.Resource.Color.secondary_text_default_material_light = global::AoTracker.Android.Resource.Color.secondary_text_default_material_light;
+			global::Xamarin.Essentials.Resource.Dimension.browser_actions_context_menu_max_width = global::AoTracker.Android.Resource.Dimension.browser_actions_context_menu_max_width;
+			global::Xamarin.Essentials.Resource.Dimension.browser_actions_context_menu_min_padding = global::AoTracker.Android.Resource.Dimension.browser_actions_context_menu_min_padding;
+			global::Xamarin.Essentials.Resource.Dimension.compat_button_inset_horizontal_material = global::AoTracker.Android.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::Xamarin.Essentials.Resource.Dimension.compat_button_inset_vertical_material = global::AoTracker.Android.Resource.Dimension.compat_button_inset_vertical_material;
+			global::Xamarin.Essentials.Resource.Dimension.compat_button_padding_horizontal_material = global::AoTracker.Android.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::Xamarin.Essentials.Resource.Dimension.compat_button_padding_vertical_material = global::AoTracker.Android.Resource.Dimension.compat_button_padding_vertical_material;
+			global::Xamarin.Essentials.Resource.Dimension.compat_control_corner_material = global::AoTracker.Android.Resource.Dimension.compat_control_corner_material;
+			global::Xamarin.Essentials.Resource.Dimension.compat_notification_large_icon_max_height = global::AoTracker.Android.Resource.Dimension.compat_notification_large_icon_max_height;
+			global::Xamarin.Essentials.Resource.Dimension.compat_notification_large_icon_max_width = global::AoTracker.Android.Resource.Dimension.compat_notification_large_icon_max_width;
+			global::Xamarin.Essentials.Resource.Dimension.notification_action_icon_size = global::AoTracker.Android.Resource.Dimension.notification_action_icon_size;
+			global::Xamarin.Essentials.Resource.Dimension.notification_action_text_size = global::AoTracker.Android.Resource.Dimension.notification_action_text_size;
+			global::Xamarin.Essentials.Resource.Dimension.notification_big_circle_margin = global::AoTracker.Android.Resource.Dimension.notification_big_circle_margin;
+			global::Xamarin.Essentials.Resource.Dimension.notification_content_margin_start = global::AoTracker.Android.Resource.Dimension.notification_content_margin_start;
+			global::Xamarin.Essentials.Resource.Dimension.notification_large_icon_height = global::AoTracker.Android.Resource.Dimension.notification_large_icon_height;
+			global::Xamarin.Essentials.Resource.Dimension.notification_large_icon_width = global::AoTracker.Android.Resource.Dimension.notification_large_icon_width;
+			global::Xamarin.Essentials.Resource.Dimension.notification_main_column_padding_top = global::AoTracker.Android.Resource.Dimension.notification_main_column_padding_top;
+			global::Xamarin.Essentials.Resource.Dimension.notification_media_narrow_margin = global::AoTracker.Android.Resource.Dimension.notification_media_narrow_margin;
+			global::Xamarin.Essentials.Resource.Dimension.notification_right_icon_size = global::AoTracker.Android.Resource.Dimension.notification_right_icon_size;
+			global::Xamarin.Essentials.Resource.Dimension.notification_right_side_padding_top = global::AoTracker.Android.Resource.Dimension.notification_right_side_padding_top;
+			global::Xamarin.Essentials.Resource.Dimension.notification_small_icon_background_padding = global::AoTracker.Android.Resource.Dimension.notification_small_icon_background_padding;
+			global::Xamarin.Essentials.Resource.Dimension.notification_small_icon_size_as_large = global::AoTracker.Android.Resource.Dimension.notification_small_icon_size_as_large;
+			global::Xamarin.Essentials.Resource.Dimension.notification_subtext_size = global::AoTracker.Android.Resource.Dimension.notification_subtext_size;
+			global::Xamarin.Essentials.Resource.Dimension.notification_top_pad = global::AoTracker.Android.Resource.Dimension.notification_top_pad;
+			global::Xamarin.Essentials.Resource.Dimension.notification_top_pad_large_text = global::AoTracker.Android.Resource.Dimension.notification_top_pad_large_text;
+			global::Xamarin.Essentials.Resource.Drawable.notification_action_background = global::AoTracker.Android.Resource.Drawable.notification_action_background;
+			global::Xamarin.Essentials.Resource.Drawable.notification_bg = global::AoTracker.Android.Resource.Drawable.notification_bg;
+			global::Xamarin.Essentials.Resource.Drawable.notification_bg_low = global::AoTracker.Android.Resource.Drawable.notification_bg_low;
+			global::Xamarin.Essentials.Resource.Drawable.notification_bg_low_normal = global::AoTracker.Android.Resource.Drawable.notification_bg_low_normal;
+			global::Xamarin.Essentials.Resource.Drawable.notification_bg_low_pressed = global::AoTracker.Android.Resource.Drawable.notification_bg_low_pressed;
+			global::Xamarin.Essentials.Resource.Drawable.notification_bg_normal = global::AoTracker.Android.Resource.Drawable.notification_bg_normal;
+			global::Xamarin.Essentials.Resource.Drawable.notification_bg_normal_pressed = global::AoTracker.Android.Resource.Drawable.notification_bg_normal_pressed;
+			global::Xamarin.Essentials.Resource.Drawable.notification_icon_background = global::AoTracker.Android.Resource.Drawable.notification_icon_background;
+			global::Xamarin.Essentials.Resource.Drawable.notification_template_icon_bg = global::AoTracker.Android.Resource.Drawable.notification_template_icon_bg;
+			global::Xamarin.Essentials.Resource.Drawable.notification_template_icon_low_bg = global::AoTracker.Android.Resource.Drawable.notification_template_icon_low_bg;
+			global::Xamarin.Essentials.Resource.Drawable.notification_tile_bg = global::AoTracker.Android.Resource.Drawable.notification_tile_bg;
+			global::Xamarin.Essentials.Resource.Drawable.notify_panel_notification_icon_bg = global::AoTracker.Android.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::Xamarin.Essentials.Resource.Id.action_container = global::AoTracker.Android.Resource.Id.action_container;
+			global::Xamarin.Essentials.Resource.Id.action_divider = global::AoTracker.Android.Resource.Id.action_divider;
+			global::Xamarin.Essentials.Resource.Id.action_image = global::AoTracker.Android.Resource.Id.action_image;
+			global::Xamarin.Essentials.Resource.Id.action_text = global::AoTracker.Android.Resource.Id.action_text;
+			global::Xamarin.Essentials.Resource.Id.actions = global::AoTracker.Android.Resource.Id.actions;
+			global::Xamarin.Essentials.Resource.Id.all = global::AoTracker.Android.Resource.Id.all;
+			global::Xamarin.Essentials.Resource.Id.async = global::AoTracker.Android.Resource.Id.async;
+			global::Xamarin.Essentials.Resource.Id.blocking = global::AoTracker.Android.Resource.Id.blocking;
+			global::Xamarin.Essentials.Resource.Id.bottom = global::AoTracker.Android.Resource.Id.bottom;
+			global::Xamarin.Essentials.Resource.Id.browser_actions_header_text = global::AoTracker.Android.Resource.Id.browser_actions_header_text;
+			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_item_icon = global::AoTracker.Android.Resource.Id.browser_actions_menu_item_icon;
+			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_item_text = global::AoTracker.Android.Resource.Id.browser_actions_menu_item_text;
+			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_items = global::AoTracker.Android.Resource.Id.browser_actions_menu_items;
+			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_view = global::AoTracker.Android.Resource.Id.browser_actions_menu_view;
+			global::Xamarin.Essentials.Resource.Id.center = global::AoTracker.Android.Resource.Id.center;
+			global::Xamarin.Essentials.Resource.Id.center_horizontal = global::AoTracker.Android.Resource.Id.center_horizontal;
+			global::Xamarin.Essentials.Resource.Id.center_vertical = global::AoTracker.Android.Resource.Id.center_vertical;
+			global::Xamarin.Essentials.Resource.Id.chronometer = global::AoTracker.Android.Resource.Id.chronometer;
+			global::Xamarin.Essentials.Resource.Id.clip_horizontal = global::AoTracker.Android.Resource.Id.clip_horizontal;
+			global::Xamarin.Essentials.Resource.Id.clip_vertical = global::AoTracker.Android.Resource.Id.clip_vertical;
+			global::Xamarin.Essentials.Resource.Id.end = global::AoTracker.Android.Resource.Id.end;
+			global::Xamarin.Essentials.Resource.Id.fill = global::AoTracker.Android.Resource.Id.fill;
+			global::Xamarin.Essentials.Resource.Id.fill_horizontal = global::AoTracker.Android.Resource.Id.fill_horizontal;
+			global::Xamarin.Essentials.Resource.Id.fill_vertical = global::AoTracker.Android.Resource.Id.fill_vertical;
+			global::Xamarin.Essentials.Resource.Id.forever = global::AoTracker.Android.Resource.Id.forever;
+			global::Xamarin.Essentials.Resource.Id.icon = global::AoTracker.Android.Resource.Id.icon;
+			global::Xamarin.Essentials.Resource.Id.icon_group = global::AoTracker.Android.Resource.Id.icon_group;
+			global::Xamarin.Essentials.Resource.Id.info = global::AoTracker.Android.Resource.Id.info;
+			global::Xamarin.Essentials.Resource.Id.italic = global::AoTracker.Android.Resource.Id.italic;
+			global::Xamarin.Essentials.Resource.Id.left = global::AoTracker.Android.Resource.Id.left;
+			global::Xamarin.Essentials.Resource.Id.line1 = global::AoTracker.Android.Resource.Id.line1;
+			global::Xamarin.Essentials.Resource.Id.line3 = global::AoTracker.Android.Resource.Id.line3;
+			global::Xamarin.Essentials.Resource.Id.none = global::AoTracker.Android.Resource.Id.none;
+			global::Xamarin.Essentials.Resource.Id.normal = global::AoTracker.Android.Resource.Id.normal;
+			global::Xamarin.Essentials.Resource.Id.notification_background = global::AoTracker.Android.Resource.Id.notification_background;
+			global::Xamarin.Essentials.Resource.Id.notification_main_column = global::AoTracker.Android.Resource.Id.notification_main_column;
+			global::Xamarin.Essentials.Resource.Id.notification_main_column_container = global::AoTracker.Android.Resource.Id.notification_main_column_container;
+			global::Xamarin.Essentials.Resource.Id.right = global::AoTracker.Android.Resource.Id.right;
+			global::Xamarin.Essentials.Resource.Id.right_icon = global::AoTracker.Android.Resource.Id.right_icon;
+			global::Xamarin.Essentials.Resource.Id.right_side = global::AoTracker.Android.Resource.Id.right_side;
+			global::Xamarin.Essentials.Resource.Id.start = global::AoTracker.Android.Resource.Id.start;
+			global::Xamarin.Essentials.Resource.Id.tag_transition_group = global::AoTracker.Android.Resource.Id.tag_transition_group;
+			global::Xamarin.Essentials.Resource.Id.tag_unhandled_key_event_manager = global::AoTracker.Android.Resource.Id.tag_unhandled_key_event_manager;
+			global::Xamarin.Essentials.Resource.Id.tag_unhandled_key_listeners = global::AoTracker.Android.Resource.Id.tag_unhandled_key_listeners;
+			global::Xamarin.Essentials.Resource.Id.text = global::AoTracker.Android.Resource.Id.text;
+			global::Xamarin.Essentials.Resource.Id.text2 = global::AoTracker.Android.Resource.Id.text2;
+			global::Xamarin.Essentials.Resource.Id.time = global::AoTracker.Android.Resource.Id.time;
+			global::Xamarin.Essentials.Resource.Id.title = global::AoTracker.Android.Resource.Id.title;
+			global::Xamarin.Essentials.Resource.Id.top = global::AoTracker.Android.Resource.Id.top;
+			global::Xamarin.Essentials.Resource.Integer.status_bar_notification_info_maxnum = global::AoTracker.Android.Resource.Integer.status_bar_notification_info_maxnum;
+			global::Xamarin.Essentials.Resource.Layout.browser_actions_context_menu_page = global::AoTracker.Android.Resource.Layout.browser_actions_context_menu_page;
+			global::Xamarin.Essentials.Resource.Layout.browser_actions_context_menu_row = global::AoTracker.Android.Resource.Layout.browser_actions_context_menu_row;
+			global::Xamarin.Essentials.Resource.Layout.notification_action = global::AoTracker.Android.Resource.Layout.notification_action;
+			global::Xamarin.Essentials.Resource.Layout.notification_action_tombstone = global::AoTracker.Android.Resource.Layout.notification_action_tombstone;
+			global::Xamarin.Essentials.Resource.Layout.notification_template_custom_big = global::AoTracker.Android.Resource.Layout.notification_template_custom_big;
+			global::Xamarin.Essentials.Resource.Layout.notification_template_icon_group = global::AoTracker.Android.Resource.Layout.notification_template_icon_group;
+			global::Xamarin.Essentials.Resource.Layout.notification_template_part_chronometer = global::AoTracker.Android.Resource.Layout.notification_template_part_chronometer;
+			global::Xamarin.Essentials.Resource.Layout.notification_template_part_time = global::AoTracker.Android.Resource.Layout.notification_template_part_time;
+			global::Xamarin.Essentials.Resource.String.status_bar_notification_info_overflow = global::AoTracker.Android.Resource.String.status_bar_notification_info_overflow;
+			global::Xamarin.Essentials.Resource.Style.TextAppearance_Compat_Notification = global::AoTracker.Android.Resource.Style.TextAppearance_Compat_Notification;
+			global::Xamarin.Essentials.Resource.Style.TextAppearance_Compat_Notification_Info = global::AoTracker.Android.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::Xamarin.Essentials.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::AoTracker.Android.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::Xamarin.Essentials.Resource.Style.TextAppearance_Compat_Notification_Time = global::AoTracker.Android.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::Xamarin.Essentials.Resource.Style.TextAppearance_Compat_Notification_Title = global::AoTracker.Android.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::Xamarin.Essentials.Resource.Style.Widget_Compat_NotificationActionContainer = global::AoTracker.Android.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::Xamarin.Essentials.Resource.Style.Widget_Compat_NotificationActionText = global::AoTracker.Android.Resource.Style.Widget_Compat_NotificationActionText;
+			global::Xamarin.Essentials.Resource.Style.Widget_Support_CoordinatorLayout = global::AoTracker.Android.Resource.Style.Widget_Support_CoordinatorLayout;
+			global::Xamarin.Essentials.Resource.Xml.xamarin_essentials_fileprovider_file_paths = global::AoTracker.Android.Resource.Xml.xamarin_essentials_fileprovider_file_paths;
+			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem = global::AoTracker.Android.Resource.Styleable.ColorStateListItem;
+			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem_alpha = global::AoTracker.Android.Resource.Styleable.ColorStateListItem_alpha;
+			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem_android_alpha = global::AoTracker.Android.Resource.Styleable.ColorStateListItem_android_alpha;
+			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem_android_color = global::AoTracker.Android.Resource.Styleable.ColorStateListItem_android_color;
+			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout;
+			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_keylines = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_keylines;
+			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_statusBarBackground;
+			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout;
+			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
+			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
+			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity;
+			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior;
+			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
+			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
+			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::AoTracker.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamily = global::AoTracker.Android.Resource.Styleable.FontFamily;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderAuthority = global::AoTracker.Android.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderCerts = global::AoTracker.Android.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::AoTracker.Android.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::AoTracker.Android.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderPackage = global::AoTracker.Android.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderQuery = global::AoTracker.Android.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont = global::AoTracker.Android.Resource.Styleable.FontFamilyFont;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_android_font = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_android_font;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_android_fontStyle = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_android_fontWeight = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_android_ttcIndex;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_font = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_font;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_fontStyle = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_fontVariationSettings;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_fontWeight = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_ttcIndex = global::AoTracker.Android.Resource.Styleable.FontFamilyFont_ttcIndex;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColor = global::AoTracker.Android.Resource.Styleable.GradientColor;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_centerColor = global::AoTracker.Android.Resource.Styleable.GradientColor_android_centerColor;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_centerX = global::AoTracker.Android.Resource.Styleable.GradientColor_android_centerX;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_centerY = global::AoTracker.Android.Resource.Styleable.GradientColor_android_centerY;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_endColor = global::AoTracker.Android.Resource.Styleable.GradientColor_android_endColor;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_endX = global::AoTracker.Android.Resource.Styleable.GradientColor_android_endX;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_endY = global::AoTracker.Android.Resource.Styleable.GradientColor_android_endY;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_gradientRadius = global::AoTracker.Android.Resource.Styleable.GradientColor_android_gradientRadius;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_startColor = global::AoTracker.Android.Resource.Styleable.GradientColor_android_startColor;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_startX = global::AoTracker.Android.Resource.Styleable.GradientColor_android_startX;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_startY = global::AoTracker.Android.Resource.Styleable.GradientColor_android_startY;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_tileMode = global::AoTracker.Android.Resource.Styleable.GradientColor_android_tileMode;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_type = global::AoTracker.Android.Resource.Styleable.GradientColor_android_type;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColorItem = global::AoTracker.Android.Resource.Styleable.GradientColorItem;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColorItem_android_color = global::AoTracker.Android.Resource.Styleable.GradientColorItem_android_color;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColorItem_android_offset = global::AoTracker.Android.Resource.Styleable.GradientColorItem_android_offset;
 		}
 		
 		public partial class Animation
@@ -3568,68 +5357,68 @@ namespace AoTracker.Android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7F08005E
-			public const int action0 = 2131230814;
-			
-			// aapt resource value: 0x7F080070
-			public const int actions = 2131230832;
-			
-			// aapt resource value: 0x7F08005F
-			public const int action_bar = 2131230815;
-			
-			// aapt resource value: 0x7F080060
-			public const int action_bar_activity_content = 2131230816;
-			
 			// aapt resource value: 0x7F080061
-			public const int action_bar_container = 2131230817;
+			public const int action0 = 2131230817;
+			
+			// aapt resource value: 0x7F080073
+			public const int actions = 2131230835;
 			
 			// aapt resource value: 0x7F080062
-			public const int action_bar_root = 2131230818;
+			public const int action_bar = 2131230818;
 			
 			// aapt resource value: 0x7F080063
-			public const int action_bar_spinner = 2131230819;
+			public const int action_bar_activity_content = 2131230819;
 			
 			// aapt resource value: 0x7F080064
-			public const int action_bar_subtitle = 2131230820;
+			public const int action_bar_container = 2131230820;
 			
 			// aapt resource value: 0x7F080065
-			public const int action_bar_title = 2131230821;
+			public const int action_bar_root = 2131230821;
 			
 			// aapt resource value: 0x7F080066
-			public const int action_container = 2131230822;
+			public const int action_bar_spinner = 2131230822;
 			
 			// aapt resource value: 0x7F080067
-			public const int action_context_bar = 2131230823;
+			public const int action_bar_subtitle = 2131230823;
 			
 			// aapt resource value: 0x7F080068
-			public const int action_divider = 2131230824;
+			public const int action_bar_title = 2131230824;
 			
 			// aapt resource value: 0x7F080069
-			public const int action_image = 2131230825;
+			public const int action_container = 2131230825;
 			
 			// aapt resource value: 0x7F08006A
-			public const int action_menu_divider = 2131230826;
+			public const int action_context_bar = 2131230826;
 			
 			// aapt resource value: 0x7F08006B
-			public const int action_menu_presenter = 2131230827;
+			public const int action_divider = 2131230827;
 			
 			// aapt resource value: 0x7F08006C
-			public const int action_mode_bar = 2131230828;
+			public const int action_image = 2131230828;
 			
 			// aapt resource value: 0x7F08006D
-			public const int action_mode_bar_stub = 2131230829;
+			public const int action_menu_divider = 2131230829;
 			
 			// aapt resource value: 0x7F08006E
-			public const int action_mode_close_button = 2131230830;
+			public const int action_menu_presenter = 2131230830;
 			
 			// aapt resource value: 0x7F08006F
-			public const int action_text = 2131230831;
+			public const int action_mode_bar = 2131230831;
+			
+			// aapt resource value: 0x7F080070
+			public const int action_mode_bar_stub = 2131230832;
 			
 			// aapt resource value: 0x7F080071
-			public const int activity_chooser_view_content = 2131230833;
+			public const int action_mode_close_button = 2131230833;
 			
 			// aapt resource value: 0x7F080072
-			public const int add = 2131230834;
+			public const int action_text = 2131230834;
+			
+			// aapt resource value: 0x7F080074
+			public const int activity_chooser_view_content = 2131230836;
+			
+			// aapt resource value: 0x7F080075
+			public const int add = 2131230837;
 			
 			// aapt resource value: 0x7F080001
 			public const int AddButton = 2131230721;
@@ -3640,839 +5429,848 @@ namespace AoTracker.Android
 			// aapt resource value: 0x7F080003
 			public const int AddExcludedKeywordButton = 2131230723;
 			
-			// aapt resource value: 0x7F080073
-			public const int alertTitle = 2131230835;
+			// aapt resource value: 0x7F080076
+			public const int alertTitle = 2131230838;
 			
-			// aapt resource value: 0x7F080074
-			public const int all = 2131230836;
+			// aapt resource value: 0x7F080077
+			public const int all = 2131230839;
 			
 			// aapt resource value: 0x7F080000
 			public const int ALT = 2131230720;
 			
-			// aapt resource value: 0x7F080075
-			public const int always = 2131230837;
+			// aapt resource value: 0x7F080078
+			public const int always = 2131230840;
 			
 			// aapt resource value: 0x7F080004
 			public const int ApplyThemeButton = 2131230724;
 			
-			// aapt resource value: 0x7F080076
-			public const int async = 2131230838;
+			// aapt resource value: 0x7F080079
+			public const int async = 2131230841;
 			
-			// aapt resource value: 0x7F080077
-			public const int auto = 2131230839;
+			// aapt resource value: 0x7F08007A
+			public const int auto = 2131230842;
 			
 			// aapt resource value: 0x7F080005
 			public const int AutomaticallyLoadFeedTab = 2131230725;
 			
-			// aapt resource value: 0x7F080078
-			public const int baseline = 2131230840;
+			// aapt resource value: 0x7F08007B
+			public const int baseline = 2131230843;
 			
-			// aapt resource value: 0x7F080079
-			public const int beginning = 2131230841;
+			// aapt resource value: 0x7F08007C
+			public const int beginning = 2131230844;
 			
 			// aapt resource value: 0x7F080006
 			public const int BlackThemeRadioButton = 2131230726;
 			
-			// aapt resource value: 0x7F08007A
-			public const int blocking = 2131230842;
+			// aapt resource value: 0x7F08007D
+			public const int blocking = 2131230845;
 			
-			// aapt resource value: 0x7F08007B
-			public const int bottom = 2131230843;
+			// aapt resource value: 0x7F08007E
+			public const int bottom = 2131230846;
 			
 			// aapt resource value: 0x7F080007
 			public const int BottomDetailSection = 2131230727;
 			
-			// aapt resource value: 0x7F08007C
-			public const int browser_actions_header_text = 2131230844;
-			
 			// aapt resource value: 0x7F08007F
-			public const int browser_actions_menu_items = 2131230847;
-			
-			// aapt resource value: 0x7F08007D
-			public const int browser_actions_menu_item_icon = 2131230845;
-			
-			// aapt resource value: 0x7F08007E
-			public const int browser_actions_menu_item_text = 2131230846;
-			
-			// aapt resource value: 0x7F080080
-			public const int browser_actions_menu_view = 2131230848;
-			
-			// aapt resource value: 0x7F080081
-			public const int buttonPanel = 2131230849;
+			public const int browser_actions_header_text = 2131230847;
 			
 			// aapt resource value: 0x7F080082
-			public const int cancel_action = 2131230850;
+			public const int browser_actions_menu_items = 2131230850;
+			
+			// aapt resource value: 0x7F080080
+			public const int browser_actions_menu_item_icon = 2131230848;
+			
+			// aapt resource value: 0x7F080081
+			public const int browser_actions_menu_item_text = 2131230849;
 			
 			// aapt resource value: 0x7F080083
-			public const int center = 2131230851;
+			public const int browser_actions_menu_view = 2131230851;
 			
 			// aapt resource value: 0x7F080084
-			public const int center_horizontal = 2131230852;
+			public const int buttonPanel = 2131230852;
 			
 			// aapt resource value: 0x7F080085
-			public const int center_vertical = 2131230853;
+			public const int cancel_action = 2131230853;
 			
 			// aapt resource value: 0x7F080086
-			public const int checkbox = 2131230854;
+			public const int center = 2131230854;
 			
 			// aapt resource value: 0x7F080087
-			public const int chronometer = 2131230855;
-			
-			// aapt resource value: 0x7F080009
-			public const int ClickSurface = 2131230729;
+			public const int center_horizontal = 2131230855;
 			
 			// aapt resource value: 0x7F080088
-			public const int clip_horizontal = 2131230856;
+			public const int center_vertical = 2131230856;
+			
+			// aapt resource value: 0x7F080009
+			public const int Changelog = 2131230729;
 			
 			// aapt resource value: 0x7F080089
-			public const int clip_vertical = 2131230857;
+			public const int checkbox = 2131230857;
 			
 			// aapt resource value: 0x7F08008A
-			public const int collapseActionView = 2131230858;
+			public const int chronometer = 2131230858;
 			
 			// aapt resource value: 0x7F08000A
-			public const int ColorBlueAccentButton = 2131230730;
-			
-			// aapt resource value: 0x7F08000B
-			public const int ColorCyanAccentButton = 2131230731;
-			
-			// aapt resource value: 0x7F08000C
-			public const int ColorLimeAccentButton = 2131230732;
-			
-			// aapt resource value: 0x7F08000D
-			public const int ColorOrangeAccentButton = 2131230733;
-			
-			// aapt resource value: 0x7F08000E
-			public const int ColorPinkAccentButton = 2131230734;
-			
-			// aapt resource value: 0x7F08000F
-			public const int ColorPurpleAccentButton = 2131230735;
-			
-			// aapt resource value: 0x7F080010
-			public const int ColorRedAccentButton = 2131230736;
+			public const int ClickSurface = 2131230730;
 			
 			// aapt resource value: 0x7F08008B
-			public const int column = 2131230859;
+			public const int clip_horizontal = 2131230859;
 			
 			// aapt resource value: 0x7F08008C
-			public const int column_reverse = 2131230860;
-			
-			// aapt resource value: 0x7F080011
-			public const int Container = 2131230737;
+			public const int clip_vertical = 2131230860;
 			
 			// aapt resource value: 0x7F08008D
-			public const int container = 2131230861;
+			public const int collapseActionView = 2131230861;
+			
+			// aapt resource value: 0x7F08000B
+			public const int ColorBlueAccentButton = 2131230731;
+			
+			// aapt resource value: 0x7F08000C
+			public const int ColorCyanAccentButton = 2131230732;
+			
+			// aapt resource value: 0x7F08000D
+			public const int ColorLimeAccentButton = 2131230733;
+			
+			// aapt resource value: 0x7F08000E
+			public const int ColorOrangeAccentButton = 2131230734;
+			
+			// aapt resource value: 0x7F08000F
+			public const int ColorPinkAccentButton = 2131230735;
+			
+			// aapt resource value: 0x7F080010
+			public const int ColorPurpleAccentButton = 2131230736;
+			
+			// aapt resource value: 0x7F080011
+			public const int ColorRedAccentButton = 2131230737;
 			
 			// aapt resource value: 0x7F08008E
-			public const int content = 2131230862;
+			public const int column = 2131230862;
 			
 			// aapt resource value: 0x7F08008F
-			public const int contentPanel = 2131230863;
+			public const int column_reverse = 2131230863;
 			
 			// aapt resource value: 0x7F080090
-			public const int coordinator = 2131230864;
-			
-			// aapt resource value: 0x7F080013
-			public const int CrawlersRecyclerView = 2131230739;
+			public const int container = 2131230864;
 			
 			// aapt resource value: 0x7F080012
-			public const int CrawlerSummaryRecyclerView = 2131230738;
+			public const int Container = 2131230738;
+			
+			// aapt resource value: 0x7F080091
+			public const int content = 2131230865;
+			
+			// aapt resource value: 0x7F080092
+			public const int contentPanel = 2131230866;
+			
+			// aapt resource value: 0x7F080093
+			public const int coordinator = 2131230867;
+			
+			// aapt resource value: 0x7F080014
+			public const int CrawlersRecyclerView = 2131230740;
+			
+			// aapt resource value: 0x7F080013
+			public const int CrawlerSummaryRecyclerView = 2131230739;
 			
 			// aapt resource value: 0x7F080008
 			public const int CTRL = 2131230728;
 			
-			// aapt resource value: 0x7F080091
-			public const int custom = 2131230865;
-			
-			// aapt resource value: 0x7F080092
-			public const int customPanel = 2131230866;
-			
-			// aapt resource value: 0x7F080014
-			public const int DarkThemeRadioButton = 2131230740;
-			
-			// aapt resource value: 0x7F080093
-			public const int decor_content_parent = 2131230867;
-			
 			// aapt resource value: 0x7F080094
-			public const int default_activity_button = 2131230868;
-			
-			// aapt resource value: 0x7F080015
-			public const int DeleteButton = 2131230741;
+			public const int custom = 2131230868;
 			
 			// aapt resource value: 0x7F080095
-			public const int design_bottom_sheet = 2131230869;
+			public const int customPanel = 2131230869;
+			
+			// aapt resource value: 0x7F080015
+			public const int DarkThemeRadioButton = 2131230741;
 			
 			// aapt resource value: 0x7F080096
-			public const int design_menu_item_action_area = 2131230870;
+			public const int decor_content_parent = 2131230870;
 			
 			// aapt resource value: 0x7F080097
-			public const int design_menu_item_action_area_stub = 2131230871;
-			
-			// aapt resource value: 0x7F080098
-			public const int design_menu_item_text = 2131230872;
-			
-			// aapt resource value: 0x7F080099
-			public const int design_navigation_view = 2131230873;
+			public const int default_activity_button = 2131230871;
 			
 			// aapt resource value: 0x7F080016
-			public const int Detail = 2131230742;
+			public const int DeleteButton = 2131230742;
 			
-			// aapt resource value: 0x7F080017
-			public const int DetailBids = 2131230743;
+			// aapt resource value: 0x7F080098
+			public const int design_bottom_sheet = 2131230872;
 			
-			// aapt resource value: 0x7F080018
-			public const int DetailCondition = 2131230744;
-			
-			// aapt resource value: 0x7F080019
-			public const int DetailEndsIn = 2131230745;
-			
-			// aapt resource value: 0x7F08001A
-			public const int DetailSection = 2131230746;
-			
-			// aapt resource value: 0x7F08001B
-			public const int DetailSectionContainer = 2131230747;
-			
-			// aapt resource value: 0x7F08001C
-			public const int DetailShipping = 2131230748;
-			
-			// aapt resource value: 0x7F08001D
-			public const int DetailsTax = 2131230749;
+			// aapt resource value: 0x7F080099
+			public const int design_menu_item_action_area = 2131230873;
 			
 			// aapt resource value: 0x7F08009A
-			public const int disableHome = 2131230874;
-			
-			// aapt resource value: 0x7F08001E
-			public const int DomainIcon = 2131230750;
-			
-			// aapt resource value: 0x7F08001F
-			public const int DrawerLayout = 2131230751;
+			public const int design_menu_item_action_area_stub = 2131230874;
 			
 			// aapt resource value: 0x7F08009B
-			public const int edit_query = 2131230875;
-			
-			// aapt resource value: 0x7F080020
-			public const int EmptyNotice = 2131230752;
-			
-			// aapt resource value: 0x7F080021
-			public const int EmptyState = 2131230753;
-			
-			// aapt resource value: 0x7F080022
-			public const int EmptyStateIcon = 2131230754;
-			
-			// aapt resource value: 0x7F080023
-			public const int EmptyStateSubtitle = 2131230755;
+			public const int design_menu_item_text = 2131230875;
 			
 			// aapt resource value: 0x7F08009C
-			public const int end = 2131230876;
+			public const int design_navigation_view = 2131230876;
+			
+			// aapt resource value: 0x7F080017
+			public const int Detail = 2131230743;
+			
+			// aapt resource value: 0x7F080018
+			public const int DetailBids = 2131230744;
+			
+			// aapt resource value: 0x7F080019
+			public const int DetailCondition = 2131230745;
+			
+			// aapt resource value: 0x7F08001A
+			public const int DetailEndsIn = 2131230746;
+			
+			// aapt resource value: 0x7F08001B
+			public const int DetailSection = 2131230747;
+			
+			// aapt resource value: 0x7F08001C
+			public const int DetailSectionContainer = 2131230748;
+			
+			// aapt resource value: 0x7F08001D
+			public const int DetailShipping = 2131230749;
+			
+			// aapt resource value: 0x7F08001E
+			public const int DetailsTax = 2131230750;
 			
 			// aapt resource value: 0x7F08009D
-			public const int end_padder = 2131230877;
+			public const int disableHome = 2131230877;
+			
+			// aapt resource value: 0x7F08001F
+			public const int DomainIcon = 2131230751;
+			
+			// aapt resource value: 0x7F080020
+			public const int DrawerLayout = 2131230752;
 			
 			// aapt resource value: 0x7F08009E
-			public const int enterAlways = 2131230878;
+			public const int edit_query = 2131230878;
 			
-			// aapt resource value: 0x7F08009F
-			public const int enterAlwaysCollapsed = 2131230879;
+			// aapt resource value: 0x7F080021
+			public const int EmptyNotice = 2131230753;
+			
+			// aapt resource value: 0x7F080022
+			public const int EmptyState = 2131230754;
+			
+			// aapt resource value: 0x7F080023
+			public const int EmptyStateIcon = 2131230755;
 			
 			// aapt resource value: 0x7F080024
-			public const int ExcludedKeywordInput = 2131230756;
+			public const int EmptyStateSubtitle = 2131230756;
 			
-			// aapt resource value: 0x7F080025
-			public const int ExcludedKeywords = 2131230757;
-			
-			// aapt resource value: 0x7F080026
-			public const int ExcludedKeywordsRecyclerView = 2131230758;
-			
-			// aapt resource value: 0x7F080027
-			public const int ExcludedKeywordsSection = 2131230759;
-			
-			// aapt resource value: 0x7F080028
-			public const int ExcludedKeywordsSectionDivider = 2131230760;
+			// aapt resource value: 0x7F08009F
+			public const int end = 2131230879;
 			
 			// aapt resource value: 0x7F0800A0
-			public const int exitUntilCollapsed = 2131230880;
-			
-			// aapt resource value: 0x7F0800A2
-			public const int expanded_menu = 2131230882;
+			public const int end_padder = 2131230880;
 			
 			// aapt resource value: 0x7F0800A1
-			public const int expand_activities_button = 2131230881;
+			public const int enterAlways = 2131230881;
 			
-			// aapt resource value: 0x7F08002A
-			public const int FavouriteIndicator = 2131230762;
+			// aapt resource value: 0x7F0800A2
+			public const int enterAlwaysCollapsed = 2131230882;
 			
-			// aapt resource value: 0x7F0800A3
-			public const int fill = 2131230883;
+			// aapt resource value: 0x7F080025
+			public const int ExcludedKeywordInput = 2131230757;
 			
-			// aapt resource value: 0x7F0800A6
-			public const int filled = 2131230886;
+			// aapt resource value: 0x7F080026
+			public const int ExcludedKeywords = 2131230758;
 			
-			// aapt resource value: 0x7F0800A4
-			public const int fill_horizontal = 2131230884;
+			// aapt resource value: 0x7F080027
+			public const int ExcludedKeywordsRecyclerView = 2131230759;
 			
-			// aapt resource value: 0x7F0800A5
-			public const int fill_vertical = 2131230885;
-			
-			// aapt resource value: 0x7F0800A7
-			public const int @fixed = 2131230887;
-			
-			// aapt resource value: 0x7F0800A8
-			public const int flex_end = 2131230888;
-			
-			// aapt resource value: 0x7F0800A9
-			public const int flex_start = 2131230889;
-			
-			// aapt resource value: 0x7F0800AA
-			public const int forever = 2131230890;
+			// aapt resource value: 0x7F080028
+			public const int ExcludedKeywordsSection = 2131230760;
 			
 			// aapt resource value: 0x7F080029
-			public const int FUNCTION = 2131230761;
+			public const int ExcludedKeywordsSectionDivider = 2131230761;
+			
+			// aapt resource value: 0x7F0800A3
+			public const int exitUntilCollapsed = 2131230883;
+			
+			// aapt resource value: 0x7F0800A5
+			public const int expanded_menu = 2131230885;
+			
+			// aapt resource value: 0x7F0800A4
+			public const int expand_activities_button = 2131230884;
 			
 			// aapt resource value: 0x7F08002B
-			public const int GenerateFeedAggregate = 2131230763;
+			public const int FavouriteIndicator = 2131230763;
+			
+			// aapt resource value: 0x7F0800A6
+			public const int fill = 2131230886;
+			
+			// aapt resource value: 0x7F0800A9
+			public const int filled = 2131230889;
+			
+			// aapt resource value: 0x7F0800A7
+			public const int fill_horizontal = 2131230887;
+			
+			// aapt resource value: 0x7F0800A8
+			public const int fill_vertical = 2131230888;
+			
+			// aapt resource value: 0x7F0800AA
+			public const int @fixed = 2131230890;
 			
 			// aapt resource value: 0x7F0800AB
-			public const int ghost_view = 2131230891;
+			public const int flex_end = 2131230891;
 			
 			// aapt resource value: 0x7F0800AC
-			public const int group_divider = 2131230892;
+			public const int flex_start = 2131230892;
 			
 			// aapt resource value: 0x7F0800AD
-			public const int high = 2131230893;
+			public const int forever = 2131230893;
 			
-			// aapt resource value: 0x7F0800AE
-			public const int home = 2131230894;
-			
-			// aapt resource value: 0x7F0800AF
-			public const int homeAsUp = 2131230895;
-			
-			// aapt resource value: 0x7F0800B0
-			public const int hybrid = 2131230896;
+			// aapt resource value: 0x7F08002A
+			public const int FUNCTION = 2131230762;
 			
 			// aapt resource value: 0x7F08002C
-			public const int Icon = 2131230764;
+			public const int GenerateFeedAggregate = 2131230764;
 			
-			// aapt resource value: 0x7F0800B1
-			public const int icon = 2131230897;
+			// aapt resource value: 0x7F0800AE
+			public const int ghost_view = 2131230894;
 			
-			// aapt resource value: 0x7F0800B2
-			public const int icon_group = 2131230898;
-			
-			// aapt resource value: 0x7F0800B3
-			public const int ifRoom = 2131230899;
+			// aapt resource value: 0x7F0800AF
+			public const int group_divider = 2131230895;
 			
 			// aapt resource value: 0x7F08002D
-			public const int IgnoredAtLabel = 2131230765;
+			public const int Header = 2131230765;
 			
-			// aapt resource value: 0x7F08002E
-			public const int Image = 2131230766;
+			// aapt resource value: 0x7F0800B0
+			public const int high = 2131230896;
+			
+			// aapt resource value: 0x7F0800B1
+			public const int home = 2131230897;
+			
+			// aapt resource value: 0x7F0800B2
+			public const int homeAsUp = 2131230898;
+			
+			// aapt resource value: 0x7F0800B3
+			public const int hybrid = 2131230899;
 			
 			// aapt resource value: 0x7F0800B4
-			public const int image = 2131230900;
+			public const int icon = 2131230900;
 			
-			// aapt resource value: 0x7F08002F
-			public const int ImageLeft = 2131230767;
-			
-			// aapt resource value: 0x7F080030
-			public const int IndexIcon = 2131230768;
+			// aapt resource value: 0x7F08002E
+			public const int Icon = 2131230766;
 			
 			// aapt resource value: 0x7F0800B5
-			public const int info = 2131230901;
+			public const int icon_group = 2131230901;
 			
 			// aapt resource value: 0x7F0800B6
-			public const int italic = 2131230902;
+			public const int ifRoom = 2131230902;
+			
+			// aapt resource value: 0x7F08002F
+			public const int IgnoredAtLabel = 2131230767;
+			
+			// aapt resource value: 0x7F080030
+			public const int Image = 2131230768;
 			
 			// aapt resource value: 0x7F0800B7
-			public const int item_touch_helper_previous_elevation = 2131230903;
+			public const int image = 2131230903;
 			
 			// aapt resource value: 0x7F080031
-			public const int JumpToButton = 2131230769;
+			public const int ImageLeft = 2131230769;
 			
 			// aapt resource value: 0x7F080032
-			public const int Label = 2131230770;
+			public const int IndexIcon = 2131230770;
 			
 			// aapt resource value: 0x7F0800B8
-			public const int labeled = 2131230904;
+			public const int info = 2131230904;
 			
 			// aapt resource value: 0x7F0800B9
-			public const int largeLabel = 2131230905;
+			public const int italic = 2131230905;
 			
 			// aapt resource value: 0x7F0800BA
-			public const int left = 2131230906;
+			public const int item_touch_helper_previous_elevation = 2131230906;
 			
 			// aapt resource value: 0x7F080033
-			public const int LightThemeRadioButton = 2131230771;
-			
-			// aapt resource value: 0x7F0800BB
-			public const int line1 = 2131230907;
-			
-			// aapt resource value: 0x7F0800BC
-			public const int line3 = 2131230908;
-			
-			// aapt resource value: 0x7F0800BD
-			public const int listMode = 2131230909;
-			
-			// aapt resource value: 0x7F0800BE
-			public const int list_item = 2131230910;
+			public const int JumpToButton = 2131230771;
 			
 			// aapt resource value: 0x7F080034
-			public const int LoadingLayout = 2131230772;
+			public const int Label = 2131230772;
+			
+			// aapt resource value: 0x7F0800BB
+			public const int labeled = 2131230907;
+			
+			// aapt resource value: 0x7F0800BC
+			public const int largeLabel = 2131230908;
+			
+			// aapt resource value: 0x7F0800BD
+			public const int left = 2131230909;
 			
 			// aapt resource value: 0x7F080035
-			public const int LoadingSpinner = 2131230773;
+			public const int LightThemeRadioButton = 2131230773;
+			
+			// aapt resource value: 0x7F0800BE
+			public const int line1 = 2131230910;
 			
 			// aapt resource value: 0x7F0800BF
-			public const int low = 2131230911;
-			
-			// aapt resource value: 0x7F080037
-			public const int ManualLoadButton = 2131230775;
-			
-			// aapt resource value: 0x7F080038
-			public const int ManualLoadLayout = 2131230776;
+			public const int line3 = 2131230911;
 			
 			// aapt resource value: 0x7F0800C0
-			public const int masked = 2131230912;
+			public const int listMode = 2131230912;
 			
 			// aapt resource value: 0x7F0800C1
-			public const int media_actions = 2131230913;
-			
-			// aapt resource value: 0x7F0800C2
-			public const int message = 2131230914;
+			public const int list_item = 2131230913;
 			
 			// aapt resource value: 0x7F080036
-			public const int META = 2131230774;
+			public const int LoadingLayout = 2131230774;
 			
-			// aapt resource value: 0x7F0800C3
-			public const int middle = 2131230915;
+			// aapt resource value: 0x7F080037
+			public const int LoadingSpinner = 2131230775;
 			
-			// aapt resource value: 0x7F0800C4
-			public const int mini = 2131230916;
+			// aapt resource value: 0x7F0800C2
+			public const int low = 2131230914;
 			
 			// aapt resource value: 0x7F080039
-			public const int MoreButton = 2131230777;
-			
-			// aapt resource value: 0x7F0800C5
-			public const int mtrl_child_content_container = 2131230917;
-			
-			// aapt resource value: 0x7F0800C6
-			public const int mtrl_internal_children_alpha_tag = 2131230918;
-			
-			// aapt resource value: 0x7F0800C7
-			public const int multiply = 2131230919;
+			public const int ManualLoadButton = 2131230777;
 			
 			// aapt resource value: 0x7F08003A
-			public const int NavigationRecyclerView = 2131230778;
+			public const int ManualLoadLayout = 2131230778;
+			
+			// aapt resource value: 0x7F0800C3
+			public const int masked = 2131230915;
+			
+			// aapt resource value: 0x7F0800C4
+			public const int media_actions = 2131230916;
+			
+			// aapt resource value: 0x7F0800C5
+			public const int message = 2131230917;
+			
+			// aapt resource value: 0x7F080038
+			public const int META = 2131230776;
+			
+			// aapt resource value: 0x7F0800C6
+			public const int middle = 2131230918;
+			
+			// aapt resource value: 0x7F0800C7
+			public const int mini = 2131230919;
 			
 			// aapt resource value: 0x7F08003B
-			public const int NavigationView = 2131230779;
+			public const int MoreButton = 2131230779;
 			
 			// aapt resource value: 0x7F0800C8
-			public const int navigation_header_container = 2131230920;
+			public const int mtrl_child_content_container = 2131230920;
 			
 			// aapt resource value: 0x7F0800C9
-			public const int never = 2131230921;
-			
-			// aapt resource value: 0x7F08003C
-			public const int NewAlertSection = 2131230780;
+			public const int mtrl_internal_children_alpha_tag = 2131230921;
 			
 			// aapt resource value: 0x7F0800CA
-			public const int none = 2131230922;
+			public const int multiply = 2131230922;
 			
-			// aapt resource value: 0x7F0800CB
-			public const int normal = 2131230923;
-			
-			// aapt resource value: 0x7F0800CC
-			public const int notification_background = 2131230924;
-			
-			// aapt resource value: 0x7F0800CD
-			public const int notification_main_column = 2131230925;
-			
-			// aapt resource value: 0x7F0800CE
-			public const int notification_main_column_container = 2131230926;
-			
-			// aapt resource value: 0x7F0800CF
-			public const int nowrap = 2131230927;
+			// aapt resource value: 0x7F08003C
+			public const int NavigationRecyclerView = 2131230780;
 			
 			// aapt resource value: 0x7F08003D
-			public const int OffsetIncreaseTextBox = 2131230781;
+			public const int NavigationView = 2131230781;
 			
-			// aapt resource value: 0x7F0800D0
-			public const int outline = 2131230928;
+			// aapt resource value: 0x7F0800CB
+			public const int navigation_header_container = 2131230923;
 			
-			// aapt resource value: 0x7F0800D1
-			public const int parallax = 2131230929;
-			
-			// aapt resource value: 0x7F0800D2
-			public const int parentPanel = 2131230930;
-			
-			// aapt resource value: 0x7F0800D3
-			public const int parent_matrix = 2131230931;
+			// aapt resource value: 0x7F0800CC
+			public const int never = 2131230924;
 			
 			// aapt resource value: 0x7F08003E
-			public const int PercentageIncreaseTextBox = 2131230782;
+			public const int NewAlertSection = 2131230782;
 			
-			// aapt resource value: 0x7F0800D4
-			public const int pin = 2131230932;
+			// aapt resource value: 0x7F0800CD
+			public const int none = 2131230925;
+			
+			// aapt resource value: 0x7F0800CE
+			public const int normal = 2131230926;
 			
 			// aapt resource value: 0x7F08003F
-			public const int Price = 2131230783;
+			public const int Note = 2131230783;
+			
+			// aapt resource value: 0x7F0800CF
+			public const int notification_background = 2131230927;
+			
+			// aapt resource value: 0x7F0800D0
+			public const int notification_main_column = 2131230928;
+			
+			// aapt resource value: 0x7F0800D1
+			public const int notification_main_column_container = 2131230929;
+			
+			// aapt resource value: 0x7F0800D2
+			public const int nowrap = 2131230930;
 			
 			// aapt resource value: 0x7F080040
-			public const int PriceIncrease = 2131230784;
+			public const int OffsetIncreaseTextBox = 2131230784;
 			
-			// aapt resource value: 0x7F080041
-			public const int PriceIncreaseSection = 2131230785;
+			// aapt resource value: 0x7F0800D3
+			public const int outline = 2131230931;
 			
-			// aapt resource value: 0x7F080042
-			public const int PriceIncreaseSectionDivider = 2131230786;
-			
-			// aapt resource value: 0x7F080043
-			public const int PriceSection = 2131230787;
-			
-			// aapt resource value: 0x7F080044
-			public const int PriceSubtitle = 2131230788;
-			
-			// aapt resource value: 0x7F080045
-			public const int PriceTrendIcon = 2131230789;
-			
-			// aapt resource value: 0x7F080046
-			public const int ProgressBar = 2131230790;
-			
-			// aapt resource value: 0x7F080047
-			public const int ProgressLabel = 2131230791;
-			
-			// aapt resource value: 0x7F080048
-			public const int ProgressSpinner = 2131230792;
+			// aapt resource value: 0x7F0800D4
+			public const int parallax = 2131230932;
 			
 			// aapt resource value: 0x7F0800D5
-			public const int progress_circular = 2131230933;
+			public const int parentPanel = 2131230933;
 			
 			// aapt resource value: 0x7F0800D6
-			public const int progress_horizontal = 2131230934;
+			public const int parent_matrix = 2131230934;
 			
-			// aapt resource value: 0x7F080049
-			public const int ProxyDomainSpinner = 2131230793;
+			// aapt resource value: 0x7F080041
+			public const int PercentageIncreaseTextBox = 2131230785;
 			
 			// aapt resource value: 0x7F0800D7
-			public const int radio = 2131230935;
+			public const int pin = 2131230935;
+			
+			// aapt resource value: 0x7F080042
+			public const int Price = 2131230786;
+			
+			// aapt resource value: 0x7F080043
+			public const int PriceIncrease = 2131230787;
+			
+			// aapt resource value: 0x7F080044
+			public const int PriceIncreaseSection = 2131230788;
+			
+			// aapt resource value: 0x7F080045
+			public const int PriceIncreaseSectionDivider = 2131230789;
+			
+			// aapt resource value: 0x7F080046
+			public const int PriceSection = 2131230790;
+			
+			// aapt resource value: 0x7F080047
+			public const int PriceSubtitle = 2131230791;
+			
+			// aapt resource value: 0x7F080048
+			public const int PriceTrendIcon = 2131230792;
+			
+			// aapt resource value: 0x7F080049
+			public const int ProgressBar = 2131230793;
 			
 			// aapt resource value: 0x7F08004A
-			public const int RecyclerView = 2131230794;
+			public const int ProgressLabel = 2131230794;
 			
 			// aapt resource value: 0x7F08004B
-			public const int RemoveFromQuotationMarksCheckbox = 2131230795;
-			
-			// aapt resource value: 0x7F08004C
-			public const int RemovesQuotationMarksIndicator = 2131230796;
+			public const int ProgressSpinner = 2131230795;
 			
 			// aapt resource value: 0x7F0800D8
-			public const int right = 2131230936;
+			public const int progress_circular = 2131230936;
 			
 			// aapt resource value: 0x7F0800D9
-			public const int right_icon = 2131230937;
+			public const int progress_horizontal = 2131230937;
+			
+			// aapt resource value: 0x7F08004C
+			public const int ProxyDomainSpinner = 2131230796;
 			
 			// aapt resource value: 0x7F0800DA
-			public const int right_side = 2131230938;
-			
-			// aapt resource value: 0x7F0800DB
-			public const int roadmap = 2131230939;
+			public const int radio = 2131230938;
 			
 			// aapt resource value: 0x7F08004D
-			public const int RootView = 2131230797;
-			
-			// aapt resource value: 0x7F0800DC
-			public const int row = 2131230940;
-			
-			// aapt resource value: 0x7F0800DD
-			public const int row_reverse = 2131230941;
-			
-			// aapt resource value: 0x7F0800DE
-			public const int satellite = 2131230942;
-			
-			// aapt resource value: 0x7F0800DF
-			public const int save_image_matrix = 2131230943;
-			
-			// aapt resource value: 0x7F0800E0
-			public const int save_non_transition_alpha = 2131230944;
-			
-			// aapt resource value: 0x7F0800E1
-			public const int save_scale_type = 2131230945;
-			
-			// aapt resource value: 0x7F0800E2
-			public const int screen = 2131230946;
-			
-			// aapt resource value: 0x7F0800E3
-			public const int scroll = 2131230947;
-			
-			// aapt resource value: 0x7F0800E7
-			public const int scrollable = 2131230951;
-			
-			// aapt resource value: 0x7F0800E4
-			public const int scrollIndicatorDown = 2131230948;
-			
-			// aapt resource value: 0x7F0800E5
-			public const int scrollIndicatorUp = 2131230949;
-			
-			// aapt resource value: 0x7F0800E6
-			public const int scrollView = 2131230950;
-			
-			// aapt resource value: 0x7F080050
-			public const int SearchPhrase = 2131230800;
-			
-			// aapt resource value: 0x7F080051
-			public const int SearchQueryTextBox = 2131230801;
-			
-			// aapt resource value: 0x7F0800E8
-			public const int search_badge = 2131230952;
-			
-			// aapt resource value: 0x7F0800E9
-			public const int search_bar = 2131230953;
-			
-			// aapt resource value: 0x7F0800EA
-			public const int search_button = 2131230954;
-			
-			// aapt resource value: 0x7F0800EB
-			public const int search_close_btn = 2131230955;
-			
-			// aapt resource value: 0x7F0800EC
-			public const int search_edit_frame = 2131230956;
-			
-			// aapt resource value: 0x7F0800ED
-			public const int search_go_btn = 2131230957;
-			
-			// aapt resource value: 0x7F0800EE
-			public const int search_mag_icon = 2131230958;
-			
-			// aapt resource value: 0x7F0800EF
-			public const int search_plate = 2131230959;
-			
-			// aapt resource value: 0x7F0800F0
-			public const int search_src_text = 2131230960;
-			
-			// aapt resource value: 0x7F0800F1
-			public const int search_voice_btn = 2131230961;
-			
-			// aapt resource value: 0x7F0800F3
-			public const int selected = 2131230963;
-			
-			// aapt resource value: 0x7F0800F2
-			public const int select_dialog_listview = 2131230962;
-			
-			// aapt resource value: 0x7F080052
-			public const int SetsRecyclerView = 2131230802;
-			
-			// aapt resource value: 0x7F080053
-			public const int SettingsNavButton = 2131230803;
+			public const int RecyclerView = 2131230797;
 			
 			// aapt resource value: 0x7F08004E
-			public const int SHIFT = 2131230798;
-			
-			// aapt resource value: 0x7F0800F4
-			public const int shortcut = 2131230964;
-			
-			// aapt resource value: 0x7F0800F5
-			public const int showCustom = 2131230965;
-			
-			// aapt resource value: 0x7F0800F6
-			public const int showHome = 2131230966;
-			
-			// aapt resource value: 0x7F0800F7
-			public const int showTitle = 2131230967;
-			
-			// aapt resource value: 0x7F0800F8
-			public const int simpleSpinnerTextView = 2131230968;
-			
-			// aapt resource value: 0x7F0800F9
-			public const int smallLabel = 2131230969;
-			
-			// aapt resource value: 0x7F0800FA
-			public const int snackbar_action = 2131230970;
-			
-			// aapt resource value: 0x7F0800FB
-			public const int snackbar_text = 2131230971;
-			
-			// aapt resource value: 0x7F0800FC
-			public const int snap = 2131230972;
-			
-			// aapt resource value: 0x7F0800FD
-			public const int snapMargins = 2131230973;
-			
-			// aapt resource value: 0x7F080100
-			public const int spacer = 2131230976;
-			
-			// aapt resource value: 0x7F0800FE
-			public const int space_around = 2131230974;
-			
-			// aapt resource value: 0x7F0800FF
-			public const int space_between = 2131230975;
-			
-			// aapt resource value: 0x7F080101
-			public const int split_action_bar = 2131230977;
-			
-			// aapt resource value: 0x7F080102
-			public const int src_atop = 2131230978;
-			
-			// aapt resource value: 0x7F080103
-			public const int src_in = 2131230979;
-			
-			// aapt resource value: 0x7F080104
-			public const int src_over = 2131230980;
-			
-			// aapt resource value: 0x7F080105
-			public const int start = 2131230981;
-			
-			// aapt resource value: 0x7F080106
-			public const int status_bar_latest_event_content = 2131230982;
-			
-			// aapt resource value: 0x7F080054
-			public const int StoreIcon = 2131230804;
-			
-			// aapt resource value: 0x7F080107
-			public const int stretch = 2131230983;
-			
-			// aapt resource value: 0x7F080108
-			public const int submenuarrow = 2131230984;
-			
-			// aapt resource value: 0x7F080109
-			public const int submit_area = 2131230985;
-			
-			// aapt resource value: 0x7F080055
-			public const int Subtitle = 2131230805;
-			
-			// aapt resource value: 0x7F080056
-			public const int SwipeToRefreshLayout = 2131230806;
+			public const int RemoveFromQuotationMarksCheckbox = 2131230798;
 			
 			// aapt resource value: 0x7F08004F
-			public const int SYM = 2131230799;
+			public const int RemovesQuotationMarksIndicator = 2131230799;
 			
-			// aapt resource value: 0x7F08010A
-			public const int tabMode = 2131230986;
+			// aapt resource value: 0x7F0800DB
+			public const int right = 2131230939;
+			
+			// aapt resource value: 0x7F0800DC
+			public const int right_icon = 2131230940;
+			
+			// aapt resource value: 0x7F0800DD
+			public const int right_side = 2131230941;
+			
+			// aapt resource value: 0x7F0800DE
+			public const int roadmap = 2131230942;
+			
+			// aapt resource value: 0x7F080050
+			public const int RootView = 2131230800;
+			
+			// aapt resource value: 0x7F0800DF
+			public const int row = 2131230943;
+			
+			// aapt resource value: 0x7F0800E0
+			public const int row_reverse = 2131230944;
+			
+			// aapt resource value: 0x7F0800E1
+			public const int satellite = 2131230945;
+			
+			// aapt resource value: 0x7F0800E2
+			public const int save_image_matrix = 2131230946;
+			
+			// aapt resource value: 0x7F0800E3
+			public const int save_non_transition_alpha = 2131230947;
+			
+			// aapt resource value: 0x7F0800E4
+			public const int save_scale_type = 2131230948;
+			
+			// aapt resource value: 0x7F0800E5
+			public const int screen = 2131230949;
+			
+			// aapt resource value: 0x7F0800E6
+			public const int scroll = 2131230950;
+			
+			// aapt resource value: 0x7F0800EA
+			public const int scrollable = 2131230954;
+			
+			// aapt resource value: 0x7F0800E7
+			public const int scrollIndicatorDown = 2131230951;
+			
+			// aapt resource value: 0x7F0800E8
+			public const int scrollIndicatorUp = 2131230952;
+			
+			// aapt resource value: 0x7F0800E9
+			public const int scrollView = 2131230953;
+			
+			// aapt resource value: 0x7F080053
+			public const int SearchPhrase = 2131230803;
+			
+			// aapt resource value: 0x7F080054
+			public const int SearchQueryTextBox = 2131230804;
+			
+			// aapt resource value: 0x7F0800EB
+			public const int search_badge = 2131230955;
+			
+			// aapt resource value: 0x7F0800EC
+			public const int search_bar = 2131230956;
+			
+			// aapt resource value: 0x7F0800ED
+			public const int search_button = 2131230957;
+			
+			// aapt resource value: 0x7F0800EE
+			public const int search_close_btn = 2131230958;
+			
+			// aapt resource value: 0x7F0800EF
+			public const int search_edit_frame = 2131230959;
+			
+			// aapt resource value: 0x7F0800F0
+			public const int search_go_btn = 2131230960;
+			
+			// aapt resource value: 0x7F0800F1
+			public const int search_mag_icon = 2131230961;
+			
+			// aapt resource value: 0x7F0800F2
+			public const int search_plate = 2131230962;
+			
+			// aapt resource value: 0x7F0800F3
+			public const int search_src_text = 2131230963;
+			
+			// aapt resource value: 0x7F0800F4
+			public const int search_voice_btn = 2131230964;
+			
+			// aapt resource value: 0x7F0800F6
+			public const int selected = 2131230966;
+			
+			// aapt resource value: 0x7F0800F5
+			public const int select_dialog_listview = 2131230965;
+			
+			// aapt resource value: 0x7F080055
+			public const int SetsRecyclerView = 2131230805;
+			
+			// aapt resource value: 0x7F080056
+			public const int SettingsNavButton = 2131230806;
+			
+			// aapt resource value: 0x7F080051
+			public const int SHIFT = 2131230801;
+			
+			// aapt resource value: 0x7F0800F7
+			public const int shortcut = 2131230967;
+			
+			// aapt resource value: 0x7F0800F8
+			public const int showCustom = 2131230968;
+			
+			// aapt resource value: 0x7F0800F9
+			public const int showHome = 2131230969;
+			
+			// aapt resource value: 0x7F0800FA
+			public const int showTitle = 2131230970;
+			
+			// aapt resource value: 0x7F0800FB
+			public const int simpleSpinnerTextView = 2131230971;
+			
+			// aapt resource value: 0x7F0800FC
+			public const int smallLabel = 2131230972;
+			
+			// aapt resource value: 0x7F0800FD
+			public const int snackbar_action = 2131230973;
+			
+			// aapt resource value: 0x7F0800FE
+			public const int snackbar_text = 2131230974;
+			
+			// aapt resource value: 0x7F0800FF
+			public const int snap = 2131230975;
+			
+			// aapt resource value: 0x7F080100
+			public const int snapMargins = 2131230976;
+			
+			// aapt resource value: 0x7F080103
+			public const int spacer = 2131230979;
+			
+			// aapt resource value: 0x7F080101
+			public const int space_around = 2131230977;
+			
+			// aapt resource value: 0x7F080102
+			public const int space_between = 2131230978;
+			
+			// aapt resource value: 0x7F080104
+			public const int split_action_bar = 2131230980;
+			
+			// aapt resource value: 0x7F080105
+			public const int src_atop = 2131230981;
+			
+			// aapt resource value: 0x7F080106
+			public const int src_in = 2131230982;
+			
+			// aapt resource value: 0x7F080107
+			public const int src_over = 2131230983;
+			
+			// aapt resource value: 0x7F080108
+			public const int start = 2131230984;
+			
+			// aapt resource value: 0x7F080109
+			public const int status_bar_latest_event_content = 2131230985;
 			
 			// aapt resource value: 0x7F080057
-			public const int TabStrip = 2131230807;
+			public const int StoreIcon = 2131230807;
+			
+			// aapt resource value: 0x7F08010A
+			public const int stretch = 2131230986;
 			
 			// aapt resource value: 0x7F08010B
-			public const int tag_transition_group = 2131230987;
+			public const int submenuarrow = 2131230987;
 			
 			// aapt resource value: 0x7F08010C
-			public const int tag_unhandled_key_event_manager = 2131230988;
-			
-			// aapt resource value: 0x7F08010D
-			public const int tag_unhandled_key_listeners = 2131230989;
-			
-			// aapt resource value: 0x7F08010E
-			public const int terrain = 2131230990;
+			public const int submit_area = 2131230988;
 			
 			// aapt resource value: 0x7F080058
-			public const int Text = 2131230808;
-			
-			// aapt resource value: 0x7F08010F
-			public const int text = 2131230991;
-			
-			// aapt resource value: 0x7F080110
-			public const int text2 = 2131230992;
-			
-			// aapt resource value: 0x7F080115
-			public const int textinput_counter = 2131230997;
-			
-			// aapt resource value: 0x7F080116
-			public const int textinput_error = 2131230998;
-			
-			// aapt resource value: 0x7F080117
-			public const int textinput_helper_text = 2131230999;
-			
-			// aapt resource value: 0x7F080111
-			public const int textSpacerNoButtons = 2131230993;
-			
-			// aapt resource value: 0x7F080112
-			public const int textSpacerNoTitle = 2131230994;
-			
-			// aapt resource value: 0x7F080113
-			public const int textStart = 2131230995;
-			
-			// aapt resource value: 0x7F080114
-			public const int text_input_password_toggle = 2131230996;
+			public const int Subtitle = 2131230808;
 			
 			// aapt resource value: 0x7F080059
-			public const int ThemeRadioGroup = 2131230809;
+			public const int SwipeToRefreshLayout = 2131230809;
 			
-			// aapt resource value: 0x7F080118
-			public const int time = 2131231000;
+			// aapt resource value: 0x7F080052
+			public const int SYM = 2131230802;
+			
+			// aapt resource value: 0x7F08010D
+			public const int tabMode = 2131230989;
 			
 			// aapt resource value: 0x7F08005A
-			public const int Title = 2131230810;
+			public const int TabStrip = 2131230810;
 			
-			// aapt resource value: 0x7F080119
-			public const int title = 2131231001;
+			// aapt resource value: 0x7F08010E
+			public const int tag_transition_group = 2131230990;
 			
-			// aapt resource value: 0x7F08011A
-			public const int titleDividerNoCustom = 2131231002;
+			// aapt resource value: 0x7F08010F
+			public const int tag_unhandled_key_event_manager = 2131230991;
+			
+			// aapt resource value: 0x7F080110
+			public const int tag_unhandled_key_listeners = 2131230992;
+			
+			// aapt resource value: 0x7F080111
+			public const int terrain = 2131230993;
+			
+			// aapt resource value: 0x7F080112
+			public const int text = 2131230994;
 			
 			// aapt resource value: 0x7F08005B
-			public const int TitleTextBox = 2131230811;
+			public const int Text = 2131230811;
 			
-			// aapt resource value: 0x7F08011B
-			public const int title_template = 2131231003;
+			// aapt resource value: 0x7F080113
+			public const int text2 = 2131230995;
+			
+			// aapt resource value: 0x7F080118
+			public const int textinput_counter = 2131231000;
+			
+			// aapt resource value: 0x7F080119
+			public const int textinput_error = 2131231001;
+			
+			// aapt resource value: 0x7F08011A
+			public const int textinput_helper_text = 2131231002;
+			
+			// aapt resource value: 0x7F080114
+			public const int textSpacerNoButtons = 2131230996;
+			
+			// aapt resource value: 0x7F080115
+			public const int textSpacerNoTitle = 2131230997;
+			
+			// aapt resource value: 0x7F080116
+			public const int textStart = 2131230998;
+			
+			// aapt resource value: 0x7F080117
+			public const int text_input_password_toggle = 2131230999;
 			
 			// aapt resource value: 0x7F08005C
-			public const int Toolbar = 2131230812;
+			public const int ThemeRadioGroup = 2131230812;
 			
-			// aapt resource value: 0x7F08011C
-			public const int top = 2131231004;
-			
-			// aapt resource value: 0x7F08011D
-			public const int topPanel = 2131231005;
-			
-			// aapt resource value: 0x7F08011E
-			public const int touch_outside = 2131231006;
-			
-			// aapt resource value: 0x7F08011F
-			public const int transition_current_scene = 2131231007;
-			
-			// aapt resource value: 0x7F080120
-			public const int transition_layout_save = 2131231008;
-			
-			// aapt resource value: 0x7F080121
-			public const int transition_position = 2131231009;
-			
-			// aapt resource value: 0x7F080122
-			public const int transition_scene_layoutid_cache = 2131231010;
-			
-			// aapt resource value: 0x7F080123
-			public const int transition_transform = 2131231011;
-			
-			// aapt resource value: 0x7F080124
-			public const int uniform = 2131231012;
-			
-			// aapt resource value: 0x7F080125
-			public const int unlabeled = 2131231013;
-			
-			// aapt resource value: 0x7F080126
-			public const int up = 2131231014;
-			
-			// aapt resource value: 0x7F080127
-			public const int useLogo = 2131231015;
+			// aapt resource value: 0x7F08011B
+			public const int time = 2131231003;
 			
 			// aapt resource value: 0x7F08005D
-			public const int ViewPager = 2131230813;
+			public const int Title = 2131230813;
+			
+			// aapt resource value: 0x7F08011C
+			public const int title = 2131231004;
+			
+			// aapt resource value: 0x7F08011D
+			public const int titleDividerNoCustom = 2131231005;
+			
+			// aapt resource value: 0x7F08005E
+			public const int TitleTextBox = 2131230814;
+			
+			// aapt resource value: 0x7F08011E
+			public const int title_template = 2131231006;
+			
+			// aapt resource value: 0x7F08005F
+			public const int Toolbar = 2131230815;
+			
+			// aapt resource value: 0x7F08011F
+			public const int top = 2131231007;
+			
+			// aapt resource value: 0x7F080120
+			public const int topPanel = 2131231008;
+			
+			// aapt resource value: 0x7F080121
+			public const int touch_outside = 2131231009;
+			
+			// aapt resource value: 0x7F080122
+			public const int transition_current_scene = 2131231010;
+			
+			// aapt resource value: 0x7F080123
+			public const int transition_layout_save = 2131231011;
+			
+			// aapt resource value: 0x7F080124
+			public const int transition_position = 2131231012;
+			
+			// aapt resource value: 0x7F080125
+			public const int transition_scene_layoutid_cache = 2131231013;
+			
+			// aapt resource value: 0x7F080126
+			public const int transition_transform = 2131231014;
+			
+			// aapt resource value: 0x7F080127
+			public const int uniform = 2131231015;
 			
 			// aapt resource value: 0x7F080128
-			public const int view_offset_helper = 2131231016;
+			public const int unlabeled = 2131231016;
 			
 			// aapt resource value: 0x7F080129
-			public const int visible = 2131231017;
+			public const int up = 2131231017;
 			
 			// aapt resource value: 0x7F08012A
-			public const int withText = 2131231018;
+			public const int useLogo = 2131231018;
+			
+			// aapt resource value: 0x7F080060
+			public const int ViewPager = 2131230816;
 			
 			// aapt resource value: 0x7F08012B
-			public const int wrap = 2131231019;
+			public const int view_offset_helper = 2131231019;
 			
 			// aapt resource value: 0x7F08012C
-			public const int wrap_content = 2131231020;
+			public const int visible = 2131231020;
 			
 			// aapt resource value: 0x7F08012D
-			public const int wrap_reverse = 2131231021;
+			public const int withText = 2131231021;
+			
+			// aapt resource value: 0x7F08012E
+			public const int wrap = 2131231022;
+			
+			// aapt resource value: 0x7F08012F
+			public const int wrap_content = 2131231023;
+			
+			// aapt resource value: 0x7F080130
+			public const int wrap_reverse = 2131231024;
 			
 			static Id()
 			{
@@ -4706,154 +6504,160 @@ namespace AoTracker.Android
 			public const int design_text_input_password_icon = 2131427372;
 			
 			// aapt resource value: 0x7F0B002D
-			public const int item_add_crawler = 2131427373;
+			public const int dialog_changelog = 2131427373;
 			
 			// aapt resource value: 0x7F0B002E
-			public const int item_crawler_set = 2131427374;
+			public const int item_add_crawler = 2131427374;
 			
 			// aapt resource value: 0x7F0B002F
-			public const int item_crawler_set_summary = 2131427375;
+			public const int item_changelog = 2131427375;
 			
 			// aapt resource value: 0x7F0B0030
-			public const int item_crawler_shared = 2131427376;
+			public const int item_crawler_set = 2131427376;
 			
 			// aapt resource value: 0x7F0B0031
-			public const int item_excluded_term = 2131427377;
+			public const int item_crawler_set_summary = 2131427377;
 			
 			// aapt resource value: 0x7F0B0032
-			public const int item_feed = 2131427378;
+			public const int item_crawler_shared = 2131427378;
 			
 			// aapt resource value: 0x7F0B0033
-			public const int item_feed_change_time_group = 2131427379;
+			public const int item_excluded_term = 2131427379;
 			
 			// aapt resource value: 0x7F0B0034
-			public const int item_feed_yahoo = 2131427380;
+			public const int item_feed = 2131427380;
 			
 			// aapt resource value: 0x7F0B0035
-			public const int item_ignored = 2131427381;
+			public const int item_feed_change_time_group = 2131427381;
 			
 			// aapt resource value: 0x7F0B0036
-			public const int item_mandarake_crawler = 2131427382;
+			public const int item_feed_yahoo = 2131427382;
 			
 			// aapt resource value: 0x7F0B0037
-			public const int item_settings_entry = 2131427383;
+			public const int item_ignored = 2131427383;
 			
 			// aapt resource value: 0x7F0B0038
-			public const int item_spinner = 2131427384;
+			public const int item_mandarake_crawler = 2131427384;
 			
 			// aapt resource value: 0x7F0B0039
-			public const int item_surugaya_crawler = 2131427385;
+			public const int item_settings_entry = 2131427385;
 			
 			// aapt resource value: 0x7F0B003A
-			public const int layout_empty_state = 2131427386;
+			public const int item_spinner = 2131427386;
 			
 			// aapt resource value: 0x7F0B003B
-			public const int mtrl_layout_snackbar = 2131427387;
+			public const int item_surugaya_crawler = 2131427387;
 			
 			// aapt resource value: 0x7F0B003C
-			public const int mtrl_layout_snackbar_include = 2131427388;
+			public const int layout_empty_state = 2131427388;
 			
 			// aapt resource value: 0x7F0B003D
-			public const int nav_header = 2131427389;
+			public const int mtrl_layout_snackbar = 2131427389;
 			
 			// aapt resource value: 0x7F0B003E
-			public const int nav_item = 2131427390;
+			public const int mtrl_layout_snackbar_include = 2131427390;
 			
 			// aapt resource value: 0x7F0B003F
-			public const int notification_action = 2131427391;
+			public const int nav_header = 2131427391;
 			
 			// aapt resource value: 0x7F0B0040
-			public const int notification_action_tombstone = 2131427392;
+			public const int nav_item = 2131427392;
 			
 			// aapt resource value: 0x7F0B0041
-			public const int notification_media_action = 2131427393;
+			public const int notification_action = 2131427393;
 			
 			// aapt resource value: 0x7F0B0042
-			public const int notification_media_cancel_action = 2131427394;
+			public const int notification_action_tombstone = 2131427394;
 			
 			// aapt resource value: 0x7F0B0043
-			public const int notification_template_big_media = 2131427395;
+			public const int notification_media_action = 2131427395;
 			
 			// aapt resource value: 0x7F0B0044
-			public const int notification_template_big_media_custom = 2131427396;
+			public const int notification_media_cancel_action = 2131427396;
 			
 			// aapt resource value: 0x7F0B0045
-			public const int notification_template_big_media_narrow = 2131427397;
+			public const int notification_template_big_media = 2131427397;
 			
 			// aapt resource value: 0x7F0B0046
-			public const int notification_template_big_media_narrow_custom = 2131427398;
+			public const int notification_template_big_media_custom = 2131427398;
 			
 			// aapt resource value: 0x7F0B0047
-			public const int notification_template_custom_big = 2131427399;
+			public const int notification_template_big_media_narrow = 2131427399;
 			
 			// aapt resource value: 0x7F0B0048
-			public const int notification_template_icon_group = 2131427400;
+			public const int notification_template_big_media_narrow_custom = 2131427400;
 			
 			// aapt resource value: 0x7F0B0049
-			public const int notification_template_lines_media = 2131427401;
+			public const int notification_template_custom_big = 2131427401;
 			
 			// aapt resource value: 0x7F0B004A
-			public const int notification_template_media = 2131427402;
+			public const int notification_template_icon_group = 2131427402;
 			
 			// aapt resource value: 0x7F0B004B
-			public const int notification_template_media_custom = 2131427403;
+			public const int notification_template_lines_media = 2131427403;
 			
 			// aapt resource value: 0x7F0B004C
-			public const int notification_template_part_chronometer = 2131427404;
+			public const int notification_template_media = 2131427404;
 			
 			// aapt resource value: 0x7F0B004D
-			public const int notification_template_part_time = 2131427405;
+			public const int notification_template_media_custom = 2131427405;
 			
 			// aapt resource value: 0x7F0B004E
-			public const int page_configure_crawler_shared = 2131427406;
+			public const int notification_template_part_chronometer = 2131427406;
 			
 			// aapt resource value: 0x7F0B004F
-			public const int page_configure_mandarake_crawler = 2131427407;
+			public const int notification_template_part_time = 2131427407;
 			
 			// aapt resource value: 0x7F0B0050
-			public const int page_configure_surugaya_crawler = 2131427408;
-			
-			// aapt resource value: 0x7F0B0052
-			public const int page_crawler_sets = 2131427410;
+			public const int page_configure_crawler_shared = 2131427408;
 			
 			// aapt resource value: 0x7F0B0051
-			public const int page_crawler_set_details = 2131427409;
+			public const int page_configure_mandarake_crawler = 2131427409;
 			
-			// aapt resource value: 0x7F0B0053
-			public const int page_feed = 2131427411;
+			// aapt resource value: 0x7F0B0052
+			public const int page_configure_surugaya_crawler = 2131427410;
 			
 			// aapt resource value: 0x7F0B0054
-			public const int page_feed_tab = 2131427412;
+			public const int page_crawler_sets = 2131427412;
+			
+			// aapt resource value: 0x7F0B0053
+			public const int page_crawler_set_details = 2131427411;
 			
 			// aapt resource value: 0x7F0B0055
-			public const int page_ignored_items = 2131427413;
+			public const int page_feed = 2131427413;
 			
 			// aapt resource value: 0x7F0B0056
-			public const int page_settings_about = 2131427414;
+			public const int page_feed_tab = 2131427414;
 			
 			// aapt resource value: 0x7F0B0057
-			public const int page_settings_general = 2131427415;
+			public const int page_ignored_items = 2131427415;
 			
 			// aapt resource value: 0x7F0B0058
-			public const int page_settings_guide = 2131427416;
+			public const int page_settings_about = 2131427416;
 			
 			// aapt resource value: 0x7F0B0059
-			public const int page_settings_index = 2131427417;
+			public const int page_settings_general = 2131427417;
 			
 			// aapt resource value: 0x7F0B005A
-			public const int page_watched_items = 2131427418;
+			public const int page_settings_guide = 2131427418;
 			
 			// aapt resource value: 0x7F0B005B
-			public const int select_dialog_item_material = 2131427419;
+			public const int page_settings_index = 2131427419;
 			
 			// aapt resource value: 0x7F0B005C
-			public const int select_dialog_multichoice_material = 2131427420;
+			public const int page_watched_items = 2131427420;
 			
 			// aapt resource value: 0x7F0B005D
-			public const int select_dialog_singlechoice_material = 2131427421;
+			public const int select_dialog_item_material = 2131427421;
 			
 			// aapt resource value: 0x7F0B005E
-			public const int support_simple_spinner_dropdown_item = 2131427422;
+			public const int select_dialog_multichoice_material = 2131427422;
+			
+			// aapt resource value: 0x7F0B005F
+			public const int select_dialog_singlechoice_material = 2131427423;
+			
+			// aapt resource value: 0x7F0B0060
+			public const int support_simple_spinner_dropdown_item = 2131427424;
 			
 			static Layout()
 			{
@@ -10067,6 +11871,9 @@ namespace AoTracker.Android
 			
 			// aapt resource value: 0x7F100000
 			public const int debug_ca = 2131755008;
+			
+			// aapt resource value: 0x7F100001
+			public const int xamarin_essentials_fileprovider_file_paths = 2131755009;
 			
 			static Xml()
 			{
