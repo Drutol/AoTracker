@@ -102,11 +102,7 @@ namespace AoTracker.Android.Fragments.Settings
             ProxyDomainSpinner.Adapter = new ArrayAdapter<ProxyDomain>(
                 Activity,
                 Resource.Layout.item_spinner,
-                new List<ProxyDomain>
-                {
-                    ProxyDomain.None,
-                    ProxyDomain.ZenMarket
-                });
+                Enum.GetValues(typeof(ProxyDomain)).Cast<ProxyDomain>().ToList());
             ProxyDomainSpinner.SetSelection((int) ViewModel.ProxyDomain);
 
             ThemeRadioGroup.CheckedChange += ThemeRadioGroupOnCheckedChange;

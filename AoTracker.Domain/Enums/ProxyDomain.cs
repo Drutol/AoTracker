@@ -7,6 +7,9 @@ namespace AoTracker.Domain.Enums
     public enum ProxyDomain
     {
         None,
-        ZenMarket
+        ZenMarket,
+        FromJapan,
+        Neokyo,
+        DeJapan
     }
 }

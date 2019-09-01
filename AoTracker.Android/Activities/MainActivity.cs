@@ -104,7 +104,7 @@ namespace AoTracker.Android.Activities
 
         protected override void OnResume()
         {
-            _logger.LogInformation("App resumed.");
+            _logger?.LogInformation("App resumed.");
             base.OnResume();
         }
 

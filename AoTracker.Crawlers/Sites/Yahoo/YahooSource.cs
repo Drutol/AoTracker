@@ -10,7 +10,7 @@ namespace AoTracker.Crawlers.Sites.Yahoo
 {
     public class YahooSource : TypedSource<YahooSourceParameters, VolatileParametersBase>
     {
-        public static int ItemsPerRequest { get; } = 120;
+        public static int ItemsPerRequest { get; } = 90;
 
         private const string FormatString =
             "https://www.fromjapan.co.jp/sites/yahooauction/search?exhibitType=0&condition=0&hits={2}&keyword={0}&sort=end&category=All&page={1}";
@@ -24,8 +24,6 @@ namespace AoTracker.Crawlers.Sites.Yahoo
         {
             _clientProvider = clientProvider;
         }
-
-
 
         protected override Task<string> ObtainSource(YahooSourceParameters parameters,
             VolatileParametersBase volatileParameters)
