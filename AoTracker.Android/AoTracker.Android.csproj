@@ -77,7 +77,6 @@
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\MainActivity.drawer.cs" />
     <Compile Include="Adapters\AndroidLoggerProvider.cs" />
-    <Compile Include="Adapters\AppCenterCrashDumpLoggerProvider.cs" />
     <Compile Include="BackgroundWork\BackgroundJobsManager.cs" />
     <Compile Include="Adapters\SnackbarProvider.cs" />
     <Compile Include="App.cs" />

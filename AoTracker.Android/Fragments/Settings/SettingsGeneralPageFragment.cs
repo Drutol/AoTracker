@@ -101,7 +101,11 @@ namespace AoTracker.Android.Fragments.Settings
             
             Bindings.Add(
                 this.SetBinding(() => ViewModel.UsePriceIncreaseProxyPresets,
-                    () => UsePriceIncreaseProxyPresets.Checked, BindingMode.TwoWay));
+                    () => UsePriceIncreaseProxyPresets.Checked, BindingMode.TwoWay));      
+            
+            Bindings.Add(
+                this.SetBinding(() => ViewModel.FeedUpdateJobScheduled,
+                    () => ScheduleFeedUpdateBackgroundJob.Checked, BindingMode.TwoWay));
 
             ProxyDomainSpinner.Adapter = new ArrayAdapter<ProxyDomain>(
                 Activity,
@@ -245,6 +249,7 @@ namespace AoTracker.Android.Fragments.Settings
         private CheckBox _automaticallyLoadFeedTab;
         private Spinner _proxyDomainSpinner;
         private CheckBox _usePriceIncreaseProxyPresets;
+        private CheckBox _scheduleFeedUpdateBackgroundJob;
 
         public RadioButton LightThemeRadioButton => _lightThemeRadioButton ?? (_lightThemeRadioButton = FindViewById<RadioButton>(Resource.Id.LightThemeRadioButton));
         public RadioButton DarkThemeRadioButton => _darkThemeRadioButton ?? (_darkThemeRadioButton = FindViewById<RadioButton>(Resource.Id.DarkThemeRadioButton));
@@ -262,6 +267,7 @@ namespace AoTracker.Android.Fragments.Settings
         public CheckBox AutomaticallyLoadFeedTab => _automaticallyLoadFeedTab ?? (_automaticallyLoadFeedTab = FindViewById<CheckBox>(Resource.Id.AutomaticallyLoadFeedTab));
         public Spinner ProxyDomainSpinner => _proxyDomainSpinner ?? (_proxyDomainSpinner = FindViewById<Spinner>(Resource.Id.ProxyDomainSpinner));
         public CheckBox UsePriceIncreaseProxyPresets => _usePriceIncreaseProxyPresets ?? (_usePriceIncreaseProxyPresets = FindViewById<CheckBox>(Resource.Id.UsePriceIncreaseProxyPresets));
+        public CheckBox ScheduleFeedUpdateBackgroundJob => _scheduleFeedUpdateBackgroundJob ?? (_scheduleFeedUpdateBackgroundJob = FindViewById<CheckBox>(Resource.Id.ScheduleFeedUpdateBackgroundJob));
 
         #endregion
     }

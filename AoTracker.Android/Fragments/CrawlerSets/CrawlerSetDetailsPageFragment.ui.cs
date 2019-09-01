@@ -142,6 +142,8 @@ namespace AoTracker.Android.Fragments
                         ExcludedKeywordsSection.Visibility = ExcludedKeywordsSectionDivider.Visibility = ViewStates.Visible;
                         ExcludedKeywords.Text = string.Join(", ", param.ExcludedKeywords);
                     }
+
+                    OnParamsChanged(param);
                 }));
             }
             private ImageView _image;

@@ -38,6 +38,12 @@ namespace AoTracker.Infrastructure.Infrastructure
         {
             get => _settingsProvider.GetBool(nameof(UsePriceIncreaseProxyPresets)) ?? true;
             set => _settingsProvider.SetBool(nameof(UsePriceIncreaseProxyPresets), value);
+        }     
+        
+        public bool FeedUpdateJobScheduled
+        {
+            get => _settingsProvider.GetBool(nameof(FeedUpdateJobScheduled)) ?? false;
+            set => _settingsProvider.SetBool(nameof(FeedUpdateJobScheduled), value);
         }
 
         public AppTheme AppTheme

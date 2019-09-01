@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -43,6 +44,7 @@ namespace AoTracker.Android.BackgroundWork
 
         public override bool OnStartJob(JobParameters jobParameters)
         {
+            Log.Info(nameof(FeedUpdateService), "Starting feed update job service.");
             Task.Run(async () =>
             {
                 AppInitializationRoutines.InitializeDependenciesForBackground(DependenciesRegistration);
@@ -73,7 +75,7 @@ namespace AoTracker.Android.BackgroundWork
                                     batch.CrawlerResult.Results))
                                 {
                                     cts.Cancel();
-                                    Log.Debug("lollol", "New stuff.");
+                                    Log.Info(nameof(FeedUpdateService), "Found new feed content.");
                                     tcs.SetResult(true);
                                 }
                             }
@@ -119,9 +121,14 @@ namespace AoTracker.Android.BackgroundWork
                             .SetContentTitle("Feed update!")
                             .SetContentText("There are new changes on your feed!")
                             .SetPriority(NotificationCompat.PriorityDefault);
+                        CreateNotificationChannel();
+
+                        var manager = NotificationManager.FromContext(this);
+                        manager.Notify(new Random().Next(0,int.MaxValue), builder.Build());
                     }
 
-                    JobFinished(jobParameters, false);
+                    Log.Info(nameof(FeedUpdateService), "Finishing feed update job service.");
+                    JobFinished(jobParameters, true);
                 }
             });
 
@@ -130,6 +137,7 @@ namespace AoTracker.Android.BackgroundWork
 
         public override bool OnStopJob(JobParameters jobParameters)
         {
+            Log.Info(nameof(FeedUpdateService), "Stopping feed update job service.");
             //on fail we want to reschedule the update
             return true;
         }
@@ -138,6 +146,12 @@ namespace AoTracker.Android.BackgroundWork
         {
             if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
             {
+                var notificationManager = NotificationManager.FromContext(this);
+
+                if (notificationManager.NotificationChannels.Any(notificationChannel =>
+                    notificationChannel.Id == FeedUpdateChannel))
+                    return;
+
                 var name = new Java.Lang.String(GetString(Resource.String.Android_NotificationChannel_Name));
                 var description = GetString(Resource.String.Android_NotificationChannel_Description);
                 NotificationChannel channel =
@@ -147,12 +161,12 @@ namespace AoTracker.Android.BackgroundWork
                     };
                 // Register the channel with the system; you can't change the importance
                 // or other notification behaviors after this
-                NotificationManager notificationManager = NotificationManager.FromContext(this);
+
                 notificationManager.CreateNotificationChannel(channel);
             }
         }
 
-private void DependenciesRegistration(ContainerBuilder containerBuilder)
+        private void DependenciesRegistration(ContainerBuilder containerBuilder)
         {
             containerBuilder.RegisterType<DispatcherAdapter>().As<IDispatcherAdapter>().SingleInstance();
             containerBuilder.RegisterType<FileStorageProvider>().As<IFileStorageProvider>().SingleInstance();

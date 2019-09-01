@@ -1,39 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Android.App;
 using Android.App.Job;
 using Android.Content;
 using Android.Net;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using AoLibs.Adapters.Android.Interfaces;
-using AoTracker.Android.BackgroundWork;
 using AoTracker.Android.Utils;
 using AoTracker.Interfaces;
 using AoTracker.Interfaces.Adapters;
 using AoTracker.Resources;
 using Microsoft.Extensions.Logging;
 
-namespace AoTracker.Android.Adapters
+namespace AoTracker.Android.BackgroundWork
 {
-    public class BackgroundJobsManager : IInitializable
+    public class BackgroundJobsManager : IFeedUpdateBackgroundServiceManager, IInitializable
     {
         private const int FeedUpdateJobId = 1;
         private readonly IContextProvider _contextProvider;
+        private readonly ISettings _settings;
         private readonly ISnackbarProvider _snackbarProvider;
         private readonly ILogger<BackgroundJobsManager> _logger;
 
         public BackgroundJobsManager(
             IContextProvider contextProvider,
+            ISettings settings,
             ISnackbarProvider snackbarProvider,
             ILogger<BackgroundJobsManager> logger)
         {
             _contextProvider = contextProvider;
+            _settings = settings;
             _snackbarProvider = snackbarProvider;
             _logger = logger;
         }
@@ -43,37 +37,51 @@ namespace AoTracker.Android.Adapters
             var jobScheduler =
                 (JobScheduler) _contextProvider.CurrentContext.GetSystemService(Context.JobSchedulerService);
 
-
-            if (jobScheduler.GetPendingJob(FeedUpdateJobId) == null || true)
+            if (!_settings.FeedUpdateJobScheduled)
             {
-                var builder =
-                    _contextProvider.CurrentContext
-                        .CreateJobBuilderUsingJobId<FeedUpdateService>(FeedUpdateJobId);
+                var job = _contextProvider.CurrentContext
+                    .CreateJobBuilderUsingJobId<FeedUpdateService>(FeedUpdateJobId)
+                    .SetRequiredNetwork(new NetworkRequest.Builder()
+                        .AddTransportType(TransportType.Wifi)
+                        .AddTransportType(TransportType.Cellular)
+                        .AddCapability(NetCapability.Internet)
+                        .Build())
+                    .SetPeriodic(
+                        (int) TimeSpan.FromHours(1).TotalMilliseconds)
+                    .SetPersisted(true)
+                    .Build();
 
-                builder.SetPeriodic(
-                    (int) TimeSpan.FromHours(1).TotalMilliseconds,
-                    (int) TimeSpan.FromHours(1).TotalMilliseconds);
+                var result = jobScheduler.Schedule(job);
 
-                builder.SetRequiredNetwork(new NetworkRequest.Builder()
-                    .AddTransportType(TransportType.Wifi)
-                    .AddTransportType(TransportType.Cellular)
-                    .AddCapability(NetCapability.Internet)
-                    .Build());
-
-                var result = jobScheduler.Schedule(builder.Build());
-
-                if(result == JobScheduler.ResultSuccess)
+                if (result == JobScheduler.ResultSuccess)
                 {
+                    _settings.FeedUpdateJobScheduled = true;
                     _logger.LogInformation("Successfully scheduled feed update job.");
                 }
                 else
                 {
+                    _settings.FeedUpdateJobScheduled = false;
                     _logger.LogInformation("Failed to schedule feed update job.");
                     _snackbarProvider.ShowToast(AppResources.Error_FailedToCreateFeedUpdateJob);
                 }
             }
 
             return Task.CompletedTask;
+        }
+
+        public void Schedule()
+        {
+            Initialize();
+        }
+
+        public void Unschedule()
+        {
+            var jobScheduler =
+                (JobScheduler)_contextProvider.CurrentContext.GetSystemService(Context.JobSchedulerService);
+
+            jobScheduler.Cancel(FeedUpdateJobId);
+
+            _settings.FeedUpdateJobScheduled = false;
         }
     }
 }

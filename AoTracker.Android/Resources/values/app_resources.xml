@@ -70,6 +70,8 @@
 <string name="Settings_General_DarkTheme">Dark theme</string>
 <string name="Settings_General_DefaultProxy">Default proxy:</string>
 <string name="Settings_General_DefaultProxy_HelpText">Default proxy that will be used when handling item clicks or configuring price increase for crawlers.</string>
+<string name="Settings_General_FeedUpdateJob">Schedule background feed update notification</string>
+<string name="Settings_General_FeedUpdateJob_HelpText">App will periodically check for feed updates in backround and issue a notification when such change occurs.</string>
 <string name="Settings_General_GenerateFeedAggregate">Generate feed entry aggregating multiple sets.</string>
 <string name="Settings_General_GenerateFeedAggregate_HelpText">First feed position will be one aggregating all favourited crawler sets.</string>
 <string name="Settings_General_LightTheme">Light theme</string>

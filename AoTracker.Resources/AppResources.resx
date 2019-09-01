@@ -330,6 +330,12 @@
   <data name="Settings_General_DefaultProxy_HelpText" xml:space="preserve">
     <value>Default proxy that will be used when handling item clicks or configuring price increase for crawlers.</value>
   </data>
+  <data name="Settings_General_FeedUpdateJob" xml:space="preserve">
+    <value>Schedule background feed update notification</value>
+  </data>
+  <data name="Settings_General_FeedUpdateJob_HelpText" xml:space="preserve">
+    <value>App will periodically check for feed updates in backround and issue a notification when such change occurs.</value>
+  </data>
   <data name="Settings_General_GenerateFeedAggregate" xml:space="preserve">
     <value>Generate feed entry aggregating multiple sets.</value>
   </data>

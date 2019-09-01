@@ -664,6 +664,24 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Schedule background feed update notification.
+        /// </summary>
+        public static string Settings_General_FeedUpdateJob {
+            get {
+                return ResourceManager.GetString("Settings_General_FeedUpdateJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to App will periodically check for feed updates in backround and issue a notification when such change occurs..
+        /// </summary>
+        public static string Settings_General_FeedUpdateJob_HelpText {
+            get {
+                return ResourceManager.GetString("Settings_General_FeedUpdateJob_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Generate feed entry aggregating multiple sets..
         /// </summary>
         public static string Settings_General_GenerateFeedAggregate {

@@ -19,6 +19,7 @@ using AoLibs.Navigation.Android.Navigation;
 using AoLibs.Navigation.Core.Interfaces;
 using AoTracker.Android.Activities;
 using AoTracker.Android.Adapters;
+using AoTracker.Android.BackgroundWork;
 using AoTracker.Android.Utils;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Domain.Enums;
@@ -76,7 +77,7 @@ namespace AoTracker.Android
             containerBuilder.RegisterType<PhoneCallAdapter>().As<IPhoneCallAdapter>().SingleInstance();
             containerBuilder.RegisterType<SnackbarProvider>().As<ISnackbarProvider>().SingleInstance();
             containerBuilder.RegisterType<AndroidLoggerProvider>().As<ILoggerProvider>().SingleInstance();
-            containerBuilder.RegisterType<BackgroundJobsManager>().As<IInitializable>().SingleInstance();
+            containerBuilder.RegisterType<BackgroundJobsManager>().As<IInitializable>().As<IFeedUpdateBackgroundServiceManager>().SingleInstance();
 
             containerBuilder.RegisterType<HttpClientProvider>().As<IHttpClientProvider>();
 

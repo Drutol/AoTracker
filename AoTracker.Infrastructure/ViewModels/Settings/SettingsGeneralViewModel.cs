@@ -12,11 +12,15 @@ namespace AoTracker.Infrastructure.ViewModels.Settings
     public class SettingsGeneralViewModel : ViewModelBase
     {
         private readonly ISettings _settings;
+        private readonly IFeedUpdateBackgroundServiceManager _updateBackgroundServiceManager;
         private AppTheme _appTheme;
 
-        public SettingsGeneralViewModel(ISettings settings)
+        public SettingsGeneralViewModel(
+            ISettings settings,
+            IFeedUpdateBackgroundServiceManager updateBackgroundServiceManager)
         {
             _settings = settings;
+            _updateBackgroundServiceManager = updateBackgroundServiceManager;
             PageTitle = AppResources.PageTitle_SettingsGeneral;
         }
 
@@ -62,6 +66,22 @@ namespace AoTracker.Infrastructure.ViewModels.Settings
             {
                 _settings.GenerateFeedAggregate = value;
                 RaisePropertyChanged();
+            }
+        }     
+        
+        public bool FeedUpdateJobScheduled
+        {
+            get => _settings.FeedUpdateJobScheduled;
+            set
+            {
+                if (value)
+                {
+                    _updateBackgroundServiceManager.Schedule();
+                }
+                else
+                {
+                    _updateBackgroundServiceManager.Unschedule();
+                }
             }
         }
 

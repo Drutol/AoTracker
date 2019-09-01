@@ -13,5 +13,6 @@ namespace AoTracker.Interfaces
         bool GenerateFeedAggregate { get; set; }
         bool UsePriceIncreaseProxyPresets { get; set; }
         ProxyDomain ProxyDomain { get; set; }
+        bool FeedUpdateJobScheduled { get; set; }
     }
 }
