@@ -7,19 +7,23 @@ using AoLibs.Dialogs.Core.Interfaces;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Models.DialogParameters;
 using AoTracker.Interfaces;
+using Microsoft.Extensions.Logging;
 using Xamarin.Essentials;
 
 namespace AoTracker.Infrastructure.Infrastructure
 {
     public class ChangelogHandler : IInitializable
     {
+        private readonly ILogger<ChangelogHandler> _logger;
         private readonly IDispatcherAdapter _dispatcherAdapter;
         private readonly ICustomDialogsManager<DialogIndex> _dialogsManager;
 
         public ChangelogHandler(
+            ILogger<ChangelogHandler> logger,
             IDispatcherAdapter dispatcherAdapter,
             ICustomDialogsManager<DialogIndex> dialogsManager)
         {
+            _logger = logger;
             _dispatcherAdapter = dispatcherAdapter;
             _dialogsManager = dialogsManager;
         }
@@ -28,16 +32,24 @@ namespace AoTracker.Infrastructure.Infrastructure
         {
             VersionTracking.Track();
 
-            if (VersionTracking.IsFirstLaunchForCurrentVersion)
+            if (VersionTracking.IsFirstLaunchForCurrentVersion && !VersionTracking.IsFirstLaunchEver)
             {
                 _dispatcherAdapter.Run(() =>
                 {
-                    _dialogsManager[DialogIndex.ChangelogDialog].Show(new ChangelogDialogParameter
+                    try
                     {
-                        Changelog = _changelog,
-                        Date = _date,
-                        Note = _note
-                    });
+                        _dialogsManager[DialogIndex.ChangelogDialog].Show(new ChangelogDialogParameter
+                        {
+                            Changelog = _changelog,
+                            Date = _date,
+                            Note = _note
+                        });
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.LogError(e, "Failed to show changelog dialog. Debug launch?");
+                    }
+
                 });
             }
 

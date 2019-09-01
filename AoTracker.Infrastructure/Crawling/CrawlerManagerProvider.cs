@@ -32,6 +32,7 @@ namespace AoTracker.Infrastructure.Crawling
                 if (!_initialized)
                 {
                     _manager.InitializeCrawlers(_httpClientProvider, _loggerFactory);
+                    _initialized = true;
                 }
                 return _manager;
             }
