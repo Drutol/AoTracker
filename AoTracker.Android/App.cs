@@ -23,6 +23,7 @@ using AoTracker.Android.Utils;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Statics;
+using AoTracker.Interfaces;
 using AoTracker.Interfaces.Adapters;
 using Autofac;
 using FFImageLoading;
@@ -75,6 +76,7 @@ namespace AoTracker.Android
             containerBuilder.RegisterType<PhoneCallAdapter>().As<IPhoneCallAdapter>().SingleInstance();
             containerBuilder.RegisterType<SnackbarProvider>().As<ISnackbarProvider>().SingleInstance();
             containerBuilder.RegisterType<AndroidLoggerProvider>().As<ILoggerProvider>().SingleInstance();
+            containerBuilder.RegisterType<BackgroundJobsManager>().As<IInitializable>().SingleInstance();
 
             containerBuilder.RegisterType<HttpClientProvider>().As<IHttpClientProvider>();
 
@@ -86,7 +88,8 @@ namespace AoTracker.Android
 
         private class ContextProvider : IContextProvider
         {
-            public Activity CurrentContext => MainActivity.Instance;
+            public Context CurrentContext => MainActivity.Instance;
+            public Activity CurrentActivity => MainActivity.Instance;
         }
     }
 }

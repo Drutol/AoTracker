@@ -78,8 +78,10 @@
     <Compile Include="Activities\MainActivity.drawer.cs" />
     <Compile Include="Adapters\AndroidLoggerProvider.cs" />
     <Compile Include="Adapters\AppCenterCrashDumpLoggerProvider.cs" />
+    <Compile Include="BackgroundWork\BackgroundJobsManager.cs" />
     <Compile Include="Adapters\SnackbarProvider.cs" />
     <Compile Include="App.cs" />
+    <Compile Include="BackgroundWork\FeedUpdateService.cs" />
     <Compile Include="Dialogs\ChangelogDialog.cs" />
     <Compile Include="Fragments\CrawlerConfigure\ConfigureCrawlerPageFragmentBase.cs" />
     <Compile Include="Fragments\CrawlerConfigure\ConfigureLashinbangCrawlerPageFragment.cs" />
@@ -121,6 +123,7 @@
     <Compile Include="Utils\CustomFlexboxLayoutManager.cs" />
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\HttpClientProvider.cs" />
+    <Compile Include="Utils\JobSchedulerHelpers.cs" />
     <Compile Include="Utils\LinkerIncludes.cs" />
     <Compile Include="Utils\MenuCallback.cs" />
     <Compile Include="Utils\RecyclerViewAdapterBuilder.cs" />
@@ -163,25 +166,25 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AoLibs.Adapters.Android">
-      <Version>0.6.3</Version>
+      <Version>0.6.5</Version>
     </PackageReference>
     <PackageReference Include="AoLibs.Adapters.Core">
-      <Version>0.6.3</Version>
+      <Version>0.6.5</Version>
     </PackageReference>
     <PackageReference Include="AoLibs.Dialogs.Android">
-      <Version>0.6.3</Version>
+      <Version>0.6.5</Version>
     </PackageReference>
     <PackageReference Include="AoLibs.Dialogs.Core">
-      <Version>0.6.3</Version>
+      <Version>0.6.5</Version>
     </PackageReference>
     <PackageReference Include="AoLibs.Navigation.Android">
-      <Version>0.6.3</Version>
+      <Version>0.6.5</Version>
     </PackageReference>
     <PackageReference Include="AoLibs.Navigation.Core">
-      <Version>0.6.3</Version>
+      <Version>0.6.5</Version>
     </PackageReference>
     <PackageReference Include="AoLibs.Utilities.Android">
-      <Version>0.6.3</Version>
+      <Version>0.6.5</Version>
     </PackageReference>
     <PackageReference Include="Autofac">
       <Version>4.9.3</Version>

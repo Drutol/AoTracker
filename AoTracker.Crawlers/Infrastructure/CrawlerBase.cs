@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Interfaces;
@@ -16,14 +17,16 @@ namespace AoTracker.Crawlers.Infrastructure
         public ICrawlerParser<T> Parser { get; set; }
         public ICrawlerCache<T> Cache { get; set; }
 
-        public virtual async Task<ICrawlerResultList<T>> Crawl(CrawlerParameters parameters)
+        public virtual async Task<ICrawlerResultList<T>> Crawl(
+            CrawlerParameters parameters,
+            CancellationToken token)
         {
             if (parameters.VolatileParameters.UseCache && Cache.IsCached(parameters))
                 return CrawlerResultBase<T>.FromCache(Cache.Get(parameters));
 
             try
             {
-                var source = await Source.ObtainSource(parameters);
+                var source = await Source.ObtainSource(parameters, token);
                 var result = await Parser.Parse(source, parameters);
 
                 Cache.Set(result.Results, parameters);
@@ -72,9 +75,10 @@ namespace AoTracker.Crawlers.Infrastructure
             return (ICrawlerResultSingle<ICrawlerResultItem>)await CrawlById(id);
         }
 
-        async Task<ICrawlerResultList<ICrawlerResultItem>> ICrawler.Crawl(CrawlerParameters parameters)
+        async Task<ICrawlerResultList<ICrawlerResultItem>> ICrawler.Crawl(CrawlerParameters parameters,
+            CancellationToken token)
          {
-             return (ICrawlerResultList<ICrawlerResultItem>) await Crawl(parameters);
+             return (ICrawlerResultList<ICrawlerResultItem>) await Crawl(parameters, token);
          }
     }
 }

@@ -12,17 +12,21 @@ using AoTracker.Crawlers.Infrastructure;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Domain.Models;
 using AoTracker.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace AoTracker.Infrastructure.Infrastructure
 {
     public class FeedProvider : IFeedProvider
     {
+        private readonly ILogger<FeedProvider> _logger;
         private readonly IUserDataProvider _userDataProvider;
         private readonly AppVariables _appVariables;
         private readonly ICrawlerManager _crawlerManager;
         private bool _isAggregating;
+
         private readonly ConcurrentDictionary<CrawlerDomain, SemaphoreSlim> _domainSemaphores =
             new ConcurrentDictionary<CrawlerDomain, SemaphoreSlim>();
+
         private readonly List<Task> _branchedTasks = new List<Task>();
 
         public event EventHandler<FeedBatch> NewCrawlerBatch;
@@ -35,10 +39,12 @@ namespace AoTracker.Infrastructure.Infrastructure
         };
 
         public FeedProvider(
+            ILogger<FeedProvider> logger,
             ICrawlerManagerProvider crawlerManagerProvider,
             IUserDataProvider userDataProvider,
             AppVariables appVariables)
         {
+            _logger = logger;
             _userDataProvider = userDataProvider;
             _appVariables = appVariables;
             _crawlerManager = crawlerManagerProvider.Manager;
@@ -49,8 +55,9 @@ namespace AoTracker.Infrastructure.Infrastructure
             }
         }
 
-        public void StartAggregating(List<CrawlerSet> sets, CancellationToken feedCtsToken, bool force, ref int expectedBatches)
+        public int StartAggregating(List<CrawlerSet> sets, CancellationToken feedCtsToken, bool force)
         {
+            int expectedBatches;
             if (force)
             {
                 // we have to check every descriptor
@@ -66,13 +73,16 @@ namespace AoTracker.Infrastructure.Infrastructure
 
             if (!_isAggregating)
                 AggregateFeed(sets, feedCtsToken, force);
+
+            return expectedBatches;
         }
 
         public bool CheckCache(List<CrawlerSet> sets)
         {
             return sets.All(set => set.Descriptors.All(descriptor =>
                 _crawlerManager.GetCrawler(descriptor.CrawlerDomain)
-                    .IsCached(new CrawlerParameters(descriptor.CrawlerSourceParameters, _cacheCheckingVolatileParameters))));
+                    .IsCached(new CrawlerParameters(descriptor.CrawlerSourceParameters,
+                        _cacheCheckingVolatileParameters))));
         }
 
         private async void AggregateFeed(List<CrawlerSet> sets, CancellationToken feedCtsToken, bool force)
@@ -91,7 +101,8 @@ namespace AoTracker.Infrastructure.Infrastructure
                     tasks.Add(CrawlDescriptor(
                         crawlingSet.Descriptors,
                         crawlingSet,
-                        volatileParameters));
+                        volatileParameters,
+                        feedCtsToken));
                 }
 
                 await Task.WhenAll(tasks);
@@ -109,21 +120,22 @@ namespace AoTracker.Infrastructure.Infrastructure
         private async Task CrawlDescriptor(
             List<CrawlerDescriptor> descriptors,
             CrawlerSet crawlingSet,
-            VolatileParametersBase volatileParameters)
-        { 
+            VolatileParametersBase volatileParameters,
+            CancellationToken feedCtsToken)
+        {
             foreach (var descriptor in descriptors)
             {
                 var semaphore = _domainSemaphores[descriptor.CrawlerDomain];
                 try
                 {
-                    await semaphore.WaitAsync();
+                    await semaphore.WaitAsync(feedCtsToken);
                     var crawler = _crawlerManager.GetCrawler(descriptor.CrawlerDomain);
 
-                    var result = await Task.Run(async () => 
+                    var result = await Task.Run(async () =>
                         await crawler.Crawl(
-                        new CrawlerParameters(
-                            descriptor.CrawlerSourceParameters,
-                            volatileParameters)));
+                            new CrawlerParameters(
+                                descriptor.CrawlerSourceParameters,
+                                volatileParameters), feedCtsToken), feedCtsToken);
 
                     if (result.Success)
                     {
@@ -143,13 +155,17 @@ namespace AoTracker.Infrastructure.Infrastructure
                         {
                             Page = volatileParameters.Page + 1,
                             UseCache = volatileParameters.UseCache
-                        });
+                        }, feedCtsToken);
                         _branchedTasks.Add(task);
 #pragma warning disable 4014
-                        Task.Run(async () => await task);
+                        Task.Run(async () => await task, feedCtsToken);
 #pragma warning restore 4014
 
                     }
+                }
+                catch (TaskCanceledException)
+                {
+                    _logger.LogInformation("Cancelled descriptor crawling.");
                 }
                 finally
                 {

@@ -234,7 +234,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
                 .SelectMany(task => task.Result ?? Enumerable.Empty<HistoryFeedEntry>())
                 .ToList();
             _feedCts = new CancellationTokenSource();
-            _feedProvider.StartAggregating(TabEntry.CrawlerSets, _feedCts.Token, force, ref _expectedBatches);
+            _expectedBatches = _feedProvider.StartAggregating(TabEntry.CrawlerSets, _feedCts.Token, force);
         }
 
         public int FeedGenerationProgress

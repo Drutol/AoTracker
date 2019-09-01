@@ -12,7 +12,7 @@ namespace AoTracker.Interfaces
         event EventHandler<FeedBatch> NewCrawlerBatch;
         event EventHandler Finished;
 
-        void StartAggregating(List<CrawlerSet> set, CancellationToken feedCtsToken, bool force, ref int expectedBatches);
+        int StartAggregating(List<CrawlerSet> set, CancellationToken feedCtsToken, bool force);
         bool CheckCache(List<CrawlerSet> tabEntryCrawlerSets);
     }
 }

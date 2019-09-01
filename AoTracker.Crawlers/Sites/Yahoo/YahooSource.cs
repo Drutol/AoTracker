@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using AoTracker.Crawlers.Abstract;
 using AoTracker.Crawlers.Infrastructure;
@@ -25,11 +26,14 @@ namespace AoTracker.Crawlers.Sites.Yahoo
             _clientProvider = clientProvider;
         }
 
-        protected override Task<string> ObtainSource(YahooSourceParameters parameters,
-            VolatileParametersBase volatileParameters)
+        protected override async Task<string> ObtainSource(
+            YahooSourceParameters parameters,
+            VolatileParametersBase volatileParameters,
+            CancellationToken token)
         {
-            return _clientProvider.HttpClient.GetStringAsync(string.Format(FormatString, parameters.SearchQuery,
-                volatileParameters.Page, ItemsPerRequest));
+            var result = await _clientProvider.HttpClient.GetAsync(string.Format(FormatString, parameters.SearchQuery,
+                volatileParameters.Page, ItemsPerRequest), token);
+            return await result.Content.ReadAsStringAsync();
         }
 
         public override Task<string> ObtainSource(string id)

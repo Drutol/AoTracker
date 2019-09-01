@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AoLibs.Adapters.Core.Interfaces;
+using AoTracker.Crawlers.Interfaces;
 using AoTracker.Domain.Models;
 using AoTracker.Interfaces;
 
@@ -39,6 +41,29 @@ namespace AoTracker.Infrastructure.Infrastructure
         {
             _historyDictionary[set.Guid] = history;
             await _dataCache.SaveDataAsync($"{HistoryDirectory}/{set.Guid}", history);
+        }
+
+        public async Task<bool> HasAnyChanged(CrawlerSet setOfOrigin, IEnumerable<ICrawlerResultItem> resultItems)
+        {
+            var history = await GetHistory(setOfOrigin);
+
+            foreach (var item in resultItems)
+            {
+                var historyEntry = history.FirstOrDefault(entry => entry.InternalId.Equals(item.InternalId));
+
+                if (historyEntry != null)
+                {
+                    // price changed
+                    return Math.Abs(historyEntry.LatestPrice - item.Price) > 0.001;
+                }
+                else
+                {
+                    // new item without history
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

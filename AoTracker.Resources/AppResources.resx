@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Android_NotificationChannel_Description" xml:space="preserve">
+    <value>Notifications on new changes in feed being available.</value>
+  </data>
+  <data name="Android_NotificationChannel_Name" xml:space="preserve">
+    <value>Feed Updates</value>
+  </data>
   <data name="ConfigureCrawler_Cost_OffsetIncrease" xml:space="preserve">
     <value>Increase price by offset</value>
   </data>
@@ -182,6 +188,9 @@
   </data>
   <data name="EmptyState_Subtitle_Default" xml:space="preserve">
     <value>Nothing to show here...</value>
+  </data>
+  <data name="Error_FailedToCreateFeedUpdateJob" xml:space="preserve">
+    <value>Failed to create feed update job.</value>
   </data>
   <data name="Generic_Delete" xml:space="preserve">
     <value>Delete</value>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Infrastructure;
@@ -20,9 +21,11 @@ namespace AoTracker.Crawlers.Sites.Yahoo
             Cache = new CrawlerCache<YahooItem>();
         }
 
-        public override async Task<ICrawlerResultList<YahooItem>> Crawl(CrawlerParameters parameters)
+        public override async Task<ICrawlerResultList<YahooItem>> Crawl(
+            CrawlerParameters parameters,
+            CancellationToken token)
         {
-            var result = await base.Crawl(parameters);
+            var result = await base.Crawl(parameters, token);
 
             if (result.Success)
             {

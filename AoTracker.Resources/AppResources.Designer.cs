@@ -61,6 +61,24 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notifications on new changes in feed being available..
+        /// </summary>
+        public static string Android_NotificationChannel_Description {
+            get {
+                return ResourceManager.GetString("Android_NotificationChannel_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Feed Updates.
+        /// </summary>
+        public static string Android_NotificationChannel_Name {
+            get {
+                return ResourceManager.GetString("Android_NotificationChannel_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Increase price by offset.
         /// </summary>
         public static string ConfigureCrawler_Cost_OffsetIncrease {
@@ -255,6 +273,15 @@ namespace AoTracker.Resources {
         public static string EmptyState_Subtitle_Default {
             get {
                 return ResourceManager.GetString("EmptyState_Subtitle_Default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to create feed update job..
+        /// </summary>
+        public static string Error_FailedToCreateFeedUpdateJob {
+            get {
+                return ResourceManager.GetString("Error_FailedToCreateFeedUpdateJob", resourceCulture);
             }
         }
         

@@ -15,6 +15,7 @@ namespace AoTracker.Infrastructure.Infrastructure
 {
     public class UserDataProvider : IUserDataProvider
     {
+        private bool _initialized;
         private readonly AppVariables _appVariables;
 
         private ObservableCollection<CrawlerSet> _sets;
@@ -28,7 +29,9 @@ namespace AoTracker.Infrastructure.Infrastructure
 
         public async Task Initialize()
         {
-            _sets = new ObservableCollection<CrawlerSet>(await _appVariables.CrawlerSets.GetAsync() ?? new List<CrawlerSet>());
+            if(!_initialized)
+                _sets = new ObservableCollection<CrawlerSet>(await _appVariables.CrawlerSets.GetAsync() ?? new List<CrawlerSet>());
+            _initialized = true;
         }
 
         public async Task AddNewSet(CrawlerSet set)

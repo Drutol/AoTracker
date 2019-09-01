@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using AoTracker.Crawlers.Abstract;
 using AoTracker.Crawlers.Infrastructure;
@@ -20,10 +21,13 @@ namespace AoTracker.Crawlers.Sites.Mercari
             _httpClientProvider = httpClientProvider;
         }
 
-        protected override Task<string> ObtainSource(MercariSourceParameters parameters,
-            VolatileParametersBase volatileParameters)
+        protected override async Task<string> ObtainSource(
+            MercariSourceParameters parameters,
+            VolatileParametersBase volatileParameters,
+            CancellationToken token)
         {
-            return _httpClientProvider.HttpClient.GetStringAsync(string.Format(FormatString, parameters.SearchQuery));
+            var result = await _httpClientProvider.HttpClient.GetAsync(string.Format(FormatString, parameters.SearchQuery), token);
+            return await result.Content.ReadAsStringAsync();
         }
 
         public override Task<string> ObtainSource(string id)

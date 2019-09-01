@@ -40,5 +40,18 @@ namespace AoTracker.Infrastructure.Statics
                 .Select(initializable => initializable.Initialize()).ToList();
             await Task.WhenAll(initializables);
         }
+
+        public static void InitializeDependenciesForBackground(Action<ContainerBuilder> dependenciesRegistration)
+        {
+            if (Container != null)
+                return;
+
+            var builder = new ContainerBuilder();
+
+            builder.RegisterResources();
+            dependenciesRegistration(builder);
+
+            Container = builder.Build();
+        }
     }
 }

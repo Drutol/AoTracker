@@ -1,4 +1,6 @@
 <resources>
+<string name="Android_NotificationChannel_Description">Notifications on new changes in feed being available.</string>
+<string name="Android_NotificationChannel_Name">Feed Updates</string>
 <string name="ConfigureCrawler_Cost_OffsetIncrease">Increase price by offset</string>
 <string name="ConfigureCrawler_Cost_OffsetIncrease_HelpText">Increease price by fixed value applied before % increase</string>
 <string name="ConfigureCrawler_Cost_PercentageIncrease">Increase price by percentage</string>
@@ -21,6 +23,7 @@
 <string name="EmptyState_Subtitle_CrawlerSetDetails">Added crawlers will show here.</string>
 <string name="EmptyState_Subtitle_CrawlerSets">Crawler sets will show up here.</string>
 <string name="EmptyState_Subtitle_Default">Nothing to show here...</string>
+<string name="Error_FailedToCreateFeedUpdateJob">Failed to create feed update job.</string>
 <string name="Generic_Delete">Delete</string>
 <string name="Hamburger_Item_CrawlerSets">Crawler Sets</string>
 <string name="Hamburger_Item_Feed">Feed</string>
