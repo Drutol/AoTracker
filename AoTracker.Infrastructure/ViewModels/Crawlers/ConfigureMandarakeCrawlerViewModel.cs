@@ -7,6 +7,7 @@ using AoTracker.Crawlers.Mandarake;
 using AoTracker.Crawlers.Mandarake;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
+using AoTracker.Infrastructure.Infrastructure;
 using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Infrastructure.ViewModels.Crawlers;
@@ -21,8 +22,9 @@ namespace AoTracker.Infrastructure.ViewModels
     public class ConfigureMandarakeCrawlerViewModel : ConfigureCrawlerViewModelBase<MandarakeSourceParameters>
     {
         public ConfigureMandarakeCrawlerViewModel(INavigationManager<PageIndex> navigationManager,
-            ISnackbarProvider snackbarProvider)
-            : base(navigationManager, snackbarProvider)
+            ISnackbarProvider snackbarProvider,
+            IPriceIncreasePresetsProvider priceIncreasePresetsProvider)
+            : base(navigationManager, snackbarProvider, priceIncreasePresetsProvider)
         {
 
         }

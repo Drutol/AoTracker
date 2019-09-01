@@ -11,6 +11,7 @@ namespace AoTracker.Interfaces
         AppTheme AppTheme { get; set; }
         bool AutoLoadFeedTab { get; set; }
         bool GenerateFeedAggregate { get; set; }
+        bool UsePriceIncreaseProxyPresets { get; set; }
         ProxyDomain ProxyDomain { get; set; }
     }
 }

@@ -43,6 +43,16 @@ namespace AoTracker.Infrastructure.ViewModels.Settings
                 _settings.AutoLoadFeedTab = value;
                 RaisePropertyChanged();
             }
+        }     
+        
+        public bool UsePriceIncreaseProxyPresets
+        {
+            get => _settings.UsePriceIncreaseProxyPresets;
+            set
+            {
+                _settings.UsePriceIncreaseProxyPresets = value;
+                RaisePropertyChanged();
+            }
         }
 
         public bool GenerateFeedAggregate

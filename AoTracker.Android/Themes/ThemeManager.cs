@@ -40,9 +40,14 @@ namespace AoTracker.Android.Themes
             var theme = settings.AppTheme;
             CurrentTheme = theme;
             // Base
-            if ((theme & AppTheme.Dark) == AppTheme.Dark || (theme & AppTheme.Black) == AppTheme.Black)
+            if ((theme & AppTheme.Dark) == AppTheme.Dark)
             {
                 activity.SetTheme(Resource.Style.AoTracker_Dark);
+                IsDarkTheme = true;
+            }
+            else if ((theme & AppTheme.Black) == AppTheme.Black)
+            {
+                activity.SetTheme(Resource.Style.AoTracker_Black);
                 IsDarkTheme = true;
             }
             else
@@ -88,7 +93,7 @@ namespace AoTracker.Android.Themes
             }
             else if ((theme & AppTheme.Black) == AppTheme.Black)
             {
-                activity.Theme.ApplyStyle(Resource.Style.AoTracker_Dark_Black, true);
+                activity.Theme.ApplyStyle(Resource.Style.ColourSchemeToolbarBlack, true);
             }
 
             RedColour = activity.Resources.GetColor(Resource.Color.RedColour, activity.Theme);

@@ -11,6 +11,7 @@ using AoTracker.Crawlers.Mandarake;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Messaging;
 using AoTracker.Domain.Models;
+using AoTracker.Infrastructure.Infrastructure;
 using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Interfaces.Adapters;
@@ -24,6 +25,7 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
     {
         private readonly INavigationManager<PageIndex> _navigationManager;
         private readonly ISnackbarProvider _snackbarProvider;
+        private readonly IPriceIncreasePresetsProvider _priceIncreasePresetsProvider;
         private ConfigureCrawlerPageNavArgs _navArgs;
         private string _searchQueryInput;
         private double _costPercentageIncrease;
@@ -37,10 +39,12 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
 
         public ConfigureCrawlerViewModelBase(
             INavigationManager<PageIndex> navigationManager,
-            ISnackbarProvider snackbarProvider)
+            ISnackbarProvider snackbarProvider,
+            IPriceIncreasePresetsProvider priceIncreasePresetsProvider)
         {
             _navigationManager = navigationManager;
             _snackbarProvider = snackbarProvider;
+            _priceIncreasePresetsProvider = priceIncreasePresetsProvider;
         }
 
         public void NavigatedTo(ConfigureCrawlerPageNavArgs navArgs)
@@ -61,6 +65,12 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
                 ExcludedKeywords.AddRange(descriptor.ExcludedKeywords ?? Enumerable.Empty<string>());
 
                 InitParameters(descriptor as TParameters);
+            }
+            else
+            {
+                var (percentage, offset) = _priceIncreasePresetsProvider.GetPreset();
+                CostOffsetIncrease = offset;
+                CostPercentageIncrease = percentage;
             }
         }
 

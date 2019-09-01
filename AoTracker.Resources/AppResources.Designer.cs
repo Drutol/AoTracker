@@ -70,7 +70,7 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This value will be added to the price after % increase.
+        ///   Looks up a localized string similar to Increease price by fixed value applied before % increase.
         /// </summary>
         public static string ConfigureCrawler_Cost_OffsetIncrease_HelpText {
             get {
@@ -93,6 +93,33 @@ namespace AoTracker.Resources {
         public static string ConfigureCrawler_Cost_PercentageIncrease_HelpText {
             get {
                 return ResourceManager.GetString("ConfigureCrawler_Cost_PercentageIncrease_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excluded Keywords.
+        /// </summary>
+        public static string ConfigureCrawler_ExcludedKeywords {
+            get {
+                return ResourceManager.GetString("ConfigureCrawler_ExcludedKeywords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All item entries containing any of specified excluded keywords will be filtered out..
+        /// </summary>
+        public static string ConfigureCrawler_ExcludedKeywords_HelpText {
+            get {
+                return ResourceManager.GetString("ConfigureCrawler_ExcludedKeywords_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyword.
+        /// </summary>
+        public static string ConfigureCrawler_ExcludedKeywords_Hint {
+            get {
+                return ResourceManager.GetString("ConfigureCrawler_ExcludedKeywords_Hint", resourceCulture);
             }
         }
         
@@ -592,6 +619,24 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default proxy:.
+        /// </summary>
+        public static string Settings_General_DefaultProxy {
+            get {
+                return ResourceManager.GetString("Settings_General_DefaultProxy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default proxy that will be used when handling item clicks or configuring price increase for crawlers..
+        /// </summary>
+        public static string Settings_General_DefaultProxy_HelpText {
+            get {
+                return ResourceManager.GetString("Settings_General_DefaultProxy_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Generate feed entry aggregating multiple sets..
         /// </summary>
         public static string Settings_General_GenerateFeedAggregate {
@@ -615,6 +660,24 @@ namespace AoTracker.Resources {
         public static string Settings_General_LightTheme {
             get {
                 return ResourceManager.GetString("Settings_General_LightTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use price increase presets for selected default proxy.
+        /// </summary>
+        public static string Settings_General_PriceIncreasePresets {
+            get {
+                return ResourceManager.GetString("Settings_General_PriceIncreasePresets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Each proxy charges fees, they will be automatically filled in when configuring new crawler based on most common proxy rates..
+        /// </summary>
+        public static string Settings_General_PriceIncreasePresets_HelpText {
+            get {
+                return ResourceManager.GetString("Settings_General_PriceIncreasePresets_HelpText", resourceCulture);
             }
         }
         
@@ -660,6 +723,24 @@ namespace AoTracker.Resources {
         public static string Toast_MaxCountOfExcludedKeywordsReached {
             get {
                 return ResourceManager.GetString("Toast_MaxCountOfExcludedKeywordsReached", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finish.
+        /// </summary>
+        public static string Welcome_Finish {
+            get {
+                return ResourceManager.GetString("Welcome_Finish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip.
+        /// </summary>
+        public static string Welcome_Skip {
+            get {
+                return ResourceManager.GetString("Welcome_Skip", resourceCulture);
             }
         }
     }

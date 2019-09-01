@@ -32,6 +32,12 @@ namespace AoTracker.Infrastructure.Infrastructure
         {
             get => _settingsProvider.GetBool(nameof(AutoLoadFeedTab)) ?? true;
             set => _settingsProvider.SetBool(nameof(AutoLoadFeedTab), value);
+        }  
+        
+        public bool UsePriceIncreaseProxyPresets
+        {
+            get => _settingsProvider.GetBool(nameof(UsePriceIncreaseProxyPresets)) ?? true;
+            set => _settingsProvider.SetBool(nameof(UsePriceIncreaseProxyPresets), value);
         }
 
         public AppTheme AppTheme

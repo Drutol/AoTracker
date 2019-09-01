@@ -6,6 +6,7 @@ using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Surugaya;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Models;
+using AoTracker.Infrastructure.Infrastructure;
 using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Infrastructure.ViewModels.Crawlers;
@@ -21,9 +22,11 @@ namespace AoTracker.Infrastructure.ViewModels
     {
         private bool _trimJapaneseQuotationMarks;
 
-        public ConfigureSurugayaCrawlerViewModel(INavigationManager<PageIndex> navigationManager,
-            ISnackbarProvider snackbarProvider)
-            : base(navigationManager, snackbarProvider)
+        public ConfigureSurugayaCrawlerViewModel(
+            INavigationManager<PageIndex> navigationManager,
+            ISnackbarProvider snackbarProvider,
+            IPriceIncreasePresetsProvider priceIncreasePresetsProvider)
+            : base(navigationManager, snackbarProvider, priceIncreasePresetsProvider)
         {
         }
 

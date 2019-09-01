@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -170,17 +170,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Default proxy:"
+                    android:text="@string/Settings_General_DefaultProxy"
                     android:textColor="?TextColour"
                     android:textSize="16sp" />
 
                 <TextView
                     style="@style/TextViewHelp" android:layout_marginTop="8dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="start"
-                    android:text="Default proxy that will be used when handling for example item clicks." />
+                    android:text="@string/Settings_General_DefaultProxy_HelpText" />
 
             </LinearLayout>
 
@@ -189,5 +189,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="?ForegroundColour"
+            android:orientation="vertical"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <CheckBox
+                android:id="@+id/UsePriceIncreaseProxyPresets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Settings_General_PriceIncreasePresets" />
+
+            <TextView
+                style="@style/TextViewHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@string/Settings_General_PriceIncreasePresets_HelpText" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

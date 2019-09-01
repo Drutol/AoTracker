@@ -1,8 +1,11 @@
 <resources>
 <string name="ConfigureCrawler_Cost_OffsetIncrease">Increase price by offset</string>
-<string name="ConfigureCrawler_Cost_OffsetIncrease_HelpText">This value will be added to the price after % increase</string>
+<string name="ConfigureCrawler_Cost_OffsetIncrease_HelpText">Increease price by fixed value applied before % increase</string>
 <string name="ConfigureCrawler_Cost_PercentageIncrease">Increase price by percentage</string>
 <string name="ConfigureCrawler_Cost_PercentageIncrease_HelpText">Increases the base prices by given %</string>
+<string name="ConfigureCrawler_ExcludedKeywords">Excluded Keywords</string>
+<string name="ConfigureCrawler_ExcludedKeywords_HelpText">All item entries containing any of specified excluded keywords will be filtered out.</string>
+<string name="ConfigureCrawler_ExcludedKeywords_Hint">Keyword</string>
 <string name="ConfigureCrawler_Header">Configure</string>
 <string name="ConfigureCrawler_Save">Save</string>
 <string name="ConfigureCrawler_SearchQuery_HelpText">At least 3 characters</string>
@@ -13,6 +16,10 @@
 <string name="CrawlerSetDetails_Title_HelpText">Crawler set title</string>
 <string name="CrawlerSetsPage_AddCrawlersHeader">Add crawler</string>
 <string name="CrawlerSetsPage_CurrentCrawlersHeader">Current crawlers</string>
+<string name="Dialog_Changelog_Changelog">Changelog</string>
+<string name="EmptyState_Subtitle_ConfigureCrawler">Add new excluded keywords</string>
+<string name="EmptyState_Subtitle_CrawlerSetDetails">Added crawlers will show here.</string>
+<string name="EmptyState_Subtitle_CrawlerSets">Crawler sets will show up here.</string>
 <string name="EmptyState_Subtitle_Default">Nothing to show here...</string>
 <string name="Generic_Delete">Delete</string>
 <string name="Hamburger_Item_CrawlerSets">Crawler Sets</string>
@@ -47,6 +54,7 @@
 <string name="PageTitle_SettingsGeneral">Settings: General</string>
 <string name="PageTitle_SettingsIndex">Settings Index</string>
 <string name="PageTitle_WatchedItems">Watched Items</string>
+<string name="PageTitle_Welcome">Welcome</string>
 <string name="SettingsIndex_Entry_About_Subtitle">AoTracker app information</string>
 <string name="SettingsIndex_Entry_About_Title">About</string>
 <string name="SettingsIndex_Entry_General_Subtitle">Application theme, and other settings</string>
@@ -57,7 +65,14 @@
 <string name="Settings_General_BlackTheme">Black theme</string>
 <string name="Settings_General_ColourThemeHeader">Application Theme</string>
 <string name="Settings_General_DarkTheme">Dark theme</string>
+<string name="Settings_General_DefaultProxy">Default proxy:</string>
+<string name="Settings_General_DefaultProxy_HelpText">Default proxy that will be used when handling item clicks or configuring price increase for crawlers.</string>
 <string name="Settings_General_GenerateFeedAggregate">Generate feed entry aggregating multiple sets.</string>
 <string name="Settings_General_GenerateFeedAggregate_HelpText">First feed position will be one aggregating all favourited crawler sets.</string>
 <string name="Settings_General_LightTheme">Light theme</string>
+<string name="Settings_General_PriceIncreasePresets">Use price increase presets for selected default proxy</string>
+<string name="Settings_General_PriceIncreasePresets_HelpText">Each proxy charges fees, they will be automatically filled in when configuring new crawler based on most common proxy rates.</string>
+<string name="Toast_MaxCountOfExcludedKeywordsReached">You can only add up to five excluded keywords.</string>
+<string name="Welcome_Finish">Finish</string>
+<string name="Welcome_Skip">Skip</string>
 </resources>

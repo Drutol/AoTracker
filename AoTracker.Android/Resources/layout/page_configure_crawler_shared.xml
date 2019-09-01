@@ -93,7 +93,7 @@
         style="@style/TextViewHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Excluded Keywords" />
+        android:text="@string/ConfigureCrawler_ExcludedKeywords" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -135,7 +135,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Keyword"
+                    android:hint="@string/ConfigureCrawler_ExcludedKeywords_Hint"
                     android:inputType="text"
                     android:lines="1" />
 
@@ -154,7 +154,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:text="All item entries containing any of specified excluded terms will be filtered out." />
+                android:text="@string/ConfigureCrawler_ExcludedKeywords_HelpText" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 

@@ -121,13 +121,22 @@
     <value>Increase price by offset</value>
   </data>
   <data name="ConfigureCrawler_Cost_OffsetIncrease_HelpText" xml:space="preserve">
-    <value>This value will be added to the price after % increase</value>
+    <value>Increease price by fixed value applied before % increase</value>
   </data>
   <data name="ConfigureCrawler_Cost_PercentageIncrease" xml:space="preserve">
     <value>Increase price by percentage</value>
   </data>
   <data name="ConfigureCrawler_Cost_PercentageIncrease_HelpText" xml:space="preserve">
     <value>Increases the base prices by given %</value>
+  </data>
+  <data name="ConfigureCrawler_ExcludedKeywords" xml:space="preserve">
+    <value>Excluded Keywords</value>
+  </data>
+  <data name="ConfigureCrawler_ExcludedKeywords_HelpText" xml:space="preserve">
+    <value>All item entries containing any of specified excluded keywords will be filtered out.</value>
+  </data>
+  <data name="ConfigureCrawler_ExcludedKeywords_Hint" xml:space="preserve">
+    <value>Keyword</value>
   </data>
   <data name="ConfigureCrawler_Header" xml:space="preserve">
     <value>Configure</value>
@@ -306,6 +315,12 @@
   <data name="Settings_General_DarkTheme" xml:space="preserve">
     <value>Dark theme</value>
   </data>
+  <data name="Settings_General_DefaultProxy" xml:space="preserve">
+    <value>Default proxy:</value>
+  </data>
+  <data name="Settings_General_DefaultProxy_HelpText" xml:space="preserve">
+    <value>Default proxy that will be used when handling item clicks or configuring price increase for crawlers.</value>
+  </data>
   <data name="Settings_General_GenerateFeedAggregate" xml:space="preserve">
     <value>Generate feed entry aggregating multiple sets.</value>
   </data>
@@ -315,7 +330,19 @@
   <data name="Settings_General_LightTheme" xml:space="preserve">
     <value>Light theme</value>
   </data>
+  <data name="Settings_General_PriceIncreasePresets" xml:space="preserve">
+    <value>Use price increase presets for selected default proxy</value>
+  </data>
+  <data name="Settings_General_PriceIncreasePresets_HelpText" xml:space="preserve">
+    <value>Each proxy charges fees, they will be automatically filled in when configuring new crawler based on most common proxy rates.</value>
+  </data>
   <data name="Toast_MaxCountOfExcludedKeywordsReached" xml:space="preserve">
     <value>You can only add up to five excluded keywords.</value>
+  </data>
+  <data name="Welcome_Finish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="Welcome_Skip" xml:space="preserve">
+    <value>Skip</value>
   </data>
 </root>
