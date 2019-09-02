@@ -121,6 +121,7 @@ namespace AoTracker.Android.Fragments.Settings
                 ViewModel.ApplyThemeCommand.Execute(null);
                 MainActivity.Instance.Recreate();
             }));
+            DontKillMyAppButton.SetOnClickCommand(ViewModel.NavigateDontKillMyAppCommand);
 
         }
 
@@ -250,6 +251,7 @@ namespace AoTracker.Android.Fragments.Settings
         private Spinner _proxyDomainSpinner;
         private CheckBox _usePriceIncreaseProxyPresets;
         private CheckBox _scheduleFeedUpdateBackgroundJob;
+        private Button _dontKillMyAppButton;
 
         public RadioButton LightThemeRadioButton => _lightThemeRadioButton ?? (_lightThemeRadioButton = FindViewById<RadioButton>(Resource.Id.LightThemeRadioButton));
         public RadioButton DarkThemeRadioButton => _darkThemeRadioButton ?? (_darkThemeRadioButton = FindViewById<RadioButton>(Resource.Id.DarkThemeRadioButton));
@@ -268,6 +270,7 @@ namespace AoTracker.Android.Fragments.Settings
         public Spinner ProxyDomainSpinner => _proxyDomainSpinner ?? (_proxyDomainSpinner = FindViewById<Spinner>(Resource.Id.ProxyDomainSpinner));
         public CheckBox UsePriceIncreaseProxyPresets => _usePriceIncreaseProxyPresets ?? (_usePriceIncreaseProxyPresets = FindViewById<CheckBox>(Resource.Id.UsePriceIncreaseProxyPresets));
         public CheckBox ScheduleFeedUpdateBackgroundJob => _scheduleFeedUpdateBackgroundJob ?? (_scheduleFeedUpdateBackgroundJob = FindViewById<CheckBox>(Resource.Id.ScheduleFeedUpdateBackgroundJob));
+        public Button DontKillMyAppButton => _dontKillMyAppButton ?? (_dontKillMyAppButton = FindViewById<Button>(Resource.Id.DontKillMyAppButton));
 
         #endregion
     }

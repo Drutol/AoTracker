@@ -237,6 +237,12 @@
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:text="@string/Settings_General_FeedUpdateJob_HelpText" />
+
+            <Button android:id="@+id/DontKillMyAppButton"
+                    android:layout_width="match_parent"
+                    style="@style/TextBlockButton"
+                    android:layout_height="wrap_content"
+                    android:text="In case of troubles please check this website\n https://dontkillmyapp.com/"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

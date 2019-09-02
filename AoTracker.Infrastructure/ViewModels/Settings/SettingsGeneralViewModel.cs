@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using AoLibs.Adapters.Core.Interfaces;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Statics;
 using AoTracker.Interfaces;
@@ -11,14 +13,17 @@ namespace AoTracker.Infrastructure.ViewModels.Settings
 {
     public class SettingsGeneralViewModel : ViewModelBase
     {
+        private readonly IUriLauncherAdapter _uriLauncherAdapter;
         private readonly ISettings _settings;
         private readonly IFeedUpdateBackgroundServiceManager _updateBackgroundServiceManager;
         private AppTheme _appTheme;
 
         public SettingsGeneralViewModel(
+            IUriLauncherAdapter uriLauncherAdapter,
             ISettings settings,
             IFeedUpdateBackgroundServiceManager updateBackgroundServiceManager)
         {
+            _uriLauncherAdapter = uriLauncherAdapter;
             _settings = settings;
             _updateBackgroundServiceManager = updateBackgroundServiceManager;
             PageTitle = AppResources.PageTitle_SettingsGeneral;
@@ -101,6 +106,11 @@ namespace AoTracker.Infrastructure.ViewModels.Settings
         {
             _settings.AppTheme = AppTheme;
             ResourceLocator.BeginNewLifetimeScope();
+        });
+
+        public RelayCommand NavigateDontKillMyAppCommand => new RelayCommand(() =>
+        {
+            _uriLauncherAdapter.LaunchUri(new Uri("https://dontkillmyapp.com/"));
         });
     }
 }

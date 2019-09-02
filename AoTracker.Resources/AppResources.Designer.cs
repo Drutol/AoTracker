@@ -529,6 +529,24 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Feed update.
+        /// </summary>
+        public static string Notification_FeedUpdate {
+            get {
+                return ResourceManager.GetString("Notification_FeedUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are new changes on your feed!.
+        /// </summary>
+        public static string Notification_FeedUpdate_Description {
+            get {
+                return ResourceManager.GetString("Notification_FeedUpdate_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configure {0} Crawler.
         /// </summary>
         public static string PageTitle_ConfigureCrawlers {

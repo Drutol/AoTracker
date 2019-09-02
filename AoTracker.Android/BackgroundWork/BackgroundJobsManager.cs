@@ -47,7 +47,7 @@ namespace AoTracker.Android.BackgroundWork
                         .AddCapability(NetCapability.Internet)
                         .Build())
                     .SetPeriodic(
-                        (int) TimeSpan.FromHours(1).TotalMilliseconds)
+                        (int) TimeSpan.FromMinutes(15).TotalMilliseconds + 1)
                     .SetPersisted(true)
                     .Build();
 

@@ -28,6 +28,7 @@ using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Statics;
 using AoTracker.Interfaces;
 using AoTracker.Interfaces.Adapters;
+using AoTracker.Resources;
 using Autofac;
 using Java.Lang;
 using Microsoft.Extensions.Logging;
@@ -41,94 +42,102 @@ namespace AoTracker.Android.BackgroundWork
     public class FeedUpdateService : JobService
     {
         private const string FeedUpdateChannel = "FeedUpdateChannel";
+        private const int NotificationId = 12345;
 
         public override bool OnStartJob(JobParameters jobParameters)
         {
             Log.Info(nameof(FeedUpdateService), "Starting feed update job service.");
             Task.Run(async () =>
             {
-                AppInitializationRoutines.InitializeDependenciesForBackground(DependenciesRegistration);
-                using (var scope = ResourceLocator.ObtainScope())
+                try
                 {
-                    var userDataProvider = scope.Resolve<IUserDataProvider>();
-                    await userDataProvider.Initialize();
-
-                    if(!userDataProvider.CrawlingSets.Any())
-                        return;
-
-                    var feedProvider = scope.Resolve<IFeedProvider>();
-                    var feedHistoryProvider = scope.Resolve<IFeedHistoryProvider>();
-                    var cts = new CancellationTokenSource();
-                    var tcs = new TaskCompletionSource<bool>();
-                    var finishSemaphore = new SemaphoreSlim(1);
-
-                    feedProvider.NewCrawlerBatch += async (sender, batch) =>
+                    AppInitializationRoutines.InitializeDependenciesForBackground(DependenciesRegistration);
+                    using (var scope = ResourceLocator.ObtainScope())
                     {
-                        try
-                        {
-                            await finishSemaphore.WaitAsync(cts.Token);
+                        var userDataProvider = scope.Resolve<IUserDataProvider>();
+                        await userDataProvider.Initialize();
 
-                            if (batch.CrawlerResult.Success)
+                        if (!userDataProvider.CrawlingSets.Any())
+                            return;
+
+                        var feedProvider = scope.Resolve<IFeedProvider>();
+                        var feedHistoryProvider = scope.Resolve<IFeedHistoryProvider>();
+                        var cts = new CancellationTokenSource();
+                        var tcs = new TaskCompletionSource<bool>();
+                        var finishSemaphore = new SemaphoreSlim(1);
+
+                        feedProvider.NewCrawlerBatch += async (sender, batch) =>
+                        {
+                            try
                             {
-                                if (await feedHistoryProvider.HasAnyChanged(
-                                    batch.SetOfOrigin,
-                                    batch.CrawlerResult.Results))
+                                await finishSemaphore.WaitAsync(cts.Token);
+
+                                if (batch.CrawlerResult.Success)
                                 {
-                                    cts.Cancel();
-                                    Log.Info(nameof(FeedUpdateService), "Found new feed content.");
-                                    tcs.SetResult(true);
+                                    if (await feedHistoryProvider.HasAnyChanged(
+                                        batch.SetOfOrigin,
+                                        batch.CrawlerResult.Results))
+                                    {
+                                        cts.Cancel();
+                                        Log.Info(nameof(FeedUpdateService), "Found new feed content.");
+                                        tcs.SetResult(true);
+                                    }
                                 }
                             }
-                        }
-                        catch(TaskCanceledException)
-                        {
+                            catch (TaskCanceledException)
+                            {
 
-                        }
-                        finally
-                        {
-                            finishSemaphore.Release();
-                        }
-                    };
+                            }
+                            finally
+                            {
+                                finishSemaphore.Release();
+                            }
+                        };
 
-                    feedProvider.Finished += async (sender, args) =>
-                    {
-                        if(tcs.Task.IsCompleted)
-                            return;
-                        try
+                        feedProvider.Finished += async (sender, args) =>
                         {
-                            await finishSemaphore.WaitAsync(cts.Token);
                             if (tcs.Task.IsCompleted)
                                 return;
-                            tcs.SetResult(false);
-                        }
-                        catch (Exception e)
+                            try
+                            {
+                                await finishSemaphore.WaitAsync(cts.Token);
+                                if (tcs.Task.IsCompleted)
+                                    return;
+                                tcs.SetResult(false);
+                            }
+                            catch
+                            {
+                                //not important at this point
+                            }
+                        };
+
+                        feedProvider.StartAggregating(
+                            userDataProvider.CrawlingSets.ToList(),
+                            cts.Token,
+                            true);
+
+                        var result = await tcs.Task;
+
+                        if (result)
                         {
-                            
+                            var builder = new NotificationCompat.Builder(this, FeedUpdateChannel)
+                                .SetSmallIcon(Resource.Drawable.icon_logo_small)
+                                .SetContentTitle(AppResources.Notification_FeedUpdate)
+                                .SetContentText(AppResources.Notification_FeedUpdate_Description)
+                                .SetPriority(NotificationCompat.PriorityDefault);
+                            CreateNotificationChannel();
+
+                            var manager = NotificationManager.FromContext(this);
+                            manager.Notify(NotificationId, builder.Build());
                         }
-                    };
 
-                    feedProvider.StartAggregating(
-                        userDataProvider.CrawlingSets.ToList(),
-                        cts.Token,
-                        true);
-
-                    var result = await tcs.Task;
-
-                    if (result)
-                    {
-                        var builder = new NotificationCompat.Builder(this, FeedUpdateChannel)
-                            .SetSmallIcon(Resource.Drawable.icon_logo_small)
-                            .SetContentTitle("Feed update!")
-                            .SetContentText("There are new changes on your feed!")
-                            .SetPriority(NotificationCompat.PriorityDefault);
-                        CreateNotificationChannel();
-
-                        var manager = NotificationManager.FromContext(this);
-                        manager.Notify(new Random().Next(0,int.MaxValue), builder.Build());
+                        Log.Info(nameof(FeedUpdateService), "Finishing feed update job service.");
+                        JobFinished(jobParameters, true);
                     }
-
-                    Log.Info(nameof(FeedUpdateService), "Finishing feed update job service.");
-                    JobFinished(jobParameters, true);
+                }
+                catch (Exception e)
+                {
+                    Log.Error(nameof(FeedUpdateService), $"Failed to process feed update notification. {e}");
                 }
             });
 

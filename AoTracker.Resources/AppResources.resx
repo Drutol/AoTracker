@@ -273,6 +273,12 @@
   <data name="Meta_TargetAndroidFile" xml:space="preserve">
     <value>AoTracker.Android\Resources\values\app_resources.xml</value>
   </data>
+  <data name="Notification_FeedUpdate" xml:space="preserve">
+    <value>Feed update</value>
+  </data>
+  <data name="Notification_FeedUpdate_Description" xml:space="preserve">
+    <value>There are new changes on your feed!</value>
+  </data>
   <data name="PageTitle_ConfigureCrawlers" xml:space="preserve">
     <value>Configure {0} Crawler</value>
   </data>
