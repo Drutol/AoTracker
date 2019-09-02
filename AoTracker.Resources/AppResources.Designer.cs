@@ -115,6 +115,24 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Query needs to be shorter than 30 characters..
+        /// </summary>
+        public static string ConfigureCrawler_Error_SearchQueryInput_Long {
+            get {
+                return ResourceManager.GetString("ConfigureCrawler_Error_SearchQueryInput_Long", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Query needs to be at least 2 characters long..
+        /// </summary>
+        public static string ConfigureCrawler_Error_SearchQueryInput_Short {
+            get {
+                return ResourceManager.GetString("ConfigureCrawler_Error_SearchQueryInput_Short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Excluded Keywords.
         /// </summary>
         public static string ConfigureCrawler_ExcludedKeywords {
@@ -160,7 +178,7 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to At least 3 characters.
+        ///   Looks up a localized string similar to At least 2 characters.
         /// </summary>
         public static string ConfigureCrawler_SearchQuery_HelpText {
             get {
@@ -169,7 +187,7 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search query....
+        ///   Looks up a localized string similar to Search query.
         /// </summary>
         public static string ConfigureCrawler_SearchQuery_Placeholder {
             get {
@@ -183,6 +201,15 @@ namespace AoTracker.Resources {
         public static string ConfigureCrawler_TrimJapaneseQuotationMarks {
             get {
                 return ResourceManager.GetString("ConfigureCrawler_TrimJapaneseQuotationMarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You need to provide a title.
+        /// </summary>
+        public static string CrawlerSetDetails_Error_Title {
+            get {
+                return ResourceManager.GetString("CrawlerSetDetails_Error_Title", resourceCulture);
             }
         }
         
@@ -291,6 +318,15 @@ namespace AoTracker.Resources {
         public static string Generic_Delete {
             get {
                 return ResourceManager.GetString("Generic_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fix any errors before saving.
+        /// </summary>
+        public static string Generic_FixError {
+            get {
+                return ResourceManager.GetString("Generic_FixError", resourceCulture);
             }
         }
         

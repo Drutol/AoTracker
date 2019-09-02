@@ -50,14 +50,21 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             if (!message.FavouriteChanged)
             {
                 var feedItem = GetRelevantFeedEntry(message.ModifiedCrawlerSet);
-                feedItem.CrawlerSets = new List<CrawlerSet> { message.ModifiedCrawlerSet };
+                if (feedItem != null)
+                {
+                    feedItem.CrawlerSets = new List<CrawlerSet> { message.ModifiedCrawlerSet };
+
+                    if (!feedItem.CrawlerSets.Any(set => set.Descriptors.Any()))
+                        FeedTabEntries.Remove(feedItem);
+                }
             }
-            else if(message.FavouriteChanged)
+            else if (message.FavouriteChanged)
             {
                 if(!_settings.GenerateFeedAggregate)
                     return;
 
                 var favourites = _userDataProvider.CrawlingSets.Where(set => set.IsFavourite).ToList();
+
                 if (ContainsAggregate)
                 {
                     if (!favourites.Any())
@@ -76,7 +83,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
                     }
 
                 }
-                else if (favourites.Any())
+                else if (favourites.Count > 1)
                 {
                     var tab = BuildAggregateTab();
                     if (tab.CrawlerSets?.Any() ?? false)
@@ -125,7 +132,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             }
         }
 
-        public async void NavigatedTo()
+        public void NavigatedTo()
         {
             MessengerInstance.Send(ToolbarRequestMessage.ShowSearchInterface);
 
@@ -138,11 +145,14 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
                 {
                     if (_settings.GenerateFeedAggregate && !ContainsAggregate)
                     {
-                        var aggregateTab = BuildAggregateTab();
-                        if (aggregateTab.CrawlerSets?.Any() ?? false)
+                        if (_userDataProvider.CrawlingSets.Count(set => set.IsFavourite) > 1)
                         {
-                            ContainsAggregate = true;
-                            FeedTabEntries.Insert(0, aggregateTab);
+                            var aggregateTab = BuildAggregateTab();
+                            if (aggregateTab.CrawlerSets?.Any() ?? false)
+                            {
+                                ContainsAggregate = true;
+                                FeedTabEntries.Insert(0, aggregateTab);
+                            }
                         }
                     }
                     else if (!_settings.GenerateFeedAggregate && ContainsAggregate)
@@ -157,7 +167,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             }
 
             var entries = new List<FeedTabEntry>(0);
-            if (_userDataProvider.CrawlingSets.Count > 1 && _settings.GenerateFeedAggregate)
+            if (_userDataProvider.CrawlingSets.Count(set => set.IsFavourite) > 1 && _settings.GenerateFeedAggregate)
             {
                 var aggregateTab = BuildAggregateTab();
 
@@ -221,7 +231,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
 
         private FeedTabEntry GetRelevantFeedEntry(CrawlerSet set)
         {
-            return _feedTabEntries.First(entry => entry.CrawlerSets.Count == 1 && entry.CrawlerSets[0] == set);
+            return _feedTabEntries.FirstOrDefault(entry => entry.CrawlerSets.Count == 1 && entry.CrawlerSets[0] == set);
         }
     }
 }

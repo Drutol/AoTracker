@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Support.V7.Widget;
 using Android.Views;
+using Android.Views.InputMethods;
 using Android.Widget;
 using AoLibs.Adapters.Android.Recycler;
 using AoTracker.Crawlers.Enums;
@@ -67,6 +68,15 @@ namespace AoTracker.Android.Utils
                 emptyState.Visibility = BindingConverters.BoolToVisibility(collection.Count == 0);
             };
             emptyState.Visibility = BindingConverters.BoolToVisibility(collection.Count == 0);
+        }
+
+        public static void HideKeyboard(this Activity activity)
+        {
+            var imm = (InputMethodManager)activity.GetSystemService(Context.InputMethodService);
+            //Find the currently focused view, so we can grab the correct window token from it.
+            var view = activity.CurrentFocus ?? new View(activity);
+            //If no view currently has focus, create a new one, just so we can grab a window token from it
+            imm.HideSoftInputFromWindow(view.WindowToken, 0);
         }
     }
 }

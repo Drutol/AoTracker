@@ -32,7 +32,6 @@ namespace AoTracker.Android.Themes
         public static Color DarkBackgroundColour { get; set; }
 
         public static AppTheme CurrentTheme { get; set; }
-        public static bool IsDarkTheme { get; private set; }
 
         public static void ApplyTheme(this AppCompatActivity activity)
         {
@@ -43,17 +42,16 @@ namespace AoTracker.Android.Themes
             if ((theme & AppTheme.Dark) == AppTheme.Dark)
             {
                 activity.SetTheme(Resource.Style.AoTracker_Dark);
-                IsDarkTheme = true;
+                activity.Window.SetStatusBarColor(DarkBackgroundColour);
             }
             else if ((theme & AppTheme.Black) == AppTheme.Black)
             {
                 activity.SetTheme(Resource.Style.AoTracker_Black);
-                IsDarkTheme = true;
+                activity.Window.SetStatusBarColor(Color.Black);
             }
             else
             {
                 activity.SetTheme(Resource.Style.AoTracker_Light);
-                IsDarkTheme = false;
             }
 
             // Colour scheme

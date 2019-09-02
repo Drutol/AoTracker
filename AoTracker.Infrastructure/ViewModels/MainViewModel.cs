@@ -112,7 +112,8 @@ namespace AoTracker.Infrastructure.ViewModels
             }
             else
             {
-                if (_userDataProvider.CrawlingSets.Any())
+                // only navigate feed if there are sets with descriptors
+                if (_userDataProvider.CrawlingSets.Any(set => set.Descriptors.Any()))
                     _navigationManager.Navigate(PageIndex.Feed, NavigationBackstackOption.SetAsRootPage);
                 else
                     _navigationManager.Navigate(PageIndex.CrawlerSets, NavigationBackstackOption.SetAsRootPage);

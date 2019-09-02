@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Support.Design.Widget;
@@ -38,13 +39,15 @@ namespace AoTracker.Android.Activities
         Theme = "@style/AoTracker.Splashscreen",
         Icon = "@mipmap/ic_launcher",
         RoundIcon = "@mipmap/ic_launcher_round",
-        MainLauncher = true, LaunchMode = LaunchMode.SingleInstance,
-        ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize)]
+        MainLauncher = true,
+        LaunchMode = LaunchMode.SingleInstance,
+        TaskAffinity = "",
+        ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.KeyboardHidden | ConfigChanges.Keyboard)]
     public partial class MainActivity : AppCompatActivity
     {
-        private ActionBarDrawerToggle _hamburgerToggle;
-        private MainViewModel ViewModel { get; set; }
-        private ILogger<MainActivity> _logger;
+        private static MainViewModel ViewModel { get; set; }
+        private static ILogger<MainActivity> _logger;
+        private static bool _initialized;
 
         public static Activity Instance { get; set; }
 
@@ -55,39 +58,49 @@ namespace AoTracker.Android.Activities
             Instance = this;
         }
 
-        protected override async void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            this.ApplyTheme();
+
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             AppCenter.Start("c0a878f9-4b3b-4c60-b56d-41e237fbf515", typeof(Analytics), typeof(Crashes));
-            this.ApplyTheme();
-            if(ThemeManager.IsDarkTheme)
-                Window.SetStatusBarColor(ThemeManager.DarkBackgroundColour);
             SetContentView(Resource.Layout.activity_main);
 
-            App.NavigationManager = new NavigationManager<PageIndex>(
-                SupportFragmentManager,
-                RootView,
-                new ViewModelResolver());
-            App.DialogManager = new CustomDialogsManager<DialogIndex>(
-                SupportFragmentManager,
-                new Dictionary<DialogIndex, ICustomDialogProvider>
-                {
-                    {DialogIndex.ChangelogDialog, new OneshotCustomDialogProvider<ChangelogDialog>()}
-                }, 
-                new ViewModelResolver());
-
-            AppInitializationRoutines.InitializeDependencies();
-            SetSupportActionBar(Toolbar);
-
-            using (var scope = ResourceLocator.ObtainScope())
+            if (!_initialized)
             {
-                ViewModel = scope.Resolve<MainViewModel>();
-                _logger = scope.Resolve<ILogger<MainActivity>>();
+                App.NavigationManager = new NavigationManager<PageIndex>(
+                    SupportFragmentManager,
+                    RootView,
+                    new ViewModelResolver());
+                App.DialogManager = new CustomDialogsManager<DialogIndex>(
+                    SupportFragmentManager,
+                    new Dictionary<DialogIndex, ICustomDialogProvider>
+                    {
+                        {DialogIndex.ChangelogDialog, new OneshotCustomDialogProvider<ChangelogDialog>()}
+                    },
+                    new ViewModelResolver());
+
+                AppInitializationRoutines.InitializeDependencies();
+
+
+                using (var scope = ResourceLocator.ObtainScope())
+                {
+                    ViewModel = scope.Resolve<MainViewModel>();
+                    _logger = scope.Resolve<ILogger<MainActivity>>();
+                }
+
+                ViewModel.Initialize();
+
+                _initialized = true;
+            }
+            else
+            {
+                App.NavigationManager.RestoreState(SupportFragmentManager, RootView);
+                App.DialogManager.ChangeFragmentManager(SupportFragmentManager);
             }
 
-            ViewModel.Initialize();
-
+            SetSupportActionBar(Toolbar);
             InitDrawer();
         }
 
@@ -100,6 +113,11 @@ namespace AoTracker.Android.Activities
 
             return base.OnOptionsItemSelected(item);
 
+        }
+
+        protected override void OnNewIntent(Intent intent)
+        {
+            base.OnNewIntent(intent);
         }
 
         protected override void OnResume()

@@ -25,7 +25,7 @@ namespace AoTracker.Android.Adapters
 
         public void ShowToast(string text)
         {
-            Toast.MakeText(_contextProvider.CurrentContext, text, ToastLength.Short);
+            Toast.MakeText(_contextProvider.CurrentContext, text, ToastLength.Short).Show();
         }
     }
 }

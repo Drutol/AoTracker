@@ -14,6 +14,7 @@ using AoLibs.Adapters.Android;
 using AoLibs.Adapters.Android.Interfaces;
 using AoLibs.Adapters.Core;
 using AoLibs.Adapters.Core.Interfaces;
+using AoLibs.Dialogs.Android;
 using AoLibs.Dialogs.Core.Interfaces;
 using AoLibs.Navigation.Android.Navigation;
 using AoLibs.Navigation.Core.Interfaces;
@@ -38,8 +39,8 @@ namespace AoTracker.Android
     public class App : Application
     {
         public static App Current { get; private set; }
-        public static INavigationManager<PageIndex> NavigationManager { get; set; }
-        public static ICustomDialogsManager<DialogIndex> DialogManager { get; set; }
+        public static NavigationManager<PageIndex> NavigationManager { get; set; }
+        public static CustomDialogsManager<DialogIndex> DialogManager { get; set; }
 
         public App(IntPtr handle, JniHandleOwnership ownerShip) : base(handle, ownerShip)
         {

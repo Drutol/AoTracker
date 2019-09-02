@@ -18,6 +18,7 @@ using AoLibs.Adapters.Android.Recycler;
 using AoLibs.Navigation.Android.Navigation.Attributes;
 using AoLibs.Utilities.Android;
 using AoLibs.Utilities.Android.Listeners;
+using AoTracker.Android.Activities;
 using AoTracker.Android.Utils;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Interfaces;
@@ -90,6 +91,10 @@ namespace AoTracker.Android.Fragments
                 this.SetBinding(() => ViewModel.SetName,
                     () => TitleTextBox.Text, BindingMode.TwoWay));
 
+            Bindings.Add(this.SetBinding(() => ViewModel.SetNameError).WhenSourceChanges(() =>
+            {
+                TitleInputLayout.Error = ViewModel.SetNameError;
+            }));
 
             EmptyStateIcon.SetImageResource(Resource.Drawable.icon_playlist_plus_huge);
             EmptyStateSubtitle.Text = AppResources.EmptyState_Subtitle_CrawlerSetDetails;
@@ -149,6 +154,7 @@ namespace AoTracker.Android.Fragments
         {
             base.NavigatedFrom();
             ViewModel.NavigatedFrom();
+            MainActivity.Instance.HideKeyboard();
         }
     }
 }

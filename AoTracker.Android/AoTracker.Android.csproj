@@ -165,28 +165,28 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AoLibs.Adapters.Android">
-      <Version>0.6.5</Version>
+      <Version>0.6.6</Version>
     </PackageReference>
     <PackageReference Include="AoLibs.Adapters.Core">
-      <Version>0.6.5</Version>
+      <Version>0.6.6</Version>
     </PackageReference>
     <PackageReference Include="AoLibs.Dialogs.Android">
-      <Version>0.6.5</Version>
+      <Version>0.6.6</Version>
     </PackageReference>
     <PackageReference Include="AoLibs.Dialogs.Core">
-      <Version>0.6.5</Version>
+      <Version>0.6.6</Version>
     </PackageReference>
     <PackageReference Include="AoLibs.Navigation.Android">
-      <Version>0.6.5</Version>
+      <Version>0.6.6</Version>
     </PackageReference>
     <PackageReference Include="AoLibs.Navigation.Core">
-      <Version>0.6.5</Version>
+      <Version>0.6.6</Version>
     </PackageReference>
     <PackageReference Include="AoLibs.Utilities.Android">
-      <Version>0.6.5</Version>
+      <Version>0.6.6</Version>
     </PackageReference>
     <PackageReference Include="Autofac">
-      <Version>4.9.3</Version>
+      <Version>4.9.4</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter">
       <Version>2.1.1</Version>
@@ -620,6 +620,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon_logo_small.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_warning.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

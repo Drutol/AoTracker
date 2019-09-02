@@ -25,18 +25,11 @@ namespace AoTracker.Infrastructure.ViewModels
             MessengerInstance.Send(new PageTitleMessage(PageTitle));
         }
 
-        protected bool Set<T>(ref T backingStore, T value, Action<T> onChanged)
-        {
-            var result = Set(ref backingStore, value);
-            if(result)
-                onChanged?.Invoke(value);
-            return result;
-        }
-
-        protected new bool Set<T>(ref T backingStore, T value, [CallerMemberName] string propertyName = null)
+        protected new bool Set<T>(ref T backingStore, T value, bool alwaysRaise = true, [CallerMemberName] string propertyName = null)
         {
             var result = base.Set(ref backingStore, value);
-            RaisePropertyChanged(propertyName);
+            if(alwaysRaise)
+                RaisePropertyChanged(propertyName);
             return result;
         }
     }

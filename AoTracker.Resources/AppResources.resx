@@ -135,6 +135,12 @@
   <data name="ConfigureCrawler_Cost_PercentageIncrease_HelpText" xml:space="preserve">
     <value>Increases the base prices by given %</value>
   </data>
+  <data name="ConfigureCrawler_Error_SearchQueryInput_Long" xml:space="preserve">
+    <value>Query needs to be shorter than 30 characters.</value>
+  </data>
+  <data name="ConfigureCrawler_Error_SearchQueryInput_Short" xml:space="preserve">
+    <value>Query needs to be at least 2 characters long.</value>
+  </data>
   <data name="ConfigureCrawler_ExcludedKeywords" xml:space="preserve">
     <value>Excluded Keywords</value>
   </data>
@@ -151,13 +157,16 @@
     <value>Save</value>
   </data>
   <data name="ConfigureCrawler_SearchQuery_HelpText" xml:space="preserve">
-    <value>At least 3 characters</value>
+    <value>At least 2 characters</value>
   </data>
   <data name="ConfigureCrawler_SearchQuery_Placeholder" xml:space="preserve">
-    <value>Search query...</value>
+    <value>Search query</value>
   </data>
   <data name="ConfigureCrawler_TrimJapaneseQuotationMarks" xml:space="preserve">
     <value>Remove text content from between 「 」</value>
+  </data>
+  <data name="CrawlerSetDetails_Error_Title" xml:space="preserve">
+    <value>You need to provide a title</value>
   </data>
   <data name="CrawlerSetDetails_Save" xml:space="preserve">
     <value>Save</value>
@@ -194,6 +203,9 @@
   </data>
   <data name="Generic_Delete" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="Generic_FixError" xml:space="preserve">
+    <value>Fix any errors before saving</value>
   </data>
   <data name="Hamburger_Item_CrawlerSets" xml:space="preserve">
     <value>Crawler Sets</value>

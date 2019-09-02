@@ -30,6 +30,7 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
         private string _searchQueryInput;
         private double _costPercentageIncrease;
         private double _costOffsetIncrease;
+        private string _searchQueryInputError;
 
         public SmartObservableCollection<string> ExcludedKeywords { get; set; } = new SmartObservableCollection<string>();
 
@@ -50,7 +51,7 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
         public void NavigatedTo(ConfigureCrawlerPageNavArgs navArgs)
         {
             MessengerInstance.Send(ToolbarRequestMessage.ShowSaveButton);
-            MessengerInstance.Register<ToolbarActionMessage>(this, OntoolbarAction);
+            MessengerInstance.Register<ToolbarActionMessage>(this, OnToolbarAction);
 
             _navArgs = navArgs;
             PageTitle = string.Format(AppResources.PageTitle_ConfigureCrawlers, Domain.ToString());
@@ -74,24 +75,48 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
             }
         }
 
-        private void OntoolbarAction(ToolbarActionMessage message)
+        private void OnToolbarAction(ToolbarActionMessage message)
         {
             if (message == ToolbarActionMessage.ClickedSaveButton)
             {
-                SaveCommand.Execute(null);
+                ValidateSearchQuery(SearchQueryInput);
+
+                if(SearchQueryInputError == null)
+                    SaveCommand.Execute(null);
             }
         }
 
         public void NavigatedFrom()
         {
             MessengerInstance.Send(ToolbarRequestMessage.ResetToolbar);
-            MessengerInstance.Unregister<ToolbarActionMessage>(this, OntoolbarAction);
+            MessengerInstance.Unregister<ToolbarActionMessage>(this, OnToolbarAction);
         }
 
         public string SearchQueryInput
         {
             get => _searchQueryInput;
-            set => Set(ref _searchQueryInput, value);
+            set
+            {
+                Set(ref _searchQueryInput, value);
+                if(SearchQueryInputError != null)
+                    ValidateSearchQuery(value);
+            }
+        }
+
+        private void ValidateSearchQuery(string value)
+        {
+            if (string.IsNullOrEmpty(value) || value.Length <= 1)
+            {
+                SearchQueryInputError = AppResources.ConfigureCrawler_Error_SearchQueryInput_Short;
+            }
+            else if (value.Length > 30)
+            {
+                SearchQueryInputError = AppResources.ConfigureCrawler_Error_SearchQueryInput_Long;
+            }
+            else
+            {
+                SearchQueryInputError = null;
+            }
         }
 
         public double CostPercentageIncrease
@@ -104,6 +129,12 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
         {
             get => _costOffsetIncrease;
             set => Set(ref _costOffsetIncrease, value);
+        }
+
+        public string SearchQueryInputError
+        {
+            get => _searchQueryInputError;
+            set => Set(ref _searchQueryInputError, value);
         }
 
         public RelayCommand<string> AddExcludedKeywordCommand => new RelayCommand<string>(keyword =>

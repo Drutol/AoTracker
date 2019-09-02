@@ -36,6 +36,7 @@ namespace AoTracker.Android.Activities
         private HamburgerEntryHolder _settingsButtonHolder;
         private SearchView _searchView;
         private bool _hamburgerButtonAdded;
+        private ActionBarDrawerToggle _hamburgerToggle;
 
         private void InitDrawer()
         {
@@ -191,7 +192,7 @@ namespace AoTracker.Android.Activities
 
                 ClickSurface.SetOnClickListener(new OnClickListener(view =>
                 {
-                    _parent.ViewModel.SelectHamburgerItemCommand.Execute(ViewModel);
+                    MainActivity.ViewModel.SelectHamburgerItemCommand.Execute(ViewModel);
                     _parent.DrawerLayout.CloseDrawers();
                 }));
             }

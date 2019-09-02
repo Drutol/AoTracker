@@ -1,66 +1,67 @@
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/DrawerLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/DrawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/Toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?ToolbarBackgroundColour"
-            android:elevation="4dp"
-            android:fitsSystemWindows="true"
-            android:minHeight="?attr/actionBarSize"
-            app:titleTextColor="?ToolbarTextColour" />
-
-        <FrameLayout
-            android:id="@+id/RootView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
-
-    <android.support.design.widget.NavigationView
-        android:id="@+id/NavigationView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start">
-
-        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+        <android.support.v7.widget.Toolbar
+                android:id="@+id/Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?ToolbarBackgroundColour"
+                android:elevation="4dp"
+                android:fitsSystemWindows="true"
+                android:minHeight="?attr/actionBarSize"
+                app:titleTextColor="?ToolbarTextColour" />
+
+        <FrameLayout
+                android:id="@+id/RootView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+    </LinearLayout>
+
+
+    <android.support.design.widget.NavigationView
+            android:id="@+id/NavigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="?ForegroundColour">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
             <include layout="@layout/nav_header" />
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/NavigationRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginBottom="4dp"
-                android:layout_weight="1"
-                android:clipToPadding="false"
-                android:paddingTop="16dp" />
+                    android:id="@+id/NavigationRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_weight="1"
+                    android:clipToPadding="false"
+                    android:paddingTop="16dp" />
 
             <FrameLayout
-                android:id="@+id/SettingsNavButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?BackgroundColour"
-                android:elevation="4dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp">
+                    android:id="@+id/SettingsNavButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?BackgroundColour"
+                    android:elevation="4dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
 
                 <include
-                    layout="@layout/nav_item"
-                    tools:skipRecursion="true" />
+                        layout="@layout/nav_item"
+                        tools:skipRecursion="true" />
             </FrameLayout>
         </LinearLayout>
 

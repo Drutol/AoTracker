@@ -13,6 +13,7 @@ using Android.Views;
 using Android.Widget;
 using AoLibs.Utilities.Android;
 using AoLibs.Utilities.Android.Listeners;
+using AoTracker.Android.Activities;
 using AoTracker.Android.Utils;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Infrastructure.Models.NavArgs;
@@ -53,6 +54,12 @@ namespace AoTracker.Android.Fragments.CrawlerConfigure
                 this.SetBinding(() => ViewModel.CostPercentageIncrease,
                     () => PercentageIncreaseTextBox.Text, BindingMode.TwoWay));
 
+            Bindings.Add(this.SetBinding(() => ViewModel.SearchQueryInputError).WhenSourceChanges(() =>
+            {
+                SearchQueryInputLayout.ErrorEnabled = !string.IsNullOrEmpty(ViewModel.SearchQueryInputError);
+                SearchQueryInputLayout.Error = ViewModel.SearchQueryInputError;
+            }));
+
             AddExcludedKeywordButton.SetOnClickListener(new OnClickListener(view =>
             {
                 ViewModel.AddExcludedKeywordCommand.Execute(ExcludedKeywordInput.Text);
@@ -75,12 +82,14 @@ namespace AoTracker.Android.Fragments.CrawlerConfigure
         {
             base.NavigatedFrom();
             ViewModel.NavigatedFrom();
+            MainActivity.Instance.HideKeyboard();
         }
 
         #region Views
 
         private ImageView _domainIcon;
         private TextInputEditText _searchQueryTextBox;
+        private TextInputLayout _searchQueryInputLayout;
         private TextInputEditText _percentageIncreaseTextBox;
         private TextInputEditText _offsetIncreaseTextBox;
         private RecyclerView _excludedKeywordsRecyclerView;
@@ -92,6 +101,7 @@ namespace AoTracker.Android.Fragments.CrawlerConfigure
 
         public ImageView DomainIcon => _domainIcon ?? (_domainIcon = FindViewById<ImageView>(Resource.Id.DomainIcon));
         public TextInputEditText SearchQueryTextBox => _searchQueryTextBox ?? (_searchQueryTextBox = FindViewById<TextInputEditText>(Resource.Id.SearchQueryTextBox));
+        public TextInputLayout SearchQueryInputLayout => _searchQueryInputLayout ?? (_searchQueryInputLayout = FindViewById<TextInputLayout>(Resource.Id.SearchQueryInputLayout));
         public TextInputEditText PercentageIncreaseTextBox => _percentageIncreaseTextBox ?? (_percentageIncreaseTextBox = FindViewById<TextInputEditText>(Resource.Id.PercentageIncreaseTextBox));
         public TextInputEditText OffsetIncreaseTextBox => _offsetIncreaseTextBox ?? (_offsetIncreaseTextBox = FindViewById<TextInputEditText>(Resource.Id.OffsetIncreaseTextBox));
         public RecyclerView ExcludedKeywordsRecyclerView => _excludedKeywordsRecyclerView ?? (_excludedKeywordsRecyclerView = FindViewById<RecyclerView>(Resource.Id.ExcludedKeywordsRecyclerView));

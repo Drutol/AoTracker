@@ -30,6 +30,7 @@ namespace AoTracker.Android.Fragments
         #region Views
 
         private TextInputEditText _titleTextBox;
+        private TextInputLayout _titleInputLayout;
         private RecyclerView _crawlersRecyclerView;
         private ImageView _emptyStateIcon;
         private TextView _emptyStateSubtitle;
@@ -37,6 +38,7 @@ namespace AoTracker.Android.Fragments
         private RecyclerView _addCrawlersRecyclerView;
 
         public TextInputEditText TitleTextBox => _titleTextBox ?? (_titleTextBox = FindViewById<TextInputEditText>(Resource.Id.TitleTextBox));
+        public TextInputLayout TitleInputLayout => _titleInputLayout ?? (_titleInputLayout = FindViewById<TextInputLayout>(Resource.Id.TitleInputLayout));
         public RecyclerView CrawlersRecyclerView => _crawlersRecyclerView ?? (_crawlersRecyclerView = FindViewById<RecyclerView>(Resource.Id.CrawlersRecyclerView));
         public ImageView EmptyStateIcon => _emptyStateIcon ?? (_emptyStateIcon = FindViewById<ImageView>(Resource.Id.EmptyStateIcon));
         public TextView EmptyStateSubtitle => _emptyStateSubtitle ?? (_emptyStateSubtitle = FindViewById<TextView>(Resource.Id.EmptyStateSubtitle));
