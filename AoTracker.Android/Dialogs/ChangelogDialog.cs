@@ -30,7 +30,7 @@ namespace AoTracker.Android.Dialogs
             Bindings.Add(this.SetBinding(() => ViewModel.Parameter).WhenSourceChanges(() =>
             {
                 Header.Text =
-                    $"{AppResources.Dialog_Changelog_Changelog} v{VersionTracking.CurrentVersion}.{VersionTracking.CurrentBuild} {ViewModel.Parameter.Date}";
+                    $"{AppResources.Dialog_Changelog_Changelog} v{VersionTracking.CurrentVersion} {ViewModel.Parameter.Date}";
                 Changelog.SetAdapter(new RecyclerViewAdapterBuilder<string, ChangelogItemHolder>()
                     .WithItems(ViewModel.Parameter.Changelog)
                     .WithContentStretching()

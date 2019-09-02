@@ -29,4 +29,16 @@
         android:textColor="@color/DarkTextColour"
         android:textSize="28sp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_margin="8dp"
+        android:drawableLeft="@drawable/icon_warning"
+        android:drawableRight="@drawable/icon_warning"
+        android:drawableTint="@color/RedColour"
+        android:gravity="center"
+        android:text="ALPHA"
+        android:textColor="@color/RedColour" />
+
 </FrameLayout>

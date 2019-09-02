@@ -89,7 +89,8 @@ namespace AoTracker.Android.Activities
                     ViewModel = scope.Resolve<MainViewModel>();
                     _logger = scope.Resolve<ILogger<MainActivity>>();
                 }
-
+                SetSupportActionBar(Toolbar);
+                InitDrawer();
                 ViewModel.Initialize();
 
                 _initialized = true;
@@ -98,10 +99,11 @@ namespace AoTracker.Android.Activities
             {
                 App.NavigationManager.RestoreState(SupportFragmentManager, RootView);
                 App.DialogManager.ChangeFragmentManager(SupportFragmentManager);
+                SetSupportActionBar(Toolbar);
+                InitDrawer();
             }
 
-            SetSupportActionBar(Toolbar);
-            InitDrawer();
+
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

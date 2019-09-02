@@ -34,6 +34,15 @@ namespace AoTracker.Infrastructure.Infrastructure
 
             if (VersionTracking.IsFirstLaunchForCurrentVersion && !VersionTracking.IsFirstLaunchEver)
             {
+                var version = new Version(VersionTracking.CurrentVersion);
+                var prevVersion = new Version(VersionTracking.PreviousVersion);
+
+                if (version.Major == prevVersion.Major &&
+                    version.Minor == prevVersion.Minor &&
+                    version.Build == prevVersion.Build &&
+                    version.Revision != prevVersion.Revision)
+                    return Task.CompletedTask;
+
                 _dispatcherAdapter.Run(() =>
                 {
                     try

@@ -122,26 +122,29 @@ namespace AoTracker.Android.Activities
                     Toolbar.Menu.Add(0, (int) ToolbarActionMessage.ClickedSaveButton, 0, "Save")
                         .SetIcon(Resource.Drawable.icon_save)
                         .SetShowAsAction(ShowAsAction.Always);
-                    break;
+                    break; 
                 case ToolbarRequestMessage.ResetToolbar:
                     Toolbar.Menu.Clear();
                     break;
                 case ToolbarRequestMessage.ShowSearchInterface:
-                    _searchView = new SearchView(this)
+                    Toolbar.Post(() =>
                     {
-                        LayoutParameters = new Toolbar.LayoutParams(
-                            ViewGroup.LayoutParams.MatchParent,
-                            ViewGroup.LayoutParams.WrapContent)
-                    };
-                    _searchView.MaxWidth = int.MaxValue;
-                    _searchView.FindViewById<TextView>(Resource.Id.search_src_text).SetOnEditorActionListener(
-                        new OnEditorActionListener(
-                            tuple => { Messenger.Default.Send(new SearchQueryMessage(_searchView.Query)); }));
-                    Toolbar.Menu.Add(0, -1, 0, "Search")
-                        .SetActionView(_searchView)
-                        .SetIcon(Resource.Drawable.icon_search)
-                        .SetOnActionExpandListener(this)
-                        .SetShowAsActionFlags(ShowAsAction.CollapseActionView | ShowAsAction.IfRoom);
+                        _searchView = new SearchView(this)
+                        {
+                            LayoutParameters = new Toolbar.LayoutParams(
+                                ViewGroup.LayoutParams.MatchParent,
+                                ViewGroup.LayoutParams.WrapContent)
+                        };
+                        _searchView.MaxWidth = int.MaxValue;
+                        _searchView.FindViewById<TextView>(Resource.Id.search_src_text).SetOnEditorActionListener(
+                            new OnEditorActionListener(
+                                tuple => { Messenger.Default.Send(new SearchQueryMessage(_searchView.Query)); }));
+                        Toolbar.Menu.Add(0, -1, 0, "Search")
+                            .SetActionView(_searchView)
+                            .SetIcon(Resource.Drawable.icon_search)
+                            .SetOnActionExpandListener(this)
+                            .SetShowAsActionFlags(ShowAsAction.CollapseActionView | ShowAsAction.IfRoom);
+                    });
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(request), request, null);
@@ -155,8 +158,6 @@ namespace AoTracker.Android.Activities
         }
 
         #endregion
-
-
 
         class HamburgerEntryHolder : BindingViewHolderBase<HamburgerMenuEntryViewModel>
         {
