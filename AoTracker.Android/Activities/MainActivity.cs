@@ -99,6 +99,8 @@ namespace AoTracker.Android.Activities
             {
                 App.NavigationManager.RestoreState(SupportFragmentManager, RootView);
                 App.DialogManager.ChangeFragmentManager(SupportFragmentManager);
+                if(App.NavigationManager.CurrentPage == PageIndex.Feed)
+                    App.NavigationManager.PageDefinitions[PageIndex.Feed].Page.NavigatedTo();
                 SetSupportActionBar(Toolbar);
                 InitDrawer();
             }

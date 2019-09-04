@@ -56,6 +56,11 @@ namespace AoTracker.Android.Fragments.Feed
 
         public FeedTabEntry TabEntry { get; }
 
+        public FeedPageTabFragment()
+        {
+
+        }
+
         public FeedPageTabFragment(FeedTabEntry tabEntry)
         {
             TabEntry = tabEntry;

@@ -21,6 +21,11 @@ namespace AoTracker.Android.Fragments.Welcome
 
         public override int LayoutResourceId { get; } = Resource.Layout.page_welcome_tab;
 
+        public WelcomePageTabFragment()
+        {
+
+        }
+
         public WelcomePageTabFragment(WelcomeTabEntry welcomeTabEntry)
         {
             _welcomeTabEntry = welcomeTabEntry;
