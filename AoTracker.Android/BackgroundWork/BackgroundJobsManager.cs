@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Android.App.Job;
 using Android.Content;
 using Android.Net;
+using Android.OS;
 using AoLibs.Adapters.Android.Interfaces;
 using AoTracker.Android.Utils;
 using AoTracker.Interfaces;
@@ -39,19 +40,22 @@ namespace AoTracker.Android.BackgroundWork
 
             if (!_settings.FeedUpdateJobScheduled)
             {
-                var job = _contextProvider.CurrentContext
+                var jobBuilder = _contextProvider.CurrentContext
                     .CreateJobBuilderUsingJobId<FeedUpdateService>(FeedUpdateJobId)
-                    .SetRequiredNetwork(new NetworkRequest.Builder()
+                    .SetPeriodic(
+                        (int) TimeSpan.FromMinutes(15).TotalMilliseconds + 1)
+                    .SetPersisted(true);
+
+                if (Build.VERSION.SdkInt >= BuildVersionCodes.P)
+                {
+                    jobBuilder.SetRequiredNetwork(new NetworkRequest.Builder()
                         .AddTransportType(TransportType.Wifi)
                         .AddTransportType(TransportType.Cellular)
                         .AddCapability(NetCapability.Internet)
-                        .Build())
-                    .SetPeriodic(
-                        (int) TimeSpan.FromMinutes(15).TotalMilliseconds + 1)
-                    .SetPersisted(true)
-                    .Build();
+                        .Build());
+                }
 
-                var result = jobScheduler.Schedule(job);
+                var result = jobScheduler.Schedule(jobBuilder.Build());
 
                 if (result == JobScheduler.ResultSuccess)
                 {

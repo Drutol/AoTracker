@@ -65,11 +65,12 @@ namespace AoTracker.Infrastructure.Infrastructure
             return Task.CompletedTask;
         }
 
-        private string _date = "31.08.2019";
+        private string _date = "04.09.2019";
         private string _note = "Test changelog.";
         private List<string> _changelog = new List<string>
         {
-            "Initial release."
+            "Fix initial crashes on non Android P devices.",
+            "Various background restoration tweaks."
         };
     }
 }
