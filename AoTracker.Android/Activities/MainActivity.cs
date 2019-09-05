@@ -22,6 +22,7 @@ using AoTracker.Android.Themes;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Messaging;
 using AoTracker.Infrastructure.Statics;
+using AoTracker.Infrastructure.Util;
 using AoTracker.Infrastructure.ViewModels;
 using Autofac;
 using GalaSoft.MvvmLight.Helpers;
@@ -72,14 +73,14 @@ namespace AoTracker.Android.Activities
                 App.NavigationManager = new NavigationManager<PageIndex>(
                     SupportFragmentManager,
                     RootView,
-                    new ViewModelResolver());
+                    new DependencyResolver());
                 App.DialogManager = new CustomDialogsManager<DialogIndex>(
                     SupportFragmentManager,
                     new Dictionary<DialogIndex, ICustomDialogProvider>
                     {
                         {DialogIndex.ChangelogDialog, new OneshotCustomDialogProvider<ChangelogDialog>()}
                     },
-                    new ViewModelResolver());
+                    new DependencyResolver());
 
                 AppInitializationRoutines.InitializeDependencies();
 
@@ -175,20 +176,6 @@ namespace AoTracker.Android.Activities
 
         #endregion
 
-        private class ViewModelResolver : IDependencyResolver, ICustomDialogDependencyResolver
-        {
-            public TDependency Resolve<TDependency>()
-            {
-                try
-                {
-                    return ResourceLocator.CurrentScope.Resolve<TDependency>();
-                }
-                catch (Exception e)
-                {
-                    Debugger.Break();
-                    throw;
-                }
-            }
-        }
+        
     }
 }

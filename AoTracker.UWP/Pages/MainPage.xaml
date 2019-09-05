@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="AoTracker.UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AoTracker.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:AoTracker.Infrastructure.ViewModels"
+    xmlns:models="using:AoTracker.Infrastructure.Models"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+
+
+        <NavigationView MenuItemsSource="{Binding HamburgerItems}" PaneDisplayMode="Left"
+                        SelectionChanged="NavigationView_OnSelectionChanged">
+            <NavigationView.MenuItemTemplate>
+                <DataTemplate>
+                    <NavigationViewItem IsSelected="{Binding IsSelected}" Content="{Binding Title}"
+                                        d:DataContext="{d:DesignInstance models:HamburgerMenuEntryViewModel}">
+                        <NavigationViewItem.Icon>
+                            <SymbolIcon Symbol="Placeholder" />
+                            <!--<FontIcon FontFamily="Assets/Fonts/mdf.ttf#Material Design Icons" FontSize="40" Glyph="&#xF114;"/>-->
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+                </DataTemplate>
+            </NavigationView.MenuItemTemplate>
+            <NavigationView.Content>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" MaxWidth="600" />
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Column="0" x:Name="MainFrame" IsNavigationStackEnabled="False" />
+                    <Frame Grid.Column="1" x:Name="OffFrame" IsNavigationStackEnabled="False" />
+
+
+                    <controls:GridSplitter
+                        GripperCursor="Default"
+                        HorizontalAlignment="Left"
+                        Grid.Column="1"
+                        ResizeDirection="Auto"
+                        ResizeBehavior="BasedOnAlignment"
+                        CursorBehavior="ChangeOnSplitterHover"
+                        Width="16">
+                        <controls:GridSplitter.RenderTransform>
+                            <TranslateTransform X="-8" />
+                        </controls:GridSplitter.RenderTransform>
+
+                    </controls:GridSplitter>
+                </Grid>
+            </NavigationView.Content>
+        </NavigationView>
+    </Grid>
+</Page>
