@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V4.App;
@@ -15,6 +16,7 @@ using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.ViewModels.Feed;
 using AoTracker.Resources;
 using GalaSoft.MvvmLight.Helpers;
+using Microsoft.Extensions.Logging;
 
 namespace AoTracker.Android.Fragments.Feed
 {
@@ -28,6 +30,12 @@ namespace AoTracker.Android.Fragments.Feed
 
         protected override void InitBindings()
         {
+            if (ViewModel is null)
+            {
+                Resolve<Logger<FeedPageFragment>>().LogError("No ViewModel on InitBindings.");
+                Debugger.Break();
+            }
+
             Bindings.Add(this.SetBinding(() => ViewModel.FeedTabEntries).WhenSourceChanges(() =>
             {
                 if(ViewModel.FeedTabEntries is null)

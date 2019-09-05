@@ -49,7 +49,7 @@ namespace AoTracker.Android
 
         public override void OnCreate()
         {
-            JsonConvert.DefaultSettings = () => new JsonSerializerSettings()
+            DataCache.JsonSerializerSettings = new JsonSerializerSettings()
             {
                 TypeNameHandling = TypeNameHandling.All
             };

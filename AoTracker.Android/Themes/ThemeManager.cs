@@ -94,8 +94,18 @@ namespace AoTracker.Android.Themes
                 activity.Theme.ApplyStyle(Resource.Style.ColourSchemeToolbarBlack, true);
             }
 
-            RedColour = activity.Resources.GetColor(Resource.Color.RedColour, activity.Theme);
-            LimeColour = activity.Resources.GetColor(Resource.Color.LimeColour, activity.Theme);
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
+            {
+                RedColour = activity.Resources.GetColor(Resource.Color.RedColour, activity.Theme);
+                LimeColour = activity.Resources.GetColor(Resource.Color.LimeColour, activity.Theme);
+            }
+            else
+            {
+#pragma warning disable 618
+                RedColour = activity.Resources.GetColor(Resource.Color.RedColour);
+                LimeColour = activity.Resources.GetColor(Resource.Color.LimeColour);
+#pragma warning restore 618
+            }
 
             // Colour settings
 

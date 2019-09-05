@@ -175,23 +175,13 @@ namespace AoTracker.Android.Activities
 
         #endregion
 
-        private class ViewModelResolver : IViewModelResolver, ICustomDialogViewModelResolver
+        private class ViewModelResolver : IDependencyResolver, ICustomDialogDependencyResolver
         {
-            TViewModel IViewModelResolver.Resolve<TViewModel>()
-            {
-                return Resolve<TViewModel>();
-            }
-
-            TViewModel ICustomDialogViewModelResolver.Resolve<TViewModel>()
-            {
-                return Resolve<TViewModel>();
-            }
-
-            private TViewModel Resolve<TViewModel>()
+            public TDependency Resolve<TDependency>()
             {
                 try
                 {
-                    return ResourceLocator.CurrentScope.Resolve<TViewModel>();
+                    return ResourceLocator.CurrentScope.Resolve<TDependency>();
                 }
                 catch (Exception e)
                 {
