@@ -26,6 +26,7 @@ using AoTracker.Infrastructure.Statics;
 using AoTracker.Interfaces;
 using AoTracker.Interfaces.Adapters;
 using AoTracker.UWP.Adapters;
+using AoTracker.UWP.BackgroundWork;
 using AoTracker.UWP.Utils;
 using Autofac;
 using Microsoft.Extensions.Logging;
@@ -37,7 +38,7 @@ namespace AoTracker.UWP
     /// </summary>
     sealed partial class App : Application
     {
-        public static NavigationManager<PageIndex> NavigationManager { get; set; }
+        public static MainPage.UwpNavigationManager NavigationManager { get; set; }
         public static CustomDialogsManager<DialogIndex> DialogManager { get; set; }
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace AoTracker.UWP
             containerBuilder.RegisterType<PhoneCallAdapter>().As<IPhoneCallAdapter>().SingleInstance();
             containerBuilder.RegisterType<SnackbarProvider>().As<ISnackbarProvider>().SingleInstance();
             //containerBuilder.RegisterType<AndroidLoggerProvider>().As<ILoggerProvider>().SingleInstance();
-            //containerBuilder.RegisterType<BackgroundJobsManager>().As<IInitializable>().As<IFeedUpdateBackgroundServiceManager>().SingleInstance();
+            containerBuilder.RegisterType<BackgroundJobsManager>().As<IInitializable>().As<IFeedUpdateBackgroundServiceManager>().SingleInstance();
 
             containerBuilder.RegisterType<HttpClientProvider>().As<IHttpClientProvider>();
 

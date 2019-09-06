@@ -6,18 +6,28 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:settings="using:AoTracker.Infrastructure.ViewModels.Settings"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance settings:SettingsIndexViewModel}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
 
-        <ListView ItemsSource="{Binding Entries}">
+        <ListView ItemsSource="{Binding Entries}" IsItemClickEnabled="True">
+            <interactivity:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="ItemClick">
+                    <core:InvokeCommandAction Command="{Binding SelectEntryCommand}" 
+                                              InputConverter="{StaticResource ItemClickArgsConverter}"/>
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Title}" Padding="20"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Button VerticalAlignment="Center" Click="ButtonBase_OnClick"></Button>
     </Grid>
 </local:SettingsIndexPageBase>

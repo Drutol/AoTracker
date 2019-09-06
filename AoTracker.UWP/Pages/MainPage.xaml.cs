@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,8 +26,10 @@ using AoTracker.Infrastructure.Util;
 using AoTracker.Infrastructure.ViewModels;
 using AoTracker.UWP.Dialogs;
 using AoTracker.UWP.Models;
+using AoTracker.UWP.Models.Messages;
 using AoTracker.UWP.Utils;
 using Autofac;
+using GalaSoft.MvvmLight.Messaging;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -39,6 +42,9 @@ namespace AoTracker.UWP
     {
         public MainViewModel ViewModel { get; set; }
 
+        private bool _hasOffFrameBeenShown;
+        private double _offFrameWidthWhenLastHidden;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -48,7 +54,8 @@ namespace AoTracker.UWP
                 {NavigationStack.MainStack, MainFrame},
                 {NavigationStack.OffStack, OffFrame},
 
-            });
+            }, new UwpStackResolver());
+
             App.DialogManager =
                 new CustomDialogsManager<DialogIndex>(
                     new Dictionary<DialogIndex, ICustomDialogProvider>
@@ -57,31 +64,86 @@ namespace AoTracker.UWP
                     },
                     new DependencyResolver());
 
+            Messenger.Default.Register<NavigationStackUpdateMessage>(this, OnNavigationStackUpdateMessage);
             ViewModel = ResourceLocator.ObtainScope().Resolve<MainViewModel>();
             DataContext = ViewModel;
             ViewModel.Initialize();
         }
 
-        class UwpNavigationManager : NavigationManager<PageIndex>
+        private void OnNavigationStackUpdateMessage(NavigationStackUpdateMessage message)
+        {
+            if (message.NavigationStack == NavigationStack.OffStack)
+            {
+                if (message.NavigatedBackToEmpty)
+                {
+                    OffFrameGrid.Visibility = Visibility.Collapsed;
+                    _offFrameWidthWhenLastHidden = OffFrameGridColumn.Width.Value;
+                    OffFrameGridColumn.Width = new GridLength(0);
+                }
+                else
+                {
+                    if (OffFrameGrid.Visibility == Visibility.Collapsed)
+                    {
+                        OffFrameGrid.Visibility = Visibility.Visible;
+                        if (!_hasOffFrameBeenShown)
+                        {
+                            OffFrameGridColumn.Width = new GridLength(600);
+                            _hasOffFrameBeenShown = true;
+                        }
+                        else
+                        {
+                            OffFrameGridColumn.Width = new GridLength(_offFrameWidthWhenLastHidden);
+                        }
+                    }
+
+                    if (message.CanGoBack)
+                    {
+                        OffBackNavButton.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        OffBackNavButton.Visibility = Visibility.Collapsed;
+                    }
+                }
+            }
+        }
+
+        public class UwpNavigationManager : NavigationManager<PageIndex>
         {
             private readonly Dictionary<NavigationStack, Frame> _frames;
+            public UwpStackResolver Resolver { get; }
 
-            public UwpNavigationManager(Dictionary<NavigationStack, Frame> frames) : base(
+            public UwpNavigationManager(Dictionary<NavigationStack, Frame> frames, UwpStackResolver resolver) : base(
                 null,
                 new DependencyResolver(),
-                new UwpStackResolver())
+                resolver)
             {
                 _frames = frames;
+                Resolver = resolver;
+
+                WentBack += OnNavigated;
+                Navigated += OnNavigated;
+                FailedToGoBack += OnFailedToGoBack;
+            }
+
+            private void OnFailedToGoBack(object sender, PageIndex e)
+            {
+                Resolver.OnNavigated(e, true);
+            }
+
+            private void OnNavigated(object sender, PageIndex e)
+            {
+                Resolver.OnNavigated(e, false);
             }
 
             public override void CommitPageTransaction(NavigationPageBase page)
             {
-                var frame = _frames[((PageIndex) (page.PageIdentifier)).GetRelevantStack()];
+                var frame = _frames[((PageIndex) (page.PageIdentifier)).GetAssociatedStack()];
                 frame.Navigate(page.GetType());
             }
         }
 
-        class UwpStackResolver : IStackResolver<NavigationPageBase, PageIndex>
+        public class UwpStackResolver : IStackResolver<NavigationPageBase, PageIndex>
         {
             private Dictionary<NavigationStack, TaggedStack<BackstackEntry<NavigationPageBase>>> _stacks = new Dictionary<NavigationStack, TaggedStack<BackstackEntry<NavigationPageBase>>>
             {
@@ -91,12 +153,27 @@ namespace AoTracker.UWP
 
             public TaggedStack<BackstackEntry<NavigationPageBase>> ResolveStackForIdentifier(PageIndex identifier)
             {
-                return _stacks[identifier.GetRelevantStack()];
+                return _stacks[identifier.GetAssociatedStack()];
             }
 
             public TaggedStack<BackstackEntry<NavigationPageBase>> ResolveStackForTag(Enum tag)
             {
-                return _stacks[((PageIndex) tag).GetRelevantStack()];
+                return _stacks[((PageIndex) tag).GetAssociatedStack()];
+            }
+
+            public async void OnNavigated(PageIndex pageIndex, bool isFailedBackNav)
+            {
+                var stackIdentifier = pageIndex.GetAssociatedStack();
+                var stackCount = _stacks[stackIdentifier].Count;
+
+                var message = new NavigationStackUpdateMessage
+                {
+                    NavigationStack = stackIdentifier,
+                    CanGoBack = stackCount > 0,
+                    NavigatedBackToEmpty = stackCount <= 0 && isFailedBackNav
+                };
+
+                Messenger.Default.Send(message);
             }
         }
 
@@ -106,6 +183,19 @@ namespace AoTracker.UWP
                 ViewModel.SelectHamburgerItemCommand.Execute(ViewModel.SettingsButtonViewModel);
             else
                 ViewModel.SelectHamburgerItemCommand.Execute(args.SelectedItem);
+        }
+
+        private void CloseOffPaneButtonOnClick(object sender, RoutedEventArgs e)
+        {
+            OffFrameGrid.Visibility = Visibility.Collapsed;
+            _offFrameWidthWhenLastHidden = OffFrameGridColumn.Width.Value;
+            OffFrameGridColumn.Width = new GridLength(0);
+            App.NavigationManager.Reset(PageIndex.SettingsIndex);
+        }
+
+        private void OffBackNavButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            App.NavigationManager.GoBack(PageIndex.ConfigureLashinbang);
         }
     }
 }

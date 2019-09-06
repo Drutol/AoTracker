@@ -120,12 +120,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BackgroundWork\BackgroundJobsManager.cs" />
     <Compile Include="Behaviours\OnPageNameMessageBehaviour.cs" />
     <Compile Include="Converters\ItemClickArgsConverter.cs" />
     <Compile Include="Dialogs\ChangelogDialog.xaml.cs">
       <DependentUpon>ChangelogDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\NavigationStack.cs" />
+    <Compile Include="Models\Enums\NavigationStack.cs" />
+    <Compile Include="Models\Messages\NavigationStackUpdateMessage.cs" />
     <Compile Include="Pages\CrawlerConfigure\ConfigureCrawlerPageTemplateControl.xaml.cs">
       <DependentUpon>ConfigureCrawlerPageTemplateControl.xaml</DependentUpon>
     </Compile>

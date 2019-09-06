@@ -10,7 +10,7 @@ namespace AoTracker.UWP.Utils
 {
     public static class NavigationExtensions
     {
-        public static NavigationStack GetRelevantStack(this PageIndex pageIndex)
+        public static NavigationStack GetAssociatedStack(this PageIndex pageIndex)
         {
             switch (pageIndex)
             {

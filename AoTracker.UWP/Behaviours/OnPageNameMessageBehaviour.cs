@@ -28,7 +28,7 @@ namespace AoTracker.UWP.Behaviours
 
         private void OnNewMessage(PageTitleMessage message)
         {
-            if (message.Page.GetRelevantStack() == NavigationStack)
+            if (message.Page.GetAssociatedStack() == NavigationStack)
                 AssociatedObject.Text = message.NewTitle ?? string.Empty;
         }
     }

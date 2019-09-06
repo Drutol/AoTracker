@@ -29,6 +29,11 @@ namespace AoTracker.UWP.Pages.Settings
         {
             this.InitializeComponent();
         }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            App.NavigationManager.GoBack(PageIndex.SettingsIndex);
+        }
     }
 
     public class SettingsIndexPageBase : CustomPageBase<SettingsIndexViewModel>
