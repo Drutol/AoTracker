@@ -1,0 +1,23 @@
+﻿<UserControl
+    x:Class="AoTracker.UWP.Pages.CrawlerConfigure.ConfigureCrawlerPageTemplateControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AoTracker.UWP.Pages.CrawlerConfigure"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:crawlers="using:AoTracker.Infrastructure.ViewModels.Crawlers"
+    mc:Ignorable="d"
+    x:Name="Self"
+    d:DataContext="{d:DesignInstance crawlers:ConfigureCrawlerViewModelBase}"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <ScrollViewer>
+        <StackPanel>
+            <Image Source="{Binding ElementName=Self, Path=ImageSource}"/>
+
+
+            <ContentPresenter Content="{Binding ElementName=Self, Path=CustomContent}"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

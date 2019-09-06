@@ -16,6 +16,7 @@ using AoLibs.Navigation.UWP.Attributes;
 using AoLibs.Navigation.UWP.Pages;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.ViewModels.Settings;
+using AoTracker.UWP.Utils;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,7 +31,7 @@ namespace AoTracker.UWP.Pages.Settings
         }
     }
 
-    public class SettingsIndexPageBase : PageBase<SettingsIndexViewModel>
+    public class SettingsIndexPageBase : CustomPageBase<SettingsIndexViewModel>
     {
 
     }

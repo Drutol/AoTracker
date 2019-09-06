@@ -12,19 +12,32 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using AoLibs.Navigation.UWP.Attributes;
+using AoTracker.Domain.Enums;
+using AoTracker.Infrastructure.ViewModels.Settings;
+using AoTracker.UWP.Utils;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace AoTracker.UWP.Pages.Settings
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class SettingsGeneralPage : Page
+    [NavigationPage(PageIndex.SettingsGeneral)]
+    public sealed partial class SettingsGeneralPage
     {
         public SettingsGeneralPage()
         {
             this.InitializeComponent();
         }
+
+        public override void NavigatedTo()
+        {
+            base.NavigatedTo();
+            ViewModel.NavigatedTo();
+        }
+    }
+
+    public class SettingsGeneralPageBase : CustomPageBase<SettingsGeneralViewModel>
+    {
+
     }
 }

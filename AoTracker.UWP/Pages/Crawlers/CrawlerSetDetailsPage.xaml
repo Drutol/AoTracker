@@ -1,0 +1,66 @@
+﻿<local:CrawlerSetDetailsPageBase
+    x:Class="AoTracker.UWP.Pages.Crawlers.CrawlerSetDetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AoTracker.UWP.Pages.Crawlers"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:AoTracker.Infrastructure.ViewModels"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance viewModels:CrawlerSetDetailsViewModel}"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Padding="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Text="{Binding SetName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock Grid.Row="1" Text="Crawlers" Style="{StaticResource SubtitleTextBlockStyle}"/>
+
+        <ListView x:Name="ListView" Grid.Row="2" ItemsSource="{Binding CrawlerDescriptors}">
+            <interactivity:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="ItemClick">
+                    <core:InvokeCommandAction 
+                        Command="{Binding SelectCrawlerDescriptorCommand}"
+                        CommandParameter="{Binding}"/>
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding BackingModel.CrawlerSourceParameters.SearchQuery}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <TextBlock Grid.Row="3" Text="Add new crawler" Style="{StaticResource SubtitleTextBlockStyle}"/>
+
+        <ListView Grid.Row="4" ItemsSource="{Binding CrawlerEntries}" IsItemClickEnabled="True">
+            <interactivity:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="ItemClick">
+                    <core:InvokeCommandAction Command="{Binding AddCrawlerCommand}" 
+                                              InputConverter="{StaticResource ItemClickArgsConverter}"/>
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <controls:WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding BackingModel.Title}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</local:CrawlerSetDetailsPageBase>

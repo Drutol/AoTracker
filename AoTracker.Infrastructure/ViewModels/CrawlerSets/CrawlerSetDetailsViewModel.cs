@@ -36,6 +36,8 @@ namespace AoTracker.Infrastructure.ViewModels
         private readonly ISnackbarProvider _snackbarProvider;
         private readonly INavigationManager<PageIndex> _navigationManager;
 
+        public override PageIndex PageIdentifier { get; } = PageIndex.CrawlerSetDetails;
+
         private bool _isAddingNew;
         private string _setName;
         private CrawlerSet _currentSet;

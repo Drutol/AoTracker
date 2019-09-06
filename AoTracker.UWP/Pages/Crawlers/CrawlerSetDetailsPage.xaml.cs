@@ -15,22 +15,31 @@ using Windows.UI.Xaml.Navigation;
 using AoLibs.Navigation.UWP.Attributes;
 using AoLibs.Navigation.UWP.Pages;
 using AoTracker.Domain.Enums;
+using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Infrastructure.ViewModels;
+using AoTracker.UWP.Utils;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace AoTracker.UWP.Pages
+namespace AoTracker.UWP.Pages.Crawlers
 {
-    [NavigationPage(PageIndex.CrawlerSets)]
-    public sealed partial class CrawlerSetsPage 
+
+    [NavigationPage(PageIndex.CrawlerSetDetails)]
+    public sealed partial class CrawlerSetDetailsPage 
     {
-        public CrawlerSetsPage()
+        public CrawlerSetDetailsPage()
         {
             this.InitializeComponent();
         }
+
+        public override void NavigatedTo()
+        {
+            base.NavigatedTo();
+            ViewModel.NavigatedTo(NavigationArguments as CrawlerSetDetailsPageNavArgs);
+        }
     }
 
-    public class CrawlerSetsPageBase : PageBase<CrawlerSetsViewModel>
+    public class CrawlerSetDetailsPageBase : CustomPageBase<CrawlerSetDetailsViewModel>
     {
 
     }

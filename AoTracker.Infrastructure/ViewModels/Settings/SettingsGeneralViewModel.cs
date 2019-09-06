@@ -18,6 +18,8 @@ namespace AoTracker.Infrastructure.ViewModels.Settings
         private readonly IFeedUpdateBackgroundServiceManager _updateBackgroundServiceManager;
         private AppTheme _appTheme;
 
+        public override PageIndex PageIdentifier { get; } = PageIndex.SettingsGeneral;
+
         public SettingsGeneralViewModel(
             IUriLauncherAdapter uriLauncherAdapter,
             ISettings settings,

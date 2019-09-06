@@ -36,6 +36,7 @@ namespace AoTracker.Infrastructure.ViewModels
             set => Set(ref _trimJapaneseQuotationMarks, value);
         }
 
+        public override PageIndex PageIdentifier { get; } = PageIndex.ConfigureSurugaya;
         protected override CrawlerDomain Domain { get; } = CrawlerDomain.Surugaya;
 
         protected override SurugayaSourceParameters FillInParameters(SurugayaSourceParameters parameters)

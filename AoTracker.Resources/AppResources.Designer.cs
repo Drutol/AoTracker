@@ -556,6 +556,15 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Crawler Sets.
+        /// </summary>
+        public static string PageTitle_CrawlerSets {
+            get {
+                return ResourceManager.GetString("PageTitle_CrawlerSets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Feed.
         /// </summary>
         public static string PageTitle_Feed {

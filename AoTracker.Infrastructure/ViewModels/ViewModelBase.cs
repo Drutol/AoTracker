@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
+using AoTracker.Domain.Enums;
 using AoTracker.Domain.Messaging;
 
 namespace AoTracker.Infrastructure.ViewModels
@@ -10,19 +11,21 @@ namespace AoTracker.Infrastructure.ViewModels
     {
         private string _pageTitle;
 
+        public abstract PageIndex  PageIdentifier { get; }
+
         public string PageTitle
         {
             get => _pageTitle;
             set
             {
-                Set(ref _pageTitle, value);
-                MessengerInstance.Send(new PageTitleMessage(value));
+                _pageTitle = value;
+                MessengerInstance.Send(new PageTitleMessage(PageIdentifier, value));
             }
         }
 
         public virtual void UpdatePageTitle()
         {
-            MessengerInstance.Send(new PageTitleMessage(PageTitle));
+            MessengerInstance.Send(new PageTitleMessage(PageIdentifier, PageTitle));
         }
 
         protected new bool Set<T>(ref T backingStore, T value, bool alwaysRaise = true, [CallerMemberName] string propertyName = null)

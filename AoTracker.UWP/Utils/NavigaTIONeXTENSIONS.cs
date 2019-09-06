@@ -19,8 +19,8 @@ namespace AoTracker.UWP.Utils
                 case PageIndex.CrawlerSets:
                 case PageIndex.IgnoredItems:
                 case PageIndex.WatchedItems:
-                    return NavigationStack.MainStack;
                 case PageIndex.CrawlerSetDetails:
+                    return NavigationStack.MainStack;
                 case PageIndex.ConfigureSurugaya:
                 case PageIndex.ConfigureMandarake:
                 case PageIndex.ConfigureYahoo:

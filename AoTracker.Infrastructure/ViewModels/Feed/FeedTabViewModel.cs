@@ -7,6 +7,7 @@ using AoLibs.Utilities.Shared;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Crawlers.Sites.Yahoo;
+using AoTracker.Domain.Enums;
 using AoTracker.Domain.Messaging;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Infrastructure;
@@ -27,11 +28,10 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         private readonly IIgnoredItemsManager _ignoredItemsManager;
         private readonly ISettings _settings;
         private readonly ILifetimeScope _lifetimeScope;
-        private readonly AppVariables _appVariables;
         private CancellationTokenSource _feedCts;
         private bool _isLoading;
         private List<HistoryFeedEntry> _feedHistory;
-        private List<FeedItemViewModel> _aggregatedFeed = new List<FeedItemViewModel>();
+        private readonly List<FeedItemViewModel> _aggregatedFeed = new List<FeedItemViewModel>();
         private int _expectedBatches;
         private int _receivedBatches;
         private int _feedGenerationProgress;
@@ -40,8 +40,9 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         private string _progressLabel;
         private bool _awaitingManualLoad;
         private string _searchQuery;
-        private string _previousSearchQueryBeforeCollapse;
         private DateTime _batchGenerationTime;
+
+        public override PageIndex PageIdentifier { get; }
 
         public FeedTabEntry TabEntry
         {
@@ -79,15 +80,13 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             IFeedProvider feedProvider,
             IFeedHistoryProvider feedHistoryProvider,
             IIgnoredItemsManager ignoredItemsManager,
-            ISettings settings,
-            AppVariables appVariables)
+            ISettings settings)
         {
             _feedProvider = feedProvider;
             _feedHistoryProvider = feedHistoryProvider;
             _ignoredItemsManager = ignoredItemsManager;
             _settings = settings;
             _lifetimeScope = ResourceLocator.ObtainScope();
-            _appVariables = appVariables;
             _feedProvider.NewCrawlerBatch += FeedProviderOnNewCrawlerBatch;
             _feedProvider.Finished += FeedProviderOnFinished;
 

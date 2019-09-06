@@ -6,6 +6,7 @@ using System.Text;
 using AoLibs.Utilities.Shared;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Sites.Yahoo;
+using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Models;
 using AoTracker.Infrastructure.Util;
 using AoTracker.Infrastructure.ViewModels.Item;
@@ -20,6 +21,8 @@ namespace AoTracker.Infrastructure.ViewModels
     {
         private readonly IWatchedItemsManager _watchedItemsManager;
         private readonly ILifetimeScope _lifetimeScope;
+
+        public override PageIndex PageIdentifier { get; } = PageIndex.WatchedItems;
 
         public SmartObservableCollection<WatchedItemViewModel> WatchedItems { get; } =
             new SmartObservableCollection<WatchedItemViewModel>();

@@ -2,6 +2,12 @@
     x:Class="AoTracker.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:AoTracker.UWP">
+    xmlns:local="using:AoTracker.UWP"
+    xmlns:converters="using:AoTracker.UWP.Converters"
+    RequestedTheme="Light">
+
+    <Application.Resources>
+        <converters:ItemClickArgsConverter x:Key="ItemClickArgsConverter"/>
+    </Application.Resources>
 
 </Application>

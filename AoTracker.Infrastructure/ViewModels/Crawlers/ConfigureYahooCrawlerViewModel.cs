@@ -19,6 +19,7 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
         {
         }
 
+        public override PageIndex PageIdentifier { get; } = PageIndex.ConfigureYahoo;
         protected override CrawlerDomain Domain { get; } = CrawlerDomain.Yahoo;
 
         protected override YahooSourceParameters FillInParameters(YahooSourceParameters parameters)

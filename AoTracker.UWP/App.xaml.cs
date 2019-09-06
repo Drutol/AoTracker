@@ -25,6 +25,7 @@ using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Statics;
 using AoTracker.Interfaces;
 using AoTracker.Interfaces.Adapters;
+using AoTracker.UWP.Adapters;
 using AoTracker.UWP.Utils;
 using Autofac;
 using Microsoft.Extensions.Logging;
@@ -60,7 +61,7 @@ namespace AoTracker.UWP
             containerBuilder.RegisterType<UriLauncherAdapter>().As<IUriLauncherAdapter>().SingleInstance();
             containerBuilder.RegisterType<VersionProvider>().As<IVersionProvider>().SingleInstance();
             containerBuilder.RegisterType<PhoneCallAdapter>().As<IPhoneCallAdapter>().SingleInstance();
-            //containerBuilder.RegisterType<SnackbarProvider>().As<ISnackbarProvider>().SingleInstance();
+            containerBuilder.RegisterType<SnackbarProvider>().As<ISnackbarProvider>().SingleInstance();
             //containerBuilder.RegisterType<AndroidLoggerProvider>().As<ILoggerProvider>().SingleInstance();
             //containerBuilder.RegisterType<BackgroundJobsManager>().As<IInitializable>().As<IFeedUpdateBackgroundServiceManager>().SingleInstance();
 

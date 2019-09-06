@@ -29,6 +29,7 @@ namespace AoTracker.Infrastructure.ViewModels
 
         }
 
+        public override PageIndex PageIdentifier { get; } = PageIndex.ConfigureMandarake;
         protected override CrawlerDomain Domain { get; } = CrawlerDomain.Mandarake;
 
         protected override MandarakeSourceParameters FillInParameters(MandarakeSourceParameters parameters)

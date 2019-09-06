@@ -8,6 +8,9 @@
     xmlns:viewModels="using:AoTracker.Infrastructure.ViewModels"
     xmlns:models="using:AoTracker.Infrastructure.Models"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:Windows10version1903="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 8)"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviours="using:AoTracker.UWP.Behaviours"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -15,7 +18,8 @@
     <Grid>
 
 
-        <NavigationView MenuItemsSource="{Binding HamburgerItems}" PaneDisplayMode="Left"
+        <NavigationView MenuItemsSource="{Binding HamburgerItems}" 
+                        PaneDisplayMode="Left"
                         SelectionChanged="NavigationView_OnSelectionChanged">
             <NavigationView.MenuItemTemplate>
                 <DataTemplate>
@@ -34,22 +38,75 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" MaxWidth="600" />
                     </Grid.ColumnDefinitions>
-                    <Frame Grid.Column="0" x:Name="MainFrame" IsNavigationStackEnabled="False" />
-                    <Frame Grid.Column="1" x:Name="OffFrame" IsNavigationStackEnabled="False" />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
+                        <Frame Grid.Row="1" x:Name="MainFrame" IsNavigationStackEnabled="False" />
 
-                    <controls:GridSplitter
+                        <controls:DropShadowPanel Grid.Row="0" ShadowOpacity=".5" HorizontalContentAlignment="Stretch">
+                            <Grid Background="{ThemeResource NavigationViewExpandedPaneBackground}" Padding="16,0,0,0">
+                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center">
+                                    <interactivity:Interaction.Behaviors>
+                                        <behaviours:OnPageNameMessageBehaviour NavigationStack="MainStack"/>
+                                    </interactivity:Interaction.Behaviors>
+                                </TextBlock>
+                            </Grid>
+                        </controls:DropShadowPanel>
+                    </Grid>
+
+                    <Grid x:Name="OffFrameGrid" Grid.Column="1" Padding="16,0,0,0" Visibility="Visible">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Frame Grid.Row="1" x:Name="OffFrame" IsNavigationStackEnabled="False" MinWidth="300"/>
+
+                        <controls:DropShadowPanel Grid.Row="0" ShadowOpacity=".5" HorizontalContentAlignment="Stretch">
+                            <Grid Background="{ThemeResource NavigationViewExpandedPaneBackground}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Button  BorderThickness="2" VerticalAlignment="Stretch" Width="50" Height="50" Background="Transparent">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Back"/>
+                                    </Button.Content>
+                                    <Button.BorderBrush>
+                                        <RevealBorderBrush/>
+                                    </Button.BorderBrush>
+                                </Button>
+                                <Button Grid.Column="2" BorderThickness="2" Width="50" Height="50" Background="Transparent">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Cancel"></SymbolIcon>
+                                    </Button.Content>
+                                    <Button.BorderBrush>
+                                        <RevealBorderBrush/>
+                                    </Button.BorderBrush>
+                                </Button>
+                                <TextBlock Grid.Column="1" Style="{StaticResource SubtitleTextBlockStyle}" MinWidth="200" TextTrimming="CharacterEllipsis" VerticalAlignment="Center">
+                                    <interactivity:Interaction.Behaviors>
+                                        <behaviours:OnPageNameMessageBehaviour NavigationStack="OffStack"/>
+                                    </interactivity:Interaction.Behaviors>
+                                </TextBlock>
+                            </Grid>
+                        </controls:DropShadowPanel>
+    
+                    </Grid>
+
+                    <controls:GridSplitter Visibility="{Binding ElementName=OffFrameGrid, Path=Visibility}"
                         GripperCursor="Default"
                         HorizontalAlignment="Left"
                         Grid.Column="1"
+                        Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
                         ResizeDirection="Auto"
                         ResizeBehavior="BasedOnAlignment"
                         CursorBehavior="ChangeOnSplitterHover"
                         Width="16">
-                        <controls:GridSplitter.RenderTransform>
-                            <TranslateTransform X="-8" />
-                        </controls:GridSplitter.RenderTransform>
-
                     </controls:GridSplitter>
                 </Grid>
             </NavigationView.Content>

@@ -282,6 +282,9 @@
   <data name="PageTitle_ConfigureCrawlers" xml:space="preserve">
     <value>Configure {0} Crawler</value>
   </data>
+  <data name="PageTitle_CrawlerSets" xml:space="preserve">
+    <value>Crawler Sets</value>
+  </data>
   <data name="PageTitle_Feed" xml:space="preserve">
     <value>Feed</value>
   </data>

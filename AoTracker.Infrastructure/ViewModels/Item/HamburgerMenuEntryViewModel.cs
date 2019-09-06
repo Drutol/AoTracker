@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.ViewModels;
+using ViewModelBase = GalaSoft.MvvmLight.ViewModelBase;
 
 namespace AoTracker.Infrastructure.Models
 {

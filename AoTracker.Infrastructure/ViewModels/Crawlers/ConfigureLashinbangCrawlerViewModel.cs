@@ -20,6 +20,7 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
         {
         }
 
+        public override PageIndex PageIdentifier { get; } = PageIndex.ConfigureLashinbang;
         protected override CrawlerDomain Domain { get; } = CrawlerDomain.Lashinbang;
 
         protected override LashinbangSourceParameters FillInParameters(LashinbangSourceParameters parameters)

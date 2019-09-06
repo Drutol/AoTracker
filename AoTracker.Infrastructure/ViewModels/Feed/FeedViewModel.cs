@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AoLibs.Utilities.Shared;
+using AoTracker.Domain.Enums;
 using AoTracker.Domain.Messaging;
 using AoTracker.Domain.Models;
 using AoTracker.Infrastructure.Models;
@@ -28,6 +29,8 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
         private ObservableCollection<FeedTabEntry> _feedTabEntries;
         private bool _jumpToButtonVisibility = true;
         private bool? _lastAggregateSetting;
+
+        public override PageIndex PageIdentifier { get; } = PageIndex.Feed;
 
         public bool ContainsAggregate { get; set; }
 

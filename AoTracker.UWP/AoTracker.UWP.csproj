@@ -116,17 +116,26 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Adapters\SnackbarProvider.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Behaviours\OnPageNameMessageBehaviour.cs" />
+    <Compile Include="Converters\ItemClickArgsConverter.cs" />
     <Compile Include="Dialogs\ChangelogDialog.xaml.cs">
       <DependentUpon>ChangelogDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\NavigationStack.cs" />
+    <Compile Include="Pages\CrawlerConfigure\ConfigureCrawlerPageTemplateControl.xaml.cs">
+      <DependentUpon>ConfigureCrawlerPageTemplateControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CrawlerConfigure\SurugayaConfigureCrawlerPage.xaml.cs">
       <DependentUpon>SurugayaConfigureCrawlerPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CrawlerSetsPage.xaml.cs">
+    <Compile Include="Pages\Crawlers\CrawlerSetDetailsPage.xaml.cs">
+      <DependentUpon>CrawlerSetDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Crawlers\CrawlerSetsPage.xaml.cs">
       <DependentUpon>CrawlerSetsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\FeedPage.xaml.cs">
@@ -154,6 +163,7 @@
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\CustomPageBase.cs" />
     <Compile Include="Utils\HttpClientProvider.cs" />
     <Compile Include="Utils\NavigationExtensions.cs" />
   </ItemGroup>
@@ -181,11 +191,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\CrawlerConfigure\ConfigureCrawlerPageTemplateControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\CrawlerConfigure\SurugayaConfigureCrawlerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\CrawlerSetsPage.xaml">
+    <Page Include="Pages\Crawlers\CrawlerSetDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Crawlers\CrawlerSetsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

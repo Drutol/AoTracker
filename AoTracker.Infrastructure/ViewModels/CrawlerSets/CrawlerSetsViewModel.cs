@@ -12,6 +12,7 @@ using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Infrastructure.Util;
 using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Interfaces;
+using AoTracker.Resources;
 using Autofac;
 using GalaSoft.MvvmLight.Command;
 
@@ -23,7 +24,7 @@ namespace AoTracker.Infrastructure.ViewModels
         private readonly ILifetimeScope _lifetimeScope;
         private readonly INavigationManager<PageIndex> _navigationManager;
 
-        private ObservableCollection<CrawlerSetViewModel> _sets;
+        public override PageIndex PageIdentifier { get; } = PageIndex.CrawlerSets;
 
         public CrawlerSetsViewModel(
             IUserDataProvider userDataProvider,
@@ -34,7 +35,7 @@ namespace AoTracker.Infrastructure.ViewModels
             _lifetimeScope = lifetimeScope;
             _navigationManager = navigationManager;
 
-            PageTitle = "Crawler Sets";
+            PageTitle = AppResources.PageTitle_CrawlerSets;
         }
 
         public void NavigatedTo()
@@ -70,5 +71,7 @@ namespace AoTracker.Infrastructure.ViewModels
             Sets.Remove(set);
             _userDataProvider.RemoveSet(set.BackingModel);
         }
+
+
     }
 }

@@ -16,6 +16,7 @@ using AoLibs.Navigation.UWP.Attributes;
 using AoLibs.Navigation.UWP.Pages;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.ViewModels;
+using AoTracker.UWP.Utils;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,9 +30,15 @@ namespace AoTracker.UWP.Pages
         {
             this.InitializeComponent();
         }
+
+        public override void NavigatedTo()
+        {
+            base.NavigatedTo();
+            ViewModel.NavigatedTo();
+        }
     }
 
-    public class WatchedItemsPageBase : PageBase<WatchedItemsViewModel>
+    public class WatchedItemsPageBase : CustomPageBase<WatchedItemsViewModel>
     {
 
     }

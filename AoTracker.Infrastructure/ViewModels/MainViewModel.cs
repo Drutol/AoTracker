@@ -27,6 +27,8 @@ namespace AoTracker.Infrastructure.ViewModels
         private readonly IUserDataProvider _userDataProvider;
         private ObservableCollection<HamburgerMenuEntryViewModel> _hamburgerItems;
 
+        public override PageIndex PageIdentifier { get; }
+
         public HamburgerMenuEntryViewModel SettingsButtonViewModel { get; } = new HamburgerMenuEntryViewModel
         {
             Title = AppResources.Hamburger_Item_Settings,

@@ -20,6 +20,7 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
         {
         }
 
+        public override PageIndex PageIdentifier { get; } = PageIndex.ConfigureMercari;
         protected override CrawlerDomain Domain { get; } = CrawlerDomain.Mercari;
 
         protected override MercariSourceParameters FillInParameters(MercariSourceParameters parameters)

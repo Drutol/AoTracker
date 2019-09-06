@@ -17,6 +17,8 @@ namespace AoTracker.Infrastructure.ViewModels
         private readonly INavigationManager<PageIndex> _navigationManager;
         private readonly ISettings _settings;
 
+        public override PageIndex PageIdentifier { get; } = PageIndex.Welcome;
+
         public WelcomeViewModel(
             INavigationManager<PageIndex> navigationManager,
             ISettings settings)
