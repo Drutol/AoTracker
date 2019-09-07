@@ -8,7 +8,6 @@
     xmlns:viewModels="using:AoTracker.Infrastructure.ViewModels"
     xmlns:models="using:AoTracker.Infrastructure.Models"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    xmlns:Windows10version1903="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 8)"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:behaviours="using:AoTracker.UWP.Behaviours"
     mc:Ignorable="d"
@@ -39,7 +38,7 @@
                         <ColumnDefinition x:Name="OffFrameGridColumn" Width="Auto" MaxWidth="600" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50" />
+                        <RowDefinition Height="40" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
@@ -62,11 +61,26 @@
                     <controls:DropShadowPanel Grid.Row="0" Grid.Column="0" ShadowOpacity=".5" OffsetX="6" Margin="-6,0,0,0"
                                               HorizontalContentAlignment="Stretch">
                         <Grid Background="{ThemeResource NavigationViewExpandedPaneBackground}" Padding="16,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
                             <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center">
                                 <interactivity:Interaction.Behaviors>
                                     <behaviours:OnPageNameMessageBehaviour NavigationStack="MainStack" />
                                 </interactivity:Interaction.Behaviors>
                             </TextBlock>
+
+                            <CommandBar Grid.Column="1" OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
+                                <AppBarButton Icon="Save" Label="Save" IsCompact="False">
+                                    <interactivity:Interaction.Behaviors>
+                                        <behaviours:ToolbarRequestMessageBehaviour 
+                                            AcceptedToolbarRequestMessage="ShowSaveButton" 
+                                            InvokedToolbarActionMessage="ClickedSaveButton"/>
+                                    </interactivity:Interaction.Behaviors>
+                                </AppBarButton>
+                            </CommandBar>
                         </Grid>
                     </controls:DropShadowPanel>
 
@@ -108,8 +122,6 @@
                             </TextBlock>
                         </Grid>
                     </controls:DropShadowPanel>
-
-
                 </Grid>
             </NavigationView.Content>
         </NavigationView>

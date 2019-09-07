@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AoTracker.UWP"
     xmlns:converters="using:AoTracker.UWP.Converters"
-    RequestedTheme="Light">
+    RequestedTheme="Dark">
 
     <Application.Resources>
         <converters:ItemClickArgsConverter x:Key="ItemClickArgsConverter"/>

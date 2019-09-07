@@ -36,7 +36,6 @@
                     <TextBlock Text="{Binding BackingModel.CrawlerDomain}" Style="{StaticResource SubheaderTextBlockStyle}"/>
                 </Border>
 
-
                 <controls:HeaderedContentControl Header="Search Query" Margin="0,16,0,0">
                     <TextBlock Text="{Binding BackingModel.CrawlerSourceParameters.SearchQuery}" 
                                Style="{StaticResource BaseTextBlockStyle}" FontSize="16"/>

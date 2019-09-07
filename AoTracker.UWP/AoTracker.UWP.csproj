@@ -122,6 +122,7 @@
     </Compile>
     <Compile Include="BackgroundWork\BackgroundJobsManager.cs" />
     <Compile Include="Behaviours\OnPageNameMessageBehaviour.cs" />
+    <Compile Include="Behaviours\ToolbarRequestMessageBehaviour.cs" />
     <Compile Include="Converters\CrawlerDomainToImageConverter.cs" />
     <Compile Include="Converters\ItemClickArgsConverter.cs" />
     <Compile Include="Dialogs\ChangelogDialog.xaml.cs">
