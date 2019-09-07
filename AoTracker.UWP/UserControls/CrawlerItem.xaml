@@ -1,0 +1,48 @@
+﻿<UserControl
+    x:Class="AoTracker.UWP.UserControls.CrawlerItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AoTracker.UWP.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:item="using:AoTracker.Infrastructure.ViewModels.Item"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance item:CrawlerDescriptorViewModel}"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <controls:DropShadowPanel Width="280" Height="280" HorizontalContentAlignment="Stretch" ShadowOpacity=".5">
+        <Grid Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+            <Rectangle Margin="16" Opacity=".2">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="{Binding BackingModel.CrawlerDomain, Converter={StaticResource CrawlerDomainToImageConverter}}" Stretch="Fill"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle>
+                <Rectangle.Fill>
+                    <media:BackdropBlurBrush Amount="8"/>
+                </Rectangle.Fill>
+            </Rectangle>   
+            <Rectangle>
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="{ThemeResource SystemBaseMediumHighColor}" Opacity=".05"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <StackPanel Padding="16" >
+                <Border HorizontalAlignment="Center" BorderThickness="0,0,0,1" Padding="16,0,16,8"
+                        BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}">
+                    <TextBlock Text="{Binding BackingModel.CrawlerDomain}" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                </Border>
+
+
+                <controls:HeaderedContentControl Header="Search Query" Margin="0,16,0,0">
+                    <TextBlock Text="{Binding BackingModel.CrawlerSourceParameters.SearchQuery}" 
+                               Style="{StaticResource BaseTextBlockStyle}" FontSize="16"/>
+                </controls:HeaderedContentControl>
+
+            </StackPanel>
+        </Grid>
+    </controls:DropShadowPanel>
+</UserControl>

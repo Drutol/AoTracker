@@ -9,17 +9,33 @@
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:selectors="using:AoTracker.UWP.Selectors"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance viewModels:CrawlerSetDetailsViewModel}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="CrawlerTemplatesDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <selectors:CrawlerTemplateSelector x:Key="CrawlerTemplateSelector"
+                                               SurugayaTemplateSelector="{StaticResource SurugayaCrawlerTemplateSelector}"
+                                               MandarakeTemplateSelector="{StaticResource SurugayaCrawlerTemplateSelector}"
+                                               MercariTemplateSelector="{StaticResource SurugayaCrawlerTemplateSelector}"
+                                               LashinbangTemplateSelector="{StaticResource SurugayaCrawlerTemplateSelector}"
+                                               YahooTemplateSelector="{StaticResource SurugayaCrawlerTemplateSelector}"/>
+        </ResourceDictionary>
+    </Page.Resources>
+
     <Grid Padding="8">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
 
@@ -28,40 +44,45 @@
                 <DataTemplate>
                     <Border BorderThickness="2,0,0,0"
                             BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="8">
-                        <TextBlock Text="{Binding}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                        <TextBlock Text="{Binding}" Style="{StaticResource SubtitleTextBlockStyle}" />
                     </Border>
                 </DataTemplate>
             </controls:HeaderedContentControl.HeaderTemplate>
-            <TextBox Text="{Binding SetName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="300" FontSize="18" Margin="0,8,0,0"/>
+            <TextBox Text="{Binding SetName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="300"
+                     FontSize="18" Margin="0,8,0,0" />
         </controls:HeaderedContentControl>
 
-        <Border BorderThickness="2,0,0,0" Grid.Row="1" Margin="0,8,0,0" 
+        <Border BorderThickness="2,0,0,0" Grid.Row="1" Margin="0,8,0,0"
                 BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="8">
-            <TextBlock Text="Crawler sets" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBlock Text="Crawler sets" Style="{StaticResource SubtitleTextBlockStyle}" />
         </Border>
 
-        <ListView x:Name="ListView" Grid.Row="2" ItemsSource="{Binding CrawlerDescriptors}">
+        <GridView Grid.Row="2" ItemsSource="{Binding CrawlerDescriptors}" Margin="0,8,0,0" Padding="8"
+                  ItemTemplateSelector="{StaticResource CrawlerTemplateSelector}">
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="Margin" Value="8"></Setter>
+                </Style>
+            </GridView.ItemContainerStyle>
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="ItemClick">
-                    <core:InvokeCommandAction 
+                    <core:InvokeCommandAction
                         Command="{Binding SelectCrawlerDescriptorCommand}"
-                        CommandParameter="{Binding}"/>
+                        InputConverterParameter="{StaticResource ItemClickArgsConverter}" />
                 </core:EventTriggerBehavior>
             </interactivity:Interaction.Behaviors>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding BackingModel.CrawlerSourceParameters.SearchQuery}"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        </GridView>
 
-        <TextBlock Grid.Row="3" Text="Add new crawler" Style="{StaticResource SubtitleTextBlockStyle}"/>
+        <Border BorderThickness="2,0,0,0" Grid.Row="3" Margin="0,8,0,0"
+                BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="8">
+            <TextBlock Text="Add new Crawler" Style="{StaticResource SubtitleTextBlockStyle}" />
+        </Border>
 
-        <ListView Grid.Row="4" ItemsSource="{Binding CrawlerEntries}" IsItemClickEnabled="True">
+        <ListView Grid.Row="4" ItemsSource="{Binding CrawlerEntries}" IsItemClickEnabled="True" Margin="0,8,0,0">
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="ItemClick">
-                    <core:InvokeCommandAction Command="{Binding AddCrawlerCommand}" 
-                                              InputConverter="{StaticResource ItemClickArgsConverter}"/>
+                    <core:InvokeCommandAction Command="{Binding AddCrawlerCommand}"
+                                              InputConverter="{StaticResource ItemClickArgsConverter}" />
                 </core:EventTriggerBehavior>
             </interactivity:Interaction.Behaviors>
             <ListView.ItemsPanel>
@@ -71,22 +92,25 @@
             </ListView.ItemsPanel>
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <Setter Property="Padding" Value="16"></Setter>
+                    <Setter Property="Margin" Value="16" />
+                    <Setter Property="Padding" Value="0" />
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <controls:DropShadowPanel ShadowOpacity=".5">
-                        <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" Padding="16">
-                            <StackPanel Width="100">
-                                <Image Source="{Binding BackingModel.CrawlerDomain, Converter={StaticResource CrawlerDomainToImageConverter}}" Height="50"/>
-                                <TextBlock Text="{Binding BackingModel.Title}" HorizontalAlignment="Center" Style="{StaticResource BaseTextBlockStyle}"/>
-                            </StackPanel>
-                        </Grid>
-                    </controls:DropShadowPanel>
+                            <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" Padding="16">
+                                <StackPanel Width="100">
+                                    <Image
+                                        Source="{Binding BackingModel.CrawlerDomain, Converter={StaticResource CrawlerDomainToImageConverter}}"
+                                        Height="50" />
+                                    <TextBlock Text="{Binding BackingModel.Title}" HorizontalAlignment="Center"
+                                               Style="{StaticResource BaseTextBlockStyle}" />
+                                </StackPanel>
+                            </Grid>
+                        </controls:DropShadowPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
     </Grid>
 </local:CrawlerSetDetailsPageBase>

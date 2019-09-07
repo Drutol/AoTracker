@@ -79,6 +79,7 @@ namespace AoTracker.UWP
                     OffFrame.Visibility = Visibility.Collapsed;
                     _offFrameWidthWhenLastHidden = OffFrameGridColumn.Width.Value;
                     OffFrameGridColumn.Width = new GridLength(0);
+                    App.NavigationManager.Reset(PageIndex.OffStackIdentifier);
                 }
                 else
                 {
@@ -145,7 +146,7 @@ namespace AoTracker.UWP
             public override void CommitPageTransaction(NavigationPageBase page)
             {
                 var frame = _frames[((PageIndex) (page.PageIdentifier)).GetAssociatedStack()];
-                frame.Navigate(page.GetType());
+                frame.Content = page;
             }
         }
 
@@ -167,7 +168,7 @@ namespace AoTracker.UWP
                 return _stacks[((PageIndex) tag).GetAssociatedStack()];
             }
 
-            public async void OnNavigated(PageIndex pageIndex, bool isFailedBackNav)
+            public void OnNavigated(PageIndex pageIndex, bool isFailedBackNav)
             {
                 var stackIdentifier = pageIndex.GetAssociatedStack();
                 var stackCount = _stacks[stackIdentifier].Count;

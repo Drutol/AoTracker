@@ -13,20 +13,20 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using AoLibs.Navigation.UWP.Attributes;
-using AoLibs.Navigation.UWP.Pages;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Infrastructure.ViewModels;
+using AoTracker.Infrastructure.ViewModels.Crawlers;
 using AoTracker.UWP.Utils;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace AoTracker.UWP.Pages.CrawlerConfigure
 {
-    [NavigationPage(PageIndex.ConfigureSurugaya, NavigationPageAttribute.PageProvider.Oneshot)]
-    public sealed partial class SurugayaConfigureCrawlerPage 
+    [NavigationPage(PageIndex.ConfigureMercari, NavigationPageAttribute.PageProvider.Oneshot)]
+    public sealed partial class MercariConfigureCrawlerPage 
     {
-        public SurugayaConfigureCrawlerPage()
+        public MercariConfigureCrawlerPage()
         {
             this.InitializeComponent();
         }
@@ -38,7 +38,7 @@ namespace AoTracker.UWP.Pages.CrawlerConfigure
         }
     }
 
-    public class SurugayaConfigureCrawlerPageBase : CustomPageBase<ConfigureSurugayaCrawlerViewModel>
+    public class MercariConfigureCrawlerPageBase : CustomPageBase<ConfigureMercariCrawlerViewModel>
     {
 
     }

@@ -6,18 +6,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:crawlers="using:AoTracker.Infrastructure.ViewModels.Crawlers"
+    xmlns:designtime="using:AoTracker.UWP.Utils.Designtime"
     mc:Ignorable="d"
     x:Name="Self"
-    d:DataContext="{d:DesignInstance crawlers:ConfigureCrawlerViewModelBase}"
+    d:DataContext="{d:DesignInstance designtime:DummyConfigureCrawlerViewModel}"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
     <ScrollViewer>
         <StackPanel>
-            <Image Source="{Binding ElementName=Self, Path=ImageSource}"/>
+            <Image Source="{Binding ElementName=Self, Path=ImageSource}" Width="150"/>
 
+            <TextBox Text="{Binding SearchQueryInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             <ContentPresenter Content="{Binding ElementName=Self, Path=CustomContent}"/>
+
+            <Button Content="Save" Command="{Binding SaveCommand}"/>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

@@ -132,8 +132,20 @@
     <Compile Include="Pages\CrawlerConfigure\ConfigureCrawlerPageTemplateControl.xaml.cs">
       <DependentUpon>ConfigureCrawlerPageTemplateControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CrawlerConfigure\LashinbangConfigureCrawlerPage.xaml.cs">
+      <DependentUpon>LashinbangConfigureCrawlerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CrawlerConfigure\MandarakeConfigureCrawlerPage.xaml.cs">
+      <DependentUpon>MandarakeConfigureCrawlerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CrawlerConfigure\MercariConfigureCrawlerPage.xaml.cs">
+      <DependentUpon>MercariConfigureCrawlerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CrawlerConfigure\SurugayaConfigureCrawlerPage.xaml.cs">
       <DependentUpon>SurugayaConfigureCrawlerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CrawlerConfigure\YahooConfigureCrawlerPage.xaml.cs">
+      <DependentUpon>YahooConfigureCrawlerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Crawlers\CrawlerSetDetailsPage.xaml.cs">
       <DependentUpon>CrawlerSetDetailsPage.xaml</DependentUpon>
@@ -166,7 +178,12 @@
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Selectors\CrawlerTemplateSelector.cs" />
+    <Compile Include="UserControls\CrawlerItem.xaml.cs">
+      <DependentUpon>CrawlerItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\CustomPageBase.cs" />
+    <Compile Include="Utils\Designtime\DummyConfigureCrawlerViewModel.cs" />
     <Compile Include="Utils\HttpClientProvider.cs" />
     <Compile Include="Utils\NavigationExtensions.cs" />
   </ItemGroup>
@@ -203,7 +220,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\CrawlerConfigure\LashinbangConfigureCrawlerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CrawlerConfigure\MandarakeConfigureCrawlerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CrawlerConfigure\MercariConfigureCrawlerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\CrawlerConfigure\SurugayaConfigureCrawlerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CrawlerConfigure\YahooConfigureCrawlerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -212,6 +245,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Crawlers\CrawlerSetsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Crawlers\CrawlerTemplatesDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,6 +281,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CrawlerItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

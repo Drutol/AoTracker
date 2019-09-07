@@ -191,7 +191,7 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
 
             MessengerInstance.Send(resultMessage);
 
-            _navigationManager.GoBack();
+            _navigationManager.GoBack(PageIndex.OffStackIdentifier);
         });
     }
 }

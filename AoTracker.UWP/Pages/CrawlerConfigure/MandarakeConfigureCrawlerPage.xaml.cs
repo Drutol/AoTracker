@@ -13,7 +13,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using AoLibs.Navigation.UWP.Attributes;
-using AoLibs.Navigation.UWP.Pages;
 using AoTracker.Domain.Enums;
 using AoTracker.Infrastructure.Models.NavArgs;
 using AoTracker.Infrastructure.ViewModels;
@@ -23,10 +22,10 @@ using AoTracker.UWP.Utils;
 
 namespace AoTracker.UWP.Pages.CrawlerConfigure
 {
-    [NavigationPage(PageIndex.ConfigureSurugaya, NavigationPageAttribute.PageProvider.Oneshot)]
-    public sealed partial class SurugayaConfigureCrawlerPage 
+    [NavigationPage(PageIndex.ConfigureMandarake, NavigationPageAttribute.PageProvider.Oneshot)]
+    public sealed partial class MandarakeConfigureCrawlerPage
     {
-        public SurugayaConfigureCrawlerPage()
+        public MandarakeConfigureCrawlerPage()
         {
             this.InitializeComponent();
         }
@@ -38,7 +37,7 @@ namespace AoTracker.UWP.Pages.CrawlerConfigure
         }
     }
 
-    public class SurugayaConfigureCrawlerPageBase : CustomPageBase<ConfigureSurugayaCrawlerViewModel>
+    public class MandarakeConfigureCrawlerPageBase : CustomPageBase<ConfigureMandarakeCrawlerViewModel>
     {
 
     }

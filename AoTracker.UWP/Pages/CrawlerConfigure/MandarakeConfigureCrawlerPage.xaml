@@ -1,5 +1,5 @@
-﻿<local:SurugayaConfigureCrawlerPageBase
-    x:Class="AoTracker.UWP.Pages.CrawlerConfigure.SurugayaConfigureCrawlerPage"
+﻿<local:MandarakeConfigureCrawlerPageBase
+    x:Class="AoTracker.UWP.Pages.CrawlerConfigure.MandarakeConfigureCrawlerPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AoTracker.UWP.Pages.CrawlerConfigure"
@@ -9,8 +9,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <local:ConfigureCrawlerPageTemplateControl ImageSource="/Assets/Sites/surugaya.png">
+        <local:ConfigureCrawlerPageTemplateControl ImageSource="/Assets/Sites/mandarake.png">
             <TextBlock Text="Custom!"/>
         </local:ConfigureCrawlerPageTemplateControl>
     </Grid>
-</local:SurugayaConfigureCrawlerPageBase>
+</local:MandarakeConfigureCrawlerPageBase>
