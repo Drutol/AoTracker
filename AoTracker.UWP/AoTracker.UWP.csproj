@@ -122,6 +122,7 @@
     </Compile>
     <Compile Include="BackgroundWork\BackgroundJobsManager.cs" />
     <Compile Include="Behaviours\OnPageNameMessageBehaviour.cs" />
+    <Compile Include="Converters\CrawlerDomainToImageConverter.cs" />
     <Compile Include="Converters\ItemClickArgsConverter.cs" />
     <Compile Include="Dialogs\ChangelogDialog.xaml.cs">
       <DependentUpon>ChangelogDialog.xaml</DependentUpon>
@@ -175,6 +176,11 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Sites\lashinbang.png" />
+    <Content Include="Assets\Sites\mandarake.png" />
+    <Content Include="Assets\Sites\mercari.png" />
+    <Content Include="Assets\Sites\surugaya.png" />
+    <Content Include="Assets\Sites\yahoo.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

@@ -14,6 +14,7 @@ namespace AoTracker.UWP.Utils
         {
             switch (pageIndex)
             {
+                case PageIndex.MainStackIdentifier:
                 case PageIndex.Welcome:
                 case PageIndex.Feed:
                 case PageIndex.CrawlerSets:
@@ -21,6 +22,7 @@ namespace AoTracker.UWP.Utils
                 case PageIndex.WatchedItems:
                 case PageIndex.CrawlerSetDetails:
                     return NavigationStack.MainStack;
+                case PageIndex.OffStackIdentifier:
                 case PageIndex.ConfigureSurugaya:
                 case PageIndex.ConfigureMandarake:
                 case PageIndex.ConfigureYahoo:

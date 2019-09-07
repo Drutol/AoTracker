@@ -8,6 +8,7 @@
 
     <Application.Resources>
         <converters:ItemClickArgsConverter x:Key="ItemClickArgsConverter"/>
+        <converters:CrawlerDomainToImageConverter x:Key="CrawlerDomainToImageConverter"/>
     </Application.Resources>
 
 </Application>

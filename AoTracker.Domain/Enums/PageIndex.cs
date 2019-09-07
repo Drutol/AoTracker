@@ -6,6 +6,8 @@ namespace AoTracker.Domain.Enums
 {
     public enum PageIndex
     {
+        MainStackIdentifier,
+        OffStackIdentifier,
         Welcome,
         Feed,
         CrawlerSets,

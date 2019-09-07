@@ -76,15 +76,15 @@ namespace AoTracker.UWP
             {
                 if (message.NavigatedBackToEmpty)
                 {
-                    OffFrameGrid.Visibility = Visibility.Collapsed;
+                    OffFrame.Visibility = Visibility.Collapsed;
                     _offFrameWidthWhenLastHidden = OffFrameGridColumn.Width.Value;
                     OffFrameGridColumn.Width = new GridLength(0);
                 }
                 else
                 {
-                    if (OffFrameGrid.Visibility == Visibility.Collapsed)
+                    if (OffFrame.Visibility == Visibility.Collapsed)
                     {
-                        OffFrameGrid.Visibility = Visibility.Visible;
+                        OffFrame.Visibility = Visibility.Visible;
                         if (!_hasOffFrameBeenShown)
                         {
                             OffFrameGridColumn.Width = new GridLength(600);
@@ -106,6 +106,12 @@ namespace AoTracker.UWP
                     }
                 }
             }
+            else
+            {
+                NavigationView.IsBackEnabled = message.CanGoBack;
+            }
+
+
         }
 
         public class UwpNavigationManager : NavigationManager<PageIndex>
@@ -187,7 +193,7 @@ namespace AoTracker.UWP
 
         private void CloseOffPaneButtonOnClick(object sender, RoutedEventArgs e)
         {
-            OffFrameGrid.Visibility = Visibility.Collapsed;
+            OffFrame.Visibility = Visibility.Collapsed;
             _offFrameWidthWhenLastHidden = OffFrameGridColumn.Width.Value;
             OffFrameGridColumn.Width = new GridLength(0);
             App.NavigationManager.Reset(PageIndex.SettingsIndex);
@@ -195,7 +201,12 @@ namespace AoTracker.UWP
 
         private void OffBackNavButton_OnClick(object sender, RoutedEventArgs e)
         {
-            App.NavigationManager.GoBack(PageIndex.ConfigureLashinbang);
+            App.NavigationManager.GoBack(PageIndex.OffStackIdentifier);
+        }
+
+        private void NavigationView_OnBackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        {
+            App.NavigationManager.GoBack(PageIndex.MainStackIdentifier);
         }
     }
 }
