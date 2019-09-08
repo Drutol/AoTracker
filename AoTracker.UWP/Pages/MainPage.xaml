@@ -12,7 +12,7 @@
     xmlns:behaviours="using:AoTracker.UWP.Behaviours"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource SystemControlAcrylicWindowBrush}">
 
     <Grid>
 
@@ -42,8 +42,8 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <Frame Grid.Row="1" Grid.Column="0" x:Name="MainFrame" IsNavigationStackEnabled="False" Padding="8,0,0,0" />
-                    <Frame Grid.Row="1" Grid.Column="1" x:Name="OffFrame" Padding="16,0,0,0"
+                    <Frame Grid.Row="1" Grid.Column="0" x:Name="MainFrame" IsNavigationStackEnabled="False"/>
+                    <Frame Grid.Row="1" Grid.Column="1" x:Name="OffFrame" 
                            IsNavigationStackEnabled="False" Visibility="Collapsed" MinWidth="300" />
 
                     <controls:GridSplitter
@@ -72,7 +72,7 @@
                                 </interactivity:Interaction.Behaviors>
                             </TextBlock>
 
-                            <CommandBar Grid.Column="1" OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
+                            <!--<CommandBar Grid.Column="1" OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
                                 <AppBarButton Icon="Save" Label="Save" IsCompact="False">
                                     <interactivity:Interaction.Behaviors>
                                         <behaviours:ToolbarRequestMessageBehaviour 
@@ -80,7 +80,7 @@
                                             InvokedToolbarActionMessage="ClickedSaveButton"/>
                                     </interactivity:Interaction.Behaviors>
                                 </AppBarButton>
-                            </CommandBar>
+                            </CommandBar>-->
                         </Grid>
                     </controls:DropShadowPanel>
 
@@ -96,7 +96,7 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Button x:Name="OffBackNavButton" Visibility="Collapsed" BorderThickness="2"
-                                    VerticalAlignment="Stretch" Width="50" Height="50" Background="Transparent"
+                                    VerticalAlignment="Stretch" Width="40" Height="40" Background="Transparent"
                                     Click="OffBackNavButton_OnClick">
                                 <Button.Content>
                                     <SymbolIcon Symbol="Back" />
@@ -105,7 +105,7 @@
                                     <RevealBorderBrush />
                                 </Button.BorderBrush>
                             </Button>
-                            <Button Grid.Column="2" BorderThickness="2" Width="50" Height="50" Background="Transparent"
+                            <Button Grid.Column="2" BorderThickness="2" Width="40" Height="40" Background="Transparent"
                                     Click="CloseOffPaneButtonOnClick">
                                 <Button.Content>
                                     <SymbolIcon Symbol="Cancel" />
@@ -114,7 +114,7 @@
                                     <RevealBorderBrush />
                                 </Button.BorderBrush>
                             </Button>
-                            <TextBlock Grid.Column="1" Style="{StaticResource SubtitleTextBlockStyle}" MinWidth="200"
+                            <TextBlock Margin="16,0,0,0" Grid.Column="1" Style="{StaticResource SubtitleTextBlockStyle}" MinWidth="200"
                                        TextTrimming="CharacterEllipsis" VerticalAlignment="Center">
                                 <interactivity:Interaction.Behaviors>
                                     <behaviours:OnPageNameMessageBehaviour NavigationStack="OffStack" />

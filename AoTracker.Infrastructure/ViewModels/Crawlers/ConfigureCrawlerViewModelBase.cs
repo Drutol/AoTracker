@@ -157,6 +157,11 @@ namespace AoTracker.Infrastructure.ViewModels.Crawlers
 
         public RelayCommand SaveCommand => new RelayCommand(() =>
         {
+            ValidateSearchQuery(SearchQueryInput);
+
+            if (SearchQueryInputError != null)
+                return;
+
             var resultMessage = new ConfigureCrawlerResultMessage
             {
                 Action = _navArgs.ConfigureNew

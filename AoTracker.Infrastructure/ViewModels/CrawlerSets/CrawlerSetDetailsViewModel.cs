@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using AoLibs.Adapters.Core.Interfaces;
 using AoLibs.Navigation.Core.Interfaces;
 using AoLibs.Utilities.Shared;
 using AoTracker.Crawlers.Enums;
@@ -31,6 +32,7 @@ namespace AoTracker.Infrastructure.ViewModels
 {
     public class CrawlerSetDetailsViewModel : ViewModelBase
     {
+        private readonly IVersionProvider _versionProvider;
         private readonly IUserDataProvider _userDataProvider;
         private readonly ILifetimeScope _lifetimeScope;
         private readonly ISnackbarProvider _snackbarProvider;
@@ -78,11 +80,13 @@ namespace AoTracker.Infrastructure.ViewModels
         private string _setNameError;
 
         public CrawlerSetDetailsViewModel(
+            IVersionProvider versionProvider,
             IUserDataProvider userDataProvider,
             ILifetimeScope lifetimeScope,
             ISnackbarProvider snackbarProvider,
             INavigationManager<PageIndex> navigationManager)
         {
+            _versionProvider = versionProvider;
             _userDataProvider = userDataProvider;
             _lifetimeScope = lifetimeScope;
             _snackbarProvider = snackbarProvider;
@@ -316,6 +320,9 @@ namespace AoTracker.Infrastructure.ViewModels
 
         private void NavigateConfigureDescriptor(ConfigureCrawlerPageNavArgs navArgs)
         {
+            if(_versionProvider.Platform == PlatformType.UWP)
+                _navigationManager.Reset(PageIndex.OffStackIdentifier);
+
             switch (navArgs.Domain)
             {
                 case CrawlerDomain.Surugaya:

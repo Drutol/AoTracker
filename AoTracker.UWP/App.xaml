@@ -4,11 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AoTracker.UWP"
     xmlns:converters="using:AoTracker.UWP.Converters"
+    xmlns:resources="using:AoTracker.Resources"
     RequestedTheme="Dark">
 
     <Application.Resources>
         <converters:ItemClickArgsConverter x:Key="ItemClickArgsConverter"/>
         <converters:CrawlerDomainToImageConverter x:Key="CrawlerDomainToImageConverter"/>
+        <converters:StringEmptyToVisibilityConverter x:Key="StringEmptyToVisibilityConverter"/>
     </Application.Resources>
 
 </Application>

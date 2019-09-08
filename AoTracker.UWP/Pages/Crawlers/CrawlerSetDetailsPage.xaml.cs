@@ -37,6 +37,12 @@ namespace AoTracker.UWP.Pages.Crawlers
             base.NavigatedTo();
             ViewModel.NavigatedTo(NavigationArguments as CrawlerSetDetailsPageNavArgs);
         }
+
+        public override void NavigatedFrom()
+        {
+            base.NavigatedFrom();
+            ViewModel.NavigatedFrom();
+        }
     }
 
     public class CrawlerSetDetailsPageBase : CustomPageBase<CrawlerSetDetailsViewModel>

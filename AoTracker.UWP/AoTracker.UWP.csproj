@@ -121,13 +121,18 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="BackgroundWork\BackgroundJobsManager.cs" />
+    <Compile Include="Behaviours\Interfaces\IElementWithNestedBindings.cs" />
     <Compile Include="Behaviours\OnPageNameMessageBehaviour.cs" />
+    <Compile Include="Behaviours\TextBlockHideWhenEmptyBehaviour.cs" />
     <Compile Include="Behaviours\ToolbarRequestMessageBehaviour.cs" />
+    <Compile Include="Behaviours\UpdateNestedBindingsBehaviour.cs" />
     <Compile Include="Converters\CrawlerDomainToImageConverter.cs" />
     <Compile Include="Converters\ItemClickArgsConverter.cs" />
+    <Compile Include="Converters\StringEmptyToVisibilityConverter.cs" />
     <Compile Include="Dialogs\ChangelogDialog.xaml.cs">
       <DependentUpon>ChangelogDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MarkupExtensions\LocalizeExtension.cs" />
     <Compile Include="Models\Enums\NavigationStack.cs" />
     <Compile Include="Models\Messages\NavigationStackUpdateMessage.cs" />
     <Compile Include="Pages\CrawlerConfigure\ConfigureCrawlerPageTemplateControl.xaml.cs">

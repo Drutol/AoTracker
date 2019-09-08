@@ -8,16 +8,24 @@
     xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:item="using:AoTracker.Infrastructure.ViewModels.Item"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviours="using:AoTracker.UWP.Behaviours"
+    x:Name="Self"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance item:CrawlerDescriptorViewModel}"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
+    <interactivity:Interaction.Behaviors>
+        <behaviours:UpdateNestedBindingsBehaviour/>
+    </interactivity:Interaction.Behaviors>
+
     <controls:DropShadowPanel Width="280" Height="280" HorizontalContentAlignment="Stretch" ShadowOpacity=".5">
         <Grid Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
             <Rectangle Margin="16" Opacity=".2">
                 <Rectangle.Fill>
-                    <ImageBrush ImageSource="{Binding BackingModel.CrawlerDomain, Converter={StaticResource CrawlerDomainToImageConverter}}" Stretch="Fill"/>
+                    <ImageBrush ImageSource="{Binding BackingModel.CrawlerDomain, 
+                        Converter={StaticResource CrawlerDomainToImageConverter}}" Stretch="Fill"/>
                 </Rectangle.Fill>
             </Rectangle>
             <Rectangle>
@@ -33,13 +41,30 @@
             <StackPanel Padding="16" >
                 <Border HorizontalAlignment="Center" BorderThickness="0,0,0,1" Padding="16,0,16,8"
                         BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}">
-                    <TextBlock Text="{Binding BackingModel.CrawlerDomain}" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.BackingModel.CrawlerDomain}" Style="{StaticResource SubheaderTextBlockStyle}"/>
                 </Border>
 
-                <controls:HeaderedContentControl Header="Search Query" Margin="0,16,0,0">
-                    <TextBlock Text="{Binding BackingModel.CrawlerSourceParameters.SearchQuery}" 
-                               Style="{StaticResource BaseTextBlockStyle}" FontSize="16"/>
+                <controls:HeaderedContentControl Header="{Binding AppResources.Item_CrawlerCell_SearchPhrase}" Margin="0,8,0,0">
+                    <TextBlock Text="{x:Bind ViewModel.BackingModel.CrawlerSourceParameters.SearchQuery}" 
+                               Style="{StaticResource BaseTextBlockStyle}" FontSize="20"/>
+                </controls:HeaderedContentControl>   
+                
+                <controls:HeaderedContentControl Header="{Binding AppResources.Item_CrawlerCell_PriceIncrease}" Margin="0,8,0,0" 
+                                                 Visibility="{x:Bind ViewModel.AreAnyPriceIncreasesPresent}">
+                    <TextBlock Style="{StaticResource BaseTextBlockStyle}" FontSize="16" 
+                               Text="{x:Bind ViewModel.FormattedPriceIncrease}"/>
+                </controls:HeaderedContentControl>       
+                
+                <controls:HeaderedContentControl Header="{Binding AppResources.ConfigureCrawler_ExcludedKeywords}" Margin="0,8,0,0" 
+                                                 Visibility="{x:Bind ViewModel.AreAnyExcludedKeywordsPresent}">
+                    <TextBlock Style="{StaticResource BaseTextBlockStyle}" FontSize="16" 
+                               Text="{x:Bind ViewModel.FormattedIgnoredItems}"/>
                 </controls:HeaderedContentControl>
+
+                <TextBlock Text="{Binding AppResources.Item_SurugayaCrawlerCell_TrimsFromQuotationMarks}" Margin="0,8,0,0"
+                           Visibility="{x:Bind SurugayaSourceParameters.TrimJapaneseQuotationMarks, FallbackValue=Collapsed}"/>
+
+                <ContentPresenter Content="{Binding ElementName=Self, Path=CustomContent}"/>
 
             </StackPanel>
         </Grid>

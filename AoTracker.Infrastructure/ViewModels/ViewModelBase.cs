@@ -4,11 +4,14 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using AoTracker.Domain.Enums;
 using AoTracker.Domain.Messaging;
+using AoTracker.Resources;
 
 namespace AoTracker.Infrastructure.ViewModels
 {
     public abstract class ViewModelBase : GalaSoft.MvvmLight.ViewModelBase
     {
+        public AppResources AppResources { get; } = new AppResources();
+
         private string _pageTitle;
 
         public abstract PageIndex  PageIdentifier { get; }

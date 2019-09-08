@@ -222,6 +222,9 @@
   <data name="Hamburger_Item_WatchedItems" xml:space="preserve">
     <value>Watched Items</value>
   </data>
+  <data name="Item_CrawlerCell_ExcludedKeywords" xml:space="preserve">
+    <value>Excluded:</value>
+  </data>
   <data name="Item_CrawlerCell_PriceIncrease" xml:space="preserve">
     <value>Price increase:</value>
   </data>

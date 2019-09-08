@@ -19,7 +19,7 @@ namespace AoTracker.UWP.Converters
             switch (domain)
             {
                 case CrawlerDomain.Surugaya:
-                    return "/Assets/Sites/surugaya.png";
+                    return new BitmapImage(new Uri("ms-appx:///Assets/Sites/surugaya.png"));
                 case CrawlerDomain.Mandarake:
                     return "/Assets/Sites/mandarake.png";
                 case CrawlerDomain.Yahoo:

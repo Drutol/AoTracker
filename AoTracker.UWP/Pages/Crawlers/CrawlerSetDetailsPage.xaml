@@ -11,8 +11,7 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:selectors="using:AoTracker.UWP.Selectors"
     mc:Ignorable="d"
-    d:DataContext="{d:DesignInstance viewModels:CrawlerSetDetailsViewModel}"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    d:DataContext="{d:DesignInstance viewModels:CrawlerSetDetailsViewModel}">
 
 
     <Page.Resources>
@@ -58,7 +57,7 @@
         </Border>
 
         <GridView Grid.Row="2" ItemsSource="{Binding CrawlerDescriptors}" Margin="0,8,0,0" Padding="8"
-                  ItemTemplateSelector="{StaticResource CrawlerTemplateSelector}">
+                  ItemTemplateSelector="{StaticResource CrawlerTemplateSelector}" IsItemClickEnabled="True">
             <GridView.ItemContainerStyle>
                 <Style TargetType="GridViewItem">
                     <Setter Property="Margin" Value="8"></Setter>
@@ -68,7 +67,7 @@
                 <core:EventTriggerBehavior EventName="ItemClick">
                     <core:InvokeCommandAction
                         Command="{Binding SelectCrawlerDescriptorCommand}"
-                        InputConverterParameter="{StaticResource ItemClickArgsConverter}" />
+                        InputConverter="{StaticResource ItemClickArgsConverter}" />
                 </core:EventTriggerBehavior>
             </interactivity:Interaction.Behaviors>
         </GridView>

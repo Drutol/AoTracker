@@ -376,6 +376,15 @@ namespace AoTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Excluded:.
+        /// </summary>
+        public static string Item_CrawlerCell_ExcludedKeywords {
+            get {
+                return ResourceManager.GetString("Item_CrawlerCell_ExcludedKeywords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Price increase:.
         /// </summary>
         public static string Item_CrawlerCell_PriceIncrease {
