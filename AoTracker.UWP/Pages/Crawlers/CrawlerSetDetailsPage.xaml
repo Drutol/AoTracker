@@ -10,6 +10,7 @@
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:selectors="using:AoTracker.UWP.Selectors"
+    xmlns:behaviours="using:AoTracker.UWP.Behaviours"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance viewModels:CrawlerSetDetailsViewModel}">
 
@@ -35,21 +36,31 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
 
-        <controls:HeaderedContentControl HorizontalContentAlignment="Left" Header="Crawler set title">
-            <controls:HeaderedContentControl.HeaderTemplate>
-                <DataTemplate>
-                    <Border BorderThickness="2,0,0,0"
-                            BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="8,4">
-                        <TextBlock Text="{Binding}" Style="{StaticResource SubtitleTextBlockStyle}" />
-                    </Border>
-                </DataTemplate>
-            </controls:HeaderedContentControl.HeaderTemplate>
-            <TextBox Text="{Binding SetName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="300"
-                     FontSize="18" Margin="0,16,0,0" />
-        </controls:HeaderedContentControl>
+        <Grid Padding="0,4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border BorderThickness="2,0,0,0" VerticalAlignment="Stretch" 
+                    BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="8,0">
+                <TextBlock Text="{Binding AppResources.CrawlerSetDetails_Title}" Style="{StaticResource SubtitleTextBlockStyle}" />
+            </Border>
+            <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+                <TextBox Grid.Column="1" Text="{Binding SetName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         MinWidth="300" VerticalAlignment="Center"  />
+                <TextBlock Foreground="Red">
+                    <interactivity:Interaction.Behaviors>
+                        <behaviours:TextBlockHideWhenEmptyBehaviour Text="{Binding SetNameError}"/>
+                    </interactivity:Interaction.Behaviors>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+
 
         <Border BorderThickness="2,0,0,0" Grid.Row="1" Margin="0,16,0,0"
                 BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="8,4">
@@ -111,5 +122,24 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <ListViewItem Grid.Row="5" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                      Padding="0" VerticalContentAlignment="Stretch" 
+                      Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+            <interactivity:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="Tapped">
+                    <core:InvokeCommandAction Command="{Binding SaveCommand}"/>
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+            <ListViewItem.BorderBrush>
+                <RevealBorderBrush/>
+            </ListViewItem.BorderBrush>
+            <Grid BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="2,0">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <SymbolIcon Symbol="Save"/>
+                    <TextBlock Text="Save" Margin="8,0,0,0"/>
+                </StackPanel>
+            </Grid>
+        </ListViewItem>
     </Grid>
 </local:CrawlerSetDetailsPageBase>

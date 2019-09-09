@@ -132,7 +132,6 @@
     <Compile Include="Dialogs\ChangelogDialog.xaml.cs">
       <DependentUpon>ChangelogDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MarkupExtensions\LocalizeExtension.cs" />
     <Compile Include="Models\Enums\NavigationStack.cs" />
     <Compile Include="Models\Messages\NavigationStackUpdateMessage.cs" />
     <Compile Include="Pages\CrawlerConfigure\ConfigureCrawlerPageTemplateControl.xaml.cs">
@@ -334,7 +333,9 @@
       <Name>AoTracker.Resources</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="MarkupExtensions\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Fonts\mdf.ttf" />
   </ItemGroup>

@@ -102,33 +102,39 @@ namespace AoTracker.Infrastructure.ViewModels
         {
             if (action == ToolbarActionMessage.ClickedSaveButton)
             {
-                ValidateSetName(SetName);
-
-                if (SetNameError != null)
-                {
-                    return;
-                }
-
-                if (IsAddingNew)
-                {
-                    var set = new CrawlerSet
-                    {
-                        Guid = Guid.NewGuid(),
-                        CreatedAt = DateTime.UtcNow,
-                        Descriptors = CrawlerDescriptors.Select(model => model.BackingModel).ToList(),
-                        Name = SetName
-                    };
-                    await _userDataProvider.AddNewSet(set);
-                }
-                else
-                {
-                    _currentSet.Name = SetName;
-                    _currentSet.Descriptors = CrawlerDescriptors.Select(model => model.BackingModel).ToList();
-                    await _userDataProvider.UpdateSet(_currentSet);
-                    MessengerInstance.Send(new CrawlerSetModifiedMessage(_currentSet));
-                }
-                _navigationManager.GoBack();
+                await Save();
             }
+        }
+
+        private async Task Save()
+        {
+            ValidateSetName(SetName);
+
+            if (SetNameError != null)
+            {
+                return;
+            }
+
+            if (IsAddingNew)
+            {
+                var set = new CrawlerSet
+                {
+                    Guid = Guid.NewGuid(),
+                    CreatedAt = DateTime.UtcNow,
+                    Descriptors = CrawlerDescriptors.Select(model => model.BackingModel).ToList(),
+                    Name = SetName
+                };
+                await _userDataProvider.AddNewSet(set);
+            }
+            else
+            {
+                _currentSet.Name = SetName;
+                _currentSet.Descriptors = CrawlerDescriptors.Select(model => model.BackingModel).ToList();
+                await _userDataProvider.UpdateSet(_currentSet);
+                MessengerInstance.Send(new CrawlerSetModifiedMessage(_currentSet));
+            }
+
+            _navigationManager.GoBack();
         }
 
         private void OnConfigureCrawlerResult(ConfigureCrawlerResultMessage message)
@@ -295,6 +301,8 @@ namespace AoTracker.Infrastructure.ViewModels
             {
                 CrawlerDescriptors?.Remove(descriptor);
             });
+
+        public RelayCommand SaveCommand => new RelayCommand(async () => { await Save(); });
 
         public RelayCommand<CrawlerEntryViewModel> AddCrawlerCommand => new RelayCommand<CrawlerEntryViewModel>(entry =>
         {
