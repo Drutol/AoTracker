@@ -161,8 +161,11 @@
     <Compile Include="Pages\Crawlers\CrawlerSetsPage.xaml.cs">
       <DependentUpon>CrawlerSetsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\FeedPage.xaml.cs">
+    <Compile Include="Pages\Feed\FeedPage.xaml.cs">
       <DependentUpon>FeedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Feed\FeedTabPage.xaml.cs">
+      <DependentUpon>FeedTabPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\IgnoredItemsPage.xaml.cs">
       <DependentUpon>IgnoredItemsPage.xaml</DependentUpon>
@@ -260,7 +263,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\FeedPage.xaml">
+    <Page Include="Pages\Feed\FeedPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Feed\FeedTabPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
