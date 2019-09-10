@@ -9,10 +9,10 @@
     xmlns:designtime="using:AoTracker.UWP.Utils.Designtime"
     d:DataContext="{d:DesignInstance designtime:DummyConfigureCrawlerViewModel}"
     mc:Ignorable="d"
-    Background="{ThemeResource SystemControlAcrylicElementBrush    }">
+    Background="{ThemeResource SystemControlAcrylicElementBrush}">
 
     <Grid>
-        <local:ConfigureCrawlerPageTemplateControl Margin="16" ImageSource="/Assets/Sites/surugaya.png">
+        <local:ConfigureCrawlerPageTemplateControl ImageSource="/Assets/Sites/surugaya.png">
             <CheckBox Content="{Binding AppResources.ConfigureCrawler_TrimJapaneseQuotationMarks}"
                       IsChecked="{Binding TrimJapaneseQuotationMarks, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </local:ConfigureCrawlerPageTemplateControl>

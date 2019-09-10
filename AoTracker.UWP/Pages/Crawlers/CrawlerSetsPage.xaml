@@ -8,30 +8,91 @@
     xmlns:viewModels="using:AoTracker.Infrastructure.ViewModels"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:converters="using:AoTracker.UWP.Converters"
+    xmlns:ext="using:AoTracker.UWP.MarkupExtensions"
+    xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
     mc:Ignorable="d"
-    d:DataContext="{d:DesignInstance viewModels:CrawlerSetsViewModel}"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    x:Name="Self"
+    d:DataContext="{d:DesignInstance viewModels:CrawlerSetsViewModel}">
 
+    <Page.Resources>
+        <converters:ItemIndexToIconConverter x:Key="SetsItemIndexConverter" Collection="{Binding Sets}"/>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="ListView" ItemsSource="{Binding Sets}">
+        <GridView x:Name="GridView" ItemsSource="{Binding Sets}" Padding="32" IsItemClickEnabled="True">
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="ItemClick"> 
                     <core:InvokeCommandAction 
                         Command="{Binding NavigateSetCommand}"
-                        CommandParameter="{Binding ElementName=ListView, Path=SelectedItem}"/>
+                        InputConverter="{StaticResource ItemClickArgsConverter}"/>
                 </core:EventTriggerBehavior>
             </interactivity:Interaction.Behaviors>
-            <ListView.ItemTemplate>
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <controls:WrapPanel/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+            <GridView.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding BackingModel.Name}"/>
+                    <controls:DropShadowPanel ShadowOpacity=".5">
+                        <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" Padding="16">
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock FontFamily="{ext:FontFamilyHelper Family=MaterialDesignIcons}" FontSize="24"
+                                               Text="{Binding Converter={StaticResource SetsItemIndexConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <Border Margin="64,0" Grid.Column="1" BorderThickness="0,0,0,1" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" HorizontalAlignment="Center" Padding="16,0">
+                                        <TextBlock Text="{Binding BackingModel.Name}" 
+                                                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                   Style="{StaticResource SubtitleTextBlockStyle}" />
+                                    </Border>
+                                </Grid>
+
+                                <TextBlock Text="{Binding AppResources.Item_CrawlerSet_Crawlers}" Margin="0,16,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
+
+                                <ItemsControl ItemsSource="{Binding BackingModel.Descriptors}" MaxWidth="500">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Padding="0,8">
+                                                <Image Opacity=".5" HorizontalAlignment="Left"  Width="50" Margin="3" Source="{Binding CrawlerDomain, Converter={StaticResource CrawlerDomainToImageConverter}}"/>
+                                                <Rectangle>
+                                                    <Rectangle.Fill>
+                                                        <media:BackdropBlurBrush Amount="1.3"/>
+                                                    </Rectangle.Fill>
+                                                </Rectangle>
+                                                <controls:DropShadowPanel BlurRadius="2" Margin="25,0"
+                                                                          ShadowOpacity=".4"
+                                                                          OffsetX="1.5"
+                                                                          OffsetY="1.5"
+                                                                          Color="{ThemeResource SystemColorHighlightTextColor}"
+                                                                          VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding CrawlerSourceParameters.SearchQuery}" Style="{StaticResource BaseTextBlockStyle}"  FontSize="24" VerticalAlignment="Center"/>
+                                                </controls:DropShadowPanel>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Grid>
+                    </controls:DropShadowPanel>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </GridView.ItemTemplate>
+        </GridView>
         <CommandBar Grid.Row="1" OverflowButtonVisibility="Collapsed">
             <AppBarButton Label="Add new set" Command="{Binding AddNewSetCommand}">
                 <AppBarButton.Icon>

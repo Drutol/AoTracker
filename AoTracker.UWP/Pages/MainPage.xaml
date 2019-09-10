@@ -14,9 +14,18 @@
     d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
     Background="{ThemeResource SystemControlAcrylicWindowBrush}">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
+                          BackgroundSource="Backdrop" TintColor="{ThemeResource SystemChromeMediumColor}" TintOpacity=".5"/>
+            <AcrylicBrush x:Key="NavigationViewTopPaneBackground"
+                          BackgroundSource="Backdrop" TintColor="{ThemeResource SystemChromeMediumColor}" TintOpacity=".5"/>
+            <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground" FallbackColor="{ThemeResource SystemChromeMediumLowColor}"
+                          BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemChromeMediumColor}" TintOpacity=".9"/>
+        </ResourceDictionary>
+    </Page.Resources>
+
     <Grid>
-
-
         <NavigationView x:Name="NavigationView" MenuItemsSource="{Binding HamburgerItems}" BackRequested="NavigationView_OnBackRequested"
                         PaneDisplayMode="Auto"
                         SelectionChanged="NavigationView_OnSelectionChanged">
@@ -26,7 +35,7 @@
                                         d:DataContext="{d:DesignInstance models:HamburgerMenuEntryViewModel}">
                         <NavigationViewItem.Icon>
                             <SymbolIcon Symbol="Placeholder" />
-                            <!--<FontIcon FontFamily="Assets/Fonts/mdf.ttf#Material Design Icons" FontSize="40" Glyph="&#xF114;"/>-->
+                            <!--<FontIcon FontFamily="" FontSize="40" Glyph="&#xF114;"/>-->
                         </NavigationViewItem.Icon>
                     </NavigationViewItem>
                 </DataTemplate>

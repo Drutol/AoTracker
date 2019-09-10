@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using AoLibs.Adapters.Core;
 using AoLibs.Adapters.Core.Interfaces;
 using AoLibs.Adapters.UWP;
 using AoLibs.Dialogs.Android;
@@ -30,6 +31,7 @@ using AoTracker.UWP.BackgroundWork;
 using AoTracker.UWP.Utils;
 using Autofac;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace AoTracker.UWP
 {
@@ -47,6 +49,10 @@ namespace AoTracker.UWP
         /// </summary>
         public App()
         {
+            DataCache.JsonSerializerSettings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All
+            };
             AppInitializationRoutines.InitializeDependencyInjection(DependenciesRegistration);
             this.InitializeComponent();
             this.Suspending += OnSuspending;

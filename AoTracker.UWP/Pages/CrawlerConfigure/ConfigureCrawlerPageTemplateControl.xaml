@@ -12,6 +12,7 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     x:Name="Self"
+    Margin="16"
     d:DataContext="{d:DesignInstance designtime:DummyConfigureCrawlerViewModel}"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -31,7 +32,15 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Hidden" Padding="16,0,0,0">
         <StackPanel>
-            <Image Source="{Binding ElementName=Self, Path=ImageSource}" Width="125" Margin="0,16,0,0"/>
+            <controls:DropShadowPanel BlurRadius="8"
+                                          ShadowOpacity=".2"
+                                          OffsetX="2"
+                                          OffsetY="2"
+                                          Color="Black" Margin="0,16,0,0"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center">
+                <Image Source="{Binding ElementName=Self, Path=ImageSource}" Width="125" />
+            </controls:DropShadowPanel>
 
             <TextBox Header="Search Query" Margin="0,16,0,0" HeaderTemplate="{StaticResource ErrorDataTemplate}"
                      Text="{Binding SearchQueryInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -82,7 +91,7 @@
 
             <ContentPresenter Content="{Binding ElementName=Self, Path=CustomContent}" Margin="0,16,0,0"/>
 
-            <Button Content="Save" Margin="0,16,0,0" Command="{Binding SaveCommand}" Background="{ThemeResource SystemControlBackgroundAccentBrush}" HorizontalAlignment="Stretch"/>
+            <Button Content="Save" Margin="0,16,0,0" Foreground="White" Command="{Binding SaveCommand}" Background="{ThemeResource SystemControlBackgroundAccentBrush}" HorizontalAlignment="Stretch"/>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

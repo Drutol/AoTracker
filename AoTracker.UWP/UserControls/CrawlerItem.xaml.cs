@@ -71,6 +71,8 @@ namespace AoTracker.UWP.UserControls
         {
             if (ViewModel.CrawlerSourceParameters is SurugayaSourceParameters param)
                 SurugayaSourceParameters = param;
+            else
+                SurugayaSourceParameters = null;
         }
     }
 }

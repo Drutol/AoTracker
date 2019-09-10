@@ -48,7 +48,7 @@ namespace AoTracker.UWP
         public MainPage()
         {
             this.InitializeComponent();
-
+            NavigationView.PaneDisplayMode = NavigationViewPaneDisplayMode.Auto;
             App.NavigationManager = new UwpNavigationManager(new Dictionary<NavigationStack, Frame>
             {
                 {NavigationStack.MainStack, MainFrame},

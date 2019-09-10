@@ -128,10 +128,13 @@
     <Compile Include="Behaviours\UpdateNestedBindingsBehaviour.cs" />
     <Compile Include="Converters\CrawlerDomainToImageConverter.cs" />
     <Compile Include="Converters\ItemClickArgsConverter.cs" />
+    <Compile Include="Converters\ItemIndexConverter.cs" />
+    <Compile Include="Converters\ItemIndexToIconConverter.cs" />
     <Compile Include="Converters\StringEmptyToVisibilityConverter.cs" />
     <Compile Include="Dialogs\ChangelogDialog.xaml.cs">
       <DependentUpon>ChangelogDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MarkupExtensions\FontFamilyHelperExtension.cs" />
     <Compile Include="Models\Enums\NavigationStack.cs" />
     <Compile Include="Models\Messages\NavigationStackUpdateMessage.cs" />
     <Compile Include="Pages\CrawlerConfigure\ConfigureCrawlerPageTemplateControl.xaml.cs">
@@ -296,13 +299,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AoLibs.Adapters.UWP">
-      <Version>0.6.7</Version>
+      <Version>0.6.8</Version>
     </PackageReference>
     <PackageReference Include="AoLibs.Dialogs.UWP">
-      <Version>0.6.7</Version>
+      <Version>0.6.8</Version>
     </PackageReference>
     <PackageReference Include="AoLibs.Navigation.UWP">
-      <Version>0.6.7</Version>
+      <Version>0.6.8</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
@@ -333,9 +336,7 @@
       <Name>AoTracker.Resources</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MarkupExtensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Assets\Fonts\mdf.ttf" />
   </ItemGroup>
