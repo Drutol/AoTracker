@@ -18,6 +18,7 @@
 
     <interactivity:Interaction.Behaviors>
         <behaviours:UpdateNestedBindingsBehaviour/>
+        <behaviours:VisibilityOnPointerInsideBehaviour x:Name="PointerInsideBehaviour"/>
     </interactivity:Interaction.Behaviors>
 
     <controls:DropShadowPanel Width="280" Height="280" HorizontalContentAlignment="Stretch" ShadowOpacity=".5">
@@ -38,6 +39,12 @@
                     <SolidColorBrush Color="{ThemeResource SystemBaseMediumHighColor}" Opacity=".05"/>
                 </Rectangle.Fill>
             </Rectangle>
+            <Button Style="{StaticResource TextBlockButtonStyle}" 
+                    Visibility="{Binding ElementName=PointerInsideBehaviour, Path=Visibility}"
+                    Foreground="Red" HorizontalAlignment="Right" Margin="8" VerticalAlignment="Top"
+                    Command="{Binding DeleteCommand}" CommandParameter="{Binding}">
+                <SymbolIcon Symbol="Delete"/>
+            </Button>
             <StackPanel Padding="16" >
                 <Border HorizontalAlignment="Center" BorderThickness="0,0,0,1" Padding="16,0,16,8"
                         BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}">
@@ -65,7 +72,6 @@
                            Visibility="{x:Bind SurugayaSourceParameters.TrimJapaneseQuotationMarks, FallbackValue=Collapsed}"/>
 
                 <ContentPresenter Content="{Binding ElementName=Self, Path=CustomContent}"/>
-
             </StackPanel>
         </Grid>
     </controls:DropShadowPanel>

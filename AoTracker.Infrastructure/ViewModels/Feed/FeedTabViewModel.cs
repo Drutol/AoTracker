@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AoLibs.Adapters.Core.Interfaces;
 using AoLibs.Utilities.Shared;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Crawlers.Interfaces;
@@ -14,6 +15,7 @@ using AoTracker.Infrastructure.Infrastructure;
 using AoTracker.Infrastructure.Models;
 using AoTracker.Infrastructure.Models.Messages;
 using AoTracker.Infrastructure.Statics;
+using AoTracker.Infrastructure.Util;
 using AoTracker.Infrastructure.ViewModels.Item;
 using AoTracker.Interfaces;
 using Autofac;
@@ -23,6 +25,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
 {
     public class FeedTabViewModel : ViewModelBase
     {
+        private readonly IVersionProvider _versionProvider;
         private readonly IFeedProvider _feedProvider;
         private readonly IFeedHistoryProvider _feedHistoryProvider;
         private readonly IIgnoredItemsManager _ignoredItemsManager;
@@ -77,11 +80,13 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
             new SmartObservableCollection<IMerchItem>();
 
         public FeedTabViewModel(
+            IVersionProvider versionProvider,
             IFeedProvider feedProvider,
             IFeedHistoryProvider feedHistoryProvider,
             IIgnoredItemsManager ignoredItemsManager,
             ISettings settings)
         {
+            _versionProvider = versionProvider;
             _feedProvider = feedProvider;
             _feedHistoryProvider = feedHistoryProvider;
             _ignoredItemsManager = ignoredItemsManager;
@@ -160,7 +165,7 @@ namespace AoTracker.Infrastructure.ViewModels.Feed
                 items.AddRange(group);
             }
 
-            Feed.AddRange(items);
+            Feed.PlatformAddRange(items, _versionProvider.Platform);
         }
 
         private void FeedProviderOnNewCrawlerBatch(object sender, FeedBatch e)

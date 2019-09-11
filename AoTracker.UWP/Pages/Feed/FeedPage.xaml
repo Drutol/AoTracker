@@ -10,8 +10,7 @@
     xmlns:models="using:AoTracker.Infrastructure.Models"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     mc:Ignorable="d"
-    d:DataContext="{d:DesignInstance feed:FeedViewModel}"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    d:DataContext="{d:DesignInstance feed:FeedViewModel}">
 
     <Grid>
         <Pivot x:Name="Pivot" ItemsSource="{Binding FeedTabEntries}" SelectionChanged="Pivot_OnSelectionChanged">
@@ -20,6 +19,11 @@
                     <TextBlock Text="{Binding Name}"/>
                 </DataTemplate>
             </Pivot.HeaderTemplate>
+            <Pivot.ItemContainerStyle>
+                <Style TargetType="PivotItem">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Style>
+            </Pivot.ItemContainerStyle>
             <Pivot.ItemTemplate>
                 <DataTemplate>
                     <Grid x:Name="Parent">

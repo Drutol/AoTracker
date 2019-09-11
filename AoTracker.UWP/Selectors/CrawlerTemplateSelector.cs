@@ -7,6 +7,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using AoTracker.Crawlers.Enums;
 using AoTracker.Infrastructure.ViewModels.Item;
+using AoTracker.Interfaces;
 
 namespace AoTracker.UWP.Selectors
 {

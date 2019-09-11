@@ -35,7 +35,7 @@
             </interactivity:Interaction.Behaviors>
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <controls:WrapPanel/>
+                    <controls:WrapPanel HorizontalSpacing="16"/>
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
             <GridView.ItemTemplate>

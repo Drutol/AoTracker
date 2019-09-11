@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using AoLibs.Adapters.Core.Interfaces;
 using AoLibs.Navigation.Core.Interfaces;
 using AoLibs.Utilities.Shared;
 using AoTracker.Domain.Enums;
@@ -20,6 +21,7 @@ namespace AoTracker.Infrastructure.ViewModels
 {
     public class CrawlerSetsViewModel : ViewModelBase
     {
+        private readonly IVersionProvider _versionProvider;
         private readonly IUserDataProvider _userDataProvider;
         private readonly ILifetimeScope _lifetimeScope;
         private readonly INavigationManager<PageIndex> _navigationManager;
@@ -27,10 +29,12 @@ namespace AoTracker.Infrastructure.ViewModels
         public override PageIndex PageIdentifier { get; } = PageIndex.CrawlerSets;
 
         public CrawlerSetsViewModel(
+            IVersionProvider versionProvider,
             IUserDataProvider userDataProvider,
             ILifetimeScope lifetimeScope,
             INavigationManager<PageIndex> navigationManager)
         {
+            _versionProvider = versionProvider;
             _userDataProvider = userDataProvider;
             _lifetimeScope = lifetimeScope;
             _navigationManager = navigationManager;
@@ -41,8 +45,10 @@ namespace AoTracker.Infrastructure.ViewModels
         public void NavigatedTo()
         {
             Sets.Clear();
-            Sets.AddRange(
-                _userDataProvider.CrawlingSets.Select(set => _lifetimeScope.TypedResolve<CrawlerSetViewModel>(set)));
+            var items = _userDataProvider.CrawlingSets.Select(set =>
+                _lifetimeScope.TypedResolve<CrawlerSetViewModel>(set));
+            Sets.PlatformAddRange(items, _versionProvider.Platform);
+
         }
 
         public SmartObservableCollection<CrawlerSetViewModel> Sets { get; } =

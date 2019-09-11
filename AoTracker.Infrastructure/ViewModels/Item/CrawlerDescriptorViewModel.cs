@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
 using AoLibs.Adapters.Core.Interfaces;
 using AoTracker.Crawlers.Interfaces;
 using AoTracker.Domain.Models;
@@ -39,6 +40,8 @@ namespace AoTracker.Infrastructure.ViewModels.Item
 
         public bool AreAnyPriceIncreasesPresent => Math.Abs(BackingModel.CrawlerSourceParameters.OffsetIncrease) > 0.01 ||
                                                    Math.Abs(BackingModel.CrawlerSourceParameters.PercentageIncrease) > 0.01;
+
+        public RelayCommand<CrawlerDescriptorViewModel> DeleteCommand => _parent.RemoveDescriptorCommand;
     }
 
     public class CrawlerDescriptorViewModel<T> : CrawlerDescriptorViewModel where T : ICrawlerResultItem

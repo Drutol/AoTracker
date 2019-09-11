@@ -123,9 +123,11 @@
     <Compile Include="BackgroundWork\BackgroundJobsManager.cs" />
     <Compile Include="Behaviours\Interfaces\IElementWithNestedBindings.cs" />
     <Compile Include="Behaviours\OnPageNameMessageBehaviour.cs" />
+    <Compile Include="Behaviours\ParentWidthObserverBehaviour.cs" />
     <Compile Include="Behaviours\TextBlockHideWhenEmptyBehaviour.cs" />
     <Compile Include="Behaviours\ToolbarRequestMessageBehaviour.cs" />
     <Compile Include="Behaviours\UpdateNestedBindingsBehaviour.cs" />
+    <Compile Include="Behaviours\VisibilityOnPointerInsideBehaviour.cs" />
     <Compile Include="Converters\CrawlerDomainToImageConverter.cs" />
     <Compile Include="Converters\ItemClickArgsConverter.cs" />
     <Compile Include="Converters\ItemIndexConverter.cs" />
@@ -190,8 +192,15 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Selectors\CrawlerTemplateSelector.cs" />
+    <Compile Include="Selectors\FeedItemTemplateSelector.cs" />
     <Compile Include="UserControls\CrawlerItem.xaml.cs">
       <DependentUpon>CrawlerItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FeedGroupHeader.xaml.cs">
+      <DependentUpon>FeedGroupHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FeedItem.xaml.cs">
+      <DependentUpon>FeedItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\CustomPageBase.cs" />
     <Compile Include="Utils\Designtime\DummyConfigureCrawlerViewModel.cs" />
@@ -300,6 +309,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\CrawlerItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\FeedGroupHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\FeedItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

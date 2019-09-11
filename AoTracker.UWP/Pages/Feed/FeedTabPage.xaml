@@ -7,24 +7,43 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:feed="using:AoTracker.Infrastructure.ViewModels.Feed"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:selectors="using:AoTracker.UWP.Selectors"
+    xmlns:userControls="using:AoTracker.UWP.UserControls"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviours="using:AoTracker.UWP.Behaviours"
     mc:Ignorable="d"
-    d:DataContext="{d:DesignInstance feed:FeedTabViewModel}"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    d:DataContext="{d:DesignInstance feed:FeedTabViewModel}">
+
+    <Page.Resources>
+        <selectors:FeedItemTemplateSelector x:Key="ItemTemplateSelector">
+            <selectors:FeedItemTemplateSelector.SharedItemDataTemplate>
+                <DataTemplate>
+                    <userControls:FeedItem/>
+                </DataTemplate>
+            </selectors:FeedItemTemplateSelector.SharedItemDataTemplate>  
+
+            <selectors:FeedItemTemplateSelector.YahooItemDataTemplate>
+                <DataTemplate>
+                    <userControls:FeedItem/>
+                </DataTemplate>
+            </selectors:FeedItemTemplateSelector.YahooItemDataTemplate>   
+
+            <selectors:FeedItemTemplateSelector.ChangeGroupHeaderDataTemplate>
+                <DataTemplate>
+                    <userControls:FeedGroupHeader ParentWidth="{Binding ElementName=GridView, Path=ActualWidth}"/>
+                </DataTemplate>
+            </selectors:FeedItemTemplateSelector.ChangeGroupHeaderDataTemplate>
+        </selectors:FeedItemTemplateSelector>
+    </Page.Resources>
 
     <Grid>
-        <GridView ItemsSource="{Binding Feed}">
-            <GridView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Width="300" Height="100">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <controls:ImageEx Source="{Binding BackingModel.ImageUrl}"/>
-                        <TextBlock Grid.Column="1" Text="{Binding BackingModel.Name}" TextWrapping="Wrap"/>
-                    </Grid>
-                </DataTemplate>
-            </GridView.ItemTemplate>
+        <GridView x:Name="GridView" ItemsSource="{Binding Feed}"
+                  ItemTemplateSelector="{StaticResource ItemTemplateSelector}">
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <controls:WrapPanel/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
         </GridView>
     </Grid>
 </local:FeedTabPageBase>
