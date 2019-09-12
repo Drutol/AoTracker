@@ -12,7 +12,8 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid Width="{Binding ElementName=Self, Path=ParentWidth}" Height="50" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+    <Grid Width="{Binding ElementName=Self, Path=ParentWidth}" Height="50" Margin="32,0"
+          BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <SymbolIcon Symbol="Clock"/>

@@ -5,20 +5,20 @@
     xmlns:local="using:AoTracker.UWP"
     xmlns:converters="using:AoTracker.UWP.Converters"
     xmlns:resources="using:AoTracker.Resources"
-    RequestedTheme="Dark">
+    RequestedTheme="Light">
 
     <Application.Resources>
-        <AcrylicBrush x:Key="SystemControlAcrylicWindowBrush" 
-                      BackgroundSource="HostBackdrop" TintColor="{StaticResource SystemChromeAltHighColor}" 
-                      TintOpacity="0.5" FallbackColor="{StaticResource SystemChromeMediumColor}" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/AppValues.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
 
-        <AcrylicBrush x:Key="SystemControlAcrylicElementBrush"
-                      BackgroundSource="Backdrop" TintColor="{StaticResource SystemChromeAltHighColor}" 
-                      TintOpacity="0.5" FallbackColor="{StaticResource SystemChromeMediumColor}" />
+            <converters:ItemClickArgsConverter x:Key="ItemClickArgsConverter"/>
+            <converters:CrawlerDomainToImageConverter x:Key="CrawlerDomainToImageConverter"/>
+            <converters:StringEmptyToVisibilityConverter x:Key="StringEmptyToVisibilityConverter"/>
+            <converters:PriceToStringConverter x:Key="PriceToStringConverter"/>
+        </ResourceDictionary>
 
-        <converters:ItemClickArgsConverter x:Key="ItemClickArgsConverter"/>
-        <converters:CrawlerDomainToImageConverter x:Key="CrawlerDomainToImageConverter"/>
-        <converters:StringEmptyToVisibilityConverter x:Key="StringEmptyToVisibilityConverter"/>
     </Application.Resources>
 
 </Application>

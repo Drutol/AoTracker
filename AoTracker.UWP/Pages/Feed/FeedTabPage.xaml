@@ -30,7 +30,7 @@
 
             <selectors:FeedItemTemplateSelector.ChangeGroupHeaderDataTemplate>
                 <DataTemplate>
-                    <userControls:FeedGroupHeader ParentWidth="{Binding ElementName=GridView, Path=ActualWidth}"/>
+                    <userControls:FeedGroupHeader ParentWidth="{Binding ElementName=WidthObserver, Path=ObservedWidth}"/>
                 </DataTemplate>
             </selectors:FeedItemTemplateSelector.ChangeGroupHeaderDataTemplate>
         </selectors:FeedItemTemplateSelector>
@@ -39,6 +39,9 @@
     <Grid>
         <GridView x:Name="GridView" ItemsSource="{Binding Feed}"
                   ItemTemplateSelector="{StaticResource ItemTemplateSelector}">
+            <interactivity:Interaction.Behaviors>
+                <behaviours:ParentWidthObserverBehaviour x:Name="WidthObserver"/>
+            </interactivity:Interaction.Behaviors>
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <controls:WrapPanel/>

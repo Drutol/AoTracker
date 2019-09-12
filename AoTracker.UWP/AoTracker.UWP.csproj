@@ -129,9 +129,13 @@
     <Compile Include="Behaviours\UpdateNestedBindingsBehaviour.cs" />
     <Compile Include="Behaviours\VisibilityOnPointerInsideBehaviour.cs" />
     <Compile Include="Converters\CrawlerDomainToImageConverter.cs" />
+    <Compile Include="Converters\FeedItem\PriceChangeToStringConverter.cs" />
+    <Compile Include="Converters\FeedItem\PriceToColourConverter.cs" />
+    <Compile Include="Converters\FeedItem\PriceToIconConverter.cs" />
     <Compile Include="Converters\ItemClickArgsConverter.cs" />
     <Compile Include="Converters\ItemIndexConverter.cs" />
     <Compile Include="Converters\ItemIndexToIconConverter.cs" />
+    <Compile Include="Converters\PriceToStringConverter.cs" />
     <Compile Include="Converters\StringEmptyToVisibilityConverter.cs" />
     <Compile Include="Dialogs\ChangelogDialog.xaml.cs">
       <DependentUpon>ChangelogDialog.xaml</DependentUpon>
@@ -305,6 +309,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\AppValues.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

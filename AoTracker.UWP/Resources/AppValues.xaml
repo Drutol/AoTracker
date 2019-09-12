@@ -1,0 +1,19 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <AcrylicBrush x:Key="SystemControlAcrylicWindowBrush" 
+                  BackgroundSource="HostBackdrop" TintColor="{StaticResource SystemChromeAltHighColor}" 
+                  TintOpacity="0.5" FallbackColor="{StaticResource SystemChromeMediumColor}" />
+
+    <AcrylicBrush x:Key="SystemControlAcrylicElementBrush"
+                  BackgroundSource="Backdrop" TintColor="{StaticResource SystemChromeAltHighColor}" 
+                  TintOpacity="0.5" FallbackColor="{StaticResource SystemChromeMediumColor}" />
+
+    <Color x:Key="OkColour">#98c926</Color>
+    <Color x:Key="BadColour">#de2909</Color>  
+    
+    <SolidColorBrush x:Key="OkColourBrush" Color="{StaticResource OkColour}"/>
+    <SolidColorBrush x:Key="BadColourBrush" Color="{StaticResource BadColour}"/>
+
+</ResourceDictionary>

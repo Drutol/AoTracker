@@ -7,19 +7,71 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:item="using:AoTracker.Infrastructure.ViewModels.Item"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:markupExtensions="using:AoTracker.UWP.MarkupExtensions"
+    xmlns:feedItem="using:AoTracker.UWP.Converters.FeedItem"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviours="using:AoTracker.UWP.Behaviours"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance item:FeedItemViewModel}"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <controls:DropShadowPanel ShadowOpacity=".5">
-        <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" Padding="16">
+    <UserControl.Resources>
+        <feedItem:PriceChangeToStringConverter x:Key="PriceChangeToStringConverter"/>
+        <feedItem:PriceToIconConverter x:Key="PriceToIconConverter"/>
+        <feedItem:PriceToColourConverter x:Key="PriceToColourConverter" 
+                                         IncreaseColour="{StaticResource BadColourBrush}" 
+                                         DecreaseColour="{StaticResource OkColourBrush}"/>
+    </UserControl.Resources>
+
+    <controls:DropShadowPanel ShadowOpacity=".5" MaxWidth="500">
+        <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" Padding="16" >
                 <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <controls:ImageEx Source="{Binding BackingModel.ImageUrl}"/>
-            <TextBlock Grid.Column="1" Text="{Binding BackingModel.Name}" TextWrapping="Wrap"/>
+            <controls:DropShadowPanel>
+                <controls:ImageEx Source="{Binding BackingModel.ImageUrl}" MaxWidth="200" MaxHeight="230"/>
+            </controls:DropShadowPanel>
+
+            <Grid Grid.Column="1" Margin="16,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Border BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="2,0,0,0" Padding="8,0,0,0">
+                    <TextBlock Text="{Binding BackingModel.Name}" FontSize="18" TextWrapping="Wrap" Style="{StaticResource BaseTextBlockStyle}"/>
+                </Border>
+
+                <Grid Grid.Row="2">
+                    <controls:DropShadowPanel HorizontalAlignment="Right">
+                        <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Padding="8,4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock FontFamily="{markupExtensions:FontFamilyHelper Family=MaterialDesignIcons}"
+                                       VerticalAlignment="Center" FontSize="22" Margin="0,0,8,0"
+                                       Foreground="{Binding PriceChange, Converter={StaticResource PriceToColourConverter}}">
+                                <interactivity:Interaction.Behaviors>
+                                    <behaviours:TextBlockHideWhenEmptyBehaviour Text="{Binding PriceChange, Converter={StaticResource PriceToIconConverter}}"/>
+                                </interactivity:Interaction.Behaviors>
+                            </TextBlock>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock  Text="{Binding BackingModel.Price, Converter={StaticResource PriceToStringConverter}}" Style="{StaticResource BaseTextBlockStyle}" FontSize="18"/>
+                                <TextBlock Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}" FontStyle="Italic" HorizontalAlignment="Center">
+                                    <interactivity:Interaction.Behaviors>
+                                        <behaviours:TextBlockHideWhenEmptyBehaviour
+                                            Text="{Binding PriceDifference, Converter={StaticResource PriceChangeToStringConverter}}"/>
+                                    </interactivity:Interaction.Behaviors>
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </controls:DropShadowPanel>
+                </Grid>
+            </Grid>
         </Grid>
     </controls:DropShadowPanel>
 </UserControl>
