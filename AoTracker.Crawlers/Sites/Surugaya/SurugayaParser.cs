@@ -52,8 +52,16 @@ namespace AoTracker.Crawlers.Surugaya
 
                     item.Id = link.Attributes["href"].Value.Split('/').Last();
                     item.Name = itemName;
-                    item.Price = float.Parse(priceBlock.Descendants("strong").First().InnerText.Replace("￥", "")
-                        .Replace(",", ""));
+                    if (float.TryParse(priceBlock
+                        .Descendants("strong")
+                        .First()
+                        .InnerText
+                        .Replace("￥", "")
+                        .Replace(",", ""), out var price))
+                    {
+                        item.Price = price;
+                    }
+
                     item.ImageUrl = itemNode.Descendants("img").First().Attributes["src"].Value;
                     item.InternalId = $"surugaya_{item.Id}";
                     item.Category =
